@@ -1,0 +1,1621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Knock, knock. Triệu Ngọc Gia Hân</title>
+<meta name="description" content="Notes from someone who watches what changes when people begin sharing a room. Community work, research, and things built to test a hunch.">
+<meta name="theme-color" content="#0F1B3C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   TOKENS · one system, several atmospheres
+   ============================================================ */
+:root{
+  --cream:#F7EFE2;
+  --cream-2:#EFE3D0;
+  --cream-3:#E5D7C1;
+  --navy:#0F1B3C;
+  --navy-2:#182C5C;
+  --ink:#141C33;
+  --ink-70:rgba(20,28,51,.72);
+  --ink-45:rgba(20,28,51,.5);
+  --ink-20:rgba(20,28,51,.22);
+  --ink-10:rgba(20,28,51,.1);
+  --rule:rgba(20,28,51,.16);
+
+  --pink:#EE4187;
+  --orange:#F2872F;
+  --blue:#2B4DE0;
+  --teal:#0F918B;
+
+  --paper:var(--cream);
+  --paper-2:var(--cream-2);
+  --accent:var(--blue);
+  --accent-soft:rgba(43,77,224,.09);
+
+  --display:"Fraunces","Iowan Old Style",Georgia,serif;
+  --body:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,monospace;
+
+  /* restrained scale. --t-hero is used exactly once. */
+  --t-hero:clamp(2.5rem,7.4vw,5rem);
+  --t-xl:clamp(1.75rem,3.6vw,2.7rem);
+  --t-lg:clamp(1.35rem,2.4vw,1.95rem);
+  --t-md:clamp(1.04rem,1.5vw,1.24rem);
+  --t-base:clamp(1rem,1.2vw,1.06rem);
+  --t-sm:.875rem;
+  --t-xs:.6875rem;
+
+  --s1:.5rem; --s2:1rem; --s3:1.5rem; --s4:2.25rem; --s5:3.25rem;
+  --s6:4.75rem; --s7:7rem; --s8:10rem;
+  --gutter:clamp(1.15rem,4.5vw,4rem);
+  --rail:clamp(0px,5vw,5.5rem);
+  --navh:56px;
+  --measure:60ch;
+
+  --ease:cubic-bezier(.19,1,.22,1);
+  --ease-soft:cubic-bezier(.4,0,.2,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;min-width:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--navh) + 12px)}
+body{
+  margin:0;background:var(--cream);color:var(--ink);
+  font-family:var(--body);font-size:var(--t-base);line-height:1.62;font-weight:350;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body.is-locked{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--pink);color:var(--cream)}
+
+h1,h2,h3,h4{font-family:var(--display);font-weight:400;margin:0;line-height:1.06;letter-spacing:-.018em;font-variation-settings:"SOFT" 20,"WONK" 1;text-wrap:balance;overflow-wrap:break-word}
+p{margin:0;text-wrap:pretty;overflow-wrap:break-word}
+
+.mono{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-45)}
+.lede{font-size:var(--t-md);line-height:1.6;max-width:42ch}
+.body-copy{max-width:var(--measure);color:var(--ink-70)}
+.body-copy + .body-copy{margin-top:var(--s2)}
+.pull{font-family:var(--display);font-size:var(--t-lg);line-height:1.22;letter-spacing:-.015em;max-width:26ch;text-wrap:balance}
+.hang{color:var(--accent)}
+
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+.skip{position:fixed;top:-100px;left:var(--gutter);z-index:200;background:var(--navy);color:var(--cream);padding:.7rem 1rem;font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+.skip:focus{top:.6rem}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ============================================================
+   AMBIENT LAYER · sparse drifting marks, never interactive
+   ============================================================ */
+#motes{position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.85;mix-blend-mode:normal}
+.chapter,.hero{position:relative;z-index:2}
+
+/* hand-drawn marks that sit beside observations */
+.mark{display:block;width:clamp(46px,7vw,74px);height:auto;color:var(--accent);opacity:.9}
+.mark path{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-dasharray:var(--len,180);stroke-dashoffset:var(--len,180);transition:stroke-dashoffset 1.4s var(--ease-soft) .15s}
+.mark.in path{stroke-dashoffset:0}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.chapter{padding:var(--s7) var(--gutter) var(--s7) calc(var(--gutter) + var(--rail))}
+.chapter--tight{padding-top:var(--s6);padding-bottom:var(--s5)}
+.wrap{max-width:1320px;margin:0 auto;position:relative}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s3)}
+@media(max-width:780px){.grid{grid-template-columns:repeat(6,1fr);gap:var(--s2)}}
+
+.chapter-mark{display:flex;align-items:center;gap:.8rem;margin-bottom:var(--s4)}
+.chapter-mark .num{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.2em;color:var(--accent)}
+.chapter-mark .name{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-45)}
+.chapter-mark .line{flex:1;height:1px;background:linear-gradient(90deg,var(--accent),transparent 65%);opacity:.5}
+
+/* ============================================================
+   NAVIGATION · sticky, five destinations, current chapter lit
+   ============================================================ */
+.chapnav{position:fixed;top:0;left:0;right:0;z-index:60;height:var(--navh);display:flex;align-items:center;gap:var(--s2);
+  padding:0 var(--gutter);background:color-mix(in srgb,var(--cream) 84%,transparent);
+  backdrop-filter:saturate(1.3) blur(14px);-webkit-backdrop-filter:saturate(1.3) blur(14px);
+  border-bottom:1px solid var(--rule);transition:background-color .6s var(--ease-soft),border-color .6s var(--ease-soft),color .6s var(--ease-soft)}
+.chapnav[hidden]{display:none}
+body.is-dark .chapnav{background:color-mix(in srgb,var(--navy) 82%,transparent);border-color:rgba(247,239,226,.16);color:var(--cream)}
+.brand{display:flex;align-items:baseline;gap:.5rem;text-decoration:none;flex:none}
+.brand__mark{width:22px;height:22px;flex:none;transform:translateY(3px)}
+.brand__name{font-family:var(--display);font-size:1.02rem;letter-spacing:-.01em;white-space:nowrap}
+.brand__sub{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--ink-45)}
+body.is-dark .brand__sub{color:rgba(247,239,226,.55)}
+@media(max-width:900px){.brand__sub{display:none}}
+
+.chapnav__list{display:flex;align-items:center;gap:.15rem;list-style:none;margin:0 auto 0 0;padding:0 .2rem;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;flex:1}
+.chapnav__list::-webkit-scrollbar{display:none}
+.navlink{position:relative;display:inline-flex;align-items:center;gap:.45rem;white-space:nowrap;text-decoration:none;
+  font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-45);
+  padding:.5rem .7rem;border-radius:999px;transition:color .3s,background-color .3s}
+.navlink i{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.3;transition:opacity .3s,transform .35s var(--ease)}
+.navlink:hover{color:var(--ink)}
+body.is-dark .navlink{color:rgba(247,239,226,.55)}
+body.is-dark .navlink:hover{color:var(--cream)}
+.navlink.is-current{color:var(--nav-accent,var(--blue));background:color-mix(in srgb,var(--nav-accent,var(--blue)) 10%,transparent)}
+.navlink.is-current i{opacity:1;transform:scale(1.5);background:var(--nav-accent,var(--blue))}
+.chapnav__prog{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--pink),var(--orange),var(--blue));transition:width .15s linear}
+.doorbell{flex:none;border:1px solid var(--ink-20);background:none;border-radius:999px;padding:.42rem .8rem;font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;color:inherit;transition:background-color .3s,color .3s,border-color .3s}
+.doorbell:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+body.is-dark .doorbell{border-color:rgba(247,239,226,.28)}
+body.is-dark .doorbell:hover{background:var(--cream);color:var(--navy);border-color:var(--cream)}
+@media(max-width:560px){
+  :root{--navh:52px}
+  .brand__name{font-size:.95rem}
+  .navlink{padding:.45rem .55rem;letter-spacing:.1em}
+  .chapnav{gap:.5rem;padding:0 .9rem}
+}
+/* ============================================================
+   THRESHOLD · the navy world, before the lights come up
+   ============================================================ */
+.threshold{position:fixed;inset:0;z-index:120;background:
+  radial-gradient(60% 50% at 22% 18%,rgba(238,65,135,.28),transparent 62%),
+  radial-gradient(55% 45% at 82% 78%,rgba(43,77,224,.32),transparent 60%),
+  radial-gradient(40% 40% at 65% 12%,rgba(242,135,47,.2),transparent 65%),
+  var(--navy);
+  color:var(--cream);display:grid;place-items:center;padding:var(--gutter);text-align:center}
+.threshold[hidden]{display:none}
+.threshold__inner{max-width:32rem}
+.threshold__eyebrow{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.24em;text-transform:uppercase;color:rgba(247,239,226,.55);margin-bottom:var(--s3)}
+.threshold h1{font-size:clamp(2.2rem,7.5vw,3.9rem);letter-spacing:-.025em}
+.threshold h1 em{font-style:italic;color:var(--pink)}
+.knock{margin-top:var(--s4);display:inline-flex;flex-direction:column;align-items:center;gap:.85rem;background:none;border:0;cursor:pointer;font:inherit;color:inherit;padding:.8rem}
+.knock__plate{width:clamp(104px,22vw,140px);aspect-ratio:3/4;border:1px solid rgba(247,239,226,.32);border-radius:70px 70px 3px 3px;
+  background:linear-gradient(180deg,rgba(247,239,226,.14),rgba(247,239,226,.03));position:relative;overflow:hidden;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.knock__plate::before{content:"";position:absolute;inset:auto 0 0;height:0;background:linear-gradient(180deg,rgba(242,135,47,.55),rgba(238,65,135,.25));transition:height .6s var(--ease)}
+.knock__plate::after{content:"";position:absolute;right:14%;top:54%;width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px rgba(242,135,47,.9)}
+.knock:hover .knock__plate,.knock:focus-visible .knock__plate{transform:translateY(-3px) rotate(-.5deg);box-shadow:-16px 20px 40px -22px rgba(0,0,0,.8)}
+.knock.k1 .knock__plate::before{height:22%}
+.knock.k2 .knock__plate::before{height:52%}
+.knock.k3 .knock__plate::before{height:100%}
+.knock.is-knocking .knock__plate{animation:rap .42s var(--ease-soft)}
+@keyframes rap{0%,100%{transform:none}30%{transform:translateX(-3px) rotate(-.6deg)}62%{transform:translateX(2px)}}
+.knock__hint{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.2em;text-transform:uppercase;color:rgba(247,239,226,.6)}
+.knock__count{display:flex;gap:.4rem;justify-content:center}
+.knock__count i{width:5px;height:5px;border-radius:50%;background:rgba(247,239,226,.28);transition:background-color .25s,transform .25s}
+.knock__count i.on{background:var(--pink);transform:scale(1.35)}
+.threshold.is-opening{animation:doorOpen 1s var(--ease) forwards}
+@keyframes doorOpen{to{clip-path:inset(0 0 0 100%)}}
+
+/* ============================================================
+   HERO · a composition, not a poster
+   ============================================================ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;
+  padding:calc(var(--navh) + var(--s5)) var(--gutter) var(--s5);
+  background:radial-gradient(70% 60% at 12% 6%,rgba(238,65,135,.22),transparent 60%),
+             radial-gradient(60% 55% at 88% 84%,rgba(43,77,224,.3),transparent 62%),
+             radial-gradient(45% 40% at 72% 8%,rgba(242,135,47,.22),transparent 60%),
+             var(--navy);
+  color:var(--cream);overflow:hidden}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22vh;background:linear-gradient(180deg,transparent,var(--cream));opacity:.96;pointer-events:none}
+.hero__inner{position:relative;z-index:3;width:100%;max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.5rem,5vw,4rem);align-items:center}
+.hero__eyebrow{display:flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.2em;text-transform:uppercase;color:rgba(247,239,226,.6);margin-bottom:var(--s3)}
+.hero__eyebrow b{width:6px;height:6px;border-radius:50%;background:var(--orange);box-shadow:0 0 10px var(--orange)}
+.hero h1{font-size:var(--t-hero);letter-spacing:-.03em;line-height:.98}
+.hero h1 em{font-style:italic;color:var(--pink)}
+.hero__line{margin-top:var(--s3);max-width:34ch;color:rgba(247,239,226,.78);font-size:var(--t-md);line-height:1.6}
+.hero__meta{margin-top:var(--s4);display:flex;flex-wrap:wrap;gap:.5rem .6rem}
+.chip{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:rgba(247,239,226,.8);
+  border:1px solid rgba(247,239,226,.24);border-radius:999px;padding:.34rem .7rem;transition:border-color .3s,background-color .3s,transform .3s var(--ease)}
+.chip:hover{border-color:var(--chip,var(--pink));background:color-mix(in srgb,var(--chip,var(--pink)) 18%,transparent);transform:translateY(-1px)}
+.hero__cta{margin-top:var(--s4);display:flex;align-items:center;gap:var(--s3);flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;
+  background:var(--cream);color:var(--navy);border-radius:999px;padding:.72rem 1.15rem;border:0;cursor:pointer;transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(0,0,0,.9)}
+.btn--ghost{background:none;color:var(--cream);border:1px solid rgba(247,239,226,.3)}
+
+/* the door object */
+.doorframe{position:relative;justify-self:center;width:min(100%,360px);aspect-ratio:3/4.1;
+  border-radius:180px 180px 6px 6px;border:1px solid rgba(247,239,226,.28);
+  background:linear-gradient(180deg,rgba(247,239,226,.12),rgba(247,239,226,.02));
+  padding:10px;transform:rotate(-1.2deg);will-change:transform}
+.doorframe__open{position:relative;height:100%;border-radius:172px 172px 3px 3px;overflow:hidden;
+  background:linear-gradient(180deg,rgba(242,135,47,.45),rgba(238,65,135,.35) 45%,rgba(43,77,224,.4));
+  background-size:cover;background-position:center}
+.doorframe__open .fig__ghost{background:none;color:rgba(247,239,226,.75)}
+.doorframe__light{position:absolute;left:50%;top:8%;width:120%;height:120%;transform:translateX(-50%);
+  background:radial-gradient(50% 50% at 50% 40%,rgba(255,225,180,.5),transparent 70%);mix-blend-mode:screen;pointer-events:none}
+.doorframe__knob{position:absolute;right:16px;top:58%;width:9px;height:9px;border-radius:50%;background:var(--cream);box-shadow:0 0 14px rgba(247,239,226,.8)}
+.doorframe__cap{position:absolute;left:0;right:0;bottom:-2.4rem;text-align:center;font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:rgba(247,239,226,.5)}
+.hero__scroll{position:absolute;left:var(--gutter);bottom:calc(var(--s3) + env(safe-area-inset-bottom));z-index:4;display:flex;align-items:center;gap:.6rem;
+  font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.2em;text-transform:uppercase;color:var(--ink-45)}
+.hero__scroll i{width:1px;height:2.2rem;background:var(--ink-20);position:relative;overflow:hidden}
+.hero__scroll i::after{content:"";position:absolute;inset:0;background:var(--pink);animation:drip 2.8s var(--ease-soft) infinite}
+@keyframes drip{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
+@media(max-width:820px){
+  .hero__inner{grid-template-columns:1fr;gap:var(--s4)}
+  .doorframe{order:-1;width:min(62%,250px);justify-self:start;transform:rotate(-1.5deg)}
+  .hero{min-height:auto;padding-bottom:var(--s7)}
+  .hero__scroll{position:static;margin-top:var(--s4)}
+}
+
+/* ============================================================
+   DOORS PANEL · the index, not the route
+   ============================================================ */
+.doors{position:fixed;inset:0;z-index:90;visibility:hidden}
+.doors.is-open{visibility:visible}
+.doors__scrim{position:absolute;inset:0;background:rgba(15,27,60,.45);opacity:0;transition:opacity .5s var(--ease-soft);backdrop-filter:blur(2px)}
+.doors.is-open .doors__scrim{opacity:1}
+.doors__panel{position:absolute;top:0;right:0;bottom:0;width:min(29rem,92vw);background:var(--cream);border-left:1px solid var(--rule);
+  padding:calc(var(--s5) + env(safe-area-inset-top)) var(--s4) var(--s4);display:flex;flex-direction:column;overflow-y:auto;
+  transform:translateX(101%);transition:transform .6s var(--ease)}
+.doors.is-open .doors__panel{transform:none}
+.doors__list{list-style:none;margin:var(--s3) 0 0;padding:0;flex:1}
+.doors__list li{border-top:1px solid var(--rule)}
+.doors__list li:last-child{border-bottom:1px solid var(--rule)}
+.door-link{display:flex;align-items:center;justify-content:space-between;gap:var(--s2);padding:.95rem .2rem;text-decoration:none;
+  font-family:var(--display);font-size:clamp(1.15rem,3.4vw,1.5rem);letter-spacing:-.015em;position:relative;transition:padding-left .4s var(--ease),color .3s}
+.door-link span.meta{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-45);flex:none}
+.door-link:hover{padding-left:.7rem;color:var(--dl,var(--pink))}
+.door-link::before{content:"";position:absolute;left:0;top:50%;width:0;height:1px;background:var(--dl,var(--pink));transition:width .4s var(--ease)}
+.door-link:hover::before{width:.45rem}
+.doors__note{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.08em;color:var(--ink-45);line-height:1.7;text-transform:none;margin-top:var(--s3)}
+
+/* deeper-layer invitation */
+.deeper{display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;margin-top:var(--s3);
+  font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);border-radius:999px;padding:.5rem .85rem;
+  transition:background-color .35s,transform .35s var(--ease),border-color .35s}
+.deeper svg{width:14px;height:14px;flex:none;transition:transform .4s var(--ease)}
+.deeper:hover{background:color-mix(in srgb,var(--accent) 12%,transparent);transform:translateY(-1px)}
+.deeper:hover svg{transform:translateX(3px)}
+
+/* ============================================================
+   REVEALS
+   ============================================================ */
+[data-part]:not(.in){clip-path:inset(0 46% 0 46%);opacity:.001}
+[data-part].in{clip-path:inset(0 0 0 0);opacity:1;transition:clip-path .95s var(--ease),opacity .5s linear}
+[data-mask]{display:block;overflow:hidden}
+[data-mask] > *{display:block;transform:translateY(102%);transition:transform .9s var(--ease)}
+[data-mask].in > *{transform:none}
+[data-uncover]{position:relative;overflow:hidden}
+[data-uncover]::after{content:"";position:absolute;inset:0;background:var(--cream-2);transform-origin:right;transition:transform 1s var(--ease);z-index:2}
+[data-uncover].in::after{transform:scaleX(0)}
+[data-stagger] > *{opacity:0;transform:translateY(10px);transition:opacity .7s var(--ease-soft),transform .7s var(--ease)}
+[data-stagger].in > *{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  [data-part]:not(.in),[data-mask] > *,[data-stagger] > *{clip-path:none!important;opacity:1!important;transform:none!important}
+  [data-uncover]::after{transform:scaleX(0)!important}
+  .mark path{stroke-dashoffset:0!important}
+}
+
+/* ============================================================
+   FIGURES
+   ============================================================ */
+.fig{margin:0;position:relative}
+.fig__plate{position:relative;overflow:hidden;background:var(--cream-2);aspect-ratio:var(--ratio,4/5);background-size:cover;background-position:var(--pos,center);border-radius:3px}
+.fig__plate::before{content:attr(data-slot);position:absolute;left:.6rem;top:.55rem;z-index:1;font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-45)}
+.fig__plate.has-img::before,.fig__plate.has-img .fig__ghost{display:none}
+.fig__ghost{position:absolute;inset:0;display:grid;place-items:center;padding:1rem;text-align:center;font-family:var(--mono);font-size:10px;line-height:1.7;letter-spacing:.06em;color:var(--ink-45);
+  background:repeating-linear-gradient(135deg,rgba(20,28,51,.035) 0 12px,transparent 12px 24px)}
+.fig figcaption{margin-top:.55rem;font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.08em;color:var(--ink-45);line-height:1.65;max-width:34ch;text-transform:none}
+.fig figcaption b{font-weight:500;color:var(--ink-70)}
+
+.note{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.06em;line-height:1.85;color:var(--ink-45);border-left:2px solid var(--accent);padding-left:.85rem;text-transform:none}
+.figure-number{font-family:var(--display);font-size:clamp(2.1rem,5vw,3.4rem);line-height:.9;letter-spacing:-.03em;color:var(--accent);font-variation-settings:"SOFT" 30,"WONK" 1}
+.figure-number small{display:block;font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.13em;text-transform:uppercase;color:var(--ink-45);margin-top:.5rem;line-height:1.65;max-width:26ch}
+/* ============================================================
+   CHAPTER ATMOSPHERES · same room, different light
+   ============================================================ */
+#ch-notice{--accent:var(--pink);--accent-soft:rgba(238,65,135,.09);
+  background:linear-gradient(180deg,var(--cream) 0%,#F9F1E6 100%)}
+#ch-rooms{--accent:var(--pink);--accent-soft:rgba(238,65,135,.09);
+  background:radial-gradient(60% 45% at 88% 4%,rgba(238,65,135,.13),transparent 60%),
+             radial-gradient(50% 40% at 4% 70%,rgba(242,135,47,.1),transparent 62%),var(--cream)}
+#ch-participate{--accent:var(--teal);--accent-soft:rgba(15,145,139,.09);
+  background:linear-gradient(180deg,var(--cream),#F1F3EC)}
+#ch-question{--accent:var(--teal);--accent-soft:rgba(15,145,139,.09);
+  background:radial-gradient(55% 45% at 10% 8%,rgba(15,145,139,.14),transparent 60%),
+             radial-gradient(50% 45% at 92% 88%,rgba(43,77,224,.12),transparent 62%),#EFF2EC}
+#ch-build{--accent:var(--blue);--accent-soft:rgba(43,77,224,.09);
+  background:radial-gradient(60% 50% at 96% 10%,rgba(43,77,224,.14),transparent 60%),linear-gradient(180deg,#F1F3EC,var(--cream))}
+#ch-gather{--accent:var(--orange);--accent-soft:rgba(242,135,47,.16);
+  background:radial-gradient(55% 45% at 15% 10%,rgba(242,135,47,.28),transparent 62%),
+             radial-gradient(60% 50% at 85% 85%,rgba(238,65,135,.24),transparent 60%),var(--navy);
+  color:var(--cream);
+  --ink:#F7EFE2;--ink-70:rgba(247,239,226,.74);--ink-45:rgba(247,239,226,.52);--ink-20:rgba(247,239,226,.24);--ink-10:rgba(247,239,226,.12);
+  --rule:rgba(247,239,226,.2);--cream-2:#1B2A50}
+#ch-pattern{--accent:var(--blue);--accent-soft:rgba(43,77,224,.08);
+  background:linear-gradient(180deg,var(--navy) 0%,#2A3E70 7%,var(--cream) 17%,var(--cream) 100%)}
+#ch-open{--accent:var(--pink);--accent-soft:rgba(238,65,135,.1);
+  background:radial-gradient(60% 60% at 80% 10%,rgba(238,65,135,.14),transparent 62%),var(--cream)}
+
+/* ---- 01 notice ---- */
+.notice-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+@media(max-width:820px){.notice-grid{grid-template-columns:1fr}}
+.notice-grid h2{font-size:var(--t-xl);max-width:19ch}
+.notice-grid h2 i{font-style:italic;color:var(--pink)}
+.observation{display:grid;grid-template-columns:auto 1fr;gap:var(--s2);align-items:start;margin-top:var(--s4);max-width:44ch}
+.observation p{font-size:var(--t-md);line-height:1.6;color:var(--ink-70)}
+.stack{position:relative}
+.stack .fig{position:relative}
+.stack .fig:nth-child(2){position:absolute;right:-4%;bottom:-12%;width:46%;box-shadow:0 24px 50px -30px rgba(15,27,60,.6)}
+@media(max-width:520px){.stack .fig:nth-child(2){width:52%;right:0;bottom:-8%}}
+
+/* ---- 02 rooms ---- */
+.rooms-lead{grid-column:1/7}
+.rooms-fig-a{grid-column:8/13;align-self:end}
+.evidence-row{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s3);align-items:start;margin-top:var(--s6)}
+@media(max-width:780px){.evidence-row{grid-template-columns:repeat(6,1fr)}}
+.contact-sheet{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;background:var(--cream-2);padding:.4rem;border-radius:4px}
+.contact-sheet .fig__plate{aspect-ratio:1/1}
+.season-strip{display:flex;gap:var(--s2);overflow-x:auto;padding-bottom:var(--s2);scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;cursor:grab}
+.season-strip.is-dragging{cursor:grabbing}
+.season-strip::-webkit-scrollbar{height:2px}
+.season-strip::-webkit-scrollbar-thumb{background:var(--ink-20)}
+.season-card{flex:0 0 min(18rem,72vw);scroll-snap-align:start;border-top:2px solid var(--accent);padding-top:.75rem;transition:transform .4s var(--ease)}
+.season-card:hover{transform:translateY(-4px)}
+.season-card h4{font-size:1.12rem;margin:0 0 .3rem}
+.season-card p{font-size:.9rem;color:var(--ink-70);line-height:1.6}
+.season-card .mono{display:block;margin-bottom:.45rem}
+
+/* ---- 03 the tray ---- */
+.tray{border:1px solid var(--rule);background:rgba(255,255,255,.5);padding:clamp(1rem,2.6vw,1.7rem);border-radius:6px;box-shadow:0 30px 60px -50px rgba(15,27,60,.7)}
+.tray__head{display:flex;flex-wrap:wrap;gap:var(--s2);align-items:center;justify-content:space-between;margin-bottom:var(--s3)}
+.tray__switch{display:inline-flex;border:1px solid var(--ink-20);border-radius:999px;overflow:hidden;background:rgba(255,255,255,.6)}
+.tray__switch button{font:inherit;font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;padding:.5rem .8rem;background:none;border:0;cursor:pointer;color:var(--ink-45);transition:background-color .35s,color .35s}
+.tray__switch button[aria-pressed="true"]{background:var(--accent);color:var(--cream)}
+.tray__stage{position:relative;height:clamp(140px,26vw,190px);border-bottom:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.crayon{position:absolute;height:8px;border-radius:4px;transition:left .9s var(--ease),top .9s var(--ease),transform .9s var(--ease),width .9s var(--ease)}
+.tray__outline{position:absolute;border:1px dashed var(--ink-20);border-radius:6px;transition:all .9s var(--ease);opacity:0}
+.tray__outline.on{opacity:1}
+.tray__read{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s3);margin-top:var(--s3)}
+.meter{border-top:1px solid var(--rule);padding-top:.65rem}
+.meter b{font-family:var(--display);font-size:1.65rem;font-weight:400;letter-spacing:-.02em;color:var(--accent)}
+.meter__bar{height:3px;background:var(--ink-10);margin-top:.55rem;position:relative;overflow:hidden;border-radius:2px}
+.meter__bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);width:0;transition:width 1s var(--ease)}
+.q-list{list-style:none;margin:0;padding:0;counter-reset:q}
+.q-list li{counter-increment:q;border-top:1px solid var(--rule);padding:.95rem 0;display:grid;grid-template-columns:2.4rem 1fr;gap:var(--s2);align-items:baseline;transition:padding-left .4s var(--ease)}
+.q-list li:hover{padding-left:.4rem}
+.q-list li::before{content:"Q" counter(q,decimal-leading-zero);font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.12em;color:var(--accent)}
+.q-list p{font-family:var(--display);font-size:clamp(1.05rem,1.9vw,1.35rem);line-height:1.32;letter-spacing:-.01em;max-width:44ch}
+
+/* ---- 04 the study ---- */
+.study{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s3);align-items:start}
+@media(max-width:900px){.study{grid-template-columns:repeat(6,1fr)}}
+.study__stick{grid-column:1/5;position:sticky;top:calc(var(--navh) + 4vh)}
+.study__panels{grid-column:6/13}
+@media(max-width:900px){.study__stick{grid-column:1/-1;position:static}.study__panels{grid-column:1/-1}}
+.study__stick h3{font-size:var(--t-lg);max-width:20ch}
+.panel{border-top:1px solid var(--rule);padding:var(--s4) 0}
+.panel:first-child{border-top:0;padding-top:0}
+.panel h4{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 var(--s2);font-weight:500}
+.panel p{color:var(--ink-70);max-width:50ch}
+.two-doors{display:grid;grid-template-columns:1fr auto 1fr;gap:.7rem;align-items:center;margin:var(--s4) 0}
+.door-tile{border:1px solid var(--ink-20);padding:.9rem;aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:space-between;
+  border-radius:60px 60px 4px 4px;transition:background-color .4s,transform .4s var(--ease),border-color .4s;position:relative;overflow:hidden}
+.door-tile::after{content:"";position:absolute;left:0;right:0;bottom:0;height:0;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--dc,var(--teal)) 30%,transparent));transition:height .5s var(--ease)}
+.door-tile:hover{transform:translateY(-3px);border-color:var(--dc,var(--teal))}
+.door-tile:hover::after{height:60%}
+.door-tile h5{font-family:var(--display);font-size:clamp(1.2rem,2.6vw,1.7rem);margin:0;font-weight:400;letter-spacing:-.02em;position:relative;z-index:1}
+.two-doors .vs{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.12em;color:var(--ink-45)}
+.chartbox{border:1px solid var(--rule);padding:var(--s3);background:rgba(255,255,255,.5);border-radius:6px}
+.chartbox svg{width:100%;height:auto;display:block}
+.chartbox .mono{margin-top:.75rem;line-height:1.75;text-transform:none;letter-spacing:.04em}
+.draw path,.draw line{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 1.5s var(--ease-soft)}
+.chartbox.in .draw path,.chartbox.in .draw line{stroke-dashoffset:0}
+.finding{margin-top:var(--s3);border-top:1px solid var(--rule)}
+.finding summary{list-style:none;cursor:pointer;padding:.9rem 0;display:flex;align-items:center;justify-content:space-between;gap:var(--s2);
+  font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.finding summary::-webkit-details-marker{display:none}
+.finding summary span.plus{width:16px;height:16px;position:relative;flex:none}
+.finding summary span.plus::before,.finding summary span.plus::after{content:"";position:absolute;background:currentColor;transition:transform .4s var(--ease)}
+.finding summary span.plus::before{left:0;right:0;top:7.5px;height:1px}
+.finding summary span.plus::after{top:0;bottom:0;left:7.5px;width:1px}
+.finding[open] summary span.plus::after{transform:rotate(90deg)}
+.finding__body{padding-bottom:var(--s3);color:var(--ink-70);max-width:50ch;animation:fade .5s var(--ease-soft)}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---- 05 build ---- */
+.demo{border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 40px 70px -55px rgba(15,27,60,.8)}
+.demo__bar{display:flex;align-items:center;gap:.45rem;padding:.55rem .75rem;border-bottom:1px solid var(--rule);background:var(--cream)}
+.demo__bar i{width:7px;height:7px;border-radius:50%;background:var(--ink-20)}
+.demo__bar i:first-child{background:var(--pink)}
+.demo__bar i:nth-child(2){background:var(--orange)}
+.demo__bar span{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.08em;color:var(--ink-45);margin-left:.4rem;text-transform:none}
+.demo__body{padding:clamp(.9rem,2.4vw,1.5rem)}
+.demo__passage{font-size:1rem;line-height:1.95;color:var(--ink-70)}
+.wordbtn{font:inherit;background:none;border:0;padding:0 .12em;cursor:pointer;color:var(--blue);border-bottom:1px solid rgba(43,77,224,.4);transition:background-color .25s,color .25s}
+.wordbtn:hover,.wordbtn[aria-expanded="true"]{background:rgba(43,77,224,.12)}
+.gloss{margin-top:var(--s3);border-top:1px solid var(--rule);padding-top:var(--s3);min-height:9rem}
+.gloss__word{font-family:var(--display);font-size:1.4rem;letter-spacing:-.02em}
+.gloss__pos{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-45);margin-left:.5rem}
+.gloss__vi{color:var(--blue);font-weight:500}
+.gloss dl{margin:.6rem 0 0;font-size:.94rem;line-height:1.7;color:var(--ink-70)}
+.gloss dt{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.11em;text-transform:uppercase;color:var(--ink-45);margin-top:.6rem}
+.gloss dd{margin:.15rem 0 0}
+
+/* ---- 06 gather ---- */
+.gather-collage{position:relative;height:clamp(320px,50vw,470px);margin:var(--s5) 0}
+.gather-collage .fig{position:absolute}
+.gather-collage .fig__plate{box-shadow:0 30px 60px -40px rgba(0,0,0,.9)}
+.drift{overflow-x:auto;overflow-y:hidden;margin:var(--s5) calc(-1 * var(--gutter)) 0 calc(-1 * (var(--gutter) + var(--rail)));
+  scrollbar-width:thin;scroll-snap-type:x proximity;cursor:grab}
+.drift.is-dragging{cursor:grabbing;scroll-snap-type:none}
+.drift::-webkit-scrollbar{height:2px}
+.drift::-webkit-scrollbar-thumb{background:var(--ink-20)}
+.drift__track{display:flex;gap:var(--s3);padding:0 var(--gutter);will-change:transform}
+.ticket{flex:0 0 min(17.5rem,70vw);border:1px solid var(--rule);padding:var(--s2);border-radius:5px;scroll-snap-align:start;
+  background:linear-gradient(180deg,rgba(247,239,226,.08),transparent);transition:transform .4s var(--ease),border-color .4s}
+.ticket:hover{transform:translateY(-4px);border-color:var(--orange)}
+.ticket h4{font-size:1.25rem;margin:.35rem 0 .3rem}
+.ticket p{font-size:.88rem;color:var(--ink-70)}
+.ticket .stub{display:flex;justify-content:space-between;gap:.5rem;border-top:1px dashed var(--ink-20);margin-top:.8rem;padding-top:.45rem}
+
+/* ---- 07 pattern ---- */
+.rooms-swap{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s3);align-items:center;min-height:62svh}
+@media(max-width:900px){.rooms-swap{grid-template-columns:repeat(6,1fr)}}
+.swap__list{grid-column:1/6;list-style:none;margin:0;padding:0}
+.swap__list li{padding:.45rem 0;font-family:var(--display);font-size:clamp(1.15rem,2.4vw,1.7rem);letter-spacing:-.015em;color:var(--ink-20);cursor:default;
+  transition:color .55s var(--ease-soft),transform .55s var(--ease)}
+.swap__list li.on{color:var(--ink);transform:translateX(.5rem)}
+.swap__q{grid-column:7/13;font-family:var(--display);font-size:clamp(1.2rem,2.4vw,1.75rem);line-height:1.28;letter-spacing:-.015em;max-width:24ch}
+.swap__q > p{font-family:var(--body);font-size:var(--t-sm);color:var(--ink-45);margin-bottom:1rem}
+.swap__q span{display:block;color:var(--ink-20);transition:color .5s}
+.swap__q span.on{color:var(--pink)}
+@media(max-width:900px){.swap__list,.swap__q{grid-column:1/-1}.swap__q{margin-top:var(--s3)}}
+
+/* ---- 08 open ---- */
+.open__grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s3);align-items:end}
+@media(max-width:900px){.open__grid{grid-template-columns:repeat(6,1fr)}}
+.open__text{grid-column:1/8}
+.open__card{grid-column:9/13}
+@media(max-width:900px){.open__text,.open__card{grid-column:1/-1}}
+.open__text h3{font-size:var(--t-xl);max-width:18ch}
+.contact-line{display:flex;justify-content:space-between;gap:var(--s2);border-top:1px solid var(--rule);padding:.8rem 0;text-decoration:none;
+  font-family:var(--mono);font-size:var(--t-sm);letter-spacing:.03em;transition:padding-left .4s var(--ease),color .3s}
+.contact-line:last-of-type{border-bottom:1px solid var(--rule)}
+.contact-line:hover{padding-left:.4rem;color:var(--accent)}
+.contact-line span:last-child{color:var(--ink-45);transition:transform .4s var(--ease)}
+.contact-line:hover span:last-child{transform:translateX(-.25rem);color:var(--accent)}
+.colophon{display:flex;flex-wrap:wrap;gap:.5rem var(--s4);justify-content:space-between;
+  padding:var(--s4) var(--gutter) calc(var(--s4) + env(safe-area-inset-bottom)) calc(var(--gutter) + var(--rail));border-top:1px solid var(--rule)}
+
+/* ============================================================
+   DEEP SPACES · another layer of the same world
+   ============================================================ */
+.room{position:fixed;inset:0;z-index:80;background:var(--cream);overflow-y:auto;overscroll-behavior:contain;
+  opacity:0;visibility:hidden;clip-path:inset(0 0 100% 0);
+  transition:opacity .45s var(--ease-soft),visibility .45s,clip-path .7s var(--ease)}
+.room.is-open{opacity:1;visibility:visible;clip-path:inset(0 0 0 0)}
+.room__inner{padding:var(--s4) var(--gutter) var(--s7);max-width:1120px;margin:0 auto}
+.room__top{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:var(--s2);
+  padding:.7rem var(--gutter);background:color-mix(in srgb,var(--cream) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.room__where{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.room__close{border:1px solid var(--ink-20);background:none;border-radius:999px;padding:.42rem .8rem;font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;color:var(--ink);transition:background-color .3s,color .3s}
+.room__close:hover{background:var(--ink);color:var(--cream)}
+.room h2{font-size:var(--t-xl);max-width:18ch}
+.room__kicker{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:var(--s2)}
+.blk{margin-top:var(--s4)}
+.blk--lede{font-size:var(--t-md);line-height:1.6;max-width:46ch;color:var(--ink-70)}
+.blk--para{max-width:var(--measure);color:var(--ink-70)}
+.blk--quote{font-family:var(--display);font-size:clamp(1.2rem,2.4vw,1.7rem);line-height:1.3;letter-spacing:-.015em;max-width:26ch;color:var(--accent);
+  border-left:2px solid var(--accent);padding-left:var(--s2)}
+.blk--steps{list-style:none;padding:0;counter-reset:s}
+.blk--steps li{counter-increment:s;display:grid;grid-template-columns:2.8rem 1fr;gap:var(--s2);border-top:1px solid var(--rule);padding:.9rem 0;align-items:baseline}
+.blk--steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.12em;color:var(--accent)}
+.blk--steps b{font-weight:500}
+.blk--steps p{color:var(--ink-70);font-size:.96rem;margin-top:.2rem}
+.numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(8.5rem,1fr));gap:var(--s3)}
+.numbers div{border-top:2px solid var(--accent);padding-top:.6rem}
+.numbers b{display:block;font-family:var(--display);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;letter-spacing:-.03em;line-height:1}
+.numbers span{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.11em;text-transform:uppercase;color:var(--ink-45);display:block;margin-top:.35rem;line-height:1.6}
+.blk--pairs{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:var(--s3)}
+.blk--pairs > div{border-top:1px solid var(--rule);padding-top:.7rem}
+.blk--pairs h4{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 .35rem;font-weight:500}
+.blk--pairs p{color:var(--ink-70);font-size:.96rem}
+.blk--figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:var(--s3)}
+.room__more{margin-top:var(--s6);border-top:1px solid var(--rule);padding-top:var(--s3);display:flex;flex-wrap:wrap;gap:var(--s3);justify-content:space-between}
+.room__more a{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ink-70);border-bottom:1px solid var(--ink-20);padding-bottom:.15rem;transition:color .3s,border-color .3s}
+.room__more a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* archive wall */
+.wall{column-count:3;column-gap:var(--s3)}
+@media(max-width:900px){.wall{column-count:2}}
+@media(max-width:520px){.wall{column-count:1}}
+.wall__item{break-inside:avoid;margin-bottom:var(--s3);width:100%;background:none;border:0;padding:0;text-align:left;cursor:pointer;font:inherit;display:block}
+.wall__item.s{width:64%}
+.wall__item.m{width:88%}
+.wall__item .fig__plate{transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
+.wall__item:hover .fig__plate{transform:scale(1.015) rotate(-.4deg);box-shadow:0 26px 50px -34px rgba(15,27,60,.75)}
+.wall__meta{display:flex;justify-content:space-between;gap:.7rem;margin-top:.45rem;font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.08em;color:var(--ink-45);
+  opacity:0;transform:translateY(-3px);transition:opacity .4s,transform .4s}
+.wall__item:hover .wall__meta,.wall__item:focus-visible .wall__meta{opacity:1;transform:none}
+@media(hover:none){.wall__meta{opacity:1;transform:none}}
+.object{position:fixed;inset:0;z-index:100;background:color-mix(in srgb,var(--cream) 96%,transparent);backdrop-filter:blur(6px);
+  display:grid;grid-template-rows:1fr auto;padding:calc(var(--s5) + env(safe-area-inset-top)) var(--gutter) var(--s4);visibility:hidden;opacity:0;transition:opacity .4s var(--ease-soft),visibility .4s}
+.object.is-open{visibility:visible;opacity:1}
+.object__plate{justify-self:center;align-self:center;max-width:min(64rem,100%);max-height:62svh;width:100%;background:var(--cream-2);
+  background-size:contain;background-repeat:no-repeat;background-position:center;aspect-ratio:var(--ratio,4/3);border-radius:4px;
+  transform:scale(.985);transition:transform .55s var(--ease);display:grid;place-items:center}
+.object.is-open .object__plate{transform:none}
+.object__meta{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s4);justify-content:space-between;border-top:1px solid var(--rule);padding-top:var(--s2);margin-top:var(--s3)}
+.object__meta p{font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.07em;color:var(--ink-45);line-height:1.8;max-width:42ch;text-transform:none}
+.object__meta h3{font-size:1.3rem}
+.object__nav{display:flex;gap:.4rem;margin-top:.6rem}
+.object__nav button{border:1px solid var(--ink-20);background:none;border-radius:999px;padding:.38rem .7rem;font-family:var(--mono);font-size:var(--t-xs);letter-spacing:.12em;cursor:pointer;color:var(--ink);transition:background-color .3s,color .3s}
+.object__nav button:hover{background:var(--ink);color:var(--cream)}
+
+/* cv */
+.cv-row{display:grid;grid-template-columns:8rem 1fr;gap:var(--s3);border-top:1px solid var(--rule);padding:.9rem 0}
+@media(max-width:640px){.cv-row{grid-template-columns:1fr;gap:.3rem}}
+.cv-row .mono{padding-top:.25rem}
+.cv-row h4{font-size:1.1rem;margin:0 0 .15rem}
+.cv-row p{font-size:.94rem;color:var(--ink-70)}
+/* ============================================================
+   TABLET + MOBILE · composed, not collapsed
+   ============================================================ */
+@media(max-width:1024px){
+  .rooms-lead{grid-column:1/8}
+  .rooms-fig-a{grid-column:8/13}
+  .drift{margin-left:calc(-1 * var(--gutter))}
+}
+@media(max-width:900px){
+  .chapter{padding-left:var(--gutter)}
+  .colophon{padding-left:var(--gutter)}
+  .drift{margin-left:calc(-1 * var(--gutter))}
+}
+@media(max-width:780px){
+  .grid > *{grid-column:1/-1 !important}
+  .evidence-row > *{grid-column:1/-1 !important}
+  .chapter{padding-top:var(--s6);padding-bottom:var(--s6)}
+  .tray{margin-top:var(--s3)}
+  .tray__read{grid-template-columns:1fr;gap:var(--s2)}
+  .gather-collage{position:static;height:auto;display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s2)}
+  .gather-collage .fig{position:static !important;width:auto !important;transform:none !important;inset:auto !important}
+  .gather-collage .fig:nth-child(2){grid-column:1/-1}
+  .contact-sheet{grid-template-columns:repeat(3,1fr)}
+  .two-doors{gap:.5rem}
+  .door-tile{aspect-ratio:2/3;padding:.65rem;border-radius:44px 44px 3px 3px}
+  .q-list li{grid-template-columns:2rem 1fr}
+  .observation{grid-template-columns:1fr}
+  .observation .mark{width:52px}
+  .room__inner{padding-top:var(--s3)}
+  .stack .fig:nth-child(2){position:relative;right:auto;bottom:auto;width:100%;margin-top:.6rem}
+  .stack{display:grid;grid-template-columns:1.4fr 1fr;gap:.6rem;align-items:end}
+}
+@media(max-width:520px){
+  .figure-number{font-size:clamp(2rem,11vw,2.8rem)}
+  .contact-sheet{grid-template-columns:repeat(2,1fr)}
+  .numbers{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#ch-notice">Skip to the story</a>
+<canvas id="motes" aria-hidden="true"></canvas>
+
+<!-- ============ THRESHOLD ============ -->
+<div class="threshold" id="threshold" role="dialog" aria-label="Entrance">
+  <div class="threshold__inner">
+    <p class="threshold__eyebrow">Ho Chi Minh City · <span id="local-time">now</span></p>
+    <h1>Knock, <em>knock.</em></h1>
+    <button class="knock" id="knockBtn" type="button" aria-describedby="knock-hint">
+      <span class="knock__plate" aria-hidden="true"></span>
+      <span class="knock__count" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="knock__hint" id="knock-hint">Knock three times</span>
+    </button>
+  </div>
+</div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="chapnav" id="masthead" hidden>
+  <a class="brand" href="#hero">
+    <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V5.5C5 4 6 3 7.6 3h8.8C18 3 19 4 19 5.5V21" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="15.4" cy="13" r="1.1" fill="currentColor"/></svg>
+    <span class="brand__name">Gia Hân</span>
+    <span class="brand__sub">Katherine Trieu</span>
+  </a>
+  <nav aria-label="Chapters" style="flex:1;min-width:0">
+    <ul class="chapnav__list" id="navList">
+      <li><a class="navlink" href="#ch-rooms" data-target="ch-rooms"><i></i>Rooms</a></li>
+      <li><a class="navlink" href="#ch-participate" data-target="ch-participate"><i></i>Questions</a></li>
+      <li><a class="navlink" href="#ch-build" data-target="ch-build"><i></i>Building</a></li>
+      <li><a class="navlink" href="#ch-gather" data-target="ch-gather"><i></i>Gather</a></li>
+      <li><a class="navlink" href="#ch-open" data-target="ch-open"><i></i>Open</a></li>
+    </ul>
+  </nav>
+  <button class="doorbell" id="doorsBtn" aria-expanded="false" aria-controls="doors">Doors</button>
+  <span class="chapnav__prog" id="navProg" aria-hidden="true"></span>
+  <span class="vh" id="mastheadRoom">Notice</span>
+</header>
+
+<div class="doors" id="doors" aria-hidden="true">
+  <div class="doors__scrim" data-close-doors></div>
+  <nav class="doors__panel" aria-label="Deeper spaces">
+    <p class="mono">Rooms off the story</p>
+    <ul class="doors__list">
+      <li><a class="door-link" href="#/work/net-mo" style="--dl:var(--pink)">Nét Mơ <span class="meta">Work</span></a></li>
+      <li><a class="door-link" href="#/work/contextuary" style="--dl:var(--blue)">Contextuary <span class="meta">Work</span></a></li>
+      <li><a class="door-link" href="#/work/colorful-journey" style="--dl:var(--blue)">The Colorful Journey <span class="meta">Work</span></a></li>
+      <li><a class="door-link" href="#/research/two-doors" style="--dl:var(--teal)">Two Doors Into the Same Room <span class="meta">Research</span></a></li>
+      <li><a class="door-link" href="#/archive" style="--dl:var(--orange)">Archive <span class="meta">Images</span></a></li>
+      <li><a class="door-link" href="#/about" style="--dl:var(--pink)">About <span class="meta">Person</span></a></li>
+      <li><a class="door-link" href="#/cv" style="--dl:var(--ink)">CV <span class="meta">Facts</span></a></li>
+    </ul>
+    <p class="doors__note">Nothing here is required. The story on the main scroll already says it, just faster.</p>
+  </nav>
+</div>
+
+<main id="story">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero__inner">
+    <div>
+      <p class="hero__eyebrow"><b></b> Grade 12 · Ho Chi Minh City · cognitive science, art, rooms</p>
+      <h1>Knock, <em>knock.</em></h1>
+      <p class="hero__line">Come in. I keep notes on what changes when people start sharing a room, and then I go and test them.</p>
+      <div class="hero__meta">
+        <span class="chip" style="--chip:var(--pink)">200+ children</span>
+        <span class="chip" style="--chip:var(--teal)">N = 68 study</span>
+        <span class="chip" style="--chip:var(--blue)">400+ app users</span>
+        <span class="chip" style="--chip:var(--orange)">400+ in one room</span>
+      </div>
+      <div class="hero__cta">
+        <a class="btn" href="#ch-rooms">Start the story</a>
+        <button class="btn btn--ghost" id="heroDoors" type="button">Skip to a room</button>
+      </div>
+    </div>
+    <figure class="doorframe" id="doorframe">
+      <div class="doorframe__open fig__plate" data-img="hero-door" data-slot="">
+        <div class="fig__ghost">Replace: a photograph seen through a doorway. A workshop mid-session works best.</div>
+      </div>
+      <span class="doorframe__light" aria-hidden="true"></span>
+      <span class="doorframe__knob" aria-hidden="true"></span>
+      <figcaption class="doorframe__cap">The door is already open</figcaption>
+    </figure>
+  </div>
+  <p class="hero__scroll"><i></i> Scroll</p>
+</section>
+
+<!-- ============ 01 NOTICE ============ -->
+<section class="chapter" id="ch-notice" data-room="01 Notice" data-short="Notice" data-nav="ch-rooms">
+  <div class="wrap notice-grid">
+    <div>
+      <div class="chapter-mark"><span class="num">01</span><span class="name">Notice</span><span class="line"></span></div>
+      <h2 data-part>I keep noticing the minute a group of people stops being <i>separate</i>.</h2>
+      <div class="observation">
+        <svg class="mark" viewBox="0 0 80 46" aria-hidden="true" style="--len:150"><path d="M4 34c14-22 30-30 44-22 10 6 8 20-4 24-9 3-14-4-9-9 6-6 20-5 34 6"/></svg>
+        <p>It is always smaller than you would expect. A tray pushed to the middle. One sheet of paper instead of six.</p>
+      </div>
+    </div>
+    <div class="stack">
+      <figure class="fig" data-uncover>
+        <div class="fig__plate" data-img="rooms-hall" data-slot="Fig 01" style="--ratio:4/5"><div class="fig__ghost">Replace: workshop in progress, children mid-activity</div></div>
+      </figure>
+      <figure class="fig" data-uncover>
+        <div class="fig__plate" data-img="rooms-hands" data-slot="Fig 02" style="--ratio:1/1"><div class="fig__ghost">Replace: two hands, one box of crayons</div></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 ROOMS ============ -->
+<section class="chapter" id="ch-rooms" data-room="02 Rooms" data-short="Rooms" data-nav="ch-rooms">
+  <div class="wrap">
+    <div class="chapter-mark"><span class="num">02</span><span class="name">Rooms</span><span class="line"></span></div>
+    <div class="grid">
+      <div class="rooms-lead">
+        <p class="pull" data-part>The first rooms I paid attention to were borrowed ones.</p>
+        <p class="body-copy" style="margin-top:1.2rem" data-mask><span>A shelter dining hall on a Saturday. A care home common room with the fan on too high. I went in to run an art workshop and came out with notes about who sat with their back to the wall.</span></p>
+        <p class="note" style="margin-top:1.4rem">Nét Mơ (Traces of Dreams) · arts-based social-emotional learning · shelters and care facilities · third season · 25 people across 5 departments · legal sponsorship by Bảo Sang</p>
+        <a class="deeper" href="#/work/net-mo">Story behind this <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <figure class="fig rooms-fig-a" data-uncover>
+        <div class="fig__plate" data-img="sheet-2" data-slot="Fig 02.1" style="--ratio:4/3"><div class="fig__ghost">Replace: child and facilitator, close</div></div>
+        <figcaption><b>Season 2, Đồng Nai.</b> Tables in a horseshoe, because a circle felt like being watched.</figcaption>
+      </figure>
+    </div>
+
+    <div class="evidence-row">
+      <div style="grid-column:1/4">
+        <p class="figure-number" data-count="200" data-suffix="+">200<small>children · 6 shelters · 2 care facilities</small></p>
+      </div>
+      <div style="grid-column:5/8">
+        <p class="figure-number" data-count="75" data-suffix="M VND">75M VND<small>raised · 80% direct to shelter children</small></p>
+      </div>
+      <div style="grid-column:9/13">
+        <p class="figure-number" data-count="80" data-suffix="%">80%<small>showed improved emotional expression or confidence</small></p>
+      </div>
+    </div>
+
+    <div style="margin-top:var(--s6)">
+      <p class="mono" style="margin-bottom:.9rem">Season 2 · four rooms, in order · drag</p>
+      <div class="season-strip" id="seasonStrip" tabindex="0" aria-label="Season two sessions">
+        <article class="season-card"><span class="mono">Session 01</span><h4>Xưởng Chế Tạo Quái Vật</h4><p>Build the monster before you name the worry.</p></article>
+        <article class="season-card"><span class="mono">Session 02</span><h4>Bữa Tiệc Cảm Xúc</h4><p>A feast where every dish is a feeling. Each one gets a plate and a portion size.</p></article>
+        <article class="season-card"><span class="mono">Session 03</span><h4>Bầu Trời Khát Vọng</h4><p>Wishes drawn small, hung high, so the room has to look up together.</p></article>
+        <article class="season-card"><span class="mono">Session 04</span><h4>Dreamtopia</h4><p>Individual work is cut up and rebuilt into one city. Nobody keeps their own piece.</p></article>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:var(--s6)">
+      <div style="grid-column:1/6">
+        <p class="pull" data-part>Then the work outgrew the workshop.</p>
+        <p class="body-copy" style="margin-top:1.1rem">Children's paintings went on a wall at May Artspace beside work by elderly participants and autistic artists, co-produced with The APRIL Collective. 300+ visitors came to look at art made by people who are usually looked after.</p>
+        <a class="deeper" href="#/archive">Look closer <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div style="grid-column:7/13">
+        <div class="contact-sheet" data-stagger>
+          <figure class="fig"><div class="fig__plate" data-img="sheet-1" data-slot="01"><div class="fig__ghost">exhibition wall</div></div></figure>
+          <figure class="fig"><div class="fig__plate" data-img="sheet-3" data-slot="02"><div class="fig__ghost">elderly participant</div></div></figure>
+          <figure class="fig"><div class="fig__plate" data-img="sheet-4" data-slot="03"><div class="fig__ghost">volunteer briefing</div></div></figure>
+          <figure class="fig"><div class="fig__plate" data-img="sheet-5" data-slot="04"><div class="fig__ghost">monster drawings</div></div></figure>
+          <figure class="fig"><div class="fig__plate" data-img="sheet-6" data-slot="05"><div class="fig__ghost">room after everyone left</div></div></figure>
+          <figure class="fig"><div class="fig__plate" data-img="sheet-7" data-slot="06"><div class="fig__ghost">wall text, handwritten</div></div></figure>
+        </div>
+        <p class="mono" style="margin-top:.6rem">Contact sheet · seasons 1 to 3</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 THE TRAY ============ -->
+<section class="chapter" id="ch-participate" data-room="03 The Tray" data-short="The tray" data-nav="ch-participate">
+  <div class="wrap">
+    <div class="chapter-mark"><span class="num">03</span><span class="name">What makes someone participate</span><span class="line"></span></div>
+    <div class="grid">
+      <div style="grid-column:1/6">
+        <p class="pull" data-part>Same children. Same hour. Change one thing about the room.</p>
+        <div class="observation">
+          <svg class="mark" viewBox="0 0 80 40" aria-hidden="true" style="--len:170"><path d="M6 30c10 6 22 4 28-6 4-7-2-14-8-11-5 3-3 12 6 15 12 4 30-2 42-19"/></svg>
+          <p>Give each child their own box and they draw politely, alone. Put one tray in the middle and they start negotiating.</p>
+        </div>
+        <a class="deeper" href="#/research/two-doors">See what happened <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div style="grid-column:7/13" class="tray">
+        <div class="tray__head">
+          <p class="mono">The same fifteen minutes, run two ways</p>
+          <div class="tray__switch" role="group" aria-label="Session format">
+            <button type="button" data-mode="free" aria-pressed="true">Free drawing</button>
+            <button type="button" data-mode="story" aria-pressed="false">Story world</button>
+          </div>
+        </div>
+        <div class="tray__stage" id="trayStage" aria-hidden="true"><div class="tray__outline" id="trayOutline"></div></div>
+        <div class="tray__read">
+          <div class="meter">
+            <p class="mono">Sustained engagement</p>
+            <b id="engageVal">60%</b>
+            <div class="meter__bar"><i id="engageBar" style="width:60%"></i></div>
+          </div>
+          <div class="meter">
+            <p class="mono">What the room does</p>
+            <p id="trayNote" style="font-size:.9rem;line-height:1.6;margin-top:.35rem">Children work in parallel. Materials stay where they were placed. Most talk goes to the facilitator.</p>
+          </div>
+        </div>
+        <p class="mono" style="margin-top:.9rem;text-transform:none;letter-spacing:.04em;line-height:1.75">Nét Mơ session tracking, seasons 1 to 3.</p>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:var(--s6)">
+      <div style="grid-column:1/5"><p class="note">A pattern you cannot explain is just a rumour you tell yourself.</p></div>
+      <ol class="q-list" style="grid-column:6/13">
+        <li><p>Why does one instruction make a child hesitate and a nearly identical one make them start?</p></li>
+        <li><p>Why does changing the material change the conversation more reliably than changing the topic?</p></li>
+        <li><p>If a room can be arranged to make people open up, what do you owe the people inside it?</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 THE STUDY ============ -->
+<section class="chapter" id="ch-question" data-room="04 The Study" data-short="The study" data-nav="ch-participate">
+  <div class="wrap">
+    <div class="chapter-mark"><span class="num">04</span><span class="name">Asking it properly</span><span class="line"></span></div>
+    <div class="study">
+      <div class="study__stick">
+        <h3 data-part>If a feeling comes out easier in the right room, what happens when the room is a conversation with a machine?</h3>
+        <div class="two-doors">
+          <div class="door-tile" style="--dc:var(--pink)"><h5>Art</h5><p class="mono">45 min · materials</p></div>
+          <span class="vs">↔</span>
+          <div class="door-tile" style="--dc:var(--blue)"><h5>AI</h5><p class="mono">45 min · dialogue</p></div>
+        </div>
+        <p class="mono" style="text-transform:none;letter-spacing:.04em;line-height:1.8">Two Doors Into the Same Room · N = 68 · Nov 2025 to Feb 2026 · SPSS · advised by Nguyễn Phương Thảo, Bảo Sang Psychology Space · prepared for NHSJS</p>
+        <a class="deeper" href="#/research/two-doors">Method and limitations <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="study__panels">
+        <div class="panel">
+          <h4>Design</h4>
+          <p>Two conditions, matched session length, art familiarity recorded before assignment. Every AI session ran on the same model version, so the room was identical for everyone.</p>
+        </div>
+        <div class="panel">
+          <h4>What came back</h4>
+          <div class="chartbox" id="chartbox">
+            <svg viewBox="0 0 460 240" role="img" aria-label="Schematic of a crossover interaction: participants low in art familiarity gained more from AI dialogue, participants high in art familiarity gained more from art-making.">
+              <g class="draw" stroke-linecap="round">
+                <line x1="52" y1="198" x2="430" y2="198" stroke="currentColor" stroke-opacity=".3" style="--len:380"/>
+                <line x1="52" y1="24" x2="52" y2="198" stroke="currentColor" stroke-opacity=".3" style="--len:180"/>
+                <path d="M92 58 L392 170" fill="none" stroke="var(--blue)" stroke-width="2.4" style="--len:330"/>
+                <path d="M92 170 L392 54" fill="none" stroke="var(--pink)" stroke-width="2.4" style="--len:330"/>
+              </g>
+              <circle cx="242" cy="113" r="4" fill="currentColor"/>
+              <text x="250" y="109" font-family="IBM Plex Mono" font-size="10" fill="currentColor" opacity=".6">crossover</text>
+              <text x="96" y="48" font-family="IBM Plex Mono" font-size="10" fill="var(--blue)">AI dialogue</text>
+              <text x="304" y="44" font-family="IBM Plex Mono" font-size="10" fill="var(--pink)">art-making</text>
+              <text x="88" y="220" font-family="IBM Plex Mono" font-size="10" fill="currentColor" opacity=".5">low art familiarity</text>
+              <text x="330" y="220" font-family="IBM Plex Mono" font-size="10" fill="currentColor" opacity=".5">high</text>
+            </svg>
+            <p class="mono">Schematic, not the raw plot. The lines cross: neither door won.</p>
+          </div>
+          <details class="finding">
+            <summary>Read the finding <span class="plus" aria-hidden="true"></span></summary>
+            <div class="finding__body"><p>People with little art experience got further through dialogue, where the structure is handed to them. People already fluent with materials got further by making, where structure gets in the way. Averaging the two conditions would have hidden the whole result.</p></div>
+          </details>
+          <details class="finding">
+            <summary>The seven <span class="plus" aria-hidden="true"></span></summary>
+            <div class="finding__body"><p>Seven participants left the AI condition in a worse mood than they entered it. They are in the paper, with their reflections. The common thread: a good question asked at a moment when there was no way to leave the conversation.</p></div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 BUILD ============ -->
+<section class="chapter" id="ch-build" data-room="05 Workshop" data-short="Workshop" data-nav="ch-build">
+  <div class="wrap">
+    <div class="chapter-mark"><span class="num">05</span><span class="name">Sometimes I answer by building</span><span class="line"></span></div>
+    <div class="grid">
+      <div style="grid-column:1/5">
+        <p class="pull" data-part>A study asks once. A tool keeps asking after I stop watching.</p>
+        <p class="note" style="margin-top:1.3rem">ephemeral · phù du · memorised Tuesday, gone Friday, because a definition is a room with nobody in it</p>
+        <a class="deeper" href="#/work/contextuary">Story behind this <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div style="grid-column:6/13">
+        <div class="demo">
+          <div class="demo__bar"><i></i><i></i><i></i><span>contextuary · tap a word</span></div>
+          <div class="demo__body">
+            <p class="demo__passage" id="passage">
+              The committee's support proved <button class="wordbtn" type="button" data-word="ephemeral" aria-expanded="false">ephemeral</button>, evaporating once the <button class="wordbtn" type="button" data-word="ostensible" aria-expanded="false">ostensible</button> benefits failed to appear, and the chair was left to <button class="wordbtn" type="button" data-word="temporize" aria-expanded="false">temporize</button> in front of a room that had already made up its mind.
+            </p>
+            <div class="gloss" id="gloss" aria-live="polite">
+              <p class="mono" style="text-transform:none;letter-spacing:.04em">Tap a highlighted word to see how Contextuary reads it in place.</p>
+            </div>
+          </div>
+        </div>
+        <p class="mono" style="margin-top:.7rem;text-transform:none;letter-spacing:.04em">Live on Vercel + Supabase · 400+ students · ~70% weekly return in peak SAT season</p>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:var(--s6);align-items:end">
+      <figure class="fig" style="grid-column:1/6" data-uncover>
+        <div class="fig__plate" data-img="cj-ui" data-slot="Fig 05.2" style="--ratio:4/3"><div class="fig__ghost">Replace: The Colorful Journey, archive view</div></div>
+        <figcaption><b>The Colorful Journey.</b> Co-founder, UX and UI. Where a group goes to find the thing they made together, months after the group scattered.</figcaption>
+      </figure>
+      <div style="grid-column:7/13">
+        <p class="body-copy">Three builds, one habit. Contextuary keeps a word inside the sentence that gave it meaning. The Colorful Journey keeps a project inside the memory of the people who made it. The Nét Mơ activity journal keeps a workshop inside the record of who ran it: three permission roles, media upload, calendar, deadline board.</p>
+        <a class="deeper" href="#/work/colorful-journey">Look closer <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 GATHER ============ -->
+<section class="chapter" id="ch-gather" data-room="06 Gather" data-short="Gather" data-nav="ch-gather" data-dark>
+  <div class="wrap">
+    <div class="chapter-mark"><span class="num">06</span><span class="name">Gather</span><span class="line"></span></div>
+    <p class="pull" data-part>Sometimes I build the room first, at volume, and watch what people do with it.</p>
+
+    <div class="gather-collage" data-stagger>
+      <figure class="fig" style="left:0;top:8%;width:min(34%,290px);transform:rotate(-1.6deg)">
+        <div class="fig__plate" data-img="gather-1" data-slot="06.1" style="--ratio:3/4"><div class="fig__ghost">Sol Sound, crowd from the stage</div></div>
+        <figcaption>Sol Sound. 400+ in the room.</figcaption>
+      </figure>
+      <figure class="fig" style="left:32%;top:0;width:min(40%,370px);transform:rotate(1deg)">
+        <div class="fig__plate" data-img="gather-2" data-slot="06.2" style="--ratio:16/10"><div class="fig__ghost">Beats of Hope, band mid-set</div></div>
+        <figcaption>Beats of Hope. Ten school bands.</figcaption>
+      </figure>
+      <figure class="fig" style="right:0;top:36%;width:min(28%,250px);transform:rotate(-.8deg)">
+        <div class="fig__plate" data-img="gather-3" data-slot="06.3" style="--ratio:1/1"><div class="fig__ghost">Colors of the Pitch, huddle</div></div>
+        <figcaption>Mixed teams, deliberately.</figcaption>
+      </figure>
+      <figure class="fig" style="left:13%;bottom:0;width:min(24%,215px);transform:rotate(2deg)">
+        <div class="fig__plate" data-img="gather-4" data-slot="06.4" style="--ratio:4/5"><div class="fig__ghost">ticket stubs, set list</div></div>
+        <figcaption>Artefacts, kept.</figcaption>
+      </figure>
+    </div>
+
+    <div class="grid">
+      <div style="grid-column:1/6">
+        <p class="body-copy">A concert is a workshop with the lights up. Same questions: who feels allowed to move first, and what has to happen before strangers behave like an audience.</p>
+      </div>
+      <div style="grid-column:8/13">
+        <p class="figure-number" data-count="25" data-suffix="M VND">25M VND<small>net from Beats of Hope to Little Smiles · a year of hospital workshop materials</small></p>
+      </div>
+    </div>
+
+    <div class="drift" id="drift" aria-label="Events, scroll sideways">
+      <div class="drift__track" id="driftTrack">
+        <article class="ticket"><p class="mono">Concert · 2025</p><h4>Beats of Hope</h4><p>Ten bands, stage flow, artist coordination, venue sponsorship negotiated in person.</p><div class="stub"><span class="mono">310+ tickets</span><span class="mono">HCMC</span></div></article>
+        <article class="ticket"><p class="mono">Concert · Nét Mơ OPEN</p><h4>Sol Sound</h4><p>The community branch's first night. The audience for children's art can be people the children never meet.</p><div class="stub"><span class="mono">400+ attendees</span><span class="mono">Season 2</span></div></article>
+        <article class="ticket"><p class="mono">League · 2024–25</p><h4>Cerberus Football League</h4><p>Brackets, pitch procurement, referees, budget, safety protocol, and the account that made people show up.</p><div class="stub"><span class="mono">15 teams</span><span class="mono">200+ athletes</span></div></article>
+        <article class="ticket"><p class="mono">School · 2025–26</p><h4>Tết ơi!</h4><p>School-wide music event built with professional artists and student clubs.</p><div class="stub"><span class="mono">2,400+ students</span><span class="mono">Trưng Vương</span></div></article>
+        <article class="ticket"><p class="mono">Tournament · Nét Mơ OPEN</p><h4>Colors of the Pitch</h4><p>Two editions. Football as the excuse, fundraising as the outcome, mixed teams as the design decision.</p><div class="stub"><span class="mono">2 editions</span><span class="mono">Community</span></div></article>
+      </div>
+      <p class="mono" style="padding:0 var(--gutter);margin-top:.8rem">Drag sideways</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 PATTERN ============ -->
+<section class="chapter" id="ch-pattern" data-room="07 The Pattern" data-short="Pattern" data-nav="ch-open">
+  <div class="wrap rooms-swap" id="swap">
+    <ul class="swap__list" id="swapList">
+      <li data-i="0">A shelter dining hall</li>
+      <li data-i="1">A research session</li>
+      <li data-i="2">A concert floor</li>
+      <li data-i="3">A vocabulary app at 11pm</li>
+      <li data-i="4">A dinner table</li>
+    </ul>
+    <div class="swap__q" id="swapQ">
+      <p>Different rooms. One question, asked five ways.</p>
+      <span data-i="0">What makes someone stay?</span>
+      <span data-i="1">What makes someone say the true version?</span>
+      <span data-i="2">What makes a stranger move first?</span>
+      <span data-i="3">What makes someone come back tomorrow?</span>
+      <span data-i="4">What turns mine into ours?</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 OPEN ============ -->
+<section class="chapter chapter--tight" id="ch-open" data-room="08 Open" data-short="Open" data-nav="ch-open">
+  <div class="wrap open__grid">
+    <div class="open__text">
+      <h3 data-part>There are rooms I have not been let into yet. A few I will have to build.</h3>
+      <p class="body-copy" style="margin-top:1.3rem">Cognitive science, human-computer interaction, and whatever we end up calling the study of why some spaces make people brave. If you have a room that is not doing what you hoped, I would like to hear about it.</p>
+    </div>
+    <div class="open__card">
+      <a class="contact-line" href="mailto:hello@example.com" data-replace="email"><span>Email</span><span>hello@example.com</span></a>
+      <a class="contact-line" href="#/cv"><span>CV</span><span>Facts, dated</span></a>
+      <a class="contact-line" href="#/archive"><span>Archive</span><span>Images</span></a>
+      <p class="mono" style="margin-top:1.4rem;text-transform:none;letter-spacing:.06em">The door stays open. Knock whenever.</p>
+    </div>
+  </div>
+  <div class="colophon">
+    <p class="mono">Triệu Ngọc Gia Hân · Katherine Trieu · Ho Chi Minh City</p>
+    <p class="mono">Fraunces · Be Vietnam Pro · built by hand</p>
+  </div>
+</section>
+</main>
+
+<!-- ============ DEEP SPACES ============ -->
+<div class="room" id="room" role="dialog" aria-modal="true" aria-labelledby="roomTitle" tabindex="-1">
+  <div class="room__top">
+    <span class="room__where" id="roomWhere">Deeper</span>
+    <button class="room__close" id="roomClose" type="button">Back to the story ✕</button>
+  </div>
+  <div class="room__inner" id="roomInner"></div>
+</div>
+
+<div class="object" id="object" role="dialog" aria-modal="true" aria-label="Archive object">
+  <div class="object__plate" id="objectPlate"></div>
+  <div class="object__meta">
+    <div><h3 id="objTitle"></h3><p id="objNote"></p></div>
+    <div>
+      <p id="objMeta"></p>
+      <div class="object__nav"><button type="button" id="objPrev">← Prev</button><button type="button" id="objNext">Next →</button><button type="button" id="objClose">Close</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   MEDIA · drop real image URLs here, keys match data-img
+   ============================================================ */
+const MEDIA = {
+  "hero-door":"", "rooms-hall":"", "rooms-hands":"",
+  "sheet-1":"", "sheet-2":"", "sheet-3":"", "sheet-4":"", "sheet-5":"", "sheet-6":"", "sheet-7":"",
+  "cj-ui":"", "gather-1":"", "gather-2":"", "gather-3":"", "gather-4":""
+};
+const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const COARSE = window.matchMedia("(hover:none)").matches;
+const $ = (s,c=document)=>c.querySelector(s);
+const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
+
+function paintMedia(scope=document){
+  $$("[data-img]",scope).forEach(el=>{
+    const src = MEDIA[el.dataset.img];
+    if(src){ el.style.backgroundImage=`url("${src}")`; el.classList.add("has-img"); }
+  });
+}
+paintMedia();
+
+/* chapter colour, used by nav, rail and the ambient layer */
+const CHAPTERS={
+  hero:{hex:"#EE4187",dark:true,palette:["#EE4187","#F2872F","#2B4DE0","#F7EFE2"]},
+  "ch-notice":{hex:"#EE4187",palette:["#EE4187","#F2872F"]},
+  "ch-rooms":{hex:"#EE4187",palette:["#EE4187","#F2872F","#0F918B"]},
+  "ch-participate":{hex:"#0F918B",palette:["#0F918B","#2B4DE0"]},
+  "ch-question":{hex:"#0F918B",palette:["#0F918B","#2B4DE0","#EE4187"]},
+  "ch-build":{hex:"#2B4DE0",palette:["#2B4DE0","#0F918B"]},
+  "ch-gather":{hex:"#F2872F",dark:true,palette:["#F2872F","#EE4187","#F7EFE2"]},
+  "ch-pattern":{hex:"#2B4DE0",palette:["#2B4DE0","#EE4187"]},
+  "ch-open":{hex:"#EE4187",palette:["#EE4187","#F2872F","#2B4DE0"]}
+};
+let CURRENT="hero";
+
+/* ---------- threshold ---------- */
+(function(){
+  const th=$("#threshold"), btn=$("#knockBtn"), dots=$$(".knock__count i"), mast=$("#masthead"), t=$("#local-time");
+  if(t){ try{ t.textContent=new Intl.DateTimeFormat("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Ho_Chi_Minh"}).format(new Date()); }catch(e){} }
+  let n=0;
+  function enter(){
+    document.body.classList.remove("is-locked");
+    mast.hidden=false;
+    if(REDUCED){ th.hidden=true; }
+    else{ th.classList.add("is-opening"); setTimeout(()=>{th.hidden=true;},1000); }
+    sessionStorage.setItem("entered","1");
+    $$("#hero [data-part],#hero [data-mask]").forEach(e=>e.classList.add("in"));
+  }
+  if(sessionStorage.getItem("entered") || location.hash.startsWith("#/")){ th.hidden=true; mast.hidden=false; }
+  else{ document.body.classList.add("is-locked"); setTimeout(()=>btn.focus(),300); }
+  btn?.addEventListener("click",()=>{
+    n=Math.min(n+1,3); dots[n-1] && dots[n-1].classList.add("on");
+    btn.classList.remove("is-knocking"); void btn.offsetWidth; btn.classList.add("is-knocking","k"+n);
+    if(n>=3){ btn.querySelector(".knock__hint").textContent="Come in"; setTimeout(enter,320); }
+  });
+})();
+
+/* ---------- reveals ---------- */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(!en.isIntersecting) return;
+    const el=en.target;
+    el.classList.add("in");
+    if(el.hasAttribute("data-stagger")) [...el.children].forEach((c,i)=>{ c.style.transitionDelay=(i*70)+"ms"; });
+    io.unobserve(el);
+  });
+},{rootMargin:"0px 0px -10% 0px",threshold:.15});
+$$("[data-part],[data-mask],[data-uncover],[data-stagger],.mark,#chartbox").forEach(el=>io.observe(el));
+
+/* ---------- counters ---------- */
+const countIO=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting) return;
+    const el=e.target, end=parseFloat(el.dataset.count), suffix=el.dataset.suffix||"";
+    countIO.unobserve(el);
+    if(REDUCED) return;
+    let start=null;
+    const tick=ts=>{
+      start=start||ts; const p=Math.min((ts-start)/1100,1);
+      el.firstChild.textContent=Math.round(end*(1-Math.pow(1-p,3))).toLocaleString("en-US")+suffix;
+      if(p<1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  });
+},{threshold:.6});
+$$("[data-count]").forEach(el=>countIO.observe(el));
+
+/* ---------- navigation: where am I, and jump ---------- */
+(function(){
+  const secs=$$("#story section"), links=$$(".navlink"), prog=$("#navProg"), mroom=$("#mastheadRoom");
+  let ticking=false;
+  function update(){
+    ticking=false;
+    const h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.width=(Math.max(0,Math.min(1,window.scrollY/(h||1)))*100)+"%";
+    let cur=secs[0];
+    for(const s of secs){ if(s.getBoundingClientRect().top<=window.innerHeight*0.4) cur=s; }
+    if(!cur || cur.id===CURRENT) return;
+    CURRENT=cur.id;
+    const meta=CHAPTERS[cur.id]||CHAPTERS.hero;
+    mroom.textContent=cur.dataset.short||"Notice";
+    document.body.classList.toggle("is-dark",!!meta.dark);
+    document.documentElement.style.setProperty("--nav-accent",meta.hex);
+    const target=cur.dataset.nav;
+    links.forEach(a=>a.classList.toggle("is-current",a.dataset.target===target));
+    const on=links.find(a=>a.classList.contains("is-current"));
+    if(on && on.parentElement.parentElement.scrollWidth>on.parentElement.parentElement.clientWidth){
+      on.scrollIntoView({inline:"center",block:"nearest",behavior:REDUCED?"auto":"smooth"});
+    }
+    if(window.MOTES) window.MOTES.recolor(meta.palette);
+  }
+  addEventListener("scroll",()=>{ if(!ticking){ requestAnimationFrame(update); ticking=true; } },{passive:true});
+  addEventListener("resize",update); update();
+})();
+
+/* ---------- doors panel ---------- */
+(function(){
+  const doors=$("#doors"), btn=$("#doorsBtn");
+  const open=v=>{
+    doors.classList.toggle("is-open",v); doors.setAttribute("aria-hidden",String(!v));
+    btn.setAttribute("aria-expanded",String(v)); btn.textContent=v?"Close":"Doors";
+    if(v) setTimeout(()=>$(".door-link",doors)?.focus(),340);
+  };
+  btn.addEventListener("click",()=>open(!doors.classList.contains("is-open")));
+  $("#heroDoors")?.addEventListener("click",()=>open(true));
+  $$("[data-close-doors]").forEach(e=>e.addEventListener("click",()=>open(false)));
+  $$(".door-link").forEach(a=>a.addEventListener("click",()=>open(false)));
+  addEventListener("keydown",e=>{ if(e.key==="Escape"&&doors.classList.contains("is-open")) open(false); });
+})();
+
+/* ---------- hero: light and door follow the pointer, gently ---------- */
+(function(){
+  const hero=$("#hero"), door=$("#doorframe");
+  if(!hero||!door||REDUCED||COARSE) return;
+  hero.addEventListener("pointermove",e=>{
+    const r=hero.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+    door.style.transform=`rotate(-1.2deg) translate3d(${x*14}px,${y*10}px,0) rotateY(${x*-5}deg)`;
+  });
+  hero.addEventListener("pointerleave",()=>{ door.style.transform="rotate(-1.2deg)"; });
+})();
+
+/* ---------- the tray ---------- */
+(function(){
+  const stage=$("#trayStage"); if(!stage) return;
+  const outline=$("#trayOutline"), val=$("#engageVal"), bar=$("#engageBar"), note=$("#trayNote");
+  const colors=["#EE4187","#F2872F","#0F918B","#2B4DE0","#C9A227","#7A3E9D"];
+  const crayons=[];
+  for(let i=0;i<18;i++){
+    const c=document.createElement("i");
+    c.className="crayon"; c.style.background=colors[i%6];
+    stage.appendChild(c); crayons.push(c);
+  }
+  function layout(mode){
+    const w=stage.clientWidth,h=stage.clientHeight;
+    crayons.forEach((c,i)=>{
+      if(mode==="free"){
+        const cell=Math.floor(i/3), col=cell%3, row=Math.floor(cell/3), k=i%3;
+        c.style.left=((w/3)*col+w*0.045)+"px";
+        c.style.top=((h/2)*row+h*0.14+k*11)+"px";
+        c.style.width=(w/3*0.5)+"px"; c.style.transform="rotate(0deg)";
+      }else{
+        const cx=w/2, cy=h/2, ang=(i/18)*Math.PI*2, r=Math.min(w,h)*0.26;
+        c.style.left=(cx+Math.cos(ang)*r-w*0.07)+"px";
+        c.style.top=(cy+Math.sin(ang)*r*0.62)+"px";
+        c.style.width=(w*0.14)+"px";
+        c.style.transform=`rotate(${(ang*180/Math.PI)+90}deg)`;
+      }
+    });
+    if(mode==="free") outline.classList.remove("on");
+    else{
+      outline.classList.add("on");
+      outline.style.left=(w*0.29)+"px"; outline.style.top=(h*0.2)+"px";
+      outline.style.width=(w*0.42)+"px"; outline.style.height=(h*0.6)+"px";
+    }
+  }
+  function set(mode){
+    layout(mode);
+    const on=mode==="story";
+    val.textContent=on?"85%":"60%"; bar.style.width=on?"85%":"60%";
+    note.textContent=on
+      ? "One shared world, one shared tray. Children negotiate colours, narrate for each other, and keep going after the facilitator steps back."
+      : "Children work in parallel. Materials stay where they were placed. Most talk goes to the facilitator.";
+    $$(".tray__switch button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===mode)));
+  }
+  $$(".tray__switch button").forEach(b=>b.addEventListener("click",()=>set(b.dataset.mode)));
+  set("free");
+  addEventListener("resize",()=>set($('.tray__switch button[aria-pressed="true"]').dataset.mode));
+})();
+
+/* ---------- contextuary demo ---------- */
+(function(){
+  const DATA={
+    ephemeral:{pos:"adjective",vi:"phù du, chóng tàn",inContext:"Support that existed but did not last. Nothing here is about being delicate.",root:"Greek ephēmeros: lasting a day.",trap:"Students read it as fragile. It is about duration, not strength."},
+    ostensible:{pos:"adjective",vi:"bề ngoài, danh nghĩa",inContext:"The stated reason for the support, and the sentence implies it was never the real one.",root:"Latin ostendere: to show.",trap:"Not a synonym for obvious. It means claimed rather than actual."},
+    temporize:{pos:"verb",vi:"trì hoãn, câu giờ",inContext:"The chair stalls to avoid deciding in front of a room that has already decided.",root:"Latin tempus: time.",trap:"Not the same as compromise. Nothing is conceded, only delayed."}
+  };
+  const gloss=$("#gloss"); if(!gloss) return;
+  $$(".wordbtn").forEach(b=>b.addEventListener("click",()=>{
+    $$(".wordbtn").forEach(o=>o.setAttribute("aria-expanded","false"));
+    b.setAttribute("aria-expanded","true");
+    const w=b.dataset.word,d=DATA[w];
+    gloss.innerHTML=`<p><span class="gloss__word">${w}</span><span class="gloss__pos">${d.pos}</span></p>
+      <p class="gloss__vi">${d.vi}</p>
+      <dl><dt>In this sentence</dt><dd>${d.inContext}</dd>
+      <dt>Where it comes from</dt><dd>${d.root}</dd>
+      <dt>Common misread</dt><dd>${d.trap}</dd></dl>`;
+  }));
+})();
+
+/* ---------- drag-to-scroll for horizontal artefacts ---------- */
+function dragScroll(el){
+  if(!el) return;
+  let down=false,x=0,left=0;
+  el.addEventListener("pointerdown",e=>{ if(e.pointerType==="mouse"){ down=true;x=e.clientX;left=el.scrollLeft;el.classList.add("is-dragging"); } });
+  addEventListener("pointerup",()=>{ down=false; el.classList.remove("is-dragging"); });
+  addEventListener("pointermove",e=>{ if(down){ el.scrollLeft=left-(e.clientX-x); } });
+  const nudge=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting && !REDUCED){
+      el.scrollTo({left:40,behavior:"smooth"});
+      setTimeout(()=>el.scrollTo({left:0,behavior:"smooth"}),600);
+      nudge.unobserve(e.target);
+    }});
+  },{threshold:.4});
+  nudge.observe(el);
+}
+dragScroll($("#drift")); dragScroll($("#seasonStrip"));
+
+/* ---------- pattern: rooms and questions ---------- */
+(function(){
+  const list=$$("#swapList li"), qs=$$("#swapQ span"); if(!list.length) return;
+  let i=-1, timer=null;
+  const show=n=>{ i=n; list.forEach(l=>l.classList.toggle("on",+l.dataset.i===n)); qs.forEach(q=>q.classList.toggle("on",+q.dataset.i===n)); };
+  const io2=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){ show(0); if(!REDUCED){ clearInterval(timer); timer=setInterval(()=>show((i+1)%list.length),2600); } }
+      else clearInterval(timer);
+    });
+  },{threshold:.35});
+  io2.observe($("#swap"));
+  list.forEach(l=>{
+    l.addEventListener("mouseenter",()=>{ clearInterval(timer); show(+l.dataset.i); });
+    l.addEventListener("click",()=>{ clearInterval(timer); show(+l.dataset.i); });
+  });
+})();
+
+/* ============================================================
+   AMBIENT LAYER · stars, dots, rings, small leaf marks
+   Sparse, slow, depth-sorted, recoloured per chapter.
+   ============================================================ */
+window.MOTES=(function(){
+  const cv=$("#motes"); if(!cv) return {recolor(){}};
+  if(REDUCED){ cv.style.display="none"; return {recolor(){}}; }
+  const ctx=cv.getContext("2d");
+  let w=0,h=0,dpr=1,motes=[],raf=null,pointer={x:-999,y:-999},scrollV=0,lastY=window.scrollY;
+  const COUNT=()=> (window.innerWidth<720?7:16);
+  const KINDS=["star","dot","ring","leaf"];
+  function size(){
+    dpr=Math.min(devicePixelRatio||1,2);
+    w=cv.clientWidth; h=cv.clientHeight;
+    cv.width=w*dpr; cv.height=h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  function make(pal){
+    return {
+      x:Math.random()*w, y:Math.random()*h,
+      z:.35+Math.random()*.9,
+      r:3+Math.random()*7,
+      kind:KINDS[(Math.random()*KINDS.length)|0],
+      c:pal[(Math.random()*pal.length)|0],
+      a:0, target:.08+Math.random()*.22,
+      vx:(Math.random()-.5)*.12, vy:-(.05+Math.random()*.14),
+      rot:Math.random()*Math.PI, vr:(Math.random()-.5)*.006,
+      tw:Math.random()*Math.PI*2
+    };
+  }
+  let palette=CHAPTERS.hero.palette;
+  function seed(){ motes=Array.from({length:COUNT()},()=>make(palette)); }
+  function recolor(pal){
+    palette=pal||palette;
+    motes.forEach(m=>{ if(Math.random()<.6){ m.a=Math.max(0,m.a); m.c=palette[(Math.random()*palette.length)|0]; } });
+  }
+  function shape(m){
+    ctx.save(); ctx.translate(m.x,m.y); ctx.rotate(m.rot);
+    ctx.globalAlpha=Math.max(0,Math.min(1,m.a));
+    ctx.fillStyle=m.c; ctx.strokeStyle=m.c; ctx.lineWidth=1;
+    const r=m.r*m.z;
+    if(m.kind==="star"){
+      ctx.beginPath();
+      for(let i=0;i<4;i++){
+        const a=i*Math.PI/2;
+        ctx.quadraticCurveTo(Math.cos(a+.4)*r*.3,Math.sin(a+.4)*r*.3,Math.cos(a+Math.PI/2)*r,Math.sin(a+Math.PI/2)*r);
+      }
+      ctx.closePath(); ctx.fill();
+    }else if(m.kind==="dot"){
+      ctx.beginPath(); ctx.arc(0,0,r*.32,0,Math.PI*2); ctx.fill();
+    }else if(m.kind==="ring"){
+      ctx.beginPath(); ctx.arc(0,0,r*.55,0,Math.PI*2); ctx.stroke();
+    }else{
+      ctx.beginPath();
+      ctx.moveTo(-r*.6,0);
+      ctx.quadraticCurveTo(0,-r*.7,r*.6,0);
+      ctx.quadraticCurveTo(0,r*.7,-r*.6,0);
+      ctx.closePath(); ctx.stroke();
+    }
+    ctx.restore();
+  }
+  function frame(){
+    ctx.clearRect(0,0,w,h);
+    scrollV*=.9;
+    motes.forEach(m=>{
+      m.tw+=.012;
+      m.a+=((m.target*(0.6+0.4*Math.sin(m.tw)))-m.a)*.02;
+      m.x+=m.vx*m.z; m.y+=(m.vy-scrollV*.02)*m.z; m.rot+=m.vr;
+      const dx=m.x-pointer.x, dy=m.y-pointer.y, d2=dx*dx+dy*dy;
+      if(d2<12000 && d2>1){ const f=(1-d2/12000); m.x+=dx*0.004*f; m.y+=dy*0.004*f; }
+      if(m.y<-30){ m.y=h+20; m.x=Math.random()*w; m.c=palette[(Math.random()*palette.length)|0]; }
+      if(m.y>h+40){ m.y=-20; }
+      if(m.x<-30) m.x=w+20; if(m.x>w+30) m.x=-20;
+      shape(m);
+    });
+    raf=requestAnimationFrame(frame);
+  }
+  addEventListener("resize",()=>{ size(); seed(); },{passive:true});
+  addEventListener("pointermove",e=>{ pointer.x=e.clientX; pointer.y=e.clientY; },{passive:true});
+  addEventListener("scroll",()=>{ scrollV+=(window.scrollY-lastY); lastY=window.scrollY; },{passive:true});
+  document.addEventListener("visibilitychange",()=>{
+    if(document.hidden){ cancelAnimationFrame(raf); raf=null; }
+    else if(!raf) raf=requestAnimationFrame(frame);
+  });
+  size(); seed(); raf=requestAnimationFrame(frame);
+  return {recolor};
+})();
+
+/* ============================================================
+   ROOMS OFF THE CORRIDOR
+   Content lives here as data. Each room chooses its own blocks,
+   so no two project pages share a template.
+   ============================================================ */
+const fig=(o)=>`<figure class="fig" data-uncover><div class="fig__plate" data-img="${o.k||''}" data-slot="${o.slot||''}" style="--ratio:${o.ratio||'4/5'}"><div class="fig__ghost">${o.ghost||'Replace with photograph'}</div></div>${o.cap?`<figcaption>${o.cap}</figcaption>`:""}</figure>`;
+
+const B={
+  kicker:t=>`<p class="room__kicker">${t}</p>`,
+  title:t=>`<h2 id="roomTitle">${t}</h2>`,
+  lede:t=>`<p class="blk blk--lede">${t}</p>`,
+  para:t=>`<p class="blk blk--para">${t}</p>`,
+  quote:t=>`<p class="blk blk--quote">${t}</p>`,
+  note:t=>`<p class="blk note">${t}</p>`,
+  fig:o=>`<div class="blk">${fig(o)}</div>`,
+  figs:a=>`<div class="blk blk--figs">${a.map(fig).join("")}</div>`,
+  steps:a=>`<ol class="blk blk--steps">${a.map(s=>`<li><div><b>${s.b}</b><p>${s.p}</p></div></li>`).join("")}</ol>`,
+  numbers:a=>`<div class="blk numbers">${a.map(n=>`<div><b>${n.b}</b><span>${n.s}</span></div>`).join("")}</div>`,
+  pairs:a=>`<div class="blk blk--pairs">${a.map(p=>`<div><h4>${p.h}</h4><p>${p.p}</p></div>`).join("")}</div>`,
+  rows:a=>`<div class="blk">${a.map(r=>`<div class="cv-row"><p class="mono">${r.t}</p><div><h4>${r.h}</h4><p>${r.p}</p></div></div>`).join("")}</div>`,
+  links:a=>`<div class="room__more">${a.map(l=>`<a href="${l.href}">${l.label} →</a>`).join("")}</div>`
+};
+
+const ROOMS={
+"/work/net-mo":{accent:"var(--pink)",where:"Work · Nét Mơ",blocks:[
+  ["kicker","Work · 2024 to now · Founder and Director"],
+  ["title","Nét Mơ"],
+  ["fig",{k:"rooms-hall",slot:"Plate 01",ratio:"16/9",ghost:"Replace: full-bleed workshop photograph, wide",cap:"<b>Season 2, Đồng Nai.</b> Fifteen minutes in."}],
+  ["para","A boy spent the first session drawing in the bottom right corner of his page. Not shyly. Efficiently, as if the rest of the paper belonged to somebody else. In the third session we ran out of small sheets and put one large one across four tables. He drew across the middle without asking."],
+  ["quote","The material was never the problem. The ownership of the surface was."],
+  ["para","Nét Mơ (Traces of Dreams) is an arts-based social-emotional learning programme for children in care homes and for elderly residents at care facilities. It runs on two branches: Shelters, which delivers the curriculum, and OPEN Community, which builds the public rooms that fund and surround it. It is legally sponsored by Bảo Sang."],
+  ["kicker","The system behind the sessions"],
+  ["steps",[
+    {b:"Curriculum, not activities",p:"Four sessions in a fixed dramatic order, grounded in narrative therapy, hope theory and trauma-informed care. Season 2 ran as Chuyện Của Mây: Vẽ nỗi lo, tô hi vọng."},
+    {b:"Facilitators are trained, not recruited",p:"Volunteer coordinator training documents, internal regulations, and a briefing structure so a first-time volunteer knows what to do when a child stops drawing."},
+    {b:"Story world over free drawing",p:"Immersive framing sustained about 85% engagement against 60% for open free-drawing formats. It also gives children a character to speak through when speaking as themselves is too much."},
+    {b:"Handover is a product",p:"I built the team an activity journal app: three permission roles, media upload, calendar view, and a task board coloured by department, so a season can be inherited rather than re-explained."},
+    {b:"The work leaves the shelter",p:"Once Upon The Inside, co-produced with The APRIL Collective at May Artspace, showed children's work beside pieces by elderly participants and autistic artists."}
+  ]],
+  ["numbers",[
+    {b:"200+",s:"children reached"},{b:"6",s:"shelters, HCMC and Đồng Nai"},
+    {b:"2",s:"elderly care facilities"},{b:"25",s:"team members, 5 departments"},
+    {b:"80%",s:"showed improved emotional expression or confidence"},{b:"75M VND",s:"raised; 80% direct to shelter children"}
+  ]],
+  ["figs",[
+    {k:"sheet-2",slot:"Plate 02",ratio:"3/4",ghost:"child and facilitator",cap:"Facilitator training pays for itself in the first ten minutes."},
+    {k:"sheet-3",slot:"Plate 03",ratio:"3/4",ghost:"elderly participant",cap:"Intergenerational sessions: two groups who are used to being cared for, making something for each other."},
+    {k:"sheet-5",slot:"Plate 04",ratio:"3/4",ghost:"monster drawings",cap:"Externalised worries. The monster is easier to describe than the fear."}
+  ]],
+  ["kicker","What went wrong first"],
+  ["pairs",[
+    {h:"Season 1 mistake",p:"I planned sessions around outputs. A finished drawing per child, per hour. Children who worked slowly learned they were behind, which is the opposite of the point."},
+    {h:"The fix",p:"Sessions now end on a shared object rather than individual results, and facilitators are told explicitly that an unfinished page is a fine outcome."},
+    {h:"Still unsolved",p:"Handover between seasons. The activity journal app helps, but a volunteer's judgement in the room is still the part I cannot write down."}
+  ]],
+  ["kicker","What I started wondering afterwards"],
+  ["para","If the format changes engagement this reliably, the effect is not about art. It is about what the room permits. That question is what pushed me into reading psychology properly, and eventually into running a study instead of trusting my own field notes."],
+  ["links",[{href:"#/research/two-doors",label:"The study it led to"},{href:"#/archive",label:"Archive"},{href:"#/cv",label:"CV"}]]
+]},
+
+"/work/contextuary":{accent:"var(--blue)",where:"Work · Contextuary",blocks:[
+  ["kicker","Work · Jan 2026 to now · Design and build"],
+  ["title","Contextuary"],
+  ["lede","A word. <b>Ephemeral.</b> You learned it on Tuesday. On Friday it appears in a sentence about a coalition and you do not recognise it."],
+  ["para","Memorising a definition gives you a word with no room around it. Recognition in a test passage needs the opposite: the word inside a sentence that gave it a job. So Contextuary never shows a word alone. You paste a passage or a single word, and it explains that word as it behaves right there, in English and in Vietnamese, then keeps the sentence."],
+  ["steps",[
+    {b:"Paste anything",p:"A passage, a paragraph from a practice test, or one word you got wrong."},
+    {b:"Read it in place",p:"Meaning in context, part of speech, Vietnamese gloss, and the misreading students usually make."},
+    {b:"It goes to your library",p:"Saved with the sentence it came from, not stripped down to a flashcard."},
+    {b:"Daily Picks",p:"A scrolling bar of new words at the top of My Words, drawn from a 1000-word SAT list, loading more as you scroll so you pick rather than accept."},
+    {b:"Practice two ways",p:"A standard quiz over words you choose, plus an AI mode that writes fresh sentences, and a flashcard mode with audio."}
+  ]],
+  ["numbers",[{b:"400+",s:"student users"},{b:"~70%",s:"returning weekly in peak SAT season"},{b:"1,000",s:"word list, seeded by hand"}]],
+  ["figs",[
+    {slot:"UI 01",ratio:"3/4",ghost:"Replace: My Words with Daily Picks bar",cap:"My Words. Daily Picks sits on top as a horizontal bar, not a separate page, because a separate page is a chore."},
+    {slot:"UI 02",ratio:"3/4",ghost:"Replace: context reading view",cap:"The reading view. The sentence stays visible the whole time."},
+    {slot:"UI 03",ratio:"3/4",ghost:"Replace: quiz or flashcard mode",cap:"Practice, scoped to what you actually chose to learn."}
+  ]],
+  ["kicker","Cut, and better for it"],
+  ["pairs",[
+    {h:"Spaced repetition",p:"Built the logic, removed it. It scheduled words nobody cared about that day and made opening the app feel like a debt."},
+    {h:"Topic filters",p:"Nobody used them. Students think in tests, not categories."},
+    {h:"A separate Today page",p:"One more tap to reach the thing they came for. Daily Picks moved to the top of My Words instead."}
+  ]],
+  ["kicker","What building it taught me"],
+  ["para","Every feature I cut made the app better used: the topic filter, spaced repetition, the separate Today page. What people wanted was not more system. It was permission to choose today's words themselves and see the sentence again. Stack: Lovable and Supabase, deployed on Vercel."],
+  ["links",[{href:"#/work/colorful-journey",label:"The Colorful Journey"},{href:"#/cv",label:"CV"}]]
+]},
+
+"/work/colorful-journey":{accent:"var(--blue)",where:"Work · The Colorful Journey",blocks:[
+  ["kicker","Work · Co-founder, UX and UI"],
+  ["title","The Colorful Journey"],
+  ["lede","A group makes something together, then scatters. Six months later nobody can find it. The thing existed; the memory of it had nowhere to live."],
+  ["para","The Colorful Journey is a project-memory archive: a place where a team, a class or a community can deposit the artefacts of something they built and come back to it as a whole rather than as scattered folders belonging to whoever happened to hold the camera."],
+  ["pairs",[
+    {h:"Design problem",p:"Archives are organised for retrieval. Memory is organised by who was there and what it felt like. The interface had to hold both."},
+    {h:"Decision",p:"Entries are grouped by moment, not by file type, and every item keeps its contributor. Ownership stays visible while the collection becomes shared."},
+    {h:"Where it connects",p:"The same instinct as the Nét Mơ activity journal: a group cannot inherit its own history unless somebody designs the handover."}
+  ]],
+  ["fig",{k:"cj-ui",slot:"UI 01",ratio:"16/10",ghost:"Replace: archive interface screenshot",cap:"Archive view. Replace with current build."}],
+  ["links",[{href:"#/work/contextuary",label:"Contextuary"},{href:"#/work/net-mo",label:"Nét Mơ"}]]
+]},
+
+"/research/two-doors":{accent:"var(--teal)",where:"Research · Two Doors",blocks:[
+  ["kicker","Research · Nov 2025 to Feb 2026 · Lead author"],
+  ["title","Two Doors Into the Same Room"],
+  ["lede","Does expressive art-making or AI-guided reflective dialogue help a person express what they feel, and does the answer depend on who is walking in?"],
+  ["pairs",[
+    {h:"Condition A · Art",p:"A 45 minute expressive art-making session with materials and no requirement to explain the result out loud."},
+    {h:"Condition B · AI",p:"A 45 minute guided reflective dialogue. Every participant used the same model version, checked at the start of the session, so the room was identical."}
+  ]],
+  ["steps",[
+    {b:"Participants",p:"N = 68, recruited across schools and community groups, with art familiarity recorded before assignment."},
+    {b:"Measures",p:"Pre and post mood, expressed emotional detail, and written reflection. Survey instruments built in Typeform and Google Forms."},
+    {b:"Analysis",p:"SPSS. Interaction tested between condition and prior art familiarity rather than condition alone."},
+    {b:"Supervision",p:"Advised by Nguyễn Phương Thảo, Bảo Sang Psychology Space. Co-authored with Trần Hoàng Anh Thư; prepared for submission to the National High School Journal of Science."}
+  ]],
+  ["kicker","Findings"],
+  ["para","The headline is not that one door is better. It is that the doors swap places. Participants with little prior art experience gained more from dialogue, where the structure is provided for them. Participants already fluent with materials gained more from making, where structure would only get in the way. Averaging the two conditions would have hidden the entire result."],
+  ["quote","Seven participants finished the AI condition in a worse mood than they started."],
+  ["para","They are in the paper, with the reflections they wrote. Reporting only the participants a method helped would make the study useless to anyone deciding whether to put it in front of a real teenager. The most common thread in those seven: being asked a good question at a moment when they had no way to leave the conversation."],
+  ["kicker","What I am not claiming"],
+  ["pairs",[
+    {h:"Duration",p:"One session. Nothing here says anything about what either door does over a term."},
+    {h:"Self-report",p:"Mood and expressed detail are reported by the person. Useful, and not the same as measured."},
+    {h:"One model, one moment",p:"A single model version at a single point in time. The AI condition will not be the same room next year."}
+  ]],
+  ["kicker","Next questions"],
+  ["para","Whether the crossover holds when the art condition is social rather than solitary. Whether the seven can be predicted in advance rather than counted afterwards. And whether an interface can be designed to hand structure to the people who need it and get out of the way of the people who do not."],
+  ["links",[{href:"#/work/net-mo",label:"Where the question came from"},{href:"#/cv",label:"CV"}]]
+]},
+
+"/about":{accent:"var(--pink)",where:"About",blocks:[
+  ["kicker","About"],
+  ["title","Triệu Ngọc Gia Hân"],
+  ["lede","Grade 12 at Trưng Vương High School, Ho Chi Minh City. I work in Vietnamese and English, and I have been drawing since I was five, which is probably where the noticing started."],
+  ["para","Drawing is slow looking. You cannot draw a room without registering where the light falls and who is sitting where. Somewhere between an observational sketch and a shelter workshop, I stopped being interested in the drawing and started being interested in the room."],
+  ["pairs",[
+    {h:"Making",p:"Digital painting, observational drawing, photography. A pink, orange and teal palette I keep returning to. Mostly self-taught."},
+    {h:"Reading",p:"Psychology and cognitive science. Coursera Foundations of Neuroscience and Introduction to Psychology, applied directly to session design."},
+    {h:"Building",p:"Interfaces, when a question needs to keep running after I stop watching it."},
+    {h:"Gathering",p:"Concerts, tournaments, exhibitions. Rooms with the volume up."}
+  ]],
+  ["note","Also: Head of Academic Affairs of a school psychology club, R&D at a youth mental-fitness startup, an EEG and brain-mapping internship, eleven consecutive years as class president, and a national silver in a water rocket competition, which is a longer story."],
+  ["links",[{href:"#/cv",label:"The dated version"},{href:"#/archive",label:"Archive"}]]
+]},
+
+"/cv":{accent:"var(--blue)",where:"CV",blocks:[
+  ["kicker","Curriculum vitae · updated 2026"],
+  ["title","The facts, dated"],
+  ["kicker","Founded and led"],
+  ["rows",[
+    {t:"2024 – now",h:"Nét Mơ (Traces of Dreams) · Founder and Director",p:"Arts-based SEL programme for children in shelters and elderly residents in care facilities. 25-member team across R&D, Tech, Events and PR. 200+ children, 6 shelters, 2 care facilities, ~75M VND raised. Legal sponsorship by Bảo Sang."},
+    {t:"2026",h:"Once Upon The Inside · Co-producer",p:"Mixed-media exhibition with The APRIL Collective at May Artspace. 300+ visitors."},
+    {t:"2025",h:"Beats of Hope · Organiser",p:"Charity concert, 10 school bands, 310+ tickets, ~25M VND net to Little Smiles for a year of hospital workshop materials."},
+    {t:"2024 – 2025",h:"Cerberus Football League · Co-founder",p:"15 teams, 200+ student-athletes, 600+ cumulative spectators. Scheduling, budget, referees, safety protocol."}
+  ]],
+  ["kicker","Research"],
+  ["rows",[
+    {t:"2025 – 2026",h:"Two Doors Into the Same Room · Lead author",p:"Mixed-methods study, N = 68, expressive art-making versus AI-guided reflective dialogue. Crossover interaction by art familiarity. SPSS. Prepared for NHSJS. Advised by Nguyễn Phương Thảo."},
+    {t:"2026",h:"Brainlife · Research intern",p:"EEG and brain-mapping training, data cleaning, student survey work."},
+    {t:"2025",h:"Coursera",p:"Foundations of Neuroscience; Introduction to Psychology."}
+  ]],
+  ["kicker","Built"],
+  ["rows",[
+    {t:"2026 – now",h:"Contextuary",p:"SAT vocabulary in context. Lovable and Supabase, deployed on Vercel. 400+ users, ~70% weekly return."},
+    {t:"2025 – now",h:"The Colorful Journey · Co-founder, UX and UI",p:"Project-memory archive platform."},
+    {t:"2025",h:"Nét Mơ activity journal",p:"Three-role permission system, media upload, calendar, deadline board."}
+  ]],
+  ["kicker","Selected honours"],
+  ["rows",[
+    {t:"2026",h:"International Psychology Olympiad",p:"Highest Distinction, Regional Top 1. Annual Final: Advanced Thinking 165/200, Integrated Objective 180/200."},
+    {t:"2025",h:"RAISE AI national competition",p:"Silver, 2nd of 450+. Essay: To Think or to Prompt: The Future of Human Intellect in Education."},
+    {t:"2025",h:"HCMC Youth & Children Creativity Contest",p:"Second Prize, emotion card deck."},
+    {t:"2025",h:"Trưng Vương High School",p:"Most Well-Rounded Student, Grade 11."},
+    {t:"2023",h:"Vietnam Water Rocket Competition",p:"National silver, team lead, top scorer Southern Region."}
+  ]],
+  ["links",[{href:"#/about",label:"About"},{href:"#/work/net-mo",label:"Nét Mơ"},{href:"#/research/two-doors",label:"Research"}]]
+]}
+};
+
+/* ---------- archive ---------- */
+const ARCHIVE=[
+  {t:"Open door",p:"Studio",d:"2025",n:"Watercolour. The first page of my art portfolio: a door left open, flowers outside.",size:"m",ratio:"3/4"},
+  {t:"Two souls, sparking",p:"Studio",d:"2025",n:"Acrylic on canvas. Two dancing figures among firing neurons, pastel pink and teal, sculpted flower accents.",size:"xl",ratio:"1/1"},
+  {t:"District 1, in ink",p:"Ho Chi Minh City",d:"2024",n:"Architecture study. Drawn standing up, which is why the balconies lean.",size:"s",ratio:"2/3"},
+  {t:"Monster factory",p:"Shelter, Đồng Nai",d:"2025",n:"Children's work from Xưởng Chế Tạo Quái Vật. Photographed on the floor where it was made.",size:"m",ratio:"4/3"},
+  {t:"Once Upon The Inside",p:"May Artspace",d:"2026",n:"Installation view. Children, elderly participants and autistic artists on one wall.",size:"xl",ratio:"16/10"},
+  {t:"Portrait, coloured pencil",p:"Studio",d:"2024",n:"A child who sat still for eleven minutes, a personal record.",size:"s",ratio:"3/4"},
+  {t:"Sol Sound",p:"HCMC",d:"2025",n:"From the side of the stage, second song.",size:"m",ratio:"3/2"},
+  {t:"Still life with borrowed objects",p:"Studio",d:"2023",n:"Observational. Everything on the table belonged to someone else in the house.",size:"s",ratio:"1/1"},
+  {t:"Eye canvas",p:"Studio",d:"2025",n:"Part of a series. Looking at looking.",size:"m",ratio:"4/5"},
+  {t:"Lilies",p:"Studio",d:"2024",n:"Acrylic. Painted the week before an exhibition deadline, which shows.",size:"s",ratio:"3/4"},
+  {t:"Field notes",p:"Various",d:"2024–2026",n:"Notebook spread: seating diagrams, timings, what happened after the adult left the room.",size:"m",ratio:"4/3"},
+  {t:"Colors of the Pitch",p:"HCMC",d:"2025",n:"Mixed teams, deliberately.",size:"m",ratio:"3/2"}
+];
+function archiveHTML(){
+  return `${B.kicker("Archive · images, objects, notes")}${B.title("An uneven wall")}
+  ${B.lede("Hung the way things actually get hung: by size, by argument, by what happened to survive.")}
+  <div class="blk wall">${ARCHIVE.map((a,i)=>`
+    <button class="wall__item ${a.size}" data-obj="${i}" type="button">
+      <div class="fig__plate" data-slot="${String(i+1).padStart(2,"0")}" style="--ratio:${a.ratio}"><div class="fig__ghost">${a.t}</div></div>
+      <span class="wall__meta"><span>${a.t}</span><span>${a.d}</span></span>
+    </button>`).join("")}</div>
+  ${B.links([{href:"#/about",label:"About"},{href:"#/cv",label:"CV"}])}`;
+}
+
+/* ---------- router ---------- */
+(function(){
+  const room=$("#room"), inner=$("#roomInner"), closeBtn=$("#roomClose");
+  let lastY=0, lastFocus=null;
+  const where=$("#roomWhere");
+  function render(route){
+    if(route==="/archive"){ inner.innerHTML=archiveHTML(); room.style.setProperty("--accent","var(--orange)"); where.textContent="Archive"; bindArchive(); }
+    else{
+      const r=ROOMS[route]; if(!r){ location.hash=""; return; }
+      room.style.setProperty("--accent",r.accent);
+      where.textContent=r.where||"Deeper";
+      inner.innerHTML=r.blocks.map(([type,arg])=>B[type](arg)).join("");
+    }
+    paintMedia(inner);
+    $$("[data-uncover],[data-part],[data-mask]",inner).forEach(el=>io.observe(el));
+    room.scrollTop=0;
+  }
+  function open(route){
+    lastY=window.scrollY; lastFocus=document.activeElement;
+    render(route);
+    room.classList.add("is-open"); document.body.classList.add("is-locked");
+    room.setAttribute("aria-hidden","false"); room.focus();
+  }
+  function close(){
+    room.classList.remove("is-open"); room.setAttribute("aria-hidden","true");
+    document.body.classList.remove("is-locked");
+    window.scrollTo(0,lastY);
+    lastFocus && lastFocus.focus && lastFocus.focus();
+  }
+  function route(){
+    const h=location.hash;
+    if(h.startsWith("#/")) open(h.slice(1));
+    else if(room.classList.contains("is-open")) close();
+  }
+  addEventListener("hashchange",route);
+  closeBtn.addEventListener("click",()=>{ history.pushState("",document.title,location.pathname+location.search); close(); });
+  addEventListener("keydown",e=>{ if(e.key==="Escape" && room.classList.contains("is-open")) closeBtn.click(); });
+  route();
+})();
+
+/* ---------- archive object view ---------- */
+function bindArchive(){
+  const ov=$("#object"), plate=$("#objectPlate");
+  let idx=0;
+  function show(i){
+    idx=(i+ARCHIVE.length)%ARCHIVE.length;
+    const a=ARCHIVE[idx];
+    plate.style.setProperty("--ratio",a.ratio);
+    plate.innerHTML=`<span class="mono">${a.t}</span>`;
+    $("#objTitle").textContent=a.t;
+    $("#objNote").textContent=a.n;
+    $("#objMeta").textContent=`${a.p} · ${a.d} · ${String(idx+1).padStart(2,"0")} of ${ARCHIVE.length}`;
+  }
+  function open(i){ show(i); ov.classList.add("is-open"); }
+  function close(){ ov.classList.remove("is-open"); }
+  $$(".wall__item").forEach(b=>b.addEventListener("click",()=>open(+b.dataset.obj)));
+  $("#objPrev").onclick=()=>show(idx-1);
+  $("#objNext").onclick=()=>show(idx+1);
+  $("#objClose").onclick=close;
+  ov.onclick=e=>{ if(e.target===ov) close(); };
+  addEventListener("keydown",e=>{
+    if(!ov.classList.contains("is-open")) return;
+    if(e.key==="Escape") close();
+    if(e.key==="ArrowRight") show(idx+1);
+    if(e.key==="ArrowLeft") show(idx-1);
+  });
+}
+
+</script>
+</body>
+</html>
