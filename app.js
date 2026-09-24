@@ -13,7 +13,7 @@ const MEDIA = {
   "rooms-hall":{src:"img/rooms-hall.jpg",alt:"Two people hug and smile in a shelter hall. Behind them, children work at small plastic tables beside a standing fan."},
   "rooms-hands":"",
   "sheet-1":"", "sheet-2":"", "sheet-3":"", "sheet-4":"", "sheet-5":"", "sheet-6":"", "sheet-7":"",
-  "cj-ui":"", "gather-1":"", "gather-2":"", "gather-3":"", "gather-4":"",
+  "cj-ui":"", "gather-1":"", "gather-2":"", "gather-3":"", "gather-4":"", "gather-5":"",
   "art-1":"", "art-2":"", "art-3":"", "art-4":"", "art-5":"", "art-6":"",
   /* deep-space photography: lead images and evidence plates */
   "nm-lead":"", "nm-1":"", "nm-2":"", "nm-3":"", "nm-4":"", "nm-5":"",
@@ -22,6 +22,17 @@ const MEDIA = {
   "td-lead":"", "td-1":"", "td-2":"", "td-3":"",
   "gt-lead":"", "gt-1":"", "gt-2":"", "gt-3":"", "gt-4":"", "gt-5":"", "gt-6":"",
   "ab-1":"", "ab-2":"", "ab-3":""
+};
+/* ============================================================
+   EVENT LINKS · paste a URL and the event card links out to it.
+   Empty ones point to the Gather page instead.
+   ============================================================ */
+const EVENT_LINKS = {
+  "beats-of-hope":"",
+  "sol-sound":"",
+  "cerberus-league":"",
+  "tet-oi":"",
+  "colors-of-the-pitch":""
 };
 const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const COARSE = window.matchMedia("(hover:none)").matches;
@@ -42,6 +53,10 @@ function paintMedia(scope=document){
   });
 }
 paintMedia();
+document.querySelectorAll("[data-event]").forEach(a=>{
+  const url=EVENT_LINKS[a.dataset.event];
+  if(url){ a.href=url; a.target="_blank"; a.rel="noopener"; a.textContent="Event page ↗"; }
+});
 
 /* chapter colour, used by nav, rail and the ambient layer */
 const CHAPTERS={
@@ -153,7 +168,7 @@ $$("[data-count]").forEach(el=>countIO.observe(el));
     window.scrollTo({top:Math.max(0,y),behavior:REDUCED?"auto":"smooth"});
     if(push) history.replaceState(null,"","#"+id);
   }
-  $$('.navlink, a.btn[href^="#ch-"], a.brand[href^="#"]').forEach(a=>{
+  $$('.navlink, .door-card, a.btn[href^="#ch-"], a.brand[href^="#"]').forEach(a=>{
     a.addEventListener("click",e=>{
       const id=(a.getAttribute("href")||"").replace("#","");
       if(!id||!document.getElementById(id)) return;
@@ -300,7 +315,7 @@ function dragScroll(el){
   },{threshold:.4});
   nudge.observe(el);
 }
-dragScroll($("#drift")); dragScroll($("#seasonStrip"));
+dragScroll($("#drift")); dragScroll($("#roomsMap"));
 
 /* ---------- pattern: rooms and questions ---------- */
 (function(){
@@ -447,6 +462,13 @@ const ROOMS={
     {b:"Story world over free drawing",p:"Immersive framing sustained about 85% engagement against 60% for open free-drawing formats. It also gives children a character to speak through when speaking as themselves is too much."},
     {b:"Handover is a product",p:"I built the team an activity journal app: three permission roles, media upload, calendar view, and a task board coloured by department, so a season can be inherited rather than re-explained."},
     {b:"The work leaves the shelter",p:"Once Upon The Inside, co-produced with The APRIL Collective at May Artspace, showed children's work beside pieces by elderly participants and autistic artists."}
+  ]],
+  ["kicker","Season 2 · four sessions, in order"],
+  ["steps",[
+    {b:"Monster workshop · Xưởng Chế Tạo Quái Vật",p:"Build the monster before you name the worry."},
+    {b:"A feast of feelings · Bữa Tiệc Cảm Xúc",p:"A feast where every dish is a feeling. Each one gets a plate and a portion size."},
+    {b:"A sky of wishes · Bầu Trời Khát Vọng",p:"Wishes drawn small, hung high, so the room has to look up together."},
+    {b:"Dreamtopia",p:"Individual work is cut up and rebuilt into one city. Nobody keeps their own piece."}
   ]],
   ["numbers",[
     {b:"200+",s:"children reached"},{b:"6",s:"shelters, HCMC and Đồng Nai"},

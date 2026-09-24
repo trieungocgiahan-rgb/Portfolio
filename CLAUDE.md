@@ -10,9 +10,11 @@ sharing a room, then tests it through community work, research and building.
 - No framework, no build step, no dependencies. Plain HTML, CSS, JS.
 - Never reintroduce résumé structure (hero → about → skills → project grid).
 - Keep the door motif: knock entrance, Doors panel, deep spaces as rooms.
-- Keep every interaction: knock entrance, drifting motes canvas, crayon tray
-  toggle, Contextuary word demo, draggable strips, archive object viewer,
-  chapter-coloured navigation.
+- Keep every interaction: knock entrance, drifting motes canvas, story map
+  of doors, crayon tray toggle, Contextuary word demo, draggable strips,
+  archive object viewer, chapter-coloured navigation.
+- Main page stays lean: per chapter one short line, one visual, one way in.
+  Detail belongs in the deep spaces (ROOMS in app.js).
 - Respect prefers-reduced-motion everywhere.
 - No horizontal scrolling at any width. Tablet (768–1024px) is a first-class
   composition, not a squeezed desktop.

@@ -32,7 +32,7 @@ so the layout never breaks while slots are still empty. Each frame keeps
 its own ratio; the photograph is cropped to it, never stretched. Artworks
 and interface screenshots are shown whole.
 
-Slots: hero-door, rooms-hall, rooms-hands, sheet-1…7, cj-ui, gather-1…4,
+Slots: hero-door, rooms-hall, rooms-hands, sheet-1…7, cj-ui, gather-1…5,
 art-1…6 (exhibition), nm-lead + nm-1…5, cx-lead + cx-1…6, cj-lead + cj-1…2,
 td-lead + td-1…3, gt-lead + gt-1…6, ab-1…3.
 
@@ -42,6 +42,13 @@ Everything behind a "Story behind this" link is data, not markup.
 In `app.js`, the `ROOMS` object holds one entry per page. Each page is a
 list of blocks: kicker, title, lede, para, quote, steps, numbers, pairs,
 lead, figs, strip, links. Add or reorder blocks and the page rebuilds.
+
+## Link an event
+
+The Gather chapter shows one card per event. Open `app.js`, find
+`EVENT_LINKS` near the top and paste each URL:
+`"beats-of-hope": "https://…"`. A filled link opens in a new tab as
+"Event page ↗"; an empty one points to the Gather page.
 
 ## Still to replace
 

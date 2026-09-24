@@ -95,7 +95,7 @@ body{hyphens:manual;word-break:normal;overflow-wrap:break-word}
 [href^="mailto"] span:last-child,[href^="http"] span:last-child,code{overflow-wrap:anywhere}
 
 /* headings resolve their own line breaks, prose avoids one-word last lines */
-h1,h2,h3,h4,h5,.pull,.swap__q,.blk--quote,.q-list p{text-wrap:balance}
+h1,h2,h3,h4,h5,.pull,.swap__q,.blk--quote{text-wrap:balance}
 p,li,dd,figcaption{text-wrap:pretty}
 
 .mono{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;line-height:1.7;text-transform:uppercase;color:var(--ink-45)}
@@ -105,7 +105,7 @@ p,li,dd,figcaption{text-wrap:pretty}
 .body-copy + .body-copy,.pull + .body-copy{margin-top:var(--sp-2)}
 .body-copy + .note,.pull + .note{margin-top:var(--sp-3)}
 h3 + .body-copy{margin-top:var(--sp-3)}
-.pull,.swap__q,.q-list p,.blk--quote,.carried__card h4,.study__stick h3{
+.pull,.swap__q,.blk--quote,.carried__card h4,.study__stick h3{
   font-family:var(--display);font-size:var(--t-idea);line-height:1.28;letter-spacing:-.015em;font-weight:400}
 .pull{max-width:min(100%,24ch)}
 .note{font-family:var(--mono);font-size:.75rem;letter-spacing:.02em;line-height:1.8;color:var(--ink-45);
@@ -292,11 +292,11 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 @media(min-width:901px) and (max-width:1024px){
   .hero__inner{grid-template-columns:minmax(0,1fr) minmax(0,.95fr);gap:var(--sp-4)}
 }
-/* portrait tablet and phone: the door opens first, the words follow */
+/* portrait tablet and phone: "Hi, I'm Gia Hân" first, the door follows */
 @media(max-width:900px){
-  .hero{min-height:auto;display:block;padding-bottom:var(--sp-5)}
-  .hero__inner{grid-template-columns:minmax(0,1fr);gap:var(--sp-4)}
-  .doorframe{order:-1;justify-self:start;width:min(100%,640px);border-radius:120px 120px 6px 6px;rotate:-1.5deg}
+  .hero{min-height:auto;display:block;padding-top:calc(var(--navh) + var(--sp-5));padding-bottom:var(--sp-5)}
+  .hero__inner{grid-template-columns:minmax(0,1fr);gap:var(--sp-5)}
+  .doorframe{justify-self:start;width:min(100%,640px);border-radius:120px 120px 6px 6px;rotate:-1.5deg}
   .doorframe .doorframe__open{border-radius:114px 114px 4px 4px}
   .hero__scroll{position:static;margin:var(--sp-4) auto 0;max-width:var(--content)}
 }
@@ -318,6 +318,7 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .dusk__note{position:relative;font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.16em;text-transform:uppercase;
   color:rgba(247,239,226,.62);display:flex;align-items:center;gap:.7rem;max-width:44ch;line-height:1.9}
 .dusk__note b{width:6px;height:6px;border-radius:50%;background:var(--pink);flex:none;box-shadow:0 0 12px var(--pink)}
+@media(max-width:699px){.dusk{min-height:20svh;padding-block:var(--sp-4)}}
 
 /* ============================================================
    DOORS PANEL · the index, not the route
@@ -444,13 +445,7 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .notice-grid h2 i{font-style:italic;color:var(--pink)}
 .observation{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--sp-2);align-items:start;margin-top:var(--sp-4);max-width:44ch}
 .observation p{font-size:var(--t-lead);line-height:1.6;color:var(--ink-70)}
-.intro{margin-top:var(--sp-3);max-width:52ch}
-.intro .body-copy + .body-copy{margin-top:.7rem}
-.intro__facts{list-style:none;margin:var(--sp-3) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem .5rem}
-.intro__facts li{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.06em;color:var(--ink-45);
-  border:1px solid var(--ink-20);border-radius:999px;padding:.32rem .7rem;transition:border-color .35s,color .35s}
-.intro__facts li:hover{border-color:var(--accent);color:var(--ink-70)}
-.intro__facts b{color:var(--accent);font-weight:500}
+.intro{margin-top:var(--sp-3);max-width:min(100%,46ch)}
 /* two photographs, the second laid over the corner of the first */
 .stack{position:relative}
 .stack .fig:nth-child(2){position:absolute;right:-5%;bottom:-12%;width:40%;box-shadow:0 24px 50px -30px rgba(15,27,60,.6)}
@@ -464,6 +459,33 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
   .observation{grid-template-columns:minmax(0,1fr)}
   .observation .mark{width:52px}
   .stack .fig:nth-child(2){margin-bottom:0}
+}
+
+/* the story at a glance · one arched door per chapter, each a way in */
+.map{margin-top:var(--sp-6)}
+.map__label{margin-bottom:var(--sp-2)}
+.map__doors{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--sp-2)}
+.map__doors li{display:flex}
+.door-card{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;width:100%;min-height:16rem;
+  padding:2.6rem 1.1rem 1.1rem;text-decoration:none;color:inherit;
+  border:1px solid color-mix(in srgb,var(--dc) 45%,var(--rule));border-radius:120px 120px 6px 6px;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--dc) 8%,transparent),transparent 72%);
+  transition:transform .45s var(--ease),border-color .45s}
+.door-card::before{content:"";position:absolute;right:.85rem;top:56%;width:6px;height:6px;border-radius:50%;background:var(--dc);box-shadow:0 0 10px color-mix(in srgb,var(--dc) 60%,transparent)}
+.door-card::after{content:"";position:absolute;inset:auto 0 0;height:0;z-index:-1;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--dc) 22%,transparent));transition:height .6s var(--ease)}
+.door-card:hover,.door-card:focus-visible{transform:translateY(-4px);border-color:var(--dc)}
+.door-card:hover::after,.door-card:focus-visible::after{height:70%}
+.door-card__num{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dc);text-align:center}
+.door-card__stat{margin-top:var(--sp-3);font-size:.84rem;line-height:1.45;color:var(--ink-70)}
+.door-card__stat b{display:block;margin-bottom:.2rem;font-family:var(--display);font-size:clamp(1.9rem,3vw,2.5rem);font-weight:400;line-height:1;letter-spacing:-.03em;color:var(--dc);font-variation-settings:"SOFT" 30,"WONK" 1}
+.door-card__name{margin-top:auto;padding-top:var(--sp-3);font-family:var(--display);font-size:1.15rem;line-height:1.2;letter-spacing:-.01em}
+.door-card__role{margin-top:.25rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;line-height:1.6;color:var(--ink-45)}
+/* narrower screens walk along the doors */
+@media(max-width:900px){
+  .map__doors{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+    margin-right:calc(-1 * var(--gutter));padding:0 var(--gutter) var(--sp-2) 0;scroll-padding-inline:0 var(--gutter)}
+  .map__doors::-webkit-scrollbar{display:none}
+  .map__doors li{flex:0 0 min(44vw,13.5rem);scroll-snap-align:start}
 }
 
 /* ============================================================
@@ -483,22 +505,12 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .contact-sheet .fig__plate{--ratio:1/1;border-radius:2px}
 .contact-sheet + .mono{margin-top:.6rem}
 
-.season > .mono{display:block}
-.season-strip{display:flex;gap:var(--sp-2);margin-top:var(--sp-2);padding-bottom:var(--sp-2);overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;cursor:grab}
-.season-strip.is-dragging{cursor:grabbing}
-.season-strip::-webkit-scrollbar{height:2px}
-.season-strip::-webkit-scrollbar-thumb{background:var(--ink-20)}
-.season-card{flex:0 0 min(18rem,72vw);scroll-snap-align:start;border-top:2px solid var(--accent);padding-top:.75rem;transition:transform .4s var(--ease)}
-.season-card:hover{transform:translateY(-4px)}
-.season-card h4{font-size:1.12rem;margin:0 0 .3rem}
-.season-card p{font-size:.9rem;color:var(--ink-70);line-height:1.6}
-.season-card .mono{display:block;margin-bottom:.45rem}
+.role-line{margin-top:var(--sp-3)}
+.role-line + .deeper{margin-top:var(--sp-2)}
 
 @media(max-width:1024px){
   .rooms-lead{grid-column:1/8}
   .rooms-fig-a{grid-column:8/13}
-  /* the strip scrolls here, so let it run to the screen edge */
-  .season-strip{margin-right:calc(-1 * var(--gutter));padding-right:var(--gutter);scroll-padding-inline:0 var(--gutter)}
 }
 @media(max-width:900px){
   .rooms-outgrew{grid-column:1/10}
@@ -534,23 +546,14 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .meter__bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);width:0;transition:width 1s var(--ease)}
 .meter__note{font-size:.9rem;line-height:1.6;margin-top:.35rem}
 
-.q-note{grid-column:1/5}
-.q-list{grid-column:6/13;list-style:none;margin:var(--sp-1) 0 0;padding:0;counter-reset:q}
-.q-list li{counter-increment:q;border-top:1px solid var(--rule);padding:.95rem 0;display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:var(--sp-2);align-items:baseline;transition:padding-left .4s var(--ease)}
-.q-list li:hover{padding-left:.4rem}
-.q-list li::before{content:"Q" counter(q,decimal-leading-zero);font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.12em;color:var(--accent)}
-.q-list p{max-width:min(100%,46ch)}
 
 @media(max-width:900px){
   .tray-intro{grid-column:1/10}
   .tray{grid-column:1/-1;margin-top:var(--sp-2)}
-  .q-note{grid-column:1/9}
-  .q-list{grid-column:1/-1}
 }
 @media(max-width:699px){
-  .tray-intro,.q-note{grid-column:1/-1}
+  .tray-intro{grid-column:1/-1}
   .tray__read{grid-template-columns:minmax(0,1fr);gap:var(--sp-2)}
-  .q-list li{grid-template-columns:2rem minmax(0,1fr)}
 }
 
 /* ============================================================
@@ -598,17 +601,20 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .carried__card:hover{border-top-color:var(--accent)}
 .carried__card::before{content:"";display:block;width:26px;height:2px;background:var(--accent)}
 .carried__card h4{max-width:22ch}
+.carried__stat{font-family:var(--mono);font-size:.73rem;letter-spacing:.02em;line-height:1.5;color:var(--ink-70)}
+.carried__stat b{display:block;margin-bottom:.2rem;font-family:var(--display);font-size:clamp(2rem,3.4vw,2.6rem);font-weight:400;line-height:1;letter-spacing:-.03em;color:var(--accent);font-variation-settings:"SOFT" 30,"WONK" 1}
 .carried__ev{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.3rem}
 .carried__ev li{font-family:var(--mono);font-size:.73rem;letter-spacing:.02em;line-height:1.75;color:var(--ink-70);padding-left:.9rem;position:relative}
 .carried__ev li::before{content:"";position:absolute;left:0;top:.8em;width:5px;height:1px;background:var(--accent)}
 .carried__ev b{color:var(--accent);font-weight:500}
-.carried__tag{border-top:1px solid var(--rule);padding-top:.55rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;color:var(--ink-45)}
+.carried__tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-45)}
 .carried__toggle{margin-top:auto;align-self:flex-start;border:0;background:none;padding:.55rem 0;cursor:pointer;color:var(--accent);white-space:nowrap;
   font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.45rem}
 .carried__toggle:hover{text-decoration:underline;text-underline-offset:.4em}
 .carried__toggle span{transition:transform .4s var(--ease)}
 .carried__card.is-open .carried__toggle span{transform:rotate(90deg)}
 .carried__more{display:none;font-size:.95rem;line-height:1.65;color:var(--ink-70)}
+.carried__more p{margin-top:.7rem}
 .carried__card.is-open .carried__more{display:block;animation:fade .45s var(--ease-soft)}
 
 @media(min-width:901px) and (max-width:1024px){
@@ -623,10 +629,10 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 }
 /* portrait tablet: each note reads across, the question beside its evidence */
 @media(min-width:700px) and (max-width:900px){
-  .carried__card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);column-gap:var(--sp-4);row-gap:var(--sp-2);align-items:start}
+  .carried__card{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);column-gap:var(--sp-4);row-gap:var(--sp-1);align-items:start}
   .carried__card::before{grid-column:1/-1}
-  .carried__card h4{grid-column:1;grid-row:2/span 4}
-  .carried__card > :not(h4){grid-column:2}
+  .carried__stat{grid-column:1;grid-row:2/span 4}
+  .carried__card > :not(.carried__stat){grid-column:2}
 }
 @media(max-width:699px){
   .two-doors{gap:.5rem}
@@ -638,8 +644,18 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
    ============================================================ */
 .build-intro{grid-column:1/5}
 .build-demo{grid-column:6/13}
-.build-fig{grid-column:1/5}
-.build-text{grid-column:6/13}
+/* each build is a way in: picture, one line, two numbers, read more */
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4)}
+.project{display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.project .fig__plate{border-radius:4px;box-shadow:0 30px 55px -45px rgba(20,28,51,.8);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.project:hover .fig__plate,.project:focus-visible .fig__plate{transform:translateY(-4px);box-shadow:0 34px 55px -38px rgba(20,28,51,.75)}
+.project__body{display:flex;flex-direction:column;gap:.3rem;margin-top:var(--sp-2)}
+.project__name{font-family:var(--display);font-size:var(--t-title);line-height:1.1;letter-spacing:-.02em}
+.project__line{color:var(--ink-70)}
+.project__stats{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem var(--sp-3);margin-top:.35rem;font-family:var(--mono);font-size:.73rem;color:var(--ink-45)}
+.project__stats b{font-family:var(--display);font-size:1.4rem;font-weight:400;letter-spacing:-.02em;color:var(--accent);margin-right:.2rem}
+.project__more{margin-top:.55rem;font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.project:hover .project__more{text-decoration:underline;text-underline-offset:.4em}
 .demo{border:1px solid var(--rule);border-radius:5px;overflow:hidden;background:#fff;box-shadow:0 40px 70px -55px rgba(15,27,60,.8)}
 .demo + .mono{margin-top:.7rem}
 .demo__bar{display:flex;align-items:center;gap:.45rem;padding:.55rem .75rem;border-bottom:1px solid var(--rule);background:var(--cream)}
@@ -661,34 +677,17 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 @media(max-width:900px){
   .build-intro{grid-column:1/10}
   .build-demo{grid-column:1/-1;margin-top:var(--sp-2)}
-  .build-fig{grid-column:1/6}
-  .build-text{grid-column:6/13}
 }
 @media(max-width:699px){
-  .build-intro,.build-fig,.build-text{grid-column:1/-1}
+  .build-intro{grid-column:1/-1}
+  .projects{grid-template-columns:minmax(0,1fr)}
 }
 
-/* ============================================================
-   06 GATHER · a curated wall
-   One dominant, two supporting, one artifact. The columns are
-   proportioned so the square and the 4:5 below the dominant land
-   at the same height, and the portrait matches the left column.
-   ============================================================ */
-.gather-collage{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr) minmax(0,8fr);
-  grid-template-areas:"beats beats sol" "pitch stubs sol";gap:var(--sp-3);align-items:start;margin:var(--sp-4) 0 var(--sp-5)}
-.gather-collage .fig{transform-origin:center bottom;transition:opacity .7s var(--ease-soft),transform .7s var(--ease),translate .5s var(--ease),rotate .5s var(--ease)}
-.gather-collage .fig__plate{box-shadow:0 30px 60px -40px rgba(0,0,0,.9)}
-.gather-collage .fig:hover{translate:0 -4px;rotate:0deg}
-.gather-collage [data-area="beats"]{grid-area:beats;rotate:-.5deg}
-.gather-collage [data-area="sol"]{grid-area:sol;rotate:.8deg}
-.gather-collage [data-area="pitch"]{grid-area:pitch;rotate:-.8deg}
-.gather-collage [data-area="stubs"]{grid-area:stubs;rotate:1.8deg}
-/* archival index, in the caption where it belongs */
-.gather-collage figcaption{max-width:min(100%,30ch)}
-.gather-collage figcaption::before{content:attr(data-index) " ";color:var(--accent);letter-spacing:.14em}
-.gather-collage .fig--artifact figcaption{font-size:.66rem}
 
-.gather-copy{grid-column:1/6}
+/* ============================================================
+   06 GATHER · each event a ticket with its photograph
+   ============================================================ */
+.gather-copy{grid-column:1/7}
 .gather-figure{grid-column:8/13}
 
 /* the strip runs edge to edge; its first ticket starts on the column */
@@ -699,17 +698,20 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .drift::-webkit-scrollbar-thumb{background:var(--ink-20)}
 .drift__track{display:flex;gap:var(--sp-3);padding:0 var(--col-start);width:max-content}
 .drift__hint{padding:0 var(--col-start);margin-top:.8rem}
-.ticket{flex:0 0 min(17.5rem,70vw);border:1px solid var(--rule);padding:var(--sp-2);border-radius:5px;scroll-snap-align:start;
+.ticket{flex:0 0 min(17.5rem,72vw);display:flex;flex-direction:column;gap:.3rem;border:1px solid var(--rule);padding:.55rem .55rem var(--sp-2);border-radius:6px;scroll-snap-align:start;
   background:linear-gradient(180deg,rgba(247,239,226,.08),transparent);transition:transform .4s var(--ease),border-color .4s}
 .ticket:hover{transform:translateY(-4px);border-color:var(--orange)}
-.ticket h4{font-size:1.25rem;margin:.35rem 0 .3rem}
-.ticket p{font-size:.88rem;color:var(--ink-70)}
-.ticket .stub{display:flex;justify-content:space-between;gap:.5rem;border-top:1px dashed var(--ink-20);margin-top:.8rem;padding-top:.45rem}
+.ticket .fig__plate{border-radius:3px;margin-bottom:.55rem}
+.ticket > :not(.fig__plate){margin-inline:.45rem}
+.ticket h4{font-size:1.3rem;margin:0}
+.ticket .stub{display:flex;justify-content:space-between;gap:.5rem;border-top:1px dashed var(--ink-20);margin-top:.45rem;padding-top:.5rem;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--ink-70)}
+.ticket .stub b{color:var(--orange);font-weight:500}
+.ticket__link{align-self:flex-start;margin-top:auto;padding-top:.6rem;text-decoration:none;
+  font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+.ticket__link:hover{text-decoration:underline;text-underline-offset:.4em}
 
 @media(max-width:699px){
-  .gather-collage{grid-template-columns:minmax(0,5fr) minmax(0,4fr);grid-template-areas:"beats beats" "pitch stubs" "sol sol";gap:var(--sp-3) var(--sp-2)}
-  .gather-collage .fig{rotate:0deg}
-  .gather-collage [data-area="sol"]{width:min(100%,24rem)}
   .gather-copy,.gather-figure{grid-column:1/-1}
 }
 

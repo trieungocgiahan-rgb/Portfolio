@@ -1,14 +1,14 @@
 # Before this goes live
 
-## 1. Photographs (51 slots, 49 still empty, all in the MEDIA object at the top of app.js)
+## 1. Photographs (52 slots, 50 still empty, all in the MEDIA object at the top of app.js)
 Filled: hero-door, rooms-hall
 
 Main scroll
 - rooms-hands   two hands sharing one box of crayons, close crop
 - sheet-1…7     contact sheet, seasons 1 to 3, square crops
 - cj-ui         The Colorful Journey archive view
-- gather-1…4    Sol Sound crowd, Beats of Hope band, Colors of the Pitch,
-                ticket stubs and set list
+- gather-1…5    event cards: Sol Sound crowd, Beats of Hope band,
+                Colors of the Pitch, Cerberus League match, Tết ơi! stage
 
 Exhibition
 - art-1 Open door, watercolour
@@ -30,6 +30,7 @@ Faces of shelter children need permission from the mái ấm before going
 public. Blur or crop if in doubt.
 
 ## 2. Links to replace
+- event pages, in EVENT_LINKS at the top of app.js (five events)
 - hello@example.com, search for data-replace="email"
 - https://example.com/virtual-gallery, search for data-replace="gallery-url"
 - CV, currently points at the internal CV room, swap for a PDF if preferred

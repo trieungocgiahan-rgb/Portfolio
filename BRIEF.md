@@ -85,6 +85,14 @@ details, short reflections. No polished personal-brand language. Do not
 explain every metaphor. Demonstrate character through what was noticed and
 made, never by naming traits.
 
+## The main page stays lean
+Each chapter on the main scroll is one short line of text, one visual (a
+photograph, a number, an interaction) and one way in ("Read more", an event
+link). Long paragraphs, lists and Vietnamese session names live in the deep
+spaces. Right after Hello, a map of five arched doors shows the whole story
+at a glance: one door per chapter, each with its project, role and one
+number. On a phone the first thing seen is "Hi, I'm Gia Hân."
+
 ## Three depths
 30 seconds, the visitor feels the character and intellectual energy.
 2 to 4 minutes, they understand how community work, research, design and
