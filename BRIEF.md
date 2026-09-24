@@ -42,8 +42,15 @@ One arc: notice, study, build, gather, then what connects them.
 06 Pattern, different rooms and the same question, the quietest section
 07 Open, what comes next
 
-Deep spaces behind Doors: Nét Mơ, Contextuary, The Colorful Journey,
-the research, Gather, Exhibition, About, CV.
+Doors has four destinations, and nothing else:
+- Work, which opens into three rooms: Nét Mơ / Community (with the
+  community events), Research & Internships (Two Doors, Brainlife,
+  TeenCare, EUNOIA), Tech Projects (Contextuary, The Colorful Journey)
+- Exhibition, kept separate and special
+- Awards, the verified honours only
+- About: short intro, interests, contact, CV (the CV room is reached here)
+Deep pages exist for the strongest work only; smaller work is a section
+inside one of these rooms, never a page of its own.
 
 ## Door motif
 Knock entrance, thresholds, reveals, rooms, openings. Felt, not explained.

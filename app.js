@@ -53,13 +53,16 @@ function paintMedia(scope=document){
   });
 }
 paintMedia();
-document.querySelectorAll("[data-event]").forEach(a=>{
-  const url=EVENT_LINKS[a.dataset.event];
-  if(!url) return;
-  a.href=url; a.target="_blank"; a.rel="noopener";
-  const row=a.closest("[data-event-row]");
-  if(row) row.hidden=false; else a.textContent="Event page ↗";
-});
+/* an event link appears only once its URL is filled in */
+function wireEvents(scope=document){
+  scope.querySelectorAll("[data-event]").forEach(a=>{
+    const url=EVENT_LINKS[a.dataset.event];
+    if(!url) return;
+    a.href=url; a.target="_blank"; a.rel="noopener";
+    const row=a.closest("[data-event-row]");
+    if(row) row.hidden=false;
+  });
+}
 
 /* chapter colour, used by nav, rail and the ambient layer */
 const CHAPTERS={
@@ -176,12 +179,12 @@ $$("[data-part],[data-mask],[data-uncover],[data-stagger],.mark,#chartbox").forE
   const open=v=>{
     doors.classList.toggle("is-open",v); doors.setAttribute("aria-hidden",String(!v));
     btn.setAttribute("aria-expanded",String(v)); btn.textContent=v?"Close":"Doors";
-    if(v) setTimeout(()=>$(".door-link",doors)?.focus(),340);
+    if(v) setTimeout(()=>$(".doors__list a",doors)?.focus(),340);
   };
   btn.addEventListener("click",()=>open(!doors.classList.contains("is-open")));
   $("#heroDoors")?.addEventListener("click",()=>open(true));
   $$("[data-close-doors]").forEach(e=>e.addEventListener("click",()=>open(false)));
-  $$(".door-link").forEach(a=>a.addEventListener("click",()=>open(false)));
+  $$(".doors__list a").forEach(a=>a.addEventListener("click",()=>open(false)));
   addEventListener("keydown",e=>{ if(e.key==="Escape"&&doors.classList.contains("is-open")) open(false); });
 })();
 
@@ -244,10 +247,9 @@ $("#footerTop")?.addEventListener("click",()=>window.scrollTo({top:0,behavior:RE
   }
   $$(".tray__switch button").forEach(b=>b.addEventListener("click",()=>set(b.dataset.mode)));
   set("free");
-  addEventListener("resize",()=>{
-    const active=$('.tray__switch button[aria-pressed="true"]');
-    if(active) set(active.dataset.mode);
-  });
+  /* the stage takes its height from the layout, so re-lay the crayons whenever it changes size */
+  const relayout=()=>{ const active=$('.tray__switch button[aria-pressed="true"]'); if(active) layout(active.dataset.mode); };
+  if(window.ResizeObserver) new ResizeObserver(relayout).observe(stage); else addEventListener("resize",relayout);
 })();
 
 /* ---------- contextuary demo ---------- */
@@ -402,8 +404,10 @@ window.MOTES=(function(){
 const fig=(o)=>`<figure class="fig${o.screen?" fig--screen":""}" data-uncover><div class="fig__plate" data-img="${o.k||''}" data-slot="${o.slot||''}" style="--ratio:${o.ratio||'4/5'}${o.pos?`;--pos:${o.pos}`:""}"><div class="fig__ghost">${o.ghost||'Replace with photograph'}</div></div>${o.cap?`<figcaption>${o.cap}</figcaption>`:""}</figure>`;
 
 const B={
-  kicker:t=>`<p class="room__kicker">${t}</p>`,
+  kicker:t=>typeof t==="string"?`<p class="room__kicker">${t}</p>`:`<p class="room__kicker" id="room-${t.id}">${t.t}</p>`,
   title:t=>`<h2 id="roomTitle">${t}</h2>`,
+  /* a second project inside the same room */
+  subtitle:t=>`<h2 class="room__sub">${t}</h2>`,
   lede:t=>`<p class="blk blk--lede">${t}</p>`,
   para:t=>`<p class="blk blk--para">${t}</p>`,
   quote:t=>`<p class="blk blk--quote">${t}</p>`,
@@ -412,15 +416,16 @@ const B={
   lead:o=>`<div class="blk blk--lead">${fig(o)}</div>`,
   strip:a=>`<div class="blk blk--strip" data-n="${a.length}">${a.map(fig).join("")}</div>`,
   figs:a=>`<div class="blk blk--figs" data-n="${a.length}">${a.map(fig).join("")}</div>`,
-  steps:a=>`<ol class="blk blk--steps">${a.map(s=>`<li><div><b>${s.b}</b><p>${s.p}</p></div></li>`).join("")}</ol>`,
+  steps:a=>`<ol class="blk blk--steps">${a.map(s=>`<li><div><b>${s.b}</b><p>${s.p}</p>${s.event?`<p class="aside-link" data-event-row hidden><a data-event="${s.event}" href="#">Event page ↗</a></p>`:""}</div></li>`).join("")}</ol>`,
   numbers:a=>`<div class="blk numbers">${a.map(n=>`<div><b>${n.b}</b><span>${n.s}</span></div>`).join("")}</div>`,
   pairs:a=>`<div class="blk blk--pairs" data-n="${a.length}">${a.map(p=>`<div><h4>${p.h}</h4><p>${p.p}</p></div>`).join("")}</div>`,
-  rows:a=>`<div class="blk">${a.map(r=>`<div class="cv-row"><p class="mono">${r.t}</p><div><h4>${r.h}</h4><p>${r.p}</p></div>`).join("")}</div>`,
+  rows:a=>`<div class="blk">${a.map(r=>`<div class="cv-row"><p class="mono">${r.t}</p><div><h4>${r.h}</h4><p>${r.p}</p></div></div>`).join("")}</div>`,
+  contact:a=>`<div class="blk">${a.map(c=>`<a class="contact-line" href="${c.href}"${c.replace?` data-replace="${c.replace}"`:""}><span>${c.label}</span><span>${c.value}</span></a>`).join("")}</div>`,
   links:a=>`<div class="room__more">${a.map(l=>`<a href="${l.href}">${l.label} →</a>`).join("")}</div>`
 };
 
 const ROOMS={
-"/work/net-mo":{accent:"var(--pink)",where:"Work · Nét Mơ",blocks:[
+"/work/community":{accent:"var(--coral)",where:"Work · Nét Mơ / Community",blocks:[
   ["kicker","Work · 2024 to now · Founder and Director"],
   ["title","Nét Mơ"],
   ["lead",{k:"nm-lead",slot:"Plate 01",ratio:"16/9",ghost:"Lead photograph · a session in progress, wide crop",cap:"<b>Season 2, Đồng Nai.</b> Fifteen minutes in."}],
@@ -464,12 +469,44 @@ const ROOMS={
     {h:"The fix",p:"Sessions now end on a shared object rather than individual results, and facilitators are told explicitly that an unfinished page is a fine outcome."},
     {h:"Still unsolved",p:"Handover between seasons. The activity journal app helps, but a volunteer's judgement in the room is still the part I cannot write down."}
   ]],
+  ["kicker",{t:"Community events · 2024 to 2026 · Organiser",id:"events"}],
+  ["subtitle","Rooms with the lights turned up"],
+  ["lede","Five rooms built for other people to fill. Same design questions as a workshop, only louder and with a budget."],
+  ["steps",[
+    {b:"Beats of Hope · charity concert, 2025",event:"beats-of-hope",p:"Ten high school bands, 310+ tickets distributed across HCMC schools. I ran stage flow, artist coordination, and negotiated venue sponsorship in person. Around 25M VND net went to Little Smiles for a year of workshop materials across three partner hospitals."},
+    {b:"Sol Sound · Nét Mơ OPEN",event:"sol-sound",p:"The community branch's first night, 400+ attendees. Proof that the audience for children's art can be people the children never meet."},
+    {b:"Cerberus Football League · 2024 to 2025",event:"cerberus-league",p:"Co-founded a multi-season amateur league: 15 teams, 200+ student-athletes, 600+ cumulative spectators. Scheduling, pitch procurement, brackets, budget, referees, safety protocol, and the account that made people show up."},
+    {b:"Colors of the Pitch · two editions",event:"colors-of-the-pitch",p:"Football as the excuse, fundraising as the outcome, mixed teams as the actual design decision."},
+    {b:"Tết ơi! · 2025 to 2026",event:"tet-oi",p:"A school-wide music event for 2,400+ students, built with professional artists and school clubs."}
+  ]],
+  ["kicker","What an event taught me that a workshop could not"],
+  ["pairs",[
+    {h:"The first two minutes decide everything",p:"If nobody is given something to do immediately, the room stays an audience for the rest of the night."},
+    {h:"Mixed teams beat balanced teams",p:"At Colors of the Pitch, sorting players across schools rather than by school changed who spoke to whom, and it kept changing after the final whistle."},
+    {h:"Money is a design constraint, not a footnote",p:"Sponsorship terms shaped the room: where people entered, what was on the walls, how long they stayed."}
+  ]],
+  ["numbers",[
+    {b:"400+",s:"at Sol Sound"},{b:"310+",s:"tickets, Beats of Hope"},
+    {b:"200+",s:"athletes in the league"},{b:"2,400+",s:"students at Tết ơi!"},
+    {b:"25M VND",s:"to Little Smiles"}
+  ]],
+  ["lead",{k:"gt-lead",slot:"Plate 01",ratio:"16/9",ghost:"Lead photograph · the room full, from the stage",cap:"<b>Beats of Hope.</b> The two minutes before the first band."}],
+  ["figs",[
+    {k:"gt-1",slot:"Plate 02",ratio:"3/4",ghost:"Sol Sound, crowd from the side",cap:"Sol Sound, from the side of the stage."},
+    {k:"gt-2",slot:"Plate 03",ratio:"3/4",ghost:"backstage, artist coordination",cap:"Backstage. Most of the design work happens here."},
+    {k:"gt-3",slot:"Plate 04",ratio:"3/4",ghost:"Colors of the Pitch, mixed teams",cap:"Mixed teams, deliberately."}
+  ]],
+  ["strip",[
+    {k:"gt-4",slot:"05",ratio:"4/3",ghost:"ticket stubs and set list"},
+    {k:"gt-5",slot:"06",ratio:"4/3",ghost:"league bracket sheet"},
+    {k:"gt-6",slot:"07",ratio:"4/3",ghost:"Tết ơi! stage, 2,400 students"}
+  ]],
   ["kicker","What I started wondering afterwards"],
   ["para","If the format changes engagement this reliably, the effect is not about art. It is about what the room permits. That question is what pushed me into reading psychology properly, and eventually into running a study instead of trusting my own field notes."],
-  ["links",[{href:"#/research/two-doors",label:"The study it led to"},{href:"#/exhibition",label:"Exhibition"},{href:"#/cv",label:"CV"}]]
+  ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/exhibition",label:"Exhibition"},{href:"#/awards",label:"Awards"}]]
 ]},
 
-"/work/contextuary":{accent:"var(--blue)",where:"Work · Contextuary",blocks:[
+"/work/tech":{accent:"var(--blue)",where:"Work · Tech Projects",blocks:[
   ["kicker","Work · Jan 2026 to now · Design and build"],
   ["title","Contextuary"],
   ["lede","A word. <b>Ephemeral.</b> You learned it on Tuesday. On Friday it appears in a sentence about a coalition and you do not recognise it."],
@@ -501,12 +538,8 @@ const ROOMS={
   ]],
   ["kicker","What building it taught me"],
   ["para","Every feature I cut made the app better used: the topic filter, spaced repetition, the separate Today page. What people wanted was not more system. It was permission to choose today's words themselves and see the sentence again. Stack: Lovable and Supabase, deployed on Vercel."],
-  ["links",[{href:"#/work/colorful-journey",label:"The Colorful Journey"},{href:"#/cv",label:"CV"}]]
-]},
-
-"/work/colorful-journey":{accent:"var(--blue)",where:"Work · The Colorful Journey",blocks:[
-  ["kicker","Work · Co-founder, UX and UI"],
-  ["title","The Colorful Journey"],
+  ["kicker",{t:"Work · Co-founder, UX and UI",id:"colorful-journey"}],
+  ["subtitle","The Colorful Journey"],
   ["lede","A group makes something together, then scatters. Six months later nobody can find it. The thing existed; the memory of it had nowhere to live."],
   ["para","The Colorful Journey is a project-memory archive: a place where a team, a class or a community can deposit the artefacts of something they built and come back to it as a whole rather than as scattered folders belonging to whoever happened to hold the camera."],
   ["pairs",[
@@ -519,10 +552,10 @@ const ROOMS={
     {k:"cj-1",slot:"UI 02",ratio:"4/3",screen:true,ghost:"contributor view",cap:"Every item keeps its contributor, so ownership stays visible while the collection becomes shared."},
     {k:"cj-2",slot:"UI 03",ratio:"4/3",screen:true,ghost:"timeline or moment view",cap:"A group can re-enter its own history without asking who had the camera."}
   ]],
-  ["links",[{href:"#/work/contextuary",label:"Contextuary"},{href:"#/work/net-mo",label:"Nét Mơ"}]]
+  ["links",[{href:"#/work/research",label:"Research & Internships"},{href:"#/work/community",label:"Nét Mơ / Community"}]]
 ]},
 
-"/research/two-doors":{accent:"var(--teal)",where:"Research · Two Doors",blocks:[
+"/work/research":{accent:"var(--violet)",where:"Work · Research & Internships",blocks:[
   ["kicker","Research · Nov 2025 to Feb 2026 · Lead author"],
   ["title","Two Doors Into the Same Room"],
   ["lede","Does expressive art-making or AI-guided reflective dialogue help a person express what they feel, and does the answer depend on who is walking in?"],
@@ -552,59 +585,23 @@ const ROOMS={
     {h:"Self-report",p:"Mood and expressed detail are reported by the person. Useful, and not the same as measured."},
     {h:"One model, one moment",p:"A single model version at a single point in time. The AI condition will not be the same room next year."}
   ]],
-  ["kicker","Questions I carried into other rooms"],
+  ["kicker","Next questions"],
+  ["para","Whether the crossover holds when the art condition is social rather than solitary. Whether the seven can be predicted in advance rather than counted afterwards. And whether an interface can be designed to hand structure to the people who need it and get out of the way of the people who do not."],
+  ["kicker",{t:"Internships · questions I carried into other rooms",id:"internships"}],
   ["pairs",[
     {h:"Brainlife · 10-month research internship",p:"What does attention look like when you can actually watch it? Trained in EEG and brain mapping, cleaned recorded data, ran surveys with student participants. Cleaning other people's data showed me how much of a finding is decided before analysis starts."},
     {h:"TeenCare · R&D intern · summers 2025 and 2026",p:"What do teenagers actually say when someone asks properly? 56 in-depth interviews synthesised into one persona, and the core product: a storytelling e-book where teens become a chef. Nobody described their feelings when asked directly; they did while talking about a character."},
     {h:"EUNOIA · Head of Academic Affairs",p:"Does a room of 600 behave like a room of 20? A team of 8 rewriting psychology research for students, a self-discovery festival reaching 600, and peer support for 200+ around exams. Scale does not dilute participation, structure does."}
   ]],
-  ["kicker","Next questions"],
-  ["para","Whether the crossover holds when the art condition is social rather than solitary. Whether the seven can be predicted in advance rather than counted afterwards. And whether an interface can be designed to hand structure to the people who need it and get out of the way of the people who do not."],
-  ["links",[{href:"#/work/net-mo",label:"Where the question came from"},{href:"#/cv",label:"CV"}]]
+  ["links",[{href:"#/work/community",label:"Where the question came from"},{href:"#/work/tech",label:"Tech Projects"},{href:"#/awards",label:"Awards"}]]
 ]},
 
-
-"/work/gather":{accent:"var(--orange)",where:"Work · Gathering people",blocks:[
-  ["kicker","Work · 2024 to 2026 · Organiser"],
-  ["title","Rooms with the lights turned up"],
-  ["lede","Five rooms built for other people to fill. Same design questions as a workshop, only louder and with a budget."],
-  ["steps",[
-    {b:"Beats of Hope · charity concert, 2025",p:"Ten high school bands, 310+ tickets distributed across HCMC schools. I ran stage flow, artist coordination, and negotiated venue sponsorship in person. Around 25M VND net went to Little Smiles for a year of workshop materials across three partner hospitals."},
-    {b:"Sol Sound · Nét Mơ OPEN",p:"The community branch's first night, 400+ attendees. Proof that the audience for children's art can be people the children never meet."},
-    {b:"Cerberus Football League · 2024 to 2025",p:"Co-founded a multi-season amateur league: 15 teams, 200+ student-athletes, 600+ cumulative spectators. Scheduling, pitch procurement, brackets, budget, referees, safety protocol, and the account that made people show up."},
-    {b:"Colors of the Pitch · two editions",p:"Football as the excuse, fundraising as the outcome, mixed teams as the actual design decision."},
-    {b:"Tết ơi! · 2025 to 2026",p:"A school-wide music event for 2,400+ students, built with professional artists and school clubs."}
-  ]],
-  ["kicker","What an event taught me that a workshop could not"],
-  ["pairs",[
-    {h:"The first two minutes decide everything",p:"If nobody is given something to do immediately, the room stays an audience for the rest of the night."},
-    {h:"Mixed teams beat balanced teams",p:"At Colors of the Pitch, sorting players across schools rather than by school changed who spoke to whom, and it kept changing after the final whistle."},
-    {h:"Money is a design constraint, not a footnote",p:"Sponsorship terms shaped the room: where people entered, what was on the walls, how long they stayed."}
-  ]],
-  ["numbers",[
-    {b:"400+",s:"at Sol Sound"},{b:"310+",s:"tickets, Beats of Hope"},
-    {b:"200+",s:"athletes in the league"},{b:"2,400+",s:"students at Tết ơi!"},
-    {b:"25M VND",s:"to Little Smiles"}
-  ]],
-  ["lead",{k:"gt-lead",slot:"Plate 01",ratio:"16/9",ghost:"Lead photograph · the room full, from the stage",cap:"<b>Beats of Hope.</b> The two minutes before the first band."}],
-  ["figs",[
-    {k:"gt-1",slot:"Plate 02",ratio:"3/4",ghost:"Sol Sound, crowd from the side",cap:"Sol Sound, from the side of the stage."},
-    {k:"gt-2",slot:"Plate 03",ratio:"3/4",ghost:"backstage, artist coordination",cap:"Backstage. Most of the design work happens here."},
-    {k:"gt-3",slot:"Plate 04",ratio:"3/4",ghost:"Colors of the Pitch, mixed teams",cap:"Mixed teams, deliberately."}
-  ]],
-  ["strip",[
-    {k:"gt-4",slot:"05",ratio:"4/3",ghost:"ticket stubs and set list"},
-    {k:"gt-5",slot:"06",ratio:"4/3",ghost:"league bracket sheet"},
-    {k:"gt-6",slot:"07",ratio:"4/3",ghost:"Tết ơi! stage, 2,400 students"}
-  ]],
-  ["links",[{href:"#/work/net-mo",label:"Nét Mơ"},{href:"#/exhibition",label:"Exhibition"},{href:"#/cv",label:"CV"}]]
-]},
 
 "/about":{accent:"var(--pink)",where:"About",blocks:[
   ["kicker","About"],
   ["title","Triệu Ngọc Gia Hân"],
   ["lede","Grade 12 at Trưng Vương High School, Ho Chi Minh City. I work in Vietnamese and English, and I have been drawing since I was five, which is probably where the noticing started."],
-  ["para","Drawing is slow looking. You cannot draw a room without registering where the light falls and who is sitting where. Somewhere between an observational sketch and a shelter workshop, I stopped being interested in the drawing and started being interested in the room."],
+  ["kicker","Interests"],
   ["pairs",[
     {h:"Making",p:"Digital painting, observational drawing, photography. A pink, orange and teal palette I keep returning to. Mostly self-taught."},
     {h:"Reading",p:"Psychology and cognitive science. Coursera Foundations of Neuroscience and Introduction to Psychology, applied directly to session design."},
@@ -616,8 +613,13 @@ const ROOMS={
     {k:"ab-2",slot:"02",ratio:"3/4",ghost:"working at the desk"},
     {k:"ab-3",slot:"03",ratio:"3/4",ghost:"in a room, mid-session"}
   ]],
-  ["note","Also: Head of Academic Affairs of a school psychology club, R&D at a youth mental-fitness startup, an EEG and brain-mapping internship, eleven consecutive years as class president, and a national silver in a water rocket competition, which is a longer story."],
-  ["links",[{href:"#/cv",label:"The dated version"},{href:"#/exhibition",label:"Exhibition"}]]
+  ["note","Also: eleven consecutive years as class president."],
+  ["kicker","Contact and CV"],
+  ["contact",[
+    {href:"mailto:hello@example.com",replace:"email",label:"Email",value:"hello@example.com"},
+    {href:"#/cv",label:"CV",value:"Facts, dated"}
+  ]],
+  ["links",[{href:"#/awards",label:"Awards"},{href:"#/exhibition",label:"Exhibition"}]]
 ]},
 
 "/cv":{accent:"var(--blue)",where:"CV",blocks:[
@@ -650,8 +652,30 @@ const ROOMS={
     {t:"2025",h:"Trưng Vương High School",p:"Most Well-Rounded Student, Grade 11."},
     {t:"2023",h:"Vietnam Water Rocket Competition",p:"National silver, team lead, top scorer Southern Region."}
   ]],
-  ["links",[{href:"#/about",label:"About"},{href:"#/work/net-mo",label:"Nét Mơ"},{href:"#/research/two-doors",label:"Research"}]]
+  ["links",[{href:"#/about",label:"About"},{href:"#/awards",label:"Awards"},{href:"#/work/research",label:"Research & Internships"}]]
+]},
+
+"/awards":{accent:"var(--violet)",where:"Awards",blocks:[
+  ["kicker","Awards · selected honours"],
+  ["title","Awards"],
+  ["rows",[
+    {t:"2026",h:"International Psychology Olympiad",p:"Highest Distinction, Regional Top 1. Annual Final: Advanced Thinking 165/200, Integrated Objective 180/200."},
+    {t:"2025",h:"RAISE AI national competition",p:"Silver, 2nd of 450+. Essay: To Think or to Prompt: The Future of Human Intellect in Education."},
+    {t:"2025",h:"HCMC Youth & Children Creativity Contest",p:"Second Prize, emotion card deck."},
+    {t:"2025",h:"Trưng Vương High School",p:"Most Well-Rounded Student, Grade 11."},
+    {t:"2023",h:"Vietnam Water Rocket Competition",p:"National silver, team lead, top scorer Southern Region."}
+  ]],
+  ["links",[{href:"#/about",label:"About"},{href:"#/cv",label:"CV"}]]
 ]}
+};
+
+/* old links keep working: each resolves to its new room, and an anchor inside it */
+const ROOM_ALIASES={
+  "/work/net-mo":"/work/community",
+  "/work/gather":"/work/community/events",
+  "/research/two-doors":"/work/research",
+  "/work/contextuary":"/work/tech",
+  "/work/colorful-journey":"/work/tech/colorful-journey"
 };
 
 /* ---------- exhibition · a small hang, then the full gallery ---------- */
@@ -687,7 +711,7 @@ function exhibitionHTML(){
       <a class="btn btn--ink" href="https://example.com/virtual-gallery" data-replace="gallery-url" target="_blank" rel="noopener">Enter the full exhibition →</a>
     </div>
   </div>
-  ${B.links([{href:"#/about",label:"About the practice"},{href:"#/work/net-mo",label:"Nét Mơ"},{href:"#/cv",label:"CV"}])}`;
+  ${B.links([{href:"#/about",label:"About the practice"},{href:"#/work/community",label:"Nét Mơ / Community"},{href:"#/awards",label:"Awards"}])}`;
 }
 
 /* ---------- router ---------- */
@@ -703,10 +727,19 @@ function exhibitionHTML(){
       bindArchive();
     }
     else{
+      route=ROOM_ALIASES[route]||route;
+      let anchor=null;
+      if(!ROOMS[route]){ anchor=route.slice(route.lastIndexOf("/")+1); route=route.slice(0,route.lastIndexOf("/")); }
       const r=ROOMS[route]; if(!r){ try{ location.hash=""; }catch(err){} return; }
       room.style.setProperty("--accent",r.accent);
       where.textContent=r.where||"Deeper";
       inner.innerHTML=r.blocks.map(([type,arg])=>B[type](arg)).join("");
+      paintMedia(inner); wireEvents(inner);
+      $$("[data-uncover],[data-part],[data-mask]",inner).forEach(el=>io.observe(el));
+      room.scrollTop=0;
+      const target=anchor&&document.getElementById("room-"+anchor);
+      if(target) requestAnimationFrame(()=>{ room.scrollTop=target.offsetTop-$(".room__top").offsetHeight-16; });
+      return;
     }
     paintMedia(inner);
     $$("[data-uncover],[data-part],[data-mask]",inner).forEach(el=>io.observe(el));

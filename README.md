@@ -38,17 +38,21 @@ td-lead + td-1…3, gt-lead + gt-1…6, ab-1…3.
 
 ## Edit the deep-space pages
 
-Everything behind a "Story behind this" link is data, not markup.
-In `app.js`, the `ROOMS` object holds one entry per page. Each page is a
-list of blocks: kicker, title, lede, para, quote, steps, numbers, pairs,
-lead, figs, strip, links. Add or reorder blocks and the page rebuilds.
+Everything behind a "Read the … story" link or the Doors menu is data, not
+markup. In `app.js`, the `ROOMS` object holds one entry per room:
+Nét Mơ / Community, Research & Internships, Tech Projects, About, CV,
+Awards (the Exhibition is built from `ARCHIVE`). Each room is a list of
+blocks: kicker, title, subtitle, lede, para, quote, steps, numbers, pairs,
+rows, contact, lead, figs, strip, links. Add or reorder blocks and the room
+rebuilds. A kicker written as `{t:"…", id:"events"}` can be linked to
+directly as `#/work/community/events`.
 
 ## Link an event
 
-The Gather chapter features Beats of Hope and lists four more events. Open
-`app.js`, find `EVENT_LINKS` near the top and paste each URL:
-`"beats-of-hope": "https://…"`. A filled link opens in a new tab; an empty
-one points to the Gather page (Beats of Hope's link only appears once set).
+The five events are listed in the Nét Mơ / Community room. Open `app.js`,
+find `EVENT_LINKS` near the top and paste each URL:
+`"beats-of-hope": "https://…"`. An "Event page ↗" link appears under that
+event only once its URL is filled in.
 
 ## Still to replace
 
