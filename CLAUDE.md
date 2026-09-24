@@ -17,11 +17,14 @@ sharing a room, then tests it through community work, research and building.
 - No horizontal scrolling at any width. Tablet (768–1024px) is a first-class
   composition, not a squeezed desktop.
 
-## Design system (defined at the end of styles.css)
+## Design system (tokens at the top of styles.css, one :root)
 Type roles: --t-display (hero only), --t-index, --t-title, --t-idea (serif
-questions), --t-lead, --t-body, --t-meta, --t-caption.
+questions), --t-lead, --t-body, --t-ui, --t-meta, --t-caption.
 Space scale: --sp-1 … --sp-6.
-Layout: --content 1200px, --gutter clamp(24px,5vw,72px).
+Layout: --content 1200px, --gutter clamp(24px,5vw,72px), --col-start (where
+the content column starts inside any full-width box).
+Breakpoints: phone ≤699, portrait tablet 700–900 (single-column compositions
+≤900), landscape tablet 901–1024, laptop 1025–1440, small phone ≤560.
 
 Visual grammar, kept strict:
 - dot = location or state
@@ -35,8 +38,18 @@ Chapter accents: 01 pink, 02 coral, 03 teal, 04 violet, 05 blue,
 the accent appears only in numbers, rules, dots, nav state and small labels.
 
 ## Conventions
-- New styling goes in the last block of styles.css, which is authoritative.
+- styles.css has one block per component, in page order, with that
+  component's breakpoint changes written beside it. Change the component's
+  own block. Never append an override layer ("FIXES") at the end, never add
+  a second definition of a component, avoid !important.
+- Layout lives in CSS classes, not inline styles. Inline style is only for
+  data: --ratio, --len, --dl, --dc.
 - Prefer grid and flex. Absolute positioning only for decorative layers.
-- Image roles: hero, evidence (numbered plate), artifact (small, rotated),
-  gallery (framed artwork).
+- Fix overflow at the element that is too wide. body{overflow-x:clip} is a
+  last guard, not a fix. Words never break mid-word; only URLs may.
+- Image roles: hero, evidence (numbered plate), artifact (object seen whole),
+  screen (interface seen whole), contact sheet (square crops), gallery
+  (framed artwork, seen whole), deep-space lead and strip. Photographs are
+  <img> elements inside a frame: the frame owns the ratio (--ratio), the
+  image is never stretched (--fit cover or contain, --pos focal point).
 - Copy is specific and plain. No personal-brand language.

@@ -2,20 +2,25 @@ addEventListener("error",e=>{ console.warn("[site] caught:",e.message||e); });
 
 /* ============================================================
    MEDIA · drop real image URLs here, keys match data-img
+   A value is either a path, or an object when the photograph needs more:
+     "nm-lead": {src:"img/nm-lead.jpg", alt:"what is in the picture",
+                 pos:"50% 30%",   // focal point of the crop (x y)
+                 fit:"contain"}   // show the whole image instead of cropping
+   The frame keeps its ratio either way; the image is never stretched.
    ============================================================ */
 const MEDIA = {
-  "hero-door":"img/hero-door.jpg",
-  "rooms-hall":"img/rooms-hall.jpg",
+  "hero-door":{src:"img/hero-door.jpg",alt:"A workshop on a shelter floor: a girl leans in towards a boy holding up a crayon drawing while two younger children lie on the floor beside them.",pos:"50% 42%"},
+  "rooms-hall":{src:"img/rooms-hall.jpg",alt:"Two people hug and smile in a shelter hall. Behind them, children work at small plastic tables beside a standing fan."},
   "rooms-hands":"",
   "sheet-1":"", "sheet-2":"", "sheet-3":"", "sheet-4":"", "sheet-5":"", "sheet-6":"", "sheet-7":"",
   "cj-ui":"", "gather-1":"", "gather-2":"", "gather-3":"", "gather-4":"",
   "art-1":"", "art-2":"", "art-3":"", "art-4":"", "art-5":"", "art-6":"",
   /* deep-space photography: lead images and evidence plates */
   "nm-lead":"", "nm-1":"", "nm-2":"", "nm-3":"", "nm-4":"", "nm-5":"",
-  "cx-lead":"", "cx-1":"", "cx-2":"", "cx-3":"", "cx-4":"",
+  "cx-lead":"", "cx-1":"", "cx-2":"", "cx-3":"", "cx-4":"", "cx-5":"", "cx-6":"",
   "cj-lead":"", "cj-1":"", "cj-2":"",
   "td-lead":"", "td-1":"", "td-2":"", "td-3":"",
-  "gt-lead":"", "gt-1":"", "gt-2":"", "gt-3":"", "gt-4":"",
+  "gt-lead":"", "gt-1":"", "gt-2":"", "gt-3":"", "gt-4":"", "gt-5":"", "gt-6":"",
   "ab-1":"", "ab-2":"", "ab-3":""
 };
 const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -23,10 +28,17 @@ const COARSE = window.matchMedia("(hover:none)").matches;
 const $ = (s,c=document)=>c.querySelector(s);
 const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
 
+const media=key=>{ const m=MEDIA[key]; return !m ? null : typeof m==="string" ? {src:m} : m; };
 function paintMedia(scope=document){
   $$("[data-img]",scope).forEach(el=>{
-    const src = MEDIA[el.dataset.img];
-    if(src){ el.style.backgroundImage=`url("${src}")`; el.classList.add("has-img"); }
+    const m=media(el.dataset.img);
+    if(!m || !m.src || el.classList.contains("has-img")) return;
+    const img=document.createElement("img");
+    img.className="fig__img"; img.src=m.src; img.alt=m.alt||""; img.decoding="async";
+    if(el.closest("#hero")) img.fetchPriority="high"; else img.loading="lazy";
+    if(m.pos) el.style.setProperty("--pos",m.pos);
+    if(m.fit) el.style.setProperty("--fit",m.fit);
+    el.prepend(img); el.classList.add("has-img");
   });
 }
 paintMedia();
@@ -183,9 +195,9 @@ $("#footerTop")?.addEventListener("click",()=>window.scrollTo({top:0,behavior:RE
   hero.addEventListener("pointermove",e=>{
     const r=hero.getBoundingClientRect();
     const x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-    door.style.transform=`rotate(-1.2deg) translate3d(${x*14}px,${y*10}px,0) rotateY(${x*-5}deg)`;
+    door.style.transform=`translate3d(${x*14}px,${y*10}px,0) rotateY(${x*-5}deg)`;
   });
-  hero.addEventListener("pointerleave",()=>{ door.style.transform="rotate(-1.2deg)"; });
+  hero.addEventListener("pointerleave",()=>{ door.style.transform=""; });
 })();
 
 /* ---------- the tray ---------- */
@@ -273,10 +285,12 @@ $$(".carried__toggle").forEach(btn=>{
 /* ---------- drag-to-scroll for horizontal artefacts ---------- */
 function dragScroll(el){
   if(!el) return;
-  let down=false,x=0,left=0;
-  el.addEventListener("pointerdown",e=>{ if(e.pointerType==="mouse"){ down=true;x=e.clientX;left=el.scrollLeft;el.classList.add("is-dragging"); } });
+  let down=false,x=0,left=0,moved=false;
+  el.addEventListener("pointerdown",e=>{ if(e.pointerType==="mouse"){ down=true;moved=false;x=e.clientX;left=el.scrollLeft;el.classList.add("is-dragging"); } });
   addEventListener("pointerup",()=>{ down=false; el.classList.remove("is-dragging"); });
-  addEventListener("pointermove",e=>{ if(down){ el.scrollLeft=left-(e.clientX-x); } });
+  addEventListener("pointermove",e=>{ if(down){ if(Math.abs(e.clientX-x)>5) moved=true; el.scrollLeft=left-(e.clientX-x); } });
+  el.addEventListener("click",e=>{ if(moved){ e.preventDefault(); e.stopPropagation(); moved=false; } },true);
+  el.addEventListener("dragstart",e=>e.preventDefault());
   const nudge=new IntersectionObserver(es=>{
     es.forEach(e=>{ if(e.isIntersecting && !REDUCED){
       el.scrollTo({left:40,behavior:"smooth"});
@@ -398,7 +412,7 @@ window.MOTES=(function(){
    Content lives here as data. Each room chooses its own blocks,
    so no two project pages share a template.
    ============================================================ */
-const fig=(o)=>`<figure class="fig" data-uncover><div class="fig__plate" data-img="${o.k||''}" data-slot="${o.slot||''}" style="--ratio:${o.ratio||'4/5'}"><div class="fig__ghost">${o.ghost||'Replace with photograph'}</div></div>${o.cap?`<figcaption>${o.cap}</figcaption>`:""}</figure>`;
+const fig=(o)=>`<figure class="fig${o.screen?" fig--screen":""}" data-uncover><div class="fig__plate" data-img="${o.k||''}" data-slot="${o.slot||''}" style="--ratio:${o.ratio||'4/5'}${o.pos?`;--pos:${o.pos}`:""}"><div class="fig__ghost">${o.ghost||'Replace with photograph'}</div></div>${o.cap?`<figcaption>${o.cap}</figcaption>`:""}</figure>`;
 
 const B={
   kicker:t=>`<p class="room__kicker">${t}</p>`,
@@ -409,11 +423,11 @@ const B={
   note:t=>`<p class="blk note">${t}</p>`,
   fig:o=>`<div class="blk">${fig(o)}</div>`,
   lead:o=>`<div class="blk blk--lead">${fig(o)}</div>`,
-  strip:a=>`<div class="blk blk--strip">${a.map(fig).join("")}</div>`,
-  figs:a=>`<div class="blk blk--figs">${a.map(fig).join("")}</div>`,
+  strip:a=>`<div class="blk blk--strip" data-n="${a.length}">${a.map(fig).join("")}</div>`,
+  figs:a=>`<div class="blk blk--figs" data-n="${a.length}">${a.map(fig).join("")}</div>`,
   steps:a=>`<ol class="blk blk--steps">${a.map(s=>`<li><div><b>${s.b}</b><p>${s.p}</p></div></li>`).join("")}</ol>`,
   numbers:a=>`<div class="blk numbers">${a.map(n=>`<div><b>${n.b}</b><span>${n.s}</span></div>`).join("")}</div>`,
-  pairs:a=>`<div class="blk blk--pairs">${a.map(p=>`<div><h4>${p.h}</h4><p>${p.p}</p></div>`).join("")}</div>`,
+  pairs:a=>`<div class="blk blk--pairs" data-n="${a.length}">${a.map(p=>`<div><h4>${p.h}</h4><p>${p.p}</p></div>`).join("")}</div>`,
   rows:a=>`<div class="blk">${a.map(r=>`<div class="cv-row"><p class="mono">${r.t}</p><div><h4>${r.h}</h4><p>${r.p}</p></div>`).join("")}</div>`,
   links:a=>`<div class="room__more">${a.map(l=>`<a href="${l.href}">${l.label} →</a>`).join("")}</div>`
 };
@@ -474,16 +488,16 @@ const ROOMS={
     {b:"Practice two ways",p:"A standard quiz over words you choose, plus an AI mode that writes fresh sentences, and a flashcard mode with audio."}
   ]],
   ["numbers",[{b:"400+",s:"student users"},{b:"~70%",s:"returning weekly in peak SAT season"},{b:"1,000",s:"word list, seeded by hand"}]],
-  ["lead",{k:"cx-lead",slot:"UI 00",ratio:"16/9",ghost:"Lead screenshot · the app open on a passage",cap:"<b>Contextuary.</b> The sentence never leaves the screen."}],
+  ["lead",{k:"cx-lead",slot:"UI 00",ratio:"16/9",screen:true,ghost:"Lead screenshot · the app open on a passage",cap:"<b>Contextuary.</b> The sentence never leaves the screen."}],
   ["figs",[
-    {k:"cx-1",slot:"UI 01",ratio:"3/4",ghost:"My Words with the Daily Picks bar",cap:"Daily Picks sits on top of My Words as a bar, not a separate page, because a separate page is a chore."},
-    {k:"cx-2",slot:"UI 02",ratio:"3/4",ghost:"context reading view",cap:"The reading view: meaning in place, Vietnamese gloss, common misread."},
-    {k:"cx-3",slot:"UI 03",ratio:"3/4",ghost:"quiz or flashcard mode",cap:"Practice, scoped to the words you chose."}
+    {k:"cx-1",slot:"UI 01",ratio:"3/4",screen:true,ghost:"My Words with the Daily Picks bar",cap:"Daily Picks sits on top of My Words as a bar, not a separate page, because a separate page is a chore."},
+    {k:"cx-2",slot:"UI 02",ratio:"3/4",screen:true,ghost:"context reading view",cap:"The reading view: meaning in place, Vietnamese gloss, common misread."},
+    {k:"cx-3",slot:"UI 03",ratio:"3/4",screen:true,ghost:"quiz or flashcard mode",cap:"Practice, scoped to the words you chose."}
   ]],
   ["strip",[
-    {k:"cx-4",slot:"09",ratio:"4/3",ghost:"stats and streaks"},
-    {slot:"10",ratio:"4/3",ghost:"word library, saved sentences"},
-    {slot:"11",ratio:"4/3",ghost:"a student using it, phone in hand"}
+    {k:"cx-4",slot:"09",ratio:"4/3",screen:true,ghost:"stats and streaks"},
+    {k:"cx-5",slot:"10",ratio:"4/3",screen:true,ghost:"word library, saved sentences"},
+    {k:"cx-6",slot:"11",ratio:"4/3",ghost:"a student using it, phone in hand"}
   ]],
   ["kicker","Cut, and better for it"],
   ["pairs",[
@@ -506,10 +520,10 @@ const ROOMS={
     {h:"Decision",p:"Entries are grouped by moment, not by file type, and every item keeps its contributor. Ownership stays visible while the collection becomes shared."},
     {h:"Where it connects",p:"The same instinct as the Nét Mơ activity journal: a group cannot inherit its own history unless somebody designs the handover."}
   ]],
-  ["lead",{k:"cj-lead",slot:"UI 01",ratio:"16/9",ghost:"Lead screenshot · the archive, opened on one project",cap:"<b>Archive view.</b> Entries grouped by moment, not by file type."}],
+  ["lead",{k:"cj-lead",slot:"UI 01",ratio:"16/9",screen:true,ghost:"Lead screenshot · the archive, opened on one project",cap:"<b>Archive view.</b> Entries grouped by moment, not by file type."}],
   ["figs",[
-    {k:"cj-1",slot:"UI 02",ratio:"4/3",ghost:"contributor view",cap:"Every item keeps its contributor, so ownership stays visible while the collection becomes shared."},
-    {k:"cj-2",slot:"UI 03",ratio:"4/3",ghost:"timeline or moment view",cap:"A group can re-enter its own history without asking who had the camera."}
+    {k:"cj-1",slot:"UI 02",ratio:"4/3",screen:true,ghost:"contributor view",cap:"Every item keeps its contributor, so ownership stays visible while the collection becomes shared."},
+    {k:"cj-2",slot:"UI 03",ratio:"4/3",screen:true,ghost:"timeline or moment view",cap:"A group can re-enter its own history without asking who had the camera."}
   ]],
   ["links",[{href:"#/work/contextuary",label:"Contextuary"},{href:"#/work/net-mo",label:"Nét Mơ"}]]
 ]},
@@ -531,8 +545,8 @@ const ROOMS={
   ["lead",{k:"td-lead",slot:"Plate 01",ratio:"16/9",ghost:"Lead photograph · a session in progress, materials on the table",cap:"<b>Condition A.</b> Forty-five minutes, materials, no requirement to explain."}],
   ["strip",[
     {k:"td-1",slot:"02",ratio:"3/4",ghost:"handwritten coding notes"},
-    {k:"td-2",slot:"03",ratio:"3/4",ghost:"survey instrument screenshot"},
-    {k:"td-3",slot:"04",ratio:"3/4",ghost:"SPSS output"}
+    {k:"td-2",slot:"03",ratio:"3/4",screen:true,ghost:"survey instrument screenshot"},
+    {k:"td-3",slot:"04",ratio:"3/4",screen:true,ghost:"SPSS output"}
   ]],
   ["kicker","Findings"],
   ["para","The headline is not that one door is better. It is that the doors swap places. Participants with little prior art experience gained more from dialogue, where the structure is provided for them. Participants already fluent with materials gained more from making, where structure would only get in the way. Averaging the two conditions would have hidden the entire result."],
@@ -580,8 +594,8 @@ const ROOMS={
   ]],
   ["strip",[
     {k:"gt-4",slot:"05",ratio:"4/3",ghost:"ticket stubs and set list"},
-    {k:"gather-3",slot:"06",ratio:"4/3",ghost:"league bracket sheet"},
-    {k:"gather-4",slot:"07",ratio:"4/3",ghost:"Tết ơi! stage, 2,400 students"}
+    {k:"gt-5",slot:"06",ratio:"4/3",ghost:"league bracket sheet"},
+    {k:"gt-6",slot:"07",ratio:"4/3",ghost:"Tết ơi! stage, 2,400 students"}
   ]],
   ["links",[{href:"#/work/net-mo",label:"Nét Mơ"},{href:"#/exhibition",label:"Exhibition"},{href:"#/cv",label:"CV"}]]
 ]},
@@ -657,7 +671,7 @@ function exhibitionHTML(){
     <span class="gallery__spot" id="gallerySpot" aria-hidden="true"></span>
     <span class="gallery__floor" aria-hidden="true"></span>
     <div class="gallery__wall">${ARCHIVE.map((a,i)=>`
-      <button class="work" data-obj="${i}" type="button" style="grid-column:span ${a.span};margin-top:${a.hang}px"
+      <button class="work" data-obj="${i}" type="button" style="--span:${a.span};--hang:${a.hang}px"
         aria-label="${a.t}, ${a.p}, ${a.d}. Open to inspect.">
         <span class="work__frame">
           <span class="work__plate" data-img="art-${i+1}" style="--ratio:${a.ratio}"><span class="fig__ghost">${a.t}</span></span>
@@ -669,7 +683,7 @@ function exhibitionHTML(){
         </span>
       </button>`).join("")}</div>
     <div class="gallery__cta">
-      <p class="mono" style="text-transform:none;letter-spacing:.04em">Six of them. The rest of the collection, including the Nét Mơ children's work, hangs in the virtual gallery.</p>
+      <p class="mono mono--sentence">Six of them. The rest of the collection, including the Nét Mơ children's work, hangs in the virtual gallery.</p>
       <a class="btn btn--ink" href="https://example.com/virtual-gallery" data-replace="gallery-url" target="_blank" rel="noopener">Enter the full exhibition →</a>
     </div>
   </div>
@@ -722,7 +736,8 @@ function exhibitionHTML(){
     try{ history.pushState("",document.title,location.pathname+location.search); }catch(err){}
     close();
   });
-  addEventListener("keydown",e=>{ if(e.key==="Escape" && room.classList.contains("is-open")) closeBtn.click(); });
+  /* Escape closes the top layer only: an open artwork first, then the room */
+  addEventListener("keydown",e=>{ if(e.key==="Escape" && room.classList.contains("is-open") && !$("#object").classList.contains("is-open")) closeBtn.click(); });
   route();
 })();
 
@@ -743,7 +758,9 @@ document.addEventListener("click",e=>{
     return;
   }
   let win=null;
-  try{ win=window.open(location.href.split("#")[0]+"#"+route,"_blank","noopener"); }catch(err){}
+  /* no "noopener" feature here: with it window.open always returns null, which
+     read as "blocked" and opened the room in place as well. opener is cut below. */
+  try{ win=window.open(location.href.split("#")[0]+"#"+route,"_blank"); }catch(err){}
   if(win){ try{ win.opener=null; }catch(err){} return; }
   if(window.openRoom){
     window.openRoom(route);
@@ -759,9 +776,8 @@ function bindArchive(){
     idx=(i+ARCHIVE.length)%ARCHIVE.length;
     const a=ARCHIVE[idx];
     plate.style.setProperty("--ratio",a.ratio);
-    const src=MEDIA["art-"+(idx+1)];
-    plate.style.backgroundImage=src?`url("${src}")`:"none";
-    plate.innerHTML=src?"":`<span class="mono">${a.t}</span>`;
+    const m=media("art-"+(idx+1));
+    plate.innerHTML=m&&m.src?`<img src="${m.src}" alt="${(m.alt||`${a.t}, ${a.p}`).replace(/"/g,"&quot;")}">`:`<span class="mono">${a.t}</span>`;
     $("#objTitle").textContent=a.t;
     $("#objNote").textContent=a.n;
     $("#objMeta").textContent=`${a.p} · ${a.d} · ${String(idx+1).padStart(2,"0")} of ${ARCHIVE.length}`;
@@ -784,6 +800,7 @@ function bindArchive(){
       spot.style.top=(e.clientY-r.top)+"px";
     });
   }
+  dragScroll($(".gallery__wall"));
   $("#objPrev").onclick=()=>show(idx-1);
   $("#objNext").onclick=()=>show(idx+1);
   $("#objClose").onclick=close;

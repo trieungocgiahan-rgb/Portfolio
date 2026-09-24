@@ -9,6 +9,7 @@ Do not restructure anything yet. After the summary, wait for my task.
 Useful facts about how I work:
 - I am on an iPad, so show me results as small diffs, not whole files.
 - Never rewrite index.html, styles.css or app.js wholesale.
-- New styling goes in the last block of styles.css.
+- Edit the component's own block in styles.css. Never append an override
+  layer at the end of the file.
 - Run `python3 -m http.server 5173` if you need to check something.
 - Commit after every task that works, with a short message.

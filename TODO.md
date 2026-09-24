@@ -1,6 +1,6 @@
 # Before this goes live
 
-## 1. Photographs (47 slots, 45 still empty, all in the MEDIA object at the top of app.js)
+## 1. Photographs (51 slots, 49 still empty, all in the MEDIA object at the top of app.js)
 Filled: hero-door, rooms-hall
 
 Main scroll
@@ -20,10 +20,10 @@ Exhibition
 
 Deep spaces
 - nm-lead + nm-1…5    Nét Mơ, wide lead plus evidence and artefacts
-- cx-lead + cx-1…4    Contextuary screenshots
+- cx-lead + cx-1…6    Contextuary screenshots (cx-6: a student using it)
 - cj-lead + cj-1…2    The Colorful Journey screenshots
 - td-lead + td-1…3    research, session photo, coding notes, survey, SPSS
-- gt-lead + gt-1…4    events
+- gt-lead + gt-1…6    events (gt-5 league bracket, gt-6 Tết ơi! stage)
 - ab-1…3              sketchbook, desk, mid-session
 
 Faces of shelter children need permission from the mái ấm before going
@@ -40,3 +40,4 @@ public. Blur or crop if in doubt.
 - prefers-reduced-motion on, page still makes sense
 - keyboard only, knock entrance, Doors, exhibition and object viewer
 - alt text on real photographs once they replace the placeholders
+  (MEDIA entry as {src, alt}; see README)

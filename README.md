@@ -22,14 +22,19 @@ is closer to how it will behave when deployed.
 
 1. Drop the file in `img/`
 2. Open `app.js`, find the `MEDIA` object at the very top
-3. Point the matching key at the file, e.g. `"nm-lead": "img/nm-lead.jpg"`
+3. Point the matching key at the file, e.g. `"nm-lead": "img/nm-lead.jpg"`,
+   or give it alt text and a crop focus:
+   `"nm-lead": {src:"img/nm-lead.jpg", alt:"…", pos:"50% 30%"}`
+   (`fit:"contain"` shows the whole image instead of cropping)
 
 Empty keys render a labelled placeholder that says what belongs there,
-so the layout never breaks while slots are still empty.
+so the layout never breaks while slots are still empty. Each frame keeps
+its own ratio; the photograph is cropped to it, never stretched. Artworks
+and interface screenshots are shown whole.
 
 Slots: hero-door, rooms-hall, rooms-hands, sheet-1…7, cj-ui, gather-1…4,
-art-1…6 (exhibition), nm-lead + nm-1…5, cx-lead + cx-1…4, cj-lead + cj-1…2,
-td-lead + td-1…3, gt-lead + gt-1…4, ab-1…3.
+art-1…6 (exhibition), nm-lead + nm-1…5, cx-lead + cx-1…6, cj-lead + cj-1…2,
+td-lead + td-1…3, gt-lead + gt-1…6, ab-1…3.
 
 ## Edit the deep-space pages
 
