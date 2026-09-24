@@ -746,7 +746,8 @@ function exhibitionHTML(){
     room.scrollTop=0;
   }
   function open(route){
-    lastY=window.scrollY; lastFocus=document.activeElement;
+    /* moving from one room to another keeps the place in the story and the focus to return to */
+    if(!room.classList.contains("is-open")){ lastY=window.scrollY; lastFocus=document.activeElement; }
     render(route);
     room.classList.add("is-open"); document.body.classList.add("is-locked");
     room.setAttribute("aria-hidden","false"); room.focus();
@@ -775,31 +776,10 @@ function exhibitionHTML(){
 })();
 
 /* ---------- deep-space links ----------
-   A story-behind-this link opens in its own tab so the main scroll keeps
-   its place. If the browser blocks that (sandboxed previews do), the same
-   room opens in place instead, so a click always leads somewhere.
+   A room opens in place, over the story. The link only changes the hash,
+   so the router opens the room, Back closes it, and the scroll position
+   underneath is kept for when the reader returns.
 ------------------------------------------------------------------ */
-document.addEventListener("click",e=>{
-  const a=e.target.closest ? e.target.closest('a[href^="#/"]') : null;
-  if(!a || a.dataset.inline==="1") return;
-  const route=a.getAttribute("href").slice(1);
-  e.preventDefault();
-  /* already inside a deeper room: move sideways, do not spawn tabs */
-  if(window.roomIsOpen && window.roomIsOpen()){
-    if(window.openRoom) window.openRoom(route);
-    try{ history.replaceState(null,"","#"+route); }catch(err){}
-    return;
-  }
-  let win=null;
-  /* no "noopener" feature here: with it window.open always returns null, which
-     read as "blocked" and opened the room in place as well. opener is cut below. */
-  try{ win=window.open(location.href.split("#")[0]+"#"+route,"_blank"); }catch(err){}
-  if(win){ try{ win.opener=null; }catch(err){} return; }
-  if(window.openRoom){
-    window.openRoom(route);
-    try{ history.replaceState(null,"","#"+route); }catch(err){}
-  }
-},true);
 
 /* ---------- archive object view ---------- */
 function bindArchive(){
