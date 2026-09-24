@@ -12,8 +12,8 @@ const MEDIA = {
   "hero-door":{src:"img/hero-door.jpg",alt:"A workshop on a shelter floor: a girl leans in towards a boy holding up a crayon drawing while two younger children lie on the floor beside them.",pos:"50% 42%"},
   "rooms-hall":{src:"img/rooms-hall.jpg",alt:"Two people hug and smile in a shelter hall. Behind them, children work at small plastic tables beside a standing fan."},
   "rooms-hands":"",
-  "sheet-1":"", "sheet-2":"", "sheet-3":"", "sheet-4":"", "sheet-5":"", "sheet-6":"", "sheet-7":"",
-  "cj-ui":"", "gather-1":"", "gather-2":"", "gather-3":"", "gather-4":"", "gather-5":"",
+  "sheet-1":"", "sheet-2":"", "sheet-6":"",
+  "gather-2":"",
   "art-1":"", "art-2":"", "art-3":"", "art-4":"", "art-5":"", "art-6":"",
   /* deep-space photography: lead images and evidence plates */
   "nm-lead":"", "nm-1":"", "nm-2":"", "nm-3":"", "nm-4":"", "nm-5":"",
@@ -55,7 +55,10 @@ function paintMedia(scope=document){
 paintMedia();
 document.querySelectorAll("[data-event]").forEach(a=>{
   const url=EVENT_LINKS[a.dataset.event];
-  if(url){ a.href=url; a.target="_blank"; a.rel="noopener"; a.textContent="Event page ↗"; }
+  if(!url) return;
+  a.href=url; a.target="_blank"; a.rel="noopener";
+  const row=a.closest("[data-event-row]");
+  if(row) row.hidden=false; else a.textContent="Event page ↗";
 });
 
 /* chapter colour, used by nav, rail and the ambient layer */
@@ -63,7 +66,6 @@ const CHAPTERS={
   hero:{hex:"#EE4187",dark:true,palette:["#EE4187","#F2872F","#2B4DE0","#F7EFE2"]},
   "ch-notice":{hex:"#EE4187",palette:["#EE4187","#F2872F"]},
   "ch-rooms":{hex:"#EF6A45",palette:["#EF6A45","#EE4187","#F2872F"]},
-  "ch-participate":{hex:"#0F918B",palette:["#0F918B","#2B4DE0"]},
   "ch-question":{hex:"#6A4BD6",palette:["#6A4BD6","#0F918B","#EE4187"]},
   "ch-build":{hex:"#2B4DE0",palette:["#2B4DE0","#6A4BD6"]},
   "ch-gather":{hex:"#F2872F",dark:true,palette:["#F2872F","#EE4187","#F7EFE2"]},
@@ -112,24 +114,6 @@ const io=new IntersectionObserver((entries)=>{
 },{rootMargin:"0px 0px -10% 0px",threshold:.15});
 $$("[data-part],[data-mask],[data-uncover],[data-stagger],.mark,#chartbox").forEach(el=>io.observe(el));
 
-/* ---------- counters ---------- */
-const countIO=new IntersectionObserver(es=>{
-  es.forEach(e=>{
-    if(!e.isIntersecting) return;
-    const el=e.target, end=parseFloat(el.dataset.count), suffix=el.dataset.suffix||"";
-    countIO.unobserve(el);
-    if(REDUCED) return;
-    let start=null;
-    const tick=ts=>{
-      start=start||ts; const p=Math.min((ts-start)/1100,1);
-      el.firstChild.textContent=Math.round(end*(1-Math.pow(1-p,3))).toLocaleString("en-US")+suffix;
-      if(p<1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  });
-},{threshold:.6});
-$$("[data-count]").forEach(el=>countIO.observe(el));
-
 /* ---------- navigation: where am I, and jump ---------- */
 (function(){
   const secs=[...$$("#story section"),$("#footer")].filter(Boolean), links=$$(".navlink"), prog=$("#navProg"), mroom=$("#mastheadRoom");
@@ -168,7 +152,7 @@ $$("[data-count]").forEach(el=>countIO.observe(el));
     window.scrollTo({top:Math.max(0,y),behavior:REDUCED?"auto":"smooth"});
     if(push) history.replaceState(null,"","#"+id);
   }
-  $$('.navlink, .door-card, a.btn[href^="#ch-"], a.brand[href^="#"]').forEach(a=>{
+  $$('.navlink, .route__step, a.btn[href^="#ch-"], a.brand[href^="#"]').forEach(a=>{
     a.addEventListener("click",e=>{
       const id=(a.getAttribute("href")||"").replace("#","");
       if(!id||!document.getElementById(id)) return;
@@ -286,17 +270,6 @@ $("#footerTop")?.addEventListener("click",()=>window.scrollTo({top:0,behavior:RE
   }));
 })();
 
-/* ---------- questions carried into other rooms ---------- */
-$$(".carried__toggle").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    const card=btn.closest(".carried__card");
-    const open=!card.classList.contains("is-open");
-    card.classList.toggle("is-open",open);
-    btn.setAttribute("aria-expanded",String(open));
-    btn.firstChild.textContent=open?"Close ":"What it changed ";
-  });
-});
-
 /* ---------- drag-to-scroll for horizontal artefacts ---------- */
 function dragScroll(el){
   if(!el) return;
@@ -315,7 +288,6 @@ function dragScroll(el){
   },{threshold:.4});
   nudge.observe(el);
 }
-dragScroll($("#drift")); dragScroll($("#roomsMap"));
 
 /* ---------- pattern: rooms and questions ---------- */
 (function(){
@@ -579,6 +551,12 @@ const ROOMS={
     {h:"Duration",p:"One session. Nothing here says anything about what either door does over a term."},
     {h:"Self-report",p:"Mood and expressed detail are reported by the person. Useful, and not the same as measured."},
     {h:"One model, one moment",p:"A single model version at a single point in time. The AI condition will not be the same room next year."}
+  ]],
+  ["kicker","Questions I carried into other rooms"],
+  ["pairs",[
+    {h:"Brainlife · 10-month research internship",p:"What does attention look like when you can actually watch it? Trained in EEG and brain mapping, cleaned recorded data, ran surveys with student participants. Cleaning other people's data showed me how much of a finding is decided before analysis starts."},
+    {h:"TeenCare · R&D intern · summers 2025 and 2026",p:"What do teenagers actually say when someone asks properly? 56 in-depth interviews synthesised into one persona, and the core product: a storytelling e-book where teens become a chef. Nobody described their feelings when asked directly; they did while talking about a character."},
+    {h:"EUNOIA · Head of Academic Affairs",p:"Does a room of 600 behave like a room of 20? A team of 8 rewriting psychology research for students, a self-discovery festival reaching 600, and peer support for 200+ around exams. Scale does not dilute participation, structure does."}
   ]],
   ["kicker","Next questions"],
   ["para","Whether the crossover holds when the art condition is social rather than solitary. Whether the seven can be predicted in advance rather than counted afterwards. And whether an interface can be designed to hand structure to the people who need it and get out of the way of the people who do not."],

@@ -1,14 +1,12 @@
 # Before this goes live
 
-## 1. Photographs (52 slots, 50 still empty, all in the MEDIA object at the top of app.js)
+## 1. Photographs (43 slots, 41 still empty, all in the MEDIA object at the top of app.js)
 Filled: hero-door, rooms-hall
 
 Main scroll
 - rooms-hands   two hands sharing one box of crayons, close crop
-- sheet-1…7     contact sheet, seasons 1 to 3, square crops
-- cj-ui         The Colorful Journey archive view
-- gather-1…5    event cards: Sol Sound crowd, Beats of Hope band,
-                Colors of the Pitch, Cerberus League match, Tết ơi! stage
+- sheet-2       Season 2, child and facilitator, close (4:3)
+- gather-2      Beats of Hope, band mid-set (4:3)
 
 Exhibition
 - art-1 Open door, watercolour
@@ -20,6 +18,7 @@ Exhibition
 
 Deep spaces
 - nm-lead + nm-1…5    Nét Mơ, wide lead plus evidence and artefacts
+- sheet-1, sheet-6     Nét Mơ strip: exhibition wall, handwritten wall text
 - cx-lead + cx-1…6    Contextuary screenshots (cx-6: a student using it)
 - cj-lead + cj-1…2    The Colorful Journey screenshots
 - td-lead + td-1…3    research, session photo, coding notes, survey, SPSS

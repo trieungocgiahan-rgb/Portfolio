@@ -33,14 +33,14 @@ mouse-following orbs, or "Selected Work" followed by three identical cards.
 If an element could appear on 500 other student portfolios, redesign it.
 
 ## Chapter architecture
-01 Hello, the short story and the observation
-02 Rooms, Nét Mơ and where the noticing started
-03 Questions, what makes someone participate, the crayon tray
-04 Questions continued, the study, plus questions carried into other rooms
-05 Building, Contextuary and The Colorful Journey
-06 Gather, concerts, leagues, festivals, louder and faster
-07 Pattern, different rooms and the same question, the quietest section
-08 Open, looking forward, the door stays open
+One arc: notice, study, build, gather, then what connects them.
+01 Hello, the observation and the story in four steps
+02 Notice, Nét Mơ, and the crayon tray that shows what was noticed
+03 Study, the art-or-AI study and its crossover result
+04 Build, Contextuary (The Colorful Journey as a quiet aside)
+05 Gather, Beats of Hope told properly, the other events listed
+06 Pattern, different rooms and the same question, the quietest section
+07 Open, what comes next
 
 Deep spaces behind Doors: Nét Mơ, Contextuary, The Colorful Journey,
 the research, Gather, Exhibition, About, CV.
@@ -86,12 +86,20 @@ explain every metaphor. Demonstrate character through what was noticed and
 made, never by naming traits.
 
 ## The main page stays lean
-Each chapter on the main scroll is one short line of text, one visual (a
-photograph, a number, an interaction) and one way in ("Read more", an event
-link). Long paragraphs, lists and Vietnamese session names live in the deep
-spaces. Right after Hello, a map of five arched doors shows the whole story
-at a glance: one door per chapter, each with its project, role and one
-number. On a phone the first thing seen is "Hi, I'm Gia Hân."
+The likely reader is an admissions officer who has already seen the
+application and has 60 to 90 seconds. The main scroll is an overview, not
+an archive: it should make clear which questions she cares about, how she
+thinks, and how community work, research, technology and art connect, and
+where to click for evidence.
+- One lead project per chapter gets the visual weight. Everything else is a
+  quiet aside or lives in a deep space.
+- Each chapter: one short line, one visual, one stats line, one way in.
+- Every number appears once on the main page.
+- Right after Hello, the story in four steps (Notice, Study, Build, Gather):
+  small doors on a thin line, a verb and one plain line each, no numbers.
+- On a phone the first thing seen is "Hi, I'm Gia Hân."
+- Internships, other events, other builds, the contact sheet and art live in
+  the deep spaces (research page, Gather page, Nét Mơ page, Exhibition).
 
 ## Three depths
 30 seconds, the visitor feels the character and intellectual energy.

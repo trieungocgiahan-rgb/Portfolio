@@ -10,11 +10,14 @@ sharing a room, then tests it through community work, research and building.
 - No framework, no build step, no dependencies. Plain HTML, CSS, JS.
 - Never reintroduce résumé structure (hero → about → skills → project grid).
 - Keep the door motif: knock entrance, Doors panel, deep spaces as rooms.
-- Keep every interaction: knock entrance, drifting motes canvas, story map
-  of doors, crayon tray toggle, Contextuary word demo, draggable strips,
-  archive object viewer, chapter-coloured navigation.
-- Main page stays lean: per chapter one short line, one visual, one way in.
-  Detail belongs in the deep spaces (ROOMS in app.js).
+- Keep every interaction: knock entrance, drifting motes canvas, the story
+  in four steps, crayon tray toggle, Contextuary word demo, crossover chart,
+  Pattern, draggable exhibition wall, archive object viewer,
+  chapter-coloured navigation.
+- The main page is an overview for a 60–90 second read (see BRIEF.md): one
+  lead project per chapter, one short line, one visual, one stats line, one
+  way in. Each number appears once. Everything else belongs in the deep
+  spaces (ROOMS in app.js). Do not add sections to the main scroll.
 - Respect prefers-reduced-motion everywhere.
 - No horizontal scrolling at any width. Tablet (768–1024px) is a first-class
   composition, not a squeezed desktop.
@@ -35,8 +38,8 @@ Visual grammar, kept strict:
 - serif = ideas and questions
 - pill = tag or navigation only
 
-Chapter accents: 01 pink, 02 coral, 03 teal, 04 violet, 05 blue,
-06 orange on navy, 07 teal, 08 pink. Around 85% of the language is shared;
+Chapter accents: 01 Hello pink, 02 Notice coral, 03 Study violet, 04 Build
+blue, 05 Gather orange on navy, 06 Pattern teal, 07 Open pink. Around 85% of the language is shared;
 the accent appears only in numbers, rules, dots, nav state and small labels.
 
 ## Conventions
