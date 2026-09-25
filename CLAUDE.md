@@ -11,8 +11,9 @@ sharing a room, then tests it through community work, research and building.
 - Never reintroduce résumé structure (hero → about → skills → project grid).
 - Keep the door motif: the entrance (Knock, knock. and one "Come in"
   button), Doors panel, deep spaces as rooms.
-- Doors has four destinations plus the CV: Work (Nét Mơ, Events, Research &
-  Internships, Tech Projects), Exhibition, Awards, About, CV. Routes are
+- Doors has four destinations: Work (Nét Mơ, Events, Research &
+  Internships, Tech Projects), Exhibition, Awards, About. The CV is not in
+  Doors; About tells the longer story and ends on a CTA to it. Routes are
   /work/net-mo, /work/events, /work/research, /work/tech, /exhibition,
   /awards, /about, /cv. Old routes resolve through ROOM_ALIASES;
   /room/anchor scrolls to a kicker with that id. Rooms open in place.
@@ -34,7 +35,8 @@ sharing a room, then tests it through community work, research and building.
   (solid, with a door icon) opens the Doors panel, the only place that
   lists the pages behind the story.
 - The homepage is one continuous story in the owner's own words (see
-  BRIEF.md): hero, 01 Notice, 02 Study, 03 Make, 04 Gather, 05 Draw,
+  BRIEF.md): hero, 00 Who I am (who she is, "Read more about me" into
+  About, then on to Nét Mơ), 01 Notice, 02 Study, 03 Make, 04 Gather, 05 Draw,
   06 The question, More work, footer. Each part: title, story, one visual,
   one "Inside ·" line saying what the detail page holds, one way in, then a
   bridge (a.bridge): one serif sentence that hands on to the next part. Numbers
@@ -72,6 +74,9 @@ the accent appears only in numbers, rules, dots, nav state and small labels.
 - Layout lives in CSS classes, not inline styles. Inline style is only for
   data: --ratio, --len, --dl, --dc.
 - Prefer grid and flex. Absolute positioning only for decorative layers.
+- In a story part the sticky visual lives inside .story__grid; anything
+  after the grid (the Nét Mơ tray, the bridge) sits outside it, so the
+  visual can never slide over it while scrolling.
 - Fix overflow at the element that is too wide. body{overflow-x:clip} is a
   last guard, not a fix. Words never break mid-word; only URLs may.
 - Image roles: hero, evidence (numbered plate), artifact (object seen whole),

@@ -134,7 +134,7 @@ h3 + .body-copy{margin-top:var(--sp-3)}
   background:linear-gradient(90deg,var(--accent) 0 14%,color-mix(in srgb,var(--accent) 26%,transparent) 14% 42%,var(--rule) 42% 100%)}
 .chapter::after{content:"";position:absolute;top:-3px;left:var(--col-start);width:7px;height:7px;border-radius:50%;
   background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 14%,transparent)}
-#ch-notice::before,#ch-notice::after{display:none}
+#ch-me::before,#ch-me::after{display:none}
 
 /* chapter marker · 01 / ROOMS, editorial, not a headline */
 .chapter-mark{display:flex;align-items:baseline;gap:.55rem;margin-bottom:.5rem;max-width:min(100%,40rem)}
@@ -423,6 +423,9 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
    85% of the language is shared; the accent lives in numbers,
    rules, dots, nav state and small labels.
    ============================================================ */
+#ch-me{--accent:var(--pink);
+  background:radial-gradient(55% 45% at 90% 12%,rgba(238,65,135,.12),transparent 62%),
+             radial-gradient(45% 40% at 6% 88%,rgba(15,145,139,.08),transparent 62%),linear-gradient(180deg,#F3E8E6,var(--cream) 40%)}
 #ch-notice{--accent:var(--coral);
   background:radial-gradient(60% 45% at 88% 4%,rgba(239,106,69,.13),transparent 60%),
              radial-gradient(50% 40% at 4% 70%,rgba(238,65,135,.08),transparent 62%),linear-gradient(180deg,#F0E6E2,var(--cream) 30%)}
@@ -485,7 +488,7 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .story__more .deeper{margin-top:.55rem}
 /* the bridge: the last thought of one part, which opens the next. A short rule
    and a dot in the next part's colour, then the line in serif */
-.bridge{grid-column:1/-1;display:block;max-width:min(100%,44rem);margin-top:var(--sp-5);padding-top:var(--sp-3);text-decoration:none;color:inherit;position:relative}
+.bridge{display:block;max-width:min(100%,44rem);margin-top:var(--sp-5);padding-top:var(--sp-3);text-decoration:none;color:inherit;position:relative}
 .bridge::before{content:"";position:absolute;left:0;top:0;width:3.5rem;height:1px;background:var(--dc)}
 .bridge__text{display:block;font-family:var(--display);font-size:var(--t-idea);line-height:1.4;letter-spacing:-.01em;color:var(--ink-70);transition:color .3s}
 .bridge__next{display:inline-flex;align-items:center;gap:.5rem;margin-top:.8rem;padding:.35rem 0;font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--dc)}
@@ -502,6 +505,25 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
   .story__visual{position:static;margin-top:var(--sp-4);max-width:36rem}
 }
 
+/* 00 · a catalogue card: the facts filed in mono, the question in serif at the foot */
+.idcard{margin:0;padding:var(--sp-3);background:#FFFBF6;border:1px solid var(--rule);border-radius:4px;rotate:-1deg;
+  background-image:linear-gradient(90deg,transparent calc(var(--sp-3) + 6.5rem),color-mix(in srgb,var(--accent) 35%,transparent) 0 calc(var(--sp-3) + 6.5rem + 1px),transparent 0);
+  box-shadow:0 2px 4px rgba(60,40,24,.08),0 36px 60px -44px rgba(60,40,24,.6)}
+.idcard__head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem 1rem;padding-bottom:.7rem;border-bottom:2px solid var(--accent)}
+.idcard__head span:first-child{font-family:var(--display);font-size:1.3rem;letter-spacing:-.01em}
+.idcard__head span:last-child{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-45);align-self:center}
+.idcard__rows{margin:0}
+.idcard__rows div{display:grid;grid-template-columns:6.5rem minmax(0,1fr);gap:var(--sp-2);padding:.6rem 0;border-bottom:1px solid var(--ink-10)}
+.idcard__rows dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);padding-top:.2rem}
+.idcard__rows dd{margin:0;font-size:.95rem;color:var(--ink-70)}
+.idcard__q{margin-top:var(--sp-3);font-family:var(--display);font-size:var(--t-idea);line-height:1.3;letter-spacing:-.01em}
+.idcard__q span{display:block;margin-bottom:.35rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-45)}
+@media(max-width:560px){
+  .idcard{padding:var(--sp-2);background-image:none}
+  .idcard__rows div{grid-template-columns:minmax(0,1fr);gap:.3rem}
+  .idcard__rows dt{padding-top:0;line-height:1.4}
+}
+
 /* 01 · the photograph in a plain editorial frame; nothing ever sits on it */
 .frame-editorial{border:1.5px solid #18233f;padding:6px;background:#fffaf4;border-radius:12px;box-shadow:8px 8px 0 rgba(236,72,153,.12)}
 .frame-editorial .fig__plate{border-radius:7px}
@@ -509,23 +531,30 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .frame-editorial--night{border-color:rgba(247,239,226,.5);background:#1B2A50;box-shadow:8px 8px 0 rgba(242,135,47,.22)}
 .frame-editorial--night + .stub{margin:var(--sp-3) 0 0 auto;width:min(100%,25rem)}
 
-/* 01 · the tray: the same fifteen minutes, two ways */
-.tray{margin-top:var(--sp-4);border:1px solid var(--rule);background:rgba(255,255,255,.55);padding:clamp(.9rem,2vw,1.3rem);border-radius:4px;box-shadow:0 30px 60px -50px rgba(15,27,60,.7)}
-.tray__head{display:flex;flex-wrap:wrap;gap:var(--sp-2);align-items:center;justify-content:space-between;margin-bottom:var(--sp-2)}
-.tray__head .mono{max-width:min(100%,30ch)}
+/* 01 · the tray: the same fifteen minutes, two ways. It runs the full width
+   under the story: the table on the left, what the room does on the right */
+.tray{margin-top:var(--sp-5);display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);column-gap:var(--sp-4);align-items:stretch;
+  border:1px solid var(--rule);background:rgba(255,255,255,.55);padding:clamp(.9rem,2.2vw,1.4rem);border-radius:4px;box-shadow:0 30px 60px -50px rgba(15,27,60,.7)}
+.tray__head{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:var(--sp-2);align-items:center;justify-content:space-between;margin-bottom:var(--sp-3)}
+.tray__head .mono{max-width:min(100%,40ch)}
 .tray__switch{display:inline-flex;border:1px solid var(--ink-20);border-radius:999px;overflow:hidden;background:rgba(255,255,255,.6)}
 .tray__switch button{font:inherit;font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;padding:.6rem .85rem;background:none;border:0;cursor:pointer;color:var(--ink-45);transition:background-color .35s,color .35s}
 .tray__switch button[aria-pressed="true"]{background:var(--accent);color:var(--cream)}
-.tray__stage{position:relative;height:clamp(110px,12vw,140px);border-bottom:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.tray__stage{grid-column:1;position:relative;min-height:clamp(150px,16vw,210px);border-bottom:1px solid var(--rule);border-radius:4px;overflow:hidden}
 .crayon{position:absolute;height:8px;border-radius:4px;transition:left .9s var(--ease),top .9s var(--ease),transform .9s var(--ease),width .9s var(--ease)}
 .tray__outline{position:absolute;border:1px dashed var(--ink-20);border-radius:6px;transition:all .9s var(--ease);opacity:0}
 .tray__outline.on{opacity:1}
-.tray__read{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:var(--sp-3);margin-top:var(--sp-2)}
+.tray__read{grid-column:2;display:grid;grid-template-columns:minmax(0,1fr);gap:var(--sp-3);align-content:start}
 .meter{border-top:1px solid var(--rule);padding-top:.65rem}
 .meter b{font-family:var(--display);font-size:1.65rem;font-weight:400;letter-spacing:-.02em;color:var(--accent)}
 .meter__bar{height:3px;background:var(--ink-10);margin-top:.55rem;position:relative;overflow:hidden;border-radius:2px}
 .meter__bar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);width:0;transition:width 1s var(--ease)}
 .meter__note{font-size:.88rem;line-height:1.55;margin-top:.35rem}
+@media(max-width:900px){
+  .tray{display:block;margin-top:var(--sp-4)}
+  .tray__stage{min-height:0;height:clamp(120px,20vw,160px)}
+  .tray__read{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);margin-top:var(--sp-3)}
+}
 @media(max-width:560px){.tray__read{grid-template-columns:minmax(0,1fr);gap:var(--sp-2)}}
 
 /* 02 · the crossover */
@@ -534,8 +563,24 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .chartbox .mono{margin-top:.75rem;text-transform:none;letter-spacing:.04em;line-height:1.75}
 .draw path,.draw line{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);transition:stroke-dashoffset 1.5s var(--ease-soft)}
 .chartbox.in .draw path,.chartbox.in .draw line{stroke-dashoffset:0}
+/* 02 · the paper, seen as an object on the desk: two doors, one room */
+.paper{display:flex;align-items:center;gap:var(--sp-3);margin:var(--sp-3) 0 0 auto;width:min(100%,26rem);padding:var(--sp-3);text-decoration:none;color:inherit;
+  background:#fff;border:1px solid var(--rule);border-radius:3px;rotate:1.2deg;
+  box-shadow:5px 5px 0 -1px #F4F1F8,5px 5px 0 0 var(--rule),0 30px 50px -40px rgba(15,27,60,.6);transition:rotate .5s var(--ease),translate .5s var(--ease)}
+.paper:hover,.paper:focus-visible{rotate:0deg;translate:0 -3px}
+.paper__mark{width:64px;height:48px;flex:none}
+.paper__body{display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.paper__kind{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.paper__title{font-family:var(--display);font-size:1.2rem;line-height:1.15;letter-spacing:-.01em}
+.paper__meta{font-family:var(--mono);font-size:.7rem;letter-spacing:.03em;line-height:1.6;color:var(--ink-45)}
+@media(max-width:560px){.paper{gap:var(--sp-2);padding:var(--sp-2)}.paper__mark{width:48px;height:36px}}
 
-/* 03 · a shared timeline, drawn from the moments in the story */
+/* 03 · the project's mark, then a shared timeline drawn from the moments in the story */
+.app-mark{display:flex;align-items:center;gap:var(--sp-2);margin-bottom:var(--sp-3)}
+.app-mark__icon{width:56px;height:56px;flex:none;filter:drop-shadow(0 14px 18px rgba(15,27,60,.25))}
+.app-mark__text{display:flex;flex-direction:column;gap:.2rem;min-width:0}
+.app-mark__text b{font-family:var(--display);font-weight:400;font-size:1.25rem;letter-spacing:-.01em;line-height:1.15}
+.app-mark__text span{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--ink-45);line-height:1.5}
 .journal{margin:0;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:#fff;box-shadow:0 40px 70px -55px rgba(15,27,60,.8)}
 .journal__bar{display:flex;align-items:center;gap:.45rem;padding:.55rem .75rem;border-bottom:1px solid var(--rule);background:var(--cream)}
 .journal__bar i{width:7px;height:7px;border-radius:50%;background:var(--ink-20);flex:none}
@@ -802,6 +847,12 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .cv-row .mono{padding-top:.25rem}
 .cv-row h4{font-size:1.1rem;margin:0 0 .15rem}
 .cv-row p{font-size:.94rem;color:var(--ink-70);max-width:min(100%,62ch)}
+/* one clear next step at the end of a room, such as About → CV */
+.room-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--sp-2) var(--sp-4);margin-top:var(--sp-5);
+  padding:var(--sp-3);border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:4px;background:rgba(255,255,255,.55)}
+.room-cta .room__kicker{margin:0}
+.room-cta__text{margin-top:.3rem;font-family:var(--display);font-size:var(--t-idea);line-height:1.3;letter-spacing:-.01em}
+.room-cta + .blk{margin-top:var(--sp-4)}
 .room__more{margin-top:var(--sp-5);border-top:1px solid var(--rule);padding-top:var(--sp-2);display:flex;flex-wrap:wrap;gap:0 var(--sp-5);justify-content:flex-start}
 .room__more a{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ink-70);
   padding:.7rem 0;text-decoration-line:underline;text-decoration-color:var(--ink-20);text-underline-offset:.45em;transition:color .3s,text-decoration-color .3s}

@@ -78,6 +78,7 @@ function wireEvents(scope=document){
 const CHAPTERS={
   hero:{hex:"#EE4187",dark:true,palette:["#EE4187","#F2872F","#2B4DE0","#F7EFE2"]},
   dusk:{hex:"#EE4187",dark:true,palette:["#EE4187","#F2872F","#F7EFE2"]},
+  "ch-me":{hex:"#EE4187",palette:["#EE4187","#F2872F","#0F918B"]},
   "ch-notice":{hex:"#EF6A45",palette:["#EF6A45","#EE4187","#F2872F"]},
   "ch-study":{hex:"#6A4BD6",palette:["#6A4BD6","#0F918B","#EE4187"]},
   "ch-make":{hex:"#2B4DE0",palette:["#2B4DE0","#6A4BD6","#0F918B"]},
@@ -408,6 +409,8 @@ const B={
   pairs:a=>`<div class="blk blk--pairs" data-n="${a.length}">${a.map(p=>`<div><h4>${p.h}</h4><p>${p.p}</p></div>`).join("")}</div>`,
   rows:a=>`<div class="blk">${a.map(r=>`<div class="cv-row"><p class="mono">${r.t}</p><div><h4>${r.h}</h4><p>${r.p}</p></div></div>`).join("")}</div>`,
   contact:a=>`<div class="blk">${a.map(c=>`<a class="contact-line" href="${c.href}"${c.replace?` data-replace="${c.replace}"`:""}><span>${c.label}</span><span>${c.value}</span></a>`).join("")}</div>`,
+  /* one clear next step, e.g. About → CV */
+  cta:o=>`<div class="blk room-cta"><div><p class="room__kicker">${o.kicker}</p><p class="room-cta__text">${o.text}</p></div><a class="btn btn--ink" href="${o.href}">${o.label} →</a></div>`,
   links:a=>`<div class="room__more">${a.map(l=>`<a href="${l.href}">${l.label} →</a>`).join("")}</div>`
 };
 
@@ -548,20 +551,19 @@ const ROOMS={
   ["hero",{kicker:"About",title:"Triệu Ngọc Gia Hân",
     lede:"Grade 12 at Trưng Vương High School, Ho Chi Minh City. I work in Vietnamese and English, and I have been drawing since I was five, which is probably where the noticing started.",
     k:"ab-2",ghost:"working at the desk"}],
-  ["kicker","Interests"],
-  ["pairs",[
-    {h:"Making",p:"Digital painting, observational drawing, photography. A pink, orange and teal palette I keep returning to. Mostly self-taught."},
-    {h:"Reading",p:"Psychology and cognitive science. Coursera Foundations of Neuroscience and Introduction to Psychology, applied directly to session design."},
-    {h:"Building",p:"Interfaces, when a question needs to keep running after I stop watching it."},
-    {h:"Gathering",p:"Concerts, tournaments, exhibitions. Rooms with the volume up."}
-  ]],
-  ["note","Also: eleven consecutive years as class president."],
-  ["kicker","Contact and CV"],
+  ["kicker","Where it started"],
+  ["para","I have been drawing since I was five, mostly self-taught: digital painting, observational drawing, photography, and a pink, orange and teal palette I keep returning to. Drawing made me look for a long time at one thing, and then at who was around it."],
+  ["kicker","The room I share every day"],
+  ["para","I have been class president for eleven consecutive years. In Grade 11, Trưng Vương named me its Most Well-Rounded Student. A class was the first room where I saw that the same people behave differently depending on how the room is set up."],
+  ["kicker","What I read"],
+  ["para","Psychology and cognitive science. I took Coursera’s Foundations of Neuroscience and Introduction to Psychology and used them directly in how I design sessions. In 2026 I reached Highest Distinction at the International Psychology Olympiad."],
+  ["kicker","Where it led"],
+  ["para","Those three things met in a shelter dining hall, when one tray of crayons changed a room. The rest followed from that: a study to test what I thought I saw, a shared diary for a team that could not meet, and events for hundreds of people. I build interfaces when a question needs to keep running after I stop watching it, and I organise concerts, tournaments and exhibitions because they are rooms with the volume up."],
+  ["links",[{href:"#/work/net-mo",label:"Nét Mơ"},{href:"#/work/research",label:"The study"},{href:"#/exhibition",label:"Exhibition"},{href:"#/awards",label:"Awards"}]],
+  ["cta",{kicker:"The dated record",text:"Every role, date and award on one page.",href:"#/cv",label:"Open my CV"}],
   ["contact",[
-    {href:"mailto:trieungocgiahan@gmail.com",label:"Email",value:"trieungocgiahan@gmail.com"},
-    {href:"#/cv",label:"CV",value:"Facts, dated"}
-  ]],
-  ["links",[{href:"#/awards",label:"Awards"},{href:"#/exhibition",label:"Exhibition"}]]
+    {href:"mailto:trieungocgiahan@gmail.com",label:"Email",value:"trieungocgiahan@gmail.com"}
+  ]]
 ]},
 
 "/cv":{accent:"var(--blue)",where:"CV",blocks:[

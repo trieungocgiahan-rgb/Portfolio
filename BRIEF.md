@@ -37,11 +37,15 @@ One continuous story, told in the owner's own words, so an admissions reader
 can follow how one question connects everything:
 - Entrance · Knock, knock. One button: Come in.
 - Hero · Hi, I'm Gia Hân, and the question. Follow the question ↓
+- 00 Who I am · Before the first room. Grade 12, drawing since five, class
+  president eleven years; the noticing that led to Nét Mơ. Visual: a
+  catalogue card with the question at the foot. Read more about me → About.
 - 01 Notice · A tray in the middle (Nét Mơ). Visual: the photograph in an
-  editorial frame, and the crayon tray.
-- 02 Study · Testing what I thought I knew (Two Doors). Visual: the crossover.
+  editorial frame; the crayon tray runs full width under the story.
+- 02 Study · Testing what I thought I knew (Two Doors). Visual: the crossover,
+  and the paper seen as an object.
 - 03 Make · Keeping the days we missed (The Colorful Journey). Visual: the
-  shared timeline.
+  project mark and the shared timeline.
 - 04 Gather · Making room at a larger scale (Beats of Hope). Visual: a photograph
   of the night from the stage (gather-2) with the ticket below it.
 - 05 Draw · Where I began. Visual: three works, no more.
@@ -51,6 +55,8 @@ can follow how one question connects everything:
 A thread runs down the margin through every part. Each part ends with an
 "Inside ·" line naming what its detail page holds, then one link, then a
 bridge sentence that opens the next part:
+- Who I am → Notice: The first room where I watched it closely was a shelter
+  dining hall, during an art workshop.
 - Notice → Study: Field notes could show me what I thought I was seeing. I
   wanted to know whether the pattern would hold when I tested it.
 - Study → Make: The study shifted my question from "Which method works?" to
@@ -67,14 +73,14 @@ The top bar and Doors do different jobs. The bar is the story on this page,
 six numbered parts and nothing else. The Rooms button opens Doors, which
 lists the pages behind the story.
 
-Doors has four destinations, plus the CV:
+Doors has four destinations:
 - Work, which opens into four rooms: Nét Mơ, Events (Beats of Hope and
   the others), Research & Internships (Two Doors, Brainlife, TeenCare,
   EUNOIA), Tech Projects (Contextuary, The Colorful Journey)
 - Exhibition, kept separate and special
 - Awards, the verified honours only
-- About: short intro, interests, contact
-- CV: the dated record
+- About: the longer story (where it started, the room I share every day,
+  what I read, where it led), then a CTA to the CV, then contact
 Deep pages exist for the strongest work only; smaller work is a section
 inside one of these rooms, never a page of its own. Each room opens on a
 hero and tells a story in a few beats, not everything about the project:
