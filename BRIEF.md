@@ -42,21 +42,39 @@ can follow how one question connects everything:
 - 02 Study · Testing what I thought I knew (Two Doors). Visual: the crossover.
 - 03 Make · Keeping the days we missed (The Colorful Journey). Visual: the
   shared timeline.
-- 04 Gather · Making room at a larger scale (Beats of Hope). Visual: the ticket.
+- 04 Gather · Making room at a larger scale (Beats of Hope). Visual: a photograph
+  of the night (gather-2) with the ticket below it.
 - 05 Draw · Where I began. Visual: three works, no more.
 - 06 The question · the four rooms joined as dots, each a way back.
 - More work · Contextuary, TeenCare, Little Smile Project, Awards, CV.
 - Footer · Knock, knock, email, About, CV.
 A thread runs down the margin through every part. Each part ends with an
-"Inside ·" line naming what its detail page holds, then one link.
+"Inside ·" line naming what its detail page holds, then one link, then a
+bridge sentence that opens the next part:
+- Notice → Study: Field notes could show me what I thought I was seeing. I
+  wanted to know whether the pattern would hold when I tested it.
+- Study → Make: The study shifted my question from "Which method works?" to
+  "What helps this person find a way in?" That question returned when my own
+  team could no longer share the same room.
+- Make → Gather: The diary helped a scattered team return to the same place.
+  Events gave me the opposite problem. How do hundreds of strangers begin
+  together?
+- Gather → Draw: The scale kept changing, but the first move still mattered.
+- Draw → The question: The paintings let me notice questions before I could
+  name them. This is the one I am still following.
 
-Doors has four destinations, and nothing else:
+The top bar and Doors do different jobs. The bar is the story on this page,
+six numbered parts and nothing else. The Rooms button opens Doors, which
+lists the pages behind the story.
+
+Doors has four destinations, plus the CV:
 - Work, which opens into four rooms: Nét Mơ, Events (Beats of Hope and
   the others), Research & Internships (Two Doors, Brainlife, TeenCare,
   EUNOIA), Tech Projects (Contextuary, The Colorful Journey)
 - Exhibition, kept separate and special
 - Awards, the verified honours only
-- About: short intro, interests, contact, CV (the CV room is reached here)
+- About: short intro, interests, contact
+- CV: the dated record
 Deep pages exist for the strongest work only; smaller work is a section
 inside one of these rooms, never a page of its own. Each room opens on a
 hero and tells a story in a few beats, not everything about the project:

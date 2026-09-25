@@ -152,14 +152,17 @@ h3 + .body-copy{margin-top:var(--sp-3)}
 .thread b{color:var(--accent);font-weight:500;flex:none;text-transform:uppercase;letter-spacing:.14em;font-size:.68rem}
 
 /* ============================================================
-   NAVIGATION · sticky, five destinations, current chapter lit
+   NAVIGATION · two jobs, kept apart
+   The bar moves through the story on this page: six numbered
+   parts, the current one lit in its own colour. The Rooms button
+   is a different kind of thing, a solid door that opens the
+   panel of pages behind the story.
    ============================================================ */
 .chapnav{position:fixed;top:0;left:0;right:0;z-index:60;height:var(--navh);display:flex;align-items:center;gap:var(--sp-2);
   padding:0 var(--col-start);background:color-mix(in srgb,var(--cream) 84%,transparent);
   backdrop-filter:saturate(1.3) blur(14px);-webkit-backdrop-filter:saturate(1.3) blur(14px);
   border-bottom:1px solid var(--rule);transition:background-color .6s var(--ease-soft),border-color .6s var(--ease-soft),color .6s var(--ease-soft)}
 .chapnav[hidden]{display:none}
-.chapnav nav{flex:1;min-width:0}
 body.is-dark .chapnav{background:color-mix(in srgb,var(--navy) 82%,transparent);border-color:rgba(247,239,226,.16);color:var(--cream)}
 .brand{display:flex;align-items:baseline;gap:.5rem;text-decoration:none;flex:none}
 .brand__mark{width:22px;height:22px;flex:none;transform:translateY(3px)}
@@ -167,29 +170,47 @@ body.is-dark .chapnav{background:color-mix(in srgb,var(--navy) 82%,transparent);
 .brand__sub{font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-45);white-space:nowrap}
 body.is-dark .brand__sub{color:rgba(247,239,226,.55)}
 
-.chapnav__list{display:flex;align-items:center;gap:.15rem;list-style:none;margin:0;padding:0 .2rem;
+.chapnav__story{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:.7rem}
+.chapnav__label{flex:none;padding-right:.8rem;border-right:1px solid var(--ink-20);font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-45);white-space:nowrap}
+body.is-dark .chapnav__label{color:rgba(247,239,226,.55);border-color:rgba(247,239,226,.24)}
+.chapnav__list{display:flex;align-items:center;gap:.1rem;list-style:none;margin:0;padding:0;min-width:0;
   overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-padding-inline:1rem}
 .chapnav__list::-webkit-scrollbar{display:none}
-.navlink{position:relative;display:inline-flex;align-items:center;gap:.45rem;white-space:nowrap;text-decoration:none;
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-45);
-  padding:.5rem .7rem;border-radius:999px;transition:color .3s,background-color .3s}
-.navlink i{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.3;transition:opacity .3s,transform .4s var(--ease),background-color .4s}
+.navlink{display:inline-flex;align-items:baseline;gap:.4rem;white-space:nowrap;text-decoration:none;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-45);
+  padding:.5rem .6rem;border-radius:999px;transition:color .3s,background-color .3s}
+.navlink b{font-weight:500;letter-spacing:.04em;color:var(--dc);opacity:.75;transition:opacity .3s}
 .navlink:hover{color:var(--ink)}
+.navlink:hover b{opacity:1}
 body.is-dark .navlink{color:rgba(247,239,226,.55)}
 body.is-dark .navlink:hover{color:var(--cream)}
-.navlink.is-current{color:var(--nav-accent,var(--blue));background:color-mix(in srgb,var(--nav-accent,var(--blue)) 10%,transparent)}
-.navlink.is-current i{opacity:1;transform:scale(1.5);background:var(--nav-accent,var(--blue))}
-.chapnav__prog{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--pink),var(--orange),var(--blue));transition:width .15s linear}
-.doorbell{flex:none;border:1px solid var(--ink-20);background:none;border-radius:999px;padding:.42rem .8rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;color:inherit;white-space:nowrap;transition:background-color .3s,color .3s,border-color .3s}
-.doorbell:hover{background:var(--ink);color:var(--cream);border-color:var(--ink)}
-body.is-dark .doorbell{border-color:rgba(247,239,226,.28)}
-body.is-dark .doorbell:hover{background:var(--cream);color:var(--navy);border-color:var(--cream)}
-@media(max-width:900px){.brand__sub{display:none}}
-@media(max-width:560px){
-  .chapnav{gap:.5rem;padding:0 .9rem}
-  .brand__name{font-size:.95rem}
-  .navlink{padding:.55rem .55rem;letter-spacing:.1em}
+.navlink.is-current{color:var(--ink);background:color-mix(in srgb,var(--dc) 13%,transparent)}
+body.is-dark .navlink.is-current{color:var(--cream);background:color-mix(in srgb,var(--dc) 26%,transparent)}
+.navlink.is-current b{opacity:1}
+.chapnav__prog{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--coral),var(--violet),var(--blue),var(--orange),var(--pink),var(--teal));transition:width .15s linear}
+.doorbell{flex:none;display:inline-flex;align-items:center;gap:.45rem;border:1px solid var(--ink);background:var(--ink);color:var(--cream);border-radius:999px;padding:.45rem .9rem .45rem .7rem;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background-color .3s,color .3s,border-color .3s}
+.doorbell__icon{width:16px;height:16px;flex:none}
+.doorbell:hover,.doorbell[aria-expanded="true"]{background:var(--nav-accent,var(--pink));border-color:var(--nav-accent,var(--pink))}
+body.is-dark .doorbell{background:var(--cream);color:var(--navy);border-color:var(--cream)}
+body.is-dark .doorbell:hover{background:var(--nav-accent,var(--orange));color:var(--navy);border-color:var(--nav-accent,var(--orange))}
+@media(max-width:1180px){.brand__sub{display:none}}
+/* tablet and phone: numbers only, the current part keeps its name */
+@media(max-width:900px){
+  .chapnav__label{display:none}
+  .chapnav__story{justify-content:flex-end}
+  .navlink{padding:.55rem .5rem}
+  .navlink span{display:none}
+  .navlink.is-current span{display:inline}
 }
+@media(max-width:560px){
+  .chapnav{gap:.35rem;padding:0 .8rem}
+  .brand__name{font-size:.95rem}
+  .navlink{gap:.3rem;padding:.55rem .32rem;letter-spacing:.04em}
+  .doorbell{gap:.35rem;padding:.45rem .65rem .45rem .5rem;letter-spacing:.1em}
+}
+/* small phones: the door mark alone leads home, so the six parts fit */
+@media(max-width:460px){.brand__name{display:none}}
 
 /* ============================================================
    THRESHOLD · the navy world, before the lights come up
@@ -462,6 +483,14 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .story__more{margin-top:var(--sp-4)}
 .story__more .mono{text-transform:none;letter-spacing:.04em}
 .story__more .deeper{margin-top:.55rem}
+/* the bridge: the last thought of one part, which opens the next. A short rule
+   and a dot in the next part's colour, then the line in serif */
+.bridge{grid-column:1/-1;display:block;max-width:min(100%,44rem);margin-top:var(--sp-5);padding-top:var(--sp-3);text-decoration:none;color:inherit;position:relative}
+.bridge::before{content:"";position:absolute;left:0;top:0;width:3.5rem;height:1px;background:var(--dc)}
+.bridge__text{display:block;font-family:var(--display);font-size:var(--t-idea);line-height:1.4;letter-spacing:-.01em;color:var(--ink-70);transition:color .3s}
+.bridge__next{display:inline-flex;align-items:center;gap:.5rem;margin-top:.8rem;padding:.35rem 0;font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--dc)}
+.bridge__next::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--dc)}
+.bridge:hover .bridge__text,.bridge:focus-visible .bridge__text{color:var(--ink)}
 /* the thread: one line down the margin, lit in each part's colour */
 @media(min-width:901px){
   .story .wrap::before{content:"";position:absolute;left:-2.4rem;top:calc(-1 * var(--sp-6));bottom:calc(-1 * var(--sp-6));width:1px;
@@ -476,6 +505,9 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 /* 01 · the photograph in a plain editorial frame; nothing ever sits on it */
 .frame-editorial{border:1.5px solid #18233f;padding:6px;background:#fffaf4;border-radius:12px;box-shadow:8px 8px 0 rgba(236,72,153,.12)}
 .frame-editorial .fig__plate{border-radius:7px}
+/* 04 · the same frame at night: the photograph first, the ticket kept below it, never on it */
+.frame-editorial--night{border-color:rgba(247,239,226,.5);background:#1B2A50;box-shadow:8px 8px 0 rgba(242,135,47,.22)}
+.frame-editorial--night + .stub{margin:var(--sp-3) 0 0 auto;width:min(100%,25rem)}
 
 /* 01 · the tray: the same fifteen minutes, two ways */
 .tray{margin-top:var(--sp-4);border:1px solid var(--rule);background:rgba(255,255,255,.55);padding:clamp(.9rem,2vw,1.3rem);border-radius:4px;box-shadow:0 30px 60px -50px rgba(15,27,60,.7)}

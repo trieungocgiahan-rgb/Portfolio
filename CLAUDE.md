@@ -11,8 +11,8 @@ sharing a room, then tests it through community work, research and building.
 - Never reintroduce résumé structure (hero → about → skills → project grid).
 - Keep the door motif: the entrance (Knock, knock. and one "Come in"
   button), Doors panel, deep spaces as rooms.
-- Doors has four destinations: Work (Nét Mơ, Events, Research &
-  Internships, Tech Projects), Exhibition, Awards, About. Routes are
+- Doors has four destinations plus the CV: Work (Nét Mơ, Events, Research &
+  Internships, Tech Projects), Exhibition, Awards, About, CV. Routes are
   /work/net-mo, /work/events, /work/research, /work/tech, /exhibition,
   /awards, /about, /cv. Old routes resolve through ROOM_ALIASES;
   /room/anchor scrolls to a kicker with that id. Rooms open in place.
@@ -28,10 +28,16 @@ sharing a room, then tests it through community work, research and building.
   draggable exhibition wall, archive object viewer, the
   screening room under the wall (FILMS in app.js, click-to-play embeds),
   chapter-coloured navigation.
+- Two navigations, two jobs, never mixed. The top bar is "The story":
+  only the six numbered parts of the homepage (01 Notice … 06 Question),
+  each lit in its own colour; it never links to a room. The Rooms button
+  (solid, with a door icon) opens the Doors panel, the only place that
+  lists the pages behind the story.
 - The homepage is one continuous story in the owner's own words (see
   BRIEF.md): hero, 01 Notice, 02 Study, 03 Make, 04 Gather, 05 Draw,
   06 The question, More work, footer. Each part: title, story, one visual,
-  one "Inside ·" line saying what the detail page holds, one way in. Numbers
+  one "Inside ·" line saying what the detail page holds, one way in, then a
+  bridge (a.bridge): one serif sentence that hands on to the next part. Numbers
   live in the prose; do not add stat rows. Do not rewrite the story copy or
   add sections; detail belongs in the rooms (ROOMS in app.js).
 - Respect prefers-reduced-motion everywhere.

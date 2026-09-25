@@ -6,7 +6,7 @@ Filled: hero-door, rooms-hall
 Main scroll
 - rooms-hands   two hands sharing one box of crayons, close crop
 - sheet-2       Season 2, child and facilitator, close (square)
-- gather-2      Beats of Hope, band mid-set (4:3)
+- gather-2      Beats of Hope, the night: band mid-set or the crowd (4:3), in the 04 Gather frame
 
 Room doors (the photograph in each room's hero, portrait on laptop)
 - nm-lead  Nét Mơ, a session in progress

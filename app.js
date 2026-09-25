@@ -165,7 +165,7 @@ $$("[data-part],[data-mask],[data-uncover],[data-stagger],.mark,#chartbox").forE
     window.scrollTo({top:Math.max(0,y),behavior:REDUCED?"auto":"smooth"});
     if(push) history.replaceState(null,"","#"+id);
   }
-  $$('.navlink, .dots a, a.btn[href^="#ch-"], a.brand[href^="#"]').forEach(a=>{
+  $$('.navlink, .dots a, .bridge, a.btn[href^="#ch-"], a.brand[href^="#"]').forEach(a=>{
     a.addEventListener("click",e=>{
       const id=(a.getAttribute("href")||"").replace("#","");
       if(!id||!document.getElementById(id)) return;
@@ -188,7 +188,7 @@ $$("[data-part],[data-mask],[data-uncover],[data-stagger],.mark,#chartbox").forE
   const doors=$("#doors"), btn=$("#doorsBtn");
   const open=v=>{
     doors.classList.toggle("is-open",v); doors.setAttribute("aria-hidden",String(!v));
-    btn.setAttribute("aria-expanded",String(v)); btn.textContent=v?"Close":"Doors";
+    btn.setAttribute("aria-expanded",String(v)); $(".doorbell__label",btn).textContent=v?"Close":"Rooms";
     if(v) setTimeout(()=>$(".doors__list a",doors)?.focus(),340);
   };
   btn.addEventListener("click",()=>open(!doors.classList.contains("is-open")));
