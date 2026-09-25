@@ -381,9 +381,10 @@ const hero=o=>`<header class="room-hero">
   <div class="room-hero__text">
     <p class="room__kicker">${o.kicker}</p>
     <h2 id="roomTitle">${o.title}</h2>
+    ${o.sub?`<p class="room-hero__sub">${o.sub}</p>`:""}
     ${o.lede?`<p class="room-hero__lede">${o.lede}</p>`:""}
     ${o.facts?`<p class="stats">${o.facts.map(f=>`<span><b>${f.b}</b> ${f.s}</span>`).join("")}</p>`:""}
-    ${o.meta?`<p class="mono room-hero__meta">${o.meta}</p>`:""}
+    ${o.meta?`<p class="mono mono--sentence room-hero__meta">${o.meta}</p>`:""}
   </div>
   <div class="room-hero__door${o.k?"":" is-empty"}"${o.k?"":` aria-hidden="true"`}>
     <div class="room-hero__open fig__plate${o.screen?" fig--screen":""}" data-img="${o.k||""}" data-slot=""><div class="fig__ghost">${o.ghost||""}</div></div>
@@ -647,8 +648,10 @@ ARCHIVE.forEach(a=>{ MEDIA["art-"+a.id]={src:`img/art-${a.id}.jpg`,alt:a.alt,fit
 MEDIA["exhibition-door"]={src:`img/art-${ARCHIVE[0].id}.jpg`,alt:"",pos:"50% 40%"};
 const label=a=>a.d?`${a.p}, ${a.d}`:a.p;
 function exhibitionHTML(){
-  return `${hero({kicker:"Exhibition · a small hang",title:"Eight works on one wall",
-    lede:"Painting is where the noticing started. Take a piece off the wall to look at it properly, then walk through to the rest.",
+  return `${hero({kicker:"Exhibition",title:"Inside / Outside",
+    sub:"The space between what I see and what I carry.",
+    lede:"Some of these pieces started with something tangible. Others started with something invisible. As I paint, the outside world and my internal world bleed together onto the same canvas.",
+    meta:"Swipe along the wall to explore, or tap any painting to take a closer look.",
     k:"exhibition-door",ghost:"Chemistry"})}
   <div class="gallery" id="gallery">
     <span class="gallery__rail" aria-hidden="true"></span>
