@@ -43,7 +43,7 @@ can follow how one question connects everything:
 - 03 Make · Keeping the days we missed (The Colorful Journey). Visual: the
   shared timeline.
 - 04 Gather · Making room at a larger scale (Beats of Hope). Visual: a photograph
-  of the night (gather-2) with the ticket below it.
+  of the night from the stage (gather-2) with the ticket below it.
 - 05 Draw · Where I began. Visual: three works, no more.
 - 06 The question · the four rooms joined as dots, each a way back.
 - More work · Contextuary, TeenCare, Little Smile Project, Awards, CV.

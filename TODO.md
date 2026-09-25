@@ -1,12 +1,11 @@
 # Before this goes live
 
-## 1. Photographs (19 slots, 17 still empty; the 8 exhibition works are in img/art-*.jpg, all in the MEDIA object at the top of app.js)
-Filled: hero-door, rooms-hall
+## 1. Photographs (19 slots, 16 still empty; the 8 exhibition works are in img/art-*.jpg, all in the MEDIA object at the top of app.js)
+Filled: hero-door, rooms-hall, gather-2
 
 Main scroll
 - rooms-hands   two hands sharing one box of crayons, close crop
 - sheet-2       Season 2, child and facilitator, close (square)
-- gather-2      Beats of Hope, the night: band mid-set or the crowd (4:3), in the 04 Gather frame
 
 Room doors (the photograph in each room's hero, portrait on laptop)
 - nm-lead  Nét Mơ, a session in progress
