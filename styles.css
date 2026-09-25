@@ -732,28 +732,78 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .room__kicker{margin-top:var(--sp-5);font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.18em;line-height:1.7;text-transform:uppercase;color:var(--accent)}
 .room__kicker + *{margin-top:.55rem}
 
-/* the hero at the top of every room: navy like the entrance, the room's
-   own accent in the light, and its photograph seen through a door */
+/* the hero at the top of every room. Every room has its own light:
+   dark heroes (Events, Tech, Awards) and paper heroes (Nét Mơ, Research,
+   Exhibition, About, CV) alternate, so each door opens somewhere different.
+   The photograph is always seen through the same arched door. */
 .room-hero{grid-column:full;position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:var(--sp-5);align-items:center;
   padding:var(--sp-5) max(var(--gutter),(100% - var(--wide)) / 2);color:var(--cream);
   background:radial-gradient(55% 75% at 8% 0%,color-mix(in srgb,var(--accent) 40%,transparent),transparent 66%),
              radial-gradient(45% 65% at 94% 100%,rgba(43,77,224,.3),transparent 64%),var(--navy);
   --ink:#F7EFE2;--ink-70:rgba(247,239,226,.8);--ink-45:rgba(247,239,226,.6);--ink-20:rgba(247,239,226,.26);--rule:rgba(247,239,226,.2);
-  --lit:color-mix(in srgb,var(--accent) 65%,var(--cream))}
+  --lit:color-mix(in srgb,var(--accent) 65%,var(--cream));--door-line:rgba(247,239,226,.3);--door-glass:rgba(247,239,226,.1)}
+/* paper heroes: dark ink on a light room */
+.room:is([data-room="net-mo"],[data-room="research"],[data-room="exhibition"],[data-room="about"],[data-room="cv"]) .room-hero{
+  color:var(--ink);--ink:#141C33;--ink-70:rgba(20,28,51,.74);--ink-45:rgba(20,28,51,.56);--ink-20:rgba(20,28,51,.22);--rule:rgba(20,28,51,.16);
+  --lit:color-mix(in srgb,var(--accent) 82%,#141C33);--door-line:rgba(20,28,51,.22);--door-glass:rgba(255,255,255,.45)}
+/* Nét Mơ · late afternoon in a shelter hall, peach into coral */
+.room[data-room="net-mo"] .room-hero{background:
+  radial-gradient(60% 90% at 100% 0%,rgba(239,106,69,.42),transparent 62%),
+  radial-gradient(50% 70% at 0% 100%,rgba(238,65,135,.2),transparent 64%),
+  linear-gradient(160deg,#FCEBDD,#F7D3C0)}
+/* Events · a stage at night, orange and pink lights from below */
+.room[data-room="events"] .room-hero{background:
+  radial-gradient(45% 80% at 20% 110%,rgba(242,135,47,.62),transparent 66%),
+  radial-gradient(40% 70% at 70% 115%,rgba(238,65,135,.5),transparent 64%),
+  radial-gradient(30% 50% at 88% 0%,rgba(242,135,47,.18),transparent 70%),
+  linear-gradient(180deg,#1A0C24,#2B1233)}
+/* Research · graph paper in lavender */
+.room[data-room="research"] .room-hero{background:
+  radial-gradient(55% 80% at 95% 10%,rgba(106,75,214,.24),transparent 64%),
+  linear-gradient(rgba(106,75,214,.08) 1px,transparent 1px) 0 0/28px 28px,
+  linear-gradient(90deg,rgba(106,75,214,.08) 1px,transparent 1px) 0 0/28px 28px,
+  #EEEAF8}
+/* Tech · a screen's electric blue with a dot grid */
+.room[data-room="tech"] .room-hero{--lit:#A6F0E6;background:
+  radial-gradient(rgba(247,239,226,.16) 1px,transparent 1.5px) 0 0/22px 22px,
+  radial-gradient(55% 80% at 90% 100%,rgba(15,145,139,.45),transparent 66%),
+  linear-gradient(150deg,#14228F,#2B4DE0)}
+/* Exhibition · washes of paint on a cream wall */
+.room[data-room="exhibition"] .room-hero{background:
+  radial-gradient(38% 60% at 6% 12%,rgba(238,65,135,.34),transparent 66%),
+  radial-gradient(34% 55% at 36% 108%,rgba(242,135,47,.3),transparent 66%),
+  radial-gradient(30% 50% at 70% 4%,rgba(106,75,214,.2),transparent 68%),
+  radial-gradient(40% 60% at 104% 90%,rgba(43,77,224,.22),transparent 66%),
+  #F8F0E4}
+/* Awards · deep teal with a little gold */
+.room[data-room="awards"] .room-hero{--lit:#F6C979;background:
+  radial-gradient(45% 80% at 85% 0%,rgba(246,201,121,.3),transparent 64%),
+  radial-gradient(55% 80% at 0% 100%,rgba(15,145,139,.55),transparent 66%),
+  linear-gradient(160deg,#06302E,#0B4B47)}
+/* About · blush */
+.room[data-room="about"] .room-hero{background:
+  radial-gradient(55% 85% at 96% 6%,rgba(238,65,135,.3),transparent 64%),
+  radial-gradient(45% 70% at 0% 100%,rgba(242,135,47,.16),transparent 64%),
+  linear-gradient(160deg,#FBEAF0,#F6D6E1)}
+/* CV · ruled paper */
+.room[data-room="cv"] .room-hero{background:
+  linear-gradient(transparent 31px,rgba(43,77,224,.14) 32px) 0 0/100% 32px,
+  linear-gradient(90deg,transparent 0 max(calc(var(--gutter) - 18px),8px),rgba(238,65,135,.3) 0 calc(max(calc(var(--gutter) - 18px),8px) + 1px),transparent 0),
+  #F9F5EC}
 .room-hero .room__kicker{margin-top:0;color:var(--lit)}
 .room-hero h2{font-size:clamp(2.1rem,5vw,3.6rem);letter-spacing:-.03em;line-height:1.02;max-width:min(100%,16ch)}
 .room-hero__lede{margin-top:var(--sp-3);font-size:var(--t-lead);line-height:1.6;color:var(--ink-70);max-width:min(100%,48ch)}
 .room-hero .stats b{color:var(--lit)}
 .room-hero__meta{margin-top:var(--sp-2)}
 .room-hero__door{position:relative;justify-self:end;width:min(100%,340px);aspect-ratio:4/5;padding:8px;
-  border:1px solid rgba(247,239,226,.28);border-radius:170px 170px 6px 6px;rotate:-1.2deg;
-  background:linear-gradient(180deg,rgba(247,239,226,.12),rgba(247,239,226,.02))}
+  border:1px solid var(--door-line);border-radius:170px 170px 6px 6px;rotate:-1.2deg;
+  background:linear-gradient(180deg,var(--door-glass),transparent);box-shadow:0 40px 70px -50px rgba(0,0,0,.6)}
 .room-hero .room-hero__open{height:100%;aspect-ratio:auto;border-radius:162px 162px 3px 3px;
-  background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 45%,transparent),rgba(238,65,135,.22) 55%,rgba(43,77,224,.35))}
+  background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 55%,transparent),color-mix(in srgb,var(--accent) 18%,transparent))}
 .room-hero__open.fig--screen{--fit:contain}
-.room-hero__open .fig__ghost{background:none;color:rgba(247,239,226,.7)}
+.room-hero__open .fig__ghost{background:none;color:var(--ink-70)}
 /* a door with nothing behind it yet still has its knob */
-.room-hero__door.is-empty::after{content:"";position:absolute;right:20px;top:56%;width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 12px var(--orange)}
+.room-hero__door.is-empty::after{content:"";position:absolute;right:20px;top:56%;width:8px;height:8px;border-radius:50%;background:var(--lit);box-shadow:0 0 12px var(--lit)}
 .room-hero + .room__kicker{margin-top:var(--sp-5)}
 @media(max-width:900px){
   .room-hero{grid-template-columns:minmax(0,1fr);gap:var(--sp-4)}
@@ -821,58 +871,70 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
   .cv-row{grid-template-columns:minmax(0,1fr);gap:.3rem}
 }
 
-/* ---- exhibition · a hung wall in the navy room ---- */
-.gallery{position:relative;margin-top:var(--sp-4);padding:var(--sp-5) 0 var(--sp-4);border-radius:4px;overflow:hidden;color:var(--cream);
-  background:radial-gradient(50% 60% at 20% 0%,rgba(242,135,47,.16),transparent 62%),
-             radial-gradient(45% 55% at 72% 0%,rgba(238,65,135,.14),transparent 60%),
-             linear-gradient(180deg,#0D1735,#16224A 60%,#0D1735);
-  --ink:#F7EFE2;--ink-70:rgba(247,239,226,.74);--ink-45:rgba(247,239,226,.55);--ink-20:rgba(247,239,226,.24);--rule:rgba(247,239,226,.18);--on-ink:var(--navy)}
-.gallery__rail{position:absolute;left:0;right:0;top:calc(var(--sp-5) - 14px);height:1px;background:var(--rule)}
-.gallery__spot{position:absolute;width:52vw;max-width:640px;aspect-ratio:1;border-radius:50%;pointer-events:none;z-index:0;opacity:0;
-  background:radial-gradient(circle,rgba(255,244,220,.75),rgba(255,240,214,.28) 42%,transparent 70%);
-  mix-blend-mode:soft-light;transform:translate(-50%,-50%);transition:opacity .6s var(--ease-soft)}
+/* ---- exhibition · a lit gallery wall, works hung on one eye line ----
+   Each work is sized by height (--wall-h × --size, its size relative to the
+   others) and hung so every centre sits on the same line. Canvases hang
+   bare with a shadow; works on paper get a narrow mat and a thin frame. */
+.room__inner > .gallery{grid-column:full}
+.gallery{position:relative;margin-top:0;padding:var(--sp-5) 0 var(--sp-4);overflow:hidden;
+  background:
+    linear-gradient(180deg,transparent calc(100% - 14px),rgba(120,92,64,.16) calc(100% - 14px)),
+    radial-gradient(70% 55% at 50% -10%,rgba(255,252,246,.9),transparent 70%),
+    linear-gradient(180deg,#EFE5D7,#E9DDCC)}
+.gallery__rail{position:absolute;left:0;right:0;top:calc(var(--sp-5) - 18px);height:2px;background:rgba(120,92,64,.18)}
+.gallery__spot{position:absolute;width:44vw;max-width:560px;aspect-ratio:1;border-radius:50%;pointer-events:none;z-index:0;opacity:0;
+  background:radial-gradient(circle,rgba(255,250,240,.8),rgba(255,248,236,.25) 45%,transparent 70%);
+  transform:translate(-50%,-50%);transition:opacity .6s var(--ease-soft)}
 .gallery:hover .gallery__spot{opacity:1}
-.gallery__floor{position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(180deg,rgba(247,239,226,.05),transparent);pointer-events:none}
-/* six works fit one wall on a laptop; narrower screens walk along it */
-.gallery__wall{--wall-gap:clamp(1.1rem,3vw,2.6rem);position:relative;z-index:1;container-type:inline-size;
-  display:flex;align-items:flex-start;gap:var(--wall-gap);padding:0 var(--gutter) var(--sp-4);
+.gallery__floor{display:none}
+.gallery__wall{--wall-h:clamp(220px,25vw,360px);--wall-gap:clamp(2rem,5vw,4.5rem);--max:1.15;position:relative;z-index:1;
+  display:flex;align-items:flex-start;gap:var(--wall-gap);padding:var(--sp-3) max(var(--gutter),(100% - var(--wide)) / 2) var(--sp-4);
   overflow-x:auto;scrollbar-width:thin;cursor:grab;scroll-snap-type:x proximity;scroll-padding-inline:var(--gutter)}
 .gallery__wall.is-dragging{cursor:grabbing;scroll-snap-type:none}
 .gallery__wall::-webkit-scrollbar{height:2px}
-.gallery__wall::-webkit-scrollbar-thumb{background:rgba(247,239,226,.28)}
-.work{--unit:max(3.2rem,(100cqi - 4 * var(--wall-gap)) / 15);
-  flex:none;width:calc(var(--span,3) * var(--unit));margin-top:var(--hang,0px);
-  background:none;border:0;padding:0;cursor:pointer;font:inherit;text-align:left;color:inherit;scroll-snap-align:start;
+.gallery__wall::-webkit-scrollbar-thumb{background:rgba(120,92,64,.3)}
+.work{--h:calc(var(--wall-h) * var(--size,1));position:relative;flex:none;
+  margin-top:calc(var(--wall-h) * (var(--max) - var(--size,1)) / 2);
+  background:none;border:0;padding:0;cursor:pointer;font:inherit;text-align:left;color:inherit;scroll-snap-align:center;
   opacity:0;transform:translateY(14px);transition:transform .5s var(--ease),opacity .6s var(--ease-soft)}
+/* a warm pool of light above each work */
+.work::before{content:"";position:absolute;left:50%;top:calc(var(--h) * -.35);width:calc(var(--h) * var(--ar) + 9rem);height:calc(var(--h) * 1.2);
+  translate:-50% 0;border-radius:50%;z-index:-1;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(255,251,242,.95),rgba(255,248,234,.4) 55%,transparent)}
 .work.hung{opacity:1;transform:none}
-.work.hung:hover,.work.hung:focus-visible{transform:translateY(-5px)}
-.work__frame{display:block;padding:clamp(7px,1.4vw,13px);background:linear-gradient(180deg,#F3EADA,#DFD1BB);
-  box-shadow:0 26px 46px -28px rgba(0,0,0,.95),0 0 0 1px rgba(247,239,226,.16);transition:box-shadow .5s var(--ease)}
-.work:hover .work__frame{box-shadow:0 34px 56px -26px rgba(0,0,0,1),0 0 0 1px rgba(242,135,47,.5),0 0 34px -6px rgba(242,135,47,.35)}
-.work__plate{display:block;position:relative;overflow:hidden;aspect-ratio:var(--ratio,4/5);background:#C8BCA8;border:1px solid rgba(20,28,51,.14);--fit:contain}
+.work.hung:hover,.work.hung:focus-visible{transform:translateY(-6px)}
+.work__frame{display:block;width:calc(var(--h) * var(--ar));
+  box-shadow:0 2px 4px rgba(60,40,24,.18),0 28px 44px -26px rgba(60,40,24,.6);transition:box-shadow .5s var(--ease)}
+.work:hover .work__frame{box-shadow:0 2px 4px rgba(60,40,24,.2),0 40px 56px -26px rgba(60,40,24,.65)}
+/* works on paper: a narrow mat inside a thin dark frame */
+.work--paper .work__frame{padding:clamp(8px,1vw,14px);background:#FBF8F2;outline:3px solid #2A2420;outline-offset:0;
+  width:calc(var(--h) * var(--ar) + 2 * clamp(8px,1vw,14px))}
+.work__plate{display:block;position:relative;overflow:hidden;aspect-ratio:var(--ratio,4/5);background:#DCCFBD;--fit:contain}
 .work__plate .fig__ghost{font-size:10px;color:rgba(20,28,51,.5)}
-.work__label{display:block;margin-top:.6rem;font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.08em;line-height:1.6;color:rgba(247,239,226,.55)}
-.work__label b{display:block;font-family:var(--display);font-weight:500;font-size:1rem;color:var(--cream);letter-spacing:.04em;line-height:1.25;text-wrap:balance}
-.work__label span{display:block;font-size:.66rem}
-.work__peek{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--orange);opacity:0;transform:translateY(-2px);transition:opacity .35s,transform .35s var(--ease)}
+/* a museum label under each work */
+.work__label{display:block;margin-top:var(--sp-2);max-width:calc(var(--h) * var(--ar) + 2rem);font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.06em;line-height:1.6;color:var(--ink-45)}
+.work__label b{display:block;font-family:var(--display);font-weight:400;font-size:1.12rem;color:var(--ink);letter-spacing:-.005em;line-height:1.2;text-wrap:balance}
+.work__label span{display:block;font-size:.68rem}
+.work__peek{margin-top:.2rem;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--pink);opacity:0;transform:translateY(-2px);transition:opacity .35s,transform .35s var(--ease)}
 .work:hover .work__peek,.work:focus-visible .work__peek{opacity:1;transform:none}
 @media(hover:none){.work__peek{opacity:.8;transform:none}}
-.gallery__hint{position:relative;z-index:1;margin:0 var(--gutter);color:var(--ink-45)}
-.gallery__cta{position:relative;z-index:2;margin:var(--sp-4) var(--gutter) 0;padding-top:var(--sp-3);border-top:1px solid var(--rule);
+@media(max-width:699px){
+  .gallery__wall{--wall-h:260px;--wall-gap:2.4rem}
+}
+.gallery__hint{position:relative;z-index:1;margin:0 max(var(--gutter),(100% - var(--wide)) / 2);color:var(--ink-45)}
+.gallery__cta{position:relative;z-index:2;margin:var(--sp-4) max(var(--gutter),(100% - var(--wide)) / 2) 0;padding-top:var(--sp-3);border-top:1px solid var(--rule);
   display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-3);align-items:center;justify-content:space-between}
 .gallery__cta p{max-width:34ch}
-@media(max-width:699px){
-  .room__inner > .gallery{grid-column:full;border-radius:0}
-}
 
-/* ---- screening room · under the wall, one step darker, the projector on ---- */
-.room__inner > .screening{grid-column:wide}
-.screening{position:relative;overflow:hidden;margin-top:var(--sp-6);border-radius:4px;color:var(--cream);
+/* ---- screening room · under the wall, the lights down, velvet dark, the projector on ---- */
+.room__inner > .screening{grid-column:full}
+.screening{position:relative;overflow:hidden;margin-top:var(--sp-5);color:var(--cream);
   display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:var(--sp-3) var(--sp-4);align-items:start;
-  padding:var(--sp-5) var(--gutter) var(--sp-5);
+  padding:var(--sp-5) max(var(--gutter),(100% - var(--wide)) / 2);
   background:radial-gradient(55% 40% at 50% 0%,rgba(255,236,205,.12),transparent 70%),
-             radial-gradient(40% 50% at 12% 100%,rgba(238,65,135,.12),transparent 65%),
-             linear-gradient(180deg,#060B1C,#0A1330 65%,#060B1C);
+             radial-gradient(40% 50% at 12% 100%,rgba(238,65,135,.16),transparent 65%),
+             radial-gradient(35% 45% at 95% 95%,rgba(242,135,47,.1),transparent 65%),
+             linear-gradient(180deg,#1B1210,#140C0B 65%,#1B1210);
   --ink:#F7EFE2;--ink-70:rgba(247,239,226,.74);--ink-45:rgba(247,239,226,.55);--ink-20:rgba(247,239,226,.22);--rule:rgba(247,239,226,.16)}
 /* the beam falls from the projector onto the screen */
 .screening::before{content:"";position:absolute;left:var(--beam,35%);top:0;width:70%;height:80%;translate:-50% 0;pointer-events:none;
@@ -881,7 +943,7 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .screening__head{grid-column:1/-1}
 .screening .room__kicker{margin-top:0;color:var(--orange)}
 .screening .room__sub{color:var(--cream)}
-.screen{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:3px;background:#02050D;border:1px solid rgba(247,239,226,.18);
+.screen{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:3px;background:#0B0706;border:1px solid rgba(247,239,226,.18);
   box-shadow:0 0 0 6px rgba(247,239,226,.03),0 30px 80px -30px rgba(255,236,205,.3)}
 .screen iframe,.screen img{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
 .screen__play{position:absolute;inset:0;width:100%;padding:0;border:0;background:none;cursor:pointer}
@@ -905,7 +967,6 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
   .screening{grid-template-columns:minmax(0,1fr);--beam:50%}
 }
 @media(max-width:699px){
-  .room__inner > .screening{grid-column:full;border-radius:0}
   .screen__btn{width:56px;height:56px}
 }
 

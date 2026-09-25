@@ -15,8 +15,11 @@ sharing a room, then tests it through community work, research and building.
   /work/net-mo, /work/events, /work/research, /work/tech, /exhibition,
   /awards, /about, /cv. Old routes resolve through ROOM_ALIASES;
   /room/anchor scrolls to a kicker with that id. Rooms open in place.
-- Every room starts with a hero block (navy, the room's accent, its lead
-  photograph through an arched door) and then tells one short story: what
+- Every room starts with a hero block with its own light, set by
+  data-room on #room: dark heroes (Events night stage, Tech electric blue,
+  Awards teal) and paper heroes (Nét Mơ peach, Research lavender graph
+  paper, Exhibition paint washes, About blush, CV ruled paper); the lead
+  photograph is always seen through an arched door and then tells one short story: what
   was noticed, what changed, what it led to. No long lists or archives;
   the CV holds the dated record, AWARDS holds the honours once.
 - Keep every interaction: knock entrance, drifting motes canvas, the story

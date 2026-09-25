@@ -55,8 +55,9 @@ title, medium and year exactly as labelled, the artist statement (shown as
 text when someone clicks Inspect), alt text, and `ratio`, the width/height
 of its image in pixels. Put the cropped artwork (the work only, no slide
 around it) at `img/art-<id>.jpg`. Works are always shown whole, never
-stretched. `span` sets its width on the wall, `hang` how far below the
-rail it hangs.
+stretched. `size` sets its height on the wall relative to the others
+(1 = standard); every work hangs centred on the same eye line. Works on
+paper take `support:"paper"` and hang in a narrow mat and thin frame.
 
 ## Add a film
 

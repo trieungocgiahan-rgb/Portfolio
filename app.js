@@ -623,7 +623,7 @@ const ROOMS={
   ["links",[{href:"#/about",label:"About"},{href:"#/awards",label:"Awards"},{href:"#/work/research",label:"Research & Internships"}]]
 ]},
 
-"/awards":{accent:"var(--violet)",where:"Awards",blocks:[
+"/awards":{accent:"var(--teal)",where:"Awards",blocks:[
   ["hero",{kicker:"Awards · selected honours",title:"Awards",
     facts:[{b:"5",s:"honours, 2023 to 2026"}]}],
   ["rows",AWARDS],
@@ -644,30 +644,31 @@ const ROOM_ALIASES={
 /* ---------- exhibition · a small hang, then the full gallery ---------- */
 /* each work: title, medium and year exactly as on its label, the artist
    statement, the cropped artwork (ratio = its own pixels, never altered),
-   and how it hangs: span = width on the wall, hang = drop from the rail */
+   size = its height on the wall relative to the others, and support:"paper"
+   for works on paper, which hang in a mat and a thin frame */
 const ARCHIVE=[
-  {id:"chemistry",t:"Chemistry",p:"Acrylic on canvas, 40 × 60 cm",d:"2026",ratio:"627/942",span:3.2,hang:0,
+  {id:"chemistry",t:"Chemistry",p:"Acrylic on canvas, 40 × 60 cm",d:"2026",ratio:"627/942",size:1.15,
    n:"When two people are drawn to each other, I picture it starting as a tiny signal between neurons. Then it turns into a dance. Here two souls move toward each other through the branches, like the chemistry in my head has found its rhythm.",
    alt:"Acrylic painting in pink, coral and turquoise: two pale figures reach toward each other among branching neurons, a faint heart behind them."},
-  {id:"restless-light",t:"Restless Light",p:"Digital painting, 2000×1460",d:"2026",ratio:"666/498",span:4.4,hang:34,
+  {id:"restless-light",t:"Restless Light",p:"Digital painting, 2000×1460",d:"2026",ratio:"666/498",size:1,
    n:"What begins as chemistry becomes choreography, until closeness seems to move through the body before the mind has found a name for it.",
    alt:"Digital painting: three glowing pink and violet figures with spiral hearts dance on a black ground, their limbs branching like neurons."},
-  {id:"stardust",t:"Stardust",p:"Acrylic on watercolor paper, 21 × 29.7 cm",d:"2026",ratio:"581/736",span:2.6,hang:14,
+  {id:"stardust",t:"Stardust",p:"Acrylic on watercolor paper, 21 × 29.7 cm",d:"2026",ratio:"581/736",size:.9,support:"paper",
    n:"Long before I existed, the calcium in my bones was burning in the heart of a star. I like to believe that light never faded, so I painted it glowing behind my ribs—right where my deepest feelings live.",
    alt:"Acrylic painting in blues, oranges and yellows: a ribcage outlined in turquoise with a bright star bursting behind it."},
-  {id:"kaleidoscope",t:"Kaleidoscope",p:"Digital painting, 2000×1460",d:"2026",ratio:"629/503",span:4,hang:46,
+  {id:"kaleidoscope",t:"Kaleidoscope",p:"Digital painting, 2000×1460",d:"2026",ratio:"629/503",size:1,
    n:"With every motion, color escapes its skin and fills the space around it. As layers fold and boundaries blur, the whole room comes alive—a kaleidoscope of shared light.",
    alt:"Digital painting: a crowd of blurred dancing figures, arms raised, dissolving into streaks of pink, violet, green and gold light."},
-  {id:"red-season",t:"Red Season",p:"Acrylic on canvas, approx. 25 × 25 cm",d:"",ratio:"464/427",span:3,hang:8,
+  {id:"red-season",t:"Red Season",p:"Acrylic on canvas, approx. 25 × 25 cm",d:"",ratio:"464/427",size:.8,
    n:"These lilies grew out of all that deep red, and no one sees what it took to get there. That's how strength feels to me, quiet and blooming from the inside.",
    alt:"Acrylic painting of two pink stargazer lilies with green leaves on a deep red ground."},
-  {id:"bloom-anyway",t:"Bloom Anyway",p:"Acrylic on canvas, approx. 30 × 40 cm",d:"",ratio:"478/584",span:3,hang:30,
+  {id:"bloom-anyway",t:"Bloom Anyway",p:"Acrylic on canvas, approx. 30 × 40 cm",d:"",ratio:"478/584",size:.95,
    n:"Eyes on me from every side, and just as much noise inside my head I smile anyway, while something quiet keeps growing, two buds still waiting to open.",
    alt:"Acrylic painting: a white lily on a blue stem rises through a dark red field of watching eyes, swirls and a small smiling face."},
-  {id:"ba-son-view",t:"Ba Son's view",p:"Red ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"678/497",span:3.8,hang:0,
+  {id:"ba-son-view",t:"Ba Son's view",p:"Red ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"678/497",size:.78,support:"paper",
    n:"Standing on the bridge and watching the city light up in its ceaseless rush, I feel my sadness fade as I watch the metropolis grow ever grander through the passing hours.",
    alt:"Red ink sketch of the Ho Chi Minh City skyline seen across the river, a tree-lined embankment in front."},
-  {id:"post-office",t:"My city Post Office",p:"Black ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"691/525",span:3.8,hang:24,
+  {id:"post-office",t:"My city Post Office",p:"Black ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"691/525",size:.78,support:"paper",
    n:"Redrawing the building I passed unnoticed every single day opened my eyes to its timeless beauty.",
    alt:"Black ink sketch of the Saigon Central Post Office facade with its clock and arched windows, lettered Bưu Điện TP.HCM."}
 ];
@@ -685,7 +686,7 @@ function exhibitionHTML(){
     <span class="gallery__spot" id="gallerySpot" aria-hidden="true"></span>
     <span class="gallery__floor" aria-hidden="true"></span>
     <div class="gallery__wall">${ARCHIVE.map((a,i)=>`
-      <button class="work" data-obj="${i}" type="button" style="--span:${a.span};--hang:${a.hang}px"
+      <button class="work${a.support==="paper"?" work--paper":""}" data-obj="${i}" type="button" style="--ratio:${a.ratio};--ar:${a.ratio.split("/")[0]/a.ratio.split("/")[1]};--size:${a.size}"
         aria-label="${a.t}, ${label(a)}. Open to inspect.">
         <span class="work__frame">
           <span class="work__plate" data-img="art-${a.id}" style="--ratio:${a.ratio}"><span class="fig__ghost">${a.t}</span></span>
@@ -751,7 +752,8 @@ function bindScreening(){
   function render(route){
     if(route==="/exhibition"||route==="/archive"||route==="/exhibition/films"){
       inner.innerHTML=exhibitionHTML();
-      room.style.setProperty("--accent","var(--orange)");
+      room.dataset.room="exhibition";
+      room.style.setProperty("--accent","var(--pink)");
       where.textContent="Exhibition";
       bindArchive(); bindScreening();
       if(route==="/exhibition/films") requestAnimationFrame(()=>{ room.scrollTop=$("#room-films").offsetTop-$(".room__top").offsetHeight-16; });
@@ -762,6 +764,7 @@ function bindScreening(){
       if(!ROOMS[route]){ anchor=route.slice(route.lastIndexOf("/")+1); route=route.slice(0,route.lastIndexOf("/")); }
       const r=ROOMS[route]; if(!r){ try{ location.hash=""; }catch(err){} return; }
       room.style.setProperty("--accent",r.accent);
+      room.dataset.room=route.split("/").pop();
       where.textContent=r.where||"Deeper";
       inner.innerHTML=r.blocks.map(([type,arg])=>B[type](arg)).join("");
       paintMedia(inner); wireEvents(inner);
