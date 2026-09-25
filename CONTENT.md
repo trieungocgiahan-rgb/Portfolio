@@ -73,12 +73,18 @@ Ho Chi Minh City.
 - Tết ơi!, 2025 to 2026. School-wide music event, 2,400+ students.
 
 ## Honours
-- International Psychology Olympiad, Highest Distinction, Regional Top 1.
-  Annual Final, Advanced Thinking 165/200, Integrated Objective 180/200.
-- RAISE AI national competition, Silver, 2nd of 450+.
-- HCMC Youth and Children Creativity Contest, Second Prize, emotion cards.
-- Trưng Vương, Most Well-Rounded Student, Grade 11.
-- Vietnam Water Rocket Competition, national silver, team lead.
+The story behind each one, in her words, lives in AWARDS in app.js.
+Ideas & research
+- International Psychology Olympiad, 2026. Silver Award, 1st in Asia, Top 15 Global.
+- RAIS Essay Competition, 2026. Top 2 of about 450.
+- HCMC Youth Innovation, 2026. Top 10 of 200.
+Science & making
+- HCMC Youth and Children Creativity Contest, 2025. Second Prize, Emotion Card Deck.
+- HCMC Academic Excellence in Biology, 2024. Third Prize, one of 3 students selected from 45.
+- Vietnam Water Rocket Competition, 2023. National Silver, Team Lead.
+Team & school
+- HCMC Youth Basketball Championship, 2025. Bronze Medal.
+- Most Well-Rounded Student, 2025. Grade 11, Trưng Vương High School; ranked first of 844.
 - Coursera, Foundations of Neuroscience, Introduction to Psychology.
 
 ## Contact
