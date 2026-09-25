@@ -33,7 +33,7 @@ its own ratio; the photograph is cropped to it, never stretched. Artworks
 and interface screenshots are shown whole.
 
 Slots: hero-door, rooms-hall, rooms-hands, sheet-2, gather-2,
-art-1…6 (exhibition), nm-lead + nm-1…3, gt-lead + gt-1…3, td-lead,
+nm-lead + nm-1…3, gt-lead + gt-1…3, td-lead,
 cx-lead + cx-1…3, cj-lead, ab-2.
 
 ## Edit the deep-space pages
@@ -47,6 +47,16 @@ the photograph shown in its door), then a list of blocks: kicker,
 subtitle, lede, para, quote, steps, numbers, pairs, rows, contact, fig,
 lead, figs, strip, links. A kicker written as `{t:"…", id:"internships"}`
 can be linked to directly as `#/work/research/internships`.
+
+## Add or change an artwork
+
+The Exhibition wall is built from `ARCHIVE` in `app.js`. Each work has its
+title, medium and year exactly as labelled, the artist statement (shown as
+text when someone clicks Inspect), alt text, and `ratio`, the width/height
+of its image in pixels. Put the cropped artwork (the work only, no slide
+around it) at `img/art-<id>.jpg`. Works are always shown whole, never
+stretched. `span` sets its width on the wall, `hang` how far below the
+rail it hangs.
 
 ## Add a film
 

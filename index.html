@@ -373,14 +373,14 @@
   <div class="room__inner" id="roomInner"></div>
 </div>
 
-<div class="object" id="object" role="dialog" aria-modal="true" aria-label="Archive object">
+<div class="object" id="object" role="dialog" aria-modal="true" aria-labelledby="objTitle">
   <div class="object__plate" id="objectPlate"></div>
-  <div class="object__meta">
-    <div><h3 id="objTitle"></h3><p id="objNote"></p></div>
-    <div>
-      <p id="objMeta"></p>
-      <div class="object__nav"><button type="button" id="objPrev">← Prev</button><button type="button" id="objNext">Next →</button><button type="button" id="objClose">Close</button></div>
-    </div>
+  <div class="object__text">
+    <p class="mono" id="objCount"></p>
+    <h3 id="objTitle"></h3>
+    <p class="mono object__medium" id="objMeta"></p>
+    <p class="object__statement" id="objNote"></p>
+    <div class="object__nav"><button type="button" id="objPrev">← Prev</button><button type="button" id="objNext">Next →</button><button type="button" id="objClose">Close</button></div>
   </div>
 </div>
 <script src="app.js"></script>

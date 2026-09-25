@@ -12,7 +12,7 @@ const MEDIA = {
   "hero-door":{src:"img/hero-door.jpg",alt:"A workshop on a shelter floor: a girl leans in towards a boy holding up a crayon drawing while two younger children lie on the floor beside them.",pos:"50% 42%"},
   "rooms-hall":{src:"img/rooms-hall.jpg",alt:"Two people hug and smile in a shelter hall. Behind them, children work at small plastic tables beside a standing fan."},
   "rooms-hands":"", "sheet-2":"", "gather-2":"",
-  "art-1":"", "art-2":"", "art-3":"", "art-4":"", "art-5":"", "art-6":"",
+  /* the exhibition's own works register themselves from ARCHIVE below */
   /* rooms: the photograph in each room's door (-lead), then its evidence plates */
   "nm-lead":"", "nm-1":"", "nm-2":"", "nm-3":"",
   "gt-lead":"", "gt-1":"", "gt-2":"", "gt-3":"",
@@ -642,37 +642,64 @@ const ROOM_ALIASES={
 };
 
 /* ---------- exhibition · a small hang, then the full gallery ---------- */
+/* each work: title, medium and year exactly as on its label, the artist
+   statement, the cropped artwork (ratio = its own pixels, never altered),
+   and how it hangs: span = width on the wall, hang = drop from the rail */
 const ARCHIVE=[
-  {t:"Open door",p:"Watercolour",d:"2025",n:"The first page of my art portfolio. A door left open, flowers on the outside of it.",ratio:"3/4",span:3,hang:0},
-  {t:"Two souls, sparking",p:"Acrylic on canvas",d:"2025",n:"Two dancing figures among firing neurons. Pastel pink, teal and gold, with sculpted flower accents built up off the surface.",ratio:"1/1",span:5,hang:38},
-  {t:"District 1, in ink",p:"Ink on paper",d:"2024",n:"Architecture study, drawn standing up, which is why the balconies lean.",ratio:"2/3",span:2,hang:12},
-  {t:"Portrait",p:"Coloured pencil",d:"2024",n:"A child who sat still for eleven minutes, a personal record for both of us.",ratio:"3/4",span:3,hang:64},
-  {t:"Eye canvas",p:"Mixed media",d:"2025",n:"Part of a series about looking at looking.",ratio:"4/5",span:4,hang:0},
-  {t:"Lilies",p:"Acrylic",d:"2024",n:"Painted the week before an exhibition deadline, which shows.",ratio:"3/4",span:3,hang:26}
+  {id:"chemistry",t:"Chemistry",p:"Acrylic on canvas, 40 × 60 cm",d:"2026",ratio:"627/942",span:3.2,hang:0,
+   n:"When two people are drawn to each other, I picture it starting as a tiny signal between neurons. Then it turns into a dance. Here two souls move toward each other through the branches, like the chemistry in my head has found its rhythm.",
+   alt:"Acrylic painting in pink, coral and turquoise: two pale figures reach toward each other among branching neurons, a faint heart behind them."},
+  {id:"restless-light",t:"Restless Light",p:"Digital painting, 2000×1460",d:"2026",ratio:"666/498",span:4.4,hang:34,
+   n:"What begins as chemistry becomes choreography, until closeness seems to move through the body before the mind has found a name for it.",
+   alt:"Digital painting: three glowing pink and violet figures with spiral hearts dance on a black ground, their limbs branching like neurons."},
+  {id:"stardust",t:"Stardust",p:"Acrylic on watercolor paper, 21 × 29.7 cm",d:"2026",ratio:"581/736",span:2.6,hang:14,
+   n:"Long before I existed, the calcium in my bones was burning in the heart of a star. I like to believe that light never faded, so I painted it glowing behind my ribs—right where my deepest feelings live.",
+   alt:"Acrylic painting in blues, oranges and yellows: a ribcage outlined in turquoise with a bright star bursting behind it."},
+  {id:"kaleidoscope",t:"Kaleidoscope",p:"Digital painting, 2000×1460",d:"2026",ratio:"629/503",span:4,hang:46,
+   n:"With every motion, color escapes its skin and fills the space around it. As layers fold and boundaries blur, the whole room comes alive—a kaleidoscope of shared light.",
+   alt:"Digital painting: a crowd of blurred dancing figures, arms raised, dissolving into streaks of pink, violet, green and gold light."},
+  {id:"red-season",t:"Red Season",p:"Acrylic on canvas, approx. 25 × 25 cm",d:"",ratio:"464/427",span:3,hang:8,
+   n:"These lilies grew out of all that deep red, and no one sees what it took to get there. That's how strength feels to me, quiet and blooming from the inside.",
+   alt:"Acrylic painting of two pink stargazer lilies with green leaves on a deep red ground."},
+  {id:"bloom-anyway",t:"Bloom Anyway",p:"Acrylic on canvas, approx. 30 × 40 cm",d:"",ratio:"478/584",span:3,hang:30,
+   n:"Eyes on me from every side, and just as much noise inside my head I smile anyway, while something quiet keeps growing, two buds still waiting to open.",
+   alt:"Acrylic painting: a white lily on a blue stem rises through a dark red field of watching eyes, swirls and a small smiling face."},
+  {id:"ba-son-view",t:"Ba Son's view",p:"Red ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"678/497",span:3.8,hang:0,
+   n:"Standing on the bridge and watching the city light up in its ceaseless rush, I feel my sadness fade as I watch the metropolis grow ever grander through the passing hours.",
+   alt:"Red ink sketch of the Ho Chi Minh City skyline seen across the river, a tree-lined embankment in front."},
+  {id:"post-office",t:"My city Post Office",p:"Black ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"691/525",span:3.8,hang:24,
+   n:"Redrawing the building I passed unnoticed every single day opened my eyes to its timeless beauty.",
+   alt:"Black ink sketch of the Saigon Central Post Office facade with its clock and arched windows, lettered Bưu Điện TP.HCM."}
 ];
+/* every work is shown whole: contain, never cropped */
+ARCHIVE.forEach(a=>{ MEDIA["art-"+a.id]={src:`img/art-${a.id}.jpg`,alt:a.alt,fit:"contain"}; });
+/* the room's door shows the first work as a photograph through a doorway (cropped, not squashed) */
+MEDIA["exhibition-door"]={src:`img/art-${ARCHIVE[0].id}.jpg`,alt:"",pos:"50% 40%"};
+const label=a=>a.d?`${a.p}, ${a.d}`:a.p;
 function exhibitionHTML(){
-  return `${hero({kicker:"Exhibition · a small hang",title:"Six works on one wall",
+  return `${hero({kicker:"Exhibition · a small hang",title:"Eight works on one wall",
     lede:"Painting is where the noticing started. Take a piece off the wall to look at it properly, then walk through to the rest.",
-    k:"art-1",ghost:"Open door, watercolour"})}
+    k:"exhibition-door",ghost:"Chemistry"})}
   <div class="gallery" id="gallery">
     <span class="gallery__rail" aria-hidden="true"></span>
     <span class="gallery__spot" id="gallerySpot" aria-hidden="true"></span>
     <span class="gallery__floor" aria-hidden="true"></span>
     <div class="gallery__wall">${ARCHIVE.map((a,i)=>`
       <button class="work" data-obj="${i}" type="button" style="--span:${a.span};--hang:${a.hang}px"
-        aria-label="${a.t}, ${a.p}, ${a.d}. Open to inspect.">
+        aria-label="${a.t}, ${label(a)}. Open to inspect.">
         <span class="work__frame">
-          <span class="work__plate" data-img="art-${i+1}" style="--ratio:${a.ratio}"><span class="fig__ghost">${a.t}</span></span>
+          <span class="work__plate" data-img="art-${a.id}" style="--ratio:${a.ratio}"><span class="fig__ghost">${a.t}</span></span>
         </span>
         <span class="work__label">
           <b>${a.t}</b>
-          <span>${a.p} · ${a.d}</span>
+          <span>${label(a)}</span>
           <span class="work__peek">Inspect</span>
         </span>
       </button>`).join("")}</div>
+    <p class="mono gallery__hint">Drag along the wall →</p>
     <div class="gallery__cta">
-      <p class="mono mono--sentence">Six of them. The rest of the collection, including the Nét Mơ children's work, hangs in the virtual gallery.</p>
-      <a class="btn btn--ink" href="https://example.com/virtual-gallery" data-replace="gallery-url" target="_blank" rel="noopener">Enter the full exhibition →</a>
+      <p class="mono mono--sentence">Eight of them. The rest of the collection hangs in the full portfolio.</p>
+      <a class="btn btn--ink" href="https://canva.link/uouxvz39irst7qt" target="_blank" rel="noopener">See the full portfolio ↗</a>
     </div>
   </div>
   ${screeningHTML()}
@@ -794,11 +821,12 @@ function bindArchive(){
     idx=(i+ARCHIVE.length)%ARCHIVE.length;
     const a=ARCHIVE[idx];
     plate.style.setProperty("--ratio",a.ratio);
-    const m=media("art-"+(idx+1));
+    const m=media("art-"+a.id);
     plate.innerHTML=m&&m.src?`<img src="${m.src}" alt="${(m.alt||`${a.t}, ${a.p}`).replace(/"/g,"&quot;")}">`:`<span class="mono">${a.t}</span>`;
     $("#objTitle").textContent=a.t;
     $("#objNote").textContent=a.n;
-    $("#objMeta").textContent=`${a.p} · ${a.d} · ${String(idx+1).padStart(2,"0")} of ${ARCHIVE.length}`;
+    $("#objMeta").textContent=label(a);
+    $("#objCount").textContent=`${String(idx+1).padStart(2,"0")} of ${ARCHIVE.length}`;
   }
   function open(i){ show(i); ov.classList.add("is-open"); }
   function close(){ ov.classList.remove("is-open"); }

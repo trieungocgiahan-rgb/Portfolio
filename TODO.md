@@ -1,6 +1,6 @@
 # Before this goes live
 
-## 1. Photographs (26 slots, 24 still empty, all in the MEDIA object at the top of app.js)
+## 1. Photographs (19 slots, 17 still empty; the 8 exhibition works are in img/art-*.jpg, all in the MEDIA object at the top of app.js)
 Filled: hero-door, rooms-hall
 
 Main scroll
@@ -14,16 +14,12 @@ Room doors (the photograph in each room's hero, portrait on laptop)
 - td-lead  Research, a session with materials on the table
 - cx-lead  Contextuary, the app open on a passage (shown whole)
 - ab-2     About, working at the desk
-- art-1    Exhibition, Open door (watercolour)
 
 Evidence inside rooms
 - nm-1…3   Nét Mơ: child and facilitator, elderly participant, monster drawings
 - gt-1…3   Events: Sol Sound from the side, backstage, Colors of the Pitch
 - cx-1…3   Contextuary screens: My Words, reading view, practice
 - cj-lead  The Colorful Journey, archive view
-
-Exhibition
-- art-2…6  Two souls sparking, District 1 in ink, Portrait, Eye canvas, Lilies
 
 Faces of shelter children need permission from the mái ấm before going
 public. Blur or crop if in doubt.
