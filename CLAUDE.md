@@ -21,7 +21,8 @@ sharing a room, then tests it through community work, research and building.
   the CV holds the dated record, AWARDS holds the honours once.
 - Keep every interaction: knock entrance, drifting motes canvas, the story
   in four steps, crayon tray toggle, Contextuary word demo, crossover chart,
-  Pattern, draggable exhibition wall, archive object viewer,
+  Pattern, draggable exhibition wall, archive object viewer, the
+  screening room under the wall (FILMS in app.js, click-to-play embeds),
   chapter-coloured navigation.
 - The main page is an overview for a 60–90 second read (see BRIEF.md): one
   lead project per chapter, one short line, one visual, one stats line, one

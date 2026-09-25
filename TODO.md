@@ -29,6 +29,7 @@ Faces of shelter children need permission from the mái ấm before going
 public. Blur or crop if in doubt.
 
 ## 2. Links to replace
+- films: title, year, one line and YouTube link for each, in FILMS at the top of app.js
 - event pages, in EVENT_LINKS at the top of app.js (five events)
 - hello@example.com, search for data-replace="email"
 - https://example.com/virtual-gallery, search for data-replace="gallery-url"

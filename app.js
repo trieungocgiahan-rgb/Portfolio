@@ -32,6 +32,17 @@ const EVENT_LINKS = {
   "tet-oi":"",
   "colors-of-the-pitch":""
 };
+/* ============================================================
+   FILMS · the screening room under the Exhibition wall.
+   Paste each film's YouTube link (any form: youtu.be/…, watch?v=…,
+   /shorts/…) with its title, year and one line. The video only loads
+   when a viewer presses play. Entries without a link show as "coming".
+   ============================================================ */
+const FILMS = [
+  {t:"Film 01", d:"", n:"", url:""},
+  {t:"Film 02", d:"", n:"", url:""},
+  {t:"Film 03", d:"", n:"", url:""}
+];
 const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const COARSE = window.matchMedia("(hover:none)").matches;
 const $ = (s,c=document)=>c.querySelector(s);
@@ -664,7 +675,45 @@ function exhibitionHTML(){
       <a class="btn btn--ink" href="https://example.com/virtual-gallery" data-replace="gallery-url" target="_blank" rel="noopener">Enter the full exhibition →</a>
     </div>
   </div>
+  ${screeningHTML()}
   ${B.links([{href:"#/about",label:"About the practice"},{href:"#/work/net-mo",label:"Nét Mơ"},{href:"#/awards",label:"Awards"}])}`;
+}
+
+/* ---------- screening room · films, below the paintings ---------- */
+const youtubeId=url=>{ const m=String(url||"").match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/)([\w-]{11})/); return m?m[1]:null; };
+function screeningHTML(){
+  return `<section class="screening" id="room-films" aria-label="Screening room">
+    <div class="screening__head">
+      <p class="room__kicker">Exhibition · screening room</p>
+      <h2 class="room__sub">Films I made</h2>
+    </div>
+    <div class="screen" id="screen"></div>
+    <ol class="program" id="program">${FILMS.map((f,i)=>`
+      <li><button type="button" data-film="${i}"${youtubeId(f.url)?"":` data-soon`}>
+        <span class="program__num">${String(i+1).padStart(2,"0")}</span>
+        <span class="program__text"><b>${f.t}</b><span>${[f.d,f.n].filter(Boolean).join(" · ")||(youtubeId(f.url)?"":"Coming")}</span></span>
+      </button></li>`).join("")}</ol>
+  </section>`;
+}
+function bindScreening(){
+  const screen=$("#screen"), items=$$("#program [data-film]"); if(!screen) return;
+  function show(i,play){
+    const f=FILMS[i], id=youtubeId(f.url);
+    items.forEach(b=>b.setAttribute("aria-current",String(+b.dataset.film===i)));
+    if(!id){ screen.innerHTML=`<p class="screen__ghost"><span class="mono">${f.t}</span><span class="mono">Coming to this screen</span></p>`; return; }
+    if(play){
+      screen.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" title="${f.t}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+      return;
+    }
+    /* a still and a play button until the viewer asks for the film */
+    screen.innerHTML=`<button class="screen__play" type="button" aria-label="Play ${f.t}">
+      <img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()">
+      <span class="screen__btn" aria-hidden="true"></span></button>`;
+    $(".screen__play",screen).addEventListener("click",()=>show(i,true));
+  }
+  items.forEach(b=>b.addEventListener("click",()=>show(+b.dataset.film,false)));
+  const first=FILMS.findIndex(f=>youtubeId(f.url));
+  show(first<0?0:first,false);
 }
 
 /* ---------- router ---------- */
@@ -673,11 +722,12 @@ function exhibitionHTML(){
   let lastY=0, lastFocus=null;
   const where=$("#roomWhere");
   function render(route){
-    if(route==="/exhibition"||route==="/archive"){
+    if(route==="/exhibition"||route==="/archive"||route==="/exhibition/films"){
       inner.innerHTML=exhibitionHTML();
       room.style.setProperty("--accent","var(--orange)");
       where.textContent="Exhibition";
-      bindArchive();
+      bindArchive(); bindScreening();
+      if(route==="/exhibition/films") requestAnimationFrame(()=>{ room.scrollTop=$("#room-films").offsetTop-$(".room__top").offsetHeight-16; });
     }
     else{
       route=ROOM_ALIASES[route]||route;
@@ -706,6 +756,8 @@ function exhibitionHTML(){
     room.setAttribute("aria-hidden","false"); room.focus();
   }
   function close(){
+    /* a film left playing would keep sounding behind the story */
+    const playing=$("#screen iframe"); if(playing) playing.remove();
     room.classList.remove("is-open"); room.setAttribute("aria-hidden","true");
     document.body.classList.remove("is-locked");
     window.scrollTo(0,lastY);

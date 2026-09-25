@@ -48,6 +48,16 @@ subtitle, lede, para, quote, steps, numbers, pairs, rows, contact, fig,
 lead, figs, strip, links. A kicker written as `{t:"…", id:"internships"}`
 can be linked to directly as `#/work/research/internships`.
 
+## Add a film
+
+The Exhibition ends in a screening room. Open `app.js`, find `FILMS` near
+the top, and for each film fill in the title, year, one line and the
+YouTube link (any form works: `youtu.be/…`, `watch?v=…`, `/shorts/…`):
+`{t:"Title", d:"2025", n:"One line about it", url:"https://youtu.be/…"}`.
+Add or remove entries freely. The video only loads when someone presses
+play, and stops when the room is closed. Link straight to it with
+`#/exhibition/films`.
+
 ## Link an event
 
 The events are listed in the Events room. Open `app.js`,
