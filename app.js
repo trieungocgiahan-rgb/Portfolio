@@ -76,22 +76,22 @@ function wireEvents(scope=document){
 /* chapter colour, used by nav, rail and the ambient layer */
 const CHAPTERS={
   hero:{hex:"#EE4187",dark:true,palette:["#EE4187","#F2872F","#2B4DE0","#F7EFE2"]},
-  "ch-notice":{hex:"#EE4187",palette:["#EE4187","#F2872F"]},
-  "ch-rooms":{hex:"#EF6A45",palette:["#EF6A45","#EE4187","#F2872F"]},
-  "ch-question":{hex:"#6A4BD6",palette:["#6A4BD6","#0F918B","#EE4187"]},
-  "ch-build":{hex:"#2B4DE0",palette:["#2B4DE0","#6A4BD6"]},
+  dusk:{hex:"#EE4187",dark:true,palette:["#EE4187","#F2872F","#F7EFE2"]},
+  "ch-notice":{hex:"#EF6A45",palette:["#EF6A45","#EE4187","#F2872F"]},
+  "ch-study":{hex:"#6A4BD6",palette:["#6A4BD6","#0F918B","#EE4187"]},
+  "ch-make":{hex:"#2B4DE0",palette:["#2B4DE0","#6A4BD6","#0F918B"]},
   "ch-gather":{hex:"#F2872F",dark:true,palette:["#F2872F","#EE4187","#F7EFE2"]},
-  "ch-pattern":{hex:"#0F918B",palette:["#0F918B","#2B4DE0","#EE4187"]},
-  "ch-open":{hex:"#EE4187",palette:["#EE4187","#F2872F","#2B4DE0"]},
+  "ch-draw":{hex:"#EE4187",palette:["#EE4187","#F2872F","#6A4BD6"]},
+  "ch-close":{hex:"#0F918B",palette:["#0F918B","#2B4DE0","#EE4187"]},
+  "ch-more":{hex:"#EE4187",palette:["#EE4187","#F2872F","#2B4DE0"]},
   footer:{hex:"#EE4187",dark:true,palette:["#EE4187","#F2872F","#F7EFE2"]}
 };
 let CURRENT="hero";
 
 /* ---------- threshold ---------- */
 (function(){
-  const th=$("#threshold"), btn=$("#knockBtn"), dots=$$(".knock__count i"), mast=$("#masthead"), t=$("#local-time");
+  const th=$("#threshold"), btn=$("#knockBtn"), mast=$("#masthead"), t=$("#local-time");
   if(t){ try{ t.textContent=new Intl.DateTimeFormat("en-GB",{hour:"2-digit",minute:"2-digit",timeZone:"Asia/Ho_Chi_Minh"}).format(new Date()); }catch(e){} }
-  let n=0;
   function enter(){
     document.body.classList.remove("is-locked");
     mast.hidden=false;
@@ -104,13 +104,14 @@ let CURRENT="hero";
     }
     sessionStorage.setItem("entered","1");
     $$("#hero [data-part],#hero [data-mask]").forEach(e=>e.classList.add("in"));
+    window.scrollTo(0,0); history.replaceState(null,"","#hero");
   }
   if(sessionStorage.getItem("entered") || location.hash.startsWith("#/")){ th.hidden=true; mast.hidden=false; document.body.classList.add("has-entered"); }
   else{ document.body.classList.add("is-locked"); setTimeout(()=>btn.focus(),300); }
+  /* one knock is enough: the door lights up, then opens */
   btn?.addEventListener("click",()=>{
-    n=Math.min(n+1,3); dots[n-1] && dots[n-1].classList.add("on");
-    btn.classList.remove("is-knocking"); void btn.offsetWidth; btn.classList.add("is-knocking","k"+n);
-    if(n>=3){ btn.querySelector(".knock__hint").textContent="Come in"; setTimeout(enter,320); }
+    btn.classList.add("is-knocking","k3"); btn.disabled=true;
+    setTimeout(enter,REDUCED?0:320);
   });
 })();
 
@@ -164,7 +165,7 @@ $$("[data-part],[data-mask],[data-uncover],[data-stagger],.mark,#chartbox").forE
     window.scrollTo({top:Math.max(0,y),behavior:REDUCED?"auto":"smooth"});
     if(push) history.replaceState(null,"","#"+id);
   }
-  $$('.navlink, .route__step, a.btn[href^="#ch-"], a.brand[href^="#"]').forEach(a=>{
+  $$('.navlink, .dots a, a.btn[href^="#ch-"], a.brand[href^="#"]').forEach(a=>{
     a.addEventListener("click",e=>{
       const id=(a.getAttribute("href")||"").replace("#","");
       if(!id||!document.getElementById(id)) return;
@@ -191,7 +192,6 @@ $$("[data-part],[data-mask],[data-uncover],[data-stagger],.mark,#chartbox").forE
     if(v) setTimeout(()=>$(".doors__list a",doors)?.focus(),340);
   };
   btn.addEventListener("click",()=>open(!doors.classList.contains("is-open")));
-  $("#heroDoors")?.addEventListener("click",()=>open(true));
   $$("[data-close-doors]").forEach(e=>e.addEventListener("click",()=>open(false)));
   $$(".doors__list a").forEach(a=>a.addEventListener("click",()=>open(false)));
   addEventListener("keydown",e=>{ if(e.key==="Escape"&&doors.classList.contains("is-open")) open(false); });
@@ -261,26 +261,6 @@ $("#footerTop")?.addEventListener("click",()=>window.scrollTo({top:0,behavior:RE
   if(window.ResizeObserver) new ResizeObserver(relayout).observe(stage); else addEventListener("resize",relayout);
 })();
 
-/* ---------- contextuary demo ---------- */
-(function(){
-  const DATA={
-    ephemeral:{pos:"adjective",vi:"phù du, chóng tàn",inContext:"Support that existed but did not last. Nothing here is about being delicate.",root:"Greek ephēmeros: lasting a day.",trap:"Students read it as fragile. It is about duration, not strength."},
-    ostensible:{pos:"adjective",vi:"bề ngoài, danh nghĩa",inContext:"The stated reason for the support, and the sentence implies it was never the real one.",root:"Latin ostendere: to show.",trap:"Not a synonym for obvious. It means claimed rather than actual."},
-    temporize:{pos:"verb",vi:"trì hoãn, câu giờ",inContext:"The chair stalls to avoid deciding in front of a room that has already decided.",root:"Latin tempus: time.",trap:"Not the same as compromise. Nothing is conceded, only delayed."}
-  };
-  const gloss=$("#gloss"); if(!gloss) return;
-  $$(".wordbtn").forEach(b=>b.addEventListener("click",()=>{
-    $$(".wordbtn").forEach(o=>o.setAttribute("aria-expanded","false"));
-    b.setAttribute("aria-expanded","true");
-    const w=b.dataset.word,d=DATA[w];
-    gloss.innerHTML=`<p><span class="gloss__word">${w}</span><span class="gloss__pos">${d.pos}</span></p>
-      <p class="gloss__vi">${d.vi}</p>
-      <dl><dt>In this sentence</dt><dd>${d.inContext}</dd>
-      <dt>Where it comes from</dt><dd>${d.root}</dd>
-      <dt>Common misread</dt><dd>${d.trap}</dd></dl>`;
-  }));
-})();
-
 /* ---------- drag-to-scroll for horizontal artefacts ---------- */
 function dragScroll(el){
   if(!el) return;
@@ -299,24 +279,6 @@ function dragScroll(el){
   },{threshold:.4});
   nudge.observe(el);
 }
-
-/* ---------- pattern: rooms and questions ---------- */
-(function(){
-  const list=$$("#swapList li"), qs=$$("#swapQ span"); if(!list.length) return;
-  let i=-1, timer=null;
-  const show=n=>{ i=n; list.forEach(l=>l.classList.toggle("on",+l.dataset.i===n)); qs.forEach(q=>q.classList.toggle("on",+q.dataset.i===n)); };
-  const io2=new IntersectionObserver(es=>{
-    es.forEach(e=>{
-      if(e.isIntersecting){ show(0); if(!REDUCED){ clearInterval(timer); timer=setInterval(()=>show((i+1)%list.length),2600); } }
-      else clearInterval(timer);
-    });
-  },{threshold:.35});
-  io2.observe($("#swap"));
-  list.forEach(l=>{
-    l.addEventListener("mouseenter",()=>{ clearInterval(timer); show(+l.dataset.i); });
-    l.addEventListener("click",()=>{ clearInterval(timer); show(+l.dataset.i); });
-  });
-})();
 
 /* ============================================================
    AMBIENT LAYER · stars, dots, rings, small leaf marks
@@ -464,7 +426,7 @@ const ROOMS={
 "/work/net-mo":{accent:"var(--coral)",where:"Work · Nét Mơ",blocks:[
   ["hero",{kicker:"Work · 2024 to now · Founder and Director",title:"Nét Mơ",
     lede:"An arts-based social-emotional learning programme for children in shelters and elderly residents in care facilities.",
-    facts:[{b:"200+",s:"children"},{b:"6",s:"shelters"},{b:"25",s:"people on the team"}],
+    facts:[{b:"50",s:"workshops"},{b:"6",s:"shelters"},{b:"2",s:"care facilities"}],
     k:"nm-lead",ghost:"a session in progress"}],
   ["kicker","What I noticed first"],
   ["para","A boy spent the first session drawing in the bottom right corner of his page. Not shyly. Efficiently, as if the rest of the paper belonged to somebody else. In the third session we ran out of small sheets and put one large one across four tables. He drew across the middle without asking."],
@@ -478,7 +440,7 @@ const ROOMS={
   ["numbers",[
     {b:"80%",s:"showed improved emotional expression or confidence"},
     {b:"75M VND",s:"raised; 80% direct to shelter children"},
-    {b:"2",s:"elderly care facilities"}
+    {b:"200+",s:"children, with a team of 25"}
   ]],
   ["figs",[
     {k:"nm-1",slot:"Plate 02",ratio:"3/4",ghost:"child and facilitator",cap:"Facilitator training pays for itself in the first ten minutes."},
@@ -508,6 +470,8 @@ const ROOMS={
     {k:"gt-2",slot:"Plate 03",ratio:"3/4",ghost:"backstage, artist coordination",cap:"Backstage. Most of the design work happens here."},
     {k:"gt-3",slot:"Plate 04",ratio:"3/4",ghost:"Colors of the Pitch, mixed teams",cap:"Mixed teams, deliberately."}
   ]],
+  ["kicker",{t:"Little Smile Project",id:"little-smile"}],
+  ["para","Hospital programming and creative direction across three hospitals in Ho Chi Minh City."],
   ["kicker","The others"],
   ["steps",[
     {b:"Sol Sound · Nét Mơ OPEN",p:"The community branch's first night, 400+ attendees.",event:"sol-sound"},
@@ -521,7 +485,7 @@ const ROOMS={
 "/work/research":{accent:"var(--violet)",where:"Work · Research & Internships",blocks:[
   ["hero",{kicker:"Research · Nov 2025 to Feb 2026 · Lead author",title:"Two Doors Into the Same Room",
     lede:"Does expressive art-making or AI-guided reflective dialogue help a person express what they feel, and does the answer depend on who is walking in?",
-    facts:[{b:"68",s:"participants"},{b:"2",s:"conditions"},{b:"45",s:"minutes each"}],
+    facts:[{b:"68",s:"young adults"},{b:"136",s:"sessions, two each"},{b:"45",s:"minutes a session"}],
     k:"td-lead",ghost:"a session in progress, materials on the table"}],
   ["kicker","The two doors"],
   ["pairs",[
@@ -534,7 +498,7 @@ const ROOMS={
   ["para","They are in the paper, with the reflections they wrote. The most common thread in those seven: being asked a good question at a moment when they had no way to leave the conversation."],
   ["kicker","How it was done"],
   ["steps",[
-    {b:"Participants",p:"N = 68, recruited across schools and community groups, with art familiarity recorded before assignment."},
+    {b:"Participants",p:"N = 68 young adults, recruited across schools and community groups. Each completed both sessions, 136 in all, with art familiarity recorded beforehand."},
     {b:"Analysis",p:"SPSS. Interaction tested between condition and prior art familiarity rather than condition alone."},
     {b:"Supervision",p:"Advised by Nguyễn Phương Thảo, Bảo Sang Psychology Space. Co-authored with Trần Hoàng Anh Thư; prepared for submission to the National High School Journal of Science."}
   ]],
@@ -550,7 +514,7 @@ const ROOMS={
 "/work/tech":{accent:"var(--blue)",where:"Work · Tech Projects",blocks:[
   ["hero",{kicker:"Work · Jan 2026 to now · Design and build",title:"Contextuary",
     lede:"A word. <b>Ephemeral.</b> You learned it on Tuesday. On Friday it appears in a sentence about a coalition and you do not recognise it.",
-    facts:[{b:"400+",s:"student users"},{b:"~70%",s:"back weekly in peak SAT season"}],
+    facts:[{b:"1,200",s:"visitors"},{b:"400+",s:"registered users"}],
     meta:"Lovable and Supabase, deployed on Vercel",
     k:"cx-lead",ghost:"the app open on a passage",screen:true}],
   ["kicker","The idea"],
@@ -566,13 +530,15 @@ const ROOMS={
     {h:"Topic filters",p:"Nobody used them. Students think in tests, not categories."},
     {h:"A separate Today page",p:"One more tap to reach the thing they came for. Daily Picks moved to the top of My Words instead."}
   ]],
-  ["kicker",{t:"Also built · Co-founder, UX and UI",id:"colorful-journey"}],
+  ["kicker",{t:"Also built · Co-founder · product structure and UX/UI",id:"colorful-journey"}],
   ["subtitle","The Colorful Journey"],
   ["lede","A group makes something together, then scatters. Six months later nobody can find it. The thing existed; the memory of it had nowhere to live."],
   ["pairs",[
     {h:"Design problem",p:"Archives are organised for retrieval. Memory is organised by who was there and what it felt like. The interface had to hold both."},
-    {h:"Decision",p:"Entries are grouped by moment, not by file type, and every item keeps its contributor. Ownership stays visible while the collection becomes shared."}
+    {h:"Decision",p:"Entries are grouped by moment, not by file type, and every item keeps its contributor. Ownership stays visible while the collection becomes shared."},
+    {h:"On This Day",p:"Members leave writing, photographs and voice notes on a shared timeline, move between projects and dates, and rediscover old entries through “On This Day.”"}
   ]],
+  ["numbers",[{b:"5",s:"people on the team"},{b:"550+",s:"visitors"},{b:"450+",s:"returning"}]],
   ["fig",{k:"cj-lead",slot:"UI 01",ratio:"16/9",screen:true,ghost:"Lead screenshot · the archive, opened on one project",cap:"<b>Archive view.</b> Entries grouped by moment, not by file type."}],
   ["links",[{href:"#/work/research",label:"Research & Internships"},{href:"#/work/net-mo",label:"Nét Mơ"}]]
 ]},
@@ -591,7 +557,7 @@ const ROOMS={
   ["note","Also: eleven consecutive years as class president."],
   ["kicker","Contact and CV"],
   ["contact",[
-    {href:"mailto:hello@example.com",replace:"email",label:"Email",value:"hello@example.com"},
+    {href:"mailto:trieungocgiahan@gmail.com",label:"Email",value:"trieungocgiahan@gmail.com"},
     {href:"#/cv",label:"CV",value:"Facts, dated"}
   ]],
   ["links",[{href:"#/awards",label:"Awards"},{href:"#/exhibition",label:"Exhibition"}]]
@@ -601,21 +567,21 @@ const ROOMS={
   ["hero",{kicker:"Curriculum vitae · updated 2026",title:"The facts, dated"}],
   ["kicker","Founded and led"],
   ["rows",[
-    {t:"2024 – now",h:"Nét Mơ (Traces of Dreams) · Founder and Director",p:"Arts-based SEL programme for children in shelters and elderly residents in care facilities. 25-member team across R&D, Tech, Events and PR. 200+ children, 6 shelters, 2 care facilities, ~75M VND raised. Legal sponsorship by Bảo Sang."},
+    {t:"2024 – now",h:"Nét Mơ (Traces of Dreams) · Founder and Director",p:"Arts-based SEL programme for children in shelters and elderly residents in care facilities. 25-member team across R&D, Tech, Events and PR. 50 workshops, 200+ children, 6 shelters, 2 care facilities, ~75M VND raised. Legal sponsorship by Bảo Sang."},
     {t:"2026",h:"Once Upon The Inside · Co-producer",p:"Mixed-media exhibition with The APRIL Collective at May Artspace. 300+ visitors."},
     {t:"2025",h:"Beats of Hope · Organiser",p:"Charity concert, 10 school bands, 310+ tickets, ~25M VND net to Little Smiles for a year of hospital workshop materials."},
     {t:"2024 – 2025",h:"Cerberus Football League · Co-founder",p:"15 teams, 200+ student-athletes, 600+ cumulative spectators. Scheduling, budget, referees, safety protocol."}
   ]],
   ["kicker","Research"],
   ["rows",[
-    {t:"2025 – 2026",h:"Two Doors Into the Same Room · Lead author",p:"Mixed-methods study, N = 68, expressive art-making versus AI-guided reflective dialogue. Crossover interaction by art familiarity. SPSS. Prepared for NHSJS. Advised by Nguyễn Phương Thảo."},
+    {t:"2025 – 2026",h:"Two Doors Into the Same Room · Lead author",p:"Mixed-methods study, N = 68, 136 sessions, expressive art-making versus AI-guided reflective dialogue. Crossover interaction by art familiarity. SPSS. Prepared for NHSJS. Advised by Nguyễn Phương Thảo."},
     {t:"2026",h:"Brainlife · Research intern",p:"EEG and brain-mapping training, data cleaning, student survey work."},
     {t:"2025",h:"Coursera",p:"Foundations of Neuroscience; Introduction to Psychology."}
   ]],
   ["kicker","Built"],
   ["rows",[
-    {t:"2026 – now",h:"Contextuary",p:"SAT vocabulary in context. Lovable and Supabase, deployed on Vercel. 400+ users, ~70% weekly return."},
-    {t:"2025 – now",h:"The Colorful Journey · Co-founder, UX and UI",p:"Project-memory archive platform."},
+    {t:"2026 – now",h:"Contextuary",p:"SAT vocabulary in context. Lovable and Supabase, deployed on Vercel. 1,200 visitors, 400+ registered users, ~70% weekly return."},
+    {t:"2025 – now",h:"The Colorful Journey · Co-founder, product structure and UX/UI",p:"Shared project timeline for a five-person team. 550+ visitors, 450+ returning."},
     {t:"2025",h:"Nét Mơ activity journal",p:"Three-role permission system, media upload, calendar, deadline board."}
   ]],
   ["kicker","Selected honours"],

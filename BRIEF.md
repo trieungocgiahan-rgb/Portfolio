@@ -32,15 +32,23 @@ experiences". No generic Bento grids, gradient blobs, glassmorphism,
 mouse-following orbs, or "Selected Work" followed by three identical cards.
 If an element could appear on 500 other student portfolios, redesign it.
 
-## Chapter architecture
-One arc: notice, study, build, gather, then what connects them.
-01 Hello, the observation and the story in four steps
-02 Notice, Nét Mơ, and the crayon tray that shows what was noticed
-03 Study, the art-or-AI study and its crossover result
-04 Build, Contextuary (The Colorful Journey as a quiet aside)
-05 Gather, Beats of Hope told properly, the other events listed
-06 Pattern, different rooms and the same question, the quietest section
-07 Open, what comes next
+## Homepage architecture
+One continuous story, told in the owner's own words, so an admissions reader
+can follow how one question connects everything:
+- Entrance · Knock, knock. One button: Come in.
+- Hero · Hi, I'm Gia Hân, and the question. Follow the question ↓
+- 01 Notice · A tray in the middle (Nét Mơ). Visual: the photograph in an
+  editorial frame, and the crayon tray.
+- 02 Study · Testing what I thought I knew (Two Doors). Visual: the crossover.
+- 03 Make · Keeping the days we missed (The Colorful Journey). Visual: the
+  shared timeline.
+- 04 Gather · Making room at a larger scale (Beats of Hope). Visual: the ticket.
+- 05 Draw · Where I began. Visual: three works, no more.
+- 06 The question · the four rooms joined as dots, each a way back.
+- More work · Contextuary, TeenCare, Little Smile Project, Awards, CV.
+- Footer · Knock, knock, email, About, CV.
+A thread runs down the margin through every part. Each part ends with an
+"Inside ·" line naming what its detail page holds, then one link.
 
 Doors has four destinations, and nothing else:
 - Work, which opens into four rooms: Nét Mơ, Events (Beats of Hope and
@@ -93,22 +101,6 @@ Specific observations, questions, objects, moments, behaviour, small
 details, short reflections. No polished personal-brand language. Do not
 explain every metaphor. Demonstrate character through what was noticed and
 made, never by naming traits.
-
-## The main page stays lean
-The likely reader is an admissions officer who has already seen the
-application and has 60 to 90 seconds. The main scroll is an overview, not
-an archive: it should make clear which questions she cares about, how she
-thinks, and how community work, research, technology and art connect, and
-where to click for evidence.
-- One lead project per chapter gets the visual weight. Everything else is a
-  quiet aside or lives in a deep space.
-- Each chapter: one short line, one visual, one stats line, one way in.
-- Every number appears once on the main page.
-- Right after Hello, the story in four steps (Notice, Study, Build, Gather):
-  small doors on a thin line, a verb and one plain line each, no numbers.
-- On a phone the first thing seen is "Hi, I'm Gia Hân."
-- Internships, other events, other builds, the contact sheet and art live in
-  the deep spaces (research page, Gather page, Nét Mơ page, Exhibition).
 
 ## Three depths
 30 seconds, the visitor feels the character and intellectual energy.

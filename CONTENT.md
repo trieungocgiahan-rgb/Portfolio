@@ -4,7 +4,8 @@
 Arts-based social-emotional learning for children in shelters and elderly
 residents in care facilities. Two branches, Shelters and OPEN Community.
 Legal sponsorship by Bảo Sang.
-- 200+ children, 6 shelters in HCMC and Đồng Nai, 2 elderly care facilities
+- 50 workshops, 200+ children, 6 shelters in HCMC and Đồng Nai, 2 elderly
+  care facilities
 - 25-member team across R&D, Tech, Events, PR
 - around 75M VND raised, 80% direct to shelter children
 - 80% of participating children showed improved emotional expression
@@ -20,8 +21,9 @@ Legal sponsorship by Bảo Sang.
   Artspace, 300+ visitors
 
 ## Research, lead author, Nov 2025 to Feb 2026
-Expressive art-making versus AI-guided reflective dialogue. N = 68, two
-conditions, 45 minutes each, art familiarity recorded before assignment.
+Expressive art-making versus AI-guided reflective dialogue. N = 68 young
+adults; each completed both sessions (136 sessions), 45 minutes each, art
+familiarity recorded beforehand.
 AI sessions used the same model version for every participant. Analysed in
 SPSS. Advised by Nguyễn Phương Thảo, Bảo Sang Psychology Space.
 Posted as a public preprint, Sept 2026.
@@ -33,13 +35,16 @@ Posted as a public preprint, Sept 2026.
 SAT vocabulary in context. Paste a passage, tap a word, get meaning in
 place plus a Vietnamese gloss and the common misread. Daily Picks sits on
 top of My Words. Quiz, AI practice and flashcard modes. Lovable and
-Supabase, deployed on Vercel. 400+ student users, around 70% returning
-weekly in peak SAT season. Cut features: spaced repetition, topic filters,
+Supabase, deployed on Vercel. 1,200 visitors, 400+ registered users,
+around 70% returning weekly in peak SAT season. Cut features: spaced repetition, topic filters,
 a separate Today page.
 
-## The Colorful Journey, co-founder, UX and UI
-Project-memory archive. Entries grouped by moment rather than file type,
-every item keeps its contributor.
+## The Colorful Journey, co-founder, product structure and UX/UI
+Shared timeline for project teams whose members are often apart: writing,
+photographs and voice notes, moving between projects and dates, old entries
+resurfaced through "On This Day". Five-person team. 550+ visitors, 450+
+returning. Entries grouped by moment rather than file type, every item keeps
+its contributor.
 
 ## Questions carried into other rooms
 - Brainlife, 10-month internship. Brain mapping and EEG training, filtering
@@ -52,9 +57,15 @@ every item keeps its contributor.
   for students, self-discovery festival reaching 600, peer support around
   exam season reaching 200+.
 
+## Little Smile Project
+Hospital programming and creative direction across three hospitals in
+Ho Chi Minh City.
+
 ## Gather
-- Beats of Hope, 2025. 10 school bands, 310+ tickets, about 25M VND net to
-  Little Smiles for a year of hospital workshop materials.
+- Beats of Hope, 2025. 10+ school bands, 310+ tickets (300+ attendees),
+  about 25M VND raised for hospital programming (Little Smiles).
+- Also at school: a football league, a water-rocket competition and a
+  science festival.
 - Sol Sound, Nét Mơ OPEN. 400+ attendees.
 - Cerberus Football League, 2024 to 2025. 15 teams, 200+ athletes,
   600+ cumulative spectators.
@@ -69,6 +80,9 @@ every item keeps its contributor.
 - Trưng Vương, Most Well-Rounded Student, Grade 11.
 - Vietnam Water Rocket Competition, national silver, team lead.
 - Coursera, Foundations of Neuroscience, Introduction to Psychology.
+
+## Contact
+trieungocgiahan@gmail.com
 
 ## Voice
 First person, plain, specific. Short sentences. No personal-brand language.

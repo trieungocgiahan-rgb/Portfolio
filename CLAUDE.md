@@ -9,7 +9,8 @@ sharing a room, then tests it through community work, research and building.
 ## Hard rules
 - No framework, no build step, no dependencies. Plain HTML, CSS, JS.
 - Never reintroduce résumé structure (hero → about → skills → project grid).
-- Keep the door motif: knock entrance, Doors panel, deep spaces as rooms.
+- Keep the door motif: the entrance (Knock, knock. and one "Come in"
+  button), Doors panel, deep spaces as rooms.
 - Doors has four destinations: Work (Nét Mơ, Events, Research &
   Internships, Tech Projects), Exhibition, Awards, About. Routes are
   /work/net-mo, /work/events, /work/research, /work/tech, /exhibition,
@@ -22,15 +23,17 @@ sharing a room, then tests it through community work, research and building.
   photograph is always seen through an arched door and then tells one short story: what
   was noticed, what changed, what it led to. No long lists or archives;
   the CV holds the dated record, AWARDS holds the honours once.
-- Keep every interaction: knock entrance, drifting motes canvas, the story
-  in four steps, crayon tray toggle, Contextuary word demo, crossover chart,
-  Pattern, draggable exhibition wall, archive object viewer, the
+- Keep every interaction: the entrance, drifting motes canvas, the story
+  thread and the closing dots, crayon tray toggle, crossover chart,
+  draggable exhibition wall, archive object viewer, the
   screening room under the wall (FILMS in app.js, click-to-play embeds),
   chapter-coloured navigation.
-- The main page is an overview for a 60–90 second read (see BRIEF.md): one
-  lead project per chapter, one short line, one visual, one stats line, one
-  way in. Each number appears once. Everything else belongs in the deep
-  spaces (ROOMS in app.js). Do not add sections to the main scroll.
+- The homepage is one continuous story in the owner's own words (see
+  BRIEF.md): hero, 01 Notice, 02 Study, 03 Make, 04 Gather, 05 Draw,
+  06 The question, More work, footer. Each part: title, story, one visual,
+  one "Inside ·" line saying what the detail page holds, one way in. Numbers
+  live in the prose; do not add stat rows. Do not rewrite the story copy or
+  add sections; detail belongs in the rooms (ROOMS in app.js).
 - Respect prefers-reduced-motion everywhere.
 - No horizontal scrolling at any width. Tablet (768–1024px) is a first-class
   composition, not a squeezed desktop.
@@ -51,8 +54,8 @@ Visual grammar, kept strict:
 - serif = ideas and questions
 - pill = tag or navigation only
 
-Chapter accents: 01 Hello pink, 02 Notice coral, 03 Study violet, 04 Build
-blue, 05 Gather orange on navy, 06 Pattern teal, 07 Open pink. Around 85% of the language is shared;
+Story accents: 01 Notice coral, 02 Study violet, 03 Make blue, 04 Gather
+orange on navy, 05 Draw pink, 06 The question teal, More work pink. Around 85% of the language is shared;
 the accent appears only in numbers, rules, dots, nav state and small labels.
 
 ## Conventions

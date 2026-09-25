@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Knock, knock. Triệu Ngọc Gia Hân</title>
-<meta name="description" content="Notes from someone who watches what changes when people begin sharing a room. Community work, research, and things built to test a hunch.">
+<meta name="description" content="Triệu Ngọc Gia Hân (Katherine Trieu): the small choices that change how people act around one another, followed through shelters, research, digital products and community events.">
 <meta name="theme-color" content="#0F1B3C">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%230F1B3C'/%3E%3Cpath d='M6 21V6.2C6 4.8 7 4 8.4 4h7.2C17 4 18 4.8 18 6.2V21' fill='none' stroke='%23F7EFE2' stroke-width='1.4'/%3E%3Ccircle cx='14.6' cy='13.2' r='1.1' fill='%23EE4187'/%3E%3C/svg%3E">
 <meta property="og:title" content="Knock, knock. Triệu Ngọc Gia Hân">
@@ -26,10 +26,9 @@
   <div class="threshold__inner">
     <p class="threshold__eyebrow">Ho Chi Minh City · <span id="local-time">now</span></p>
     <h1>Knock, <em>knock.</em></h1>
-    <button class="knock" id="knockBtn" type="button" aria-describedby="knock-hint">
+    <button class="knock" id="knockBtn" type="button">
       <span class="knock__plate" aria-hidden="true"></span>
-      <span class="knock__count" aria-hidden="true"><i></i><i></i><i></i></span>
-      <span class="knock__hint" id="knock-hint">Knock three times</span>
+      <span class="knock__hint">Come in</span>
     </button>
   </div>
 </div>
@@ -43,11 +42,11 @@
   </a>
   <nav aria-label="Chapters">
     <ul class="chapnav__list" id="navList">
-      <li><a class="navlink" href="#ch-rooms" data-target="ch-rooms"><i></i>Notice</a></li>
-      <li><a class="navlink" href="#ch-question" data-target="ch-question"><i></i>Study</a></li>
-      <li><a class="navlink" href="#ch-build" data-target="ch-build"><i></i>Build</a></li>
-      <li><a class="navlink" href="#ch-gather" data-target="ch-gather"><i></i>Gather</a></li>
-      <li><a class="navlink" href="#ch-open" data-target="ch-open"><i></i>Open</a></li>
+      <li><a class="navlink" href="#ch-notice" data-target="story"><i></i>Story</a></li>
+      <li><a class="navlink" href="#ch-more" data-target="work"><i></i>Work</a></li>
+      <li><a class="navlink" href="#/exhibition"><i></i>Exhibition</a></li>
+      <li><a class="navlink" href="#/about"><i></i>About</a></li>
+      <li><a class="navlink" href="#/cv"><i></i>CV</a></li>
     </ul>
   </nav>
   <button class="doorbell" id="doorsBtn" aria-expanded="false" aria-controls="doors">Doors</button>
@@ -80,15 +79,14 @@
 <main id="story">
 
 <!-- ============ HERO ============ -->
-<section class="hero" id="hero">
+<section class="hero" id="hero" data-short="Hello">
   <div class="hero__inner">
     <div>
-      <p class="hero__eyebrow"><b></b> Katherine Trieu · Grade 12, Ho Chi Minh City · cognitive science, art, rooms</p>
-      <h1>Hi, I'm <em>Gia Hân.</em></h1>
-      <p class="hero__line">I notice what changes when people start sharing a room. Then I go and test it: in shelters, in a study, and in things I build.</p>
+      <p class="hero__eyebrow"><b></b> Katherine Trieu · Grade 12 · Ho Chi Minh City</p>
+      <h1>Hi, I’m <em>Gia Hân.</em></h1>
+      <p class="hero__line">I have always been interested in the small choices that change how people act around one another. I first began noticing them while sitting on the floor of an art workshop. Since then, I have kept following the question into shelters, research sessions, digital products and community events, trying to understand why some spaces make it easier for people to take part.</p>
       <div class="hero__cta">
-        <a class="btn" href="#ch-notice">Start the story</a>
-        <button class="btn btn--ghost" id="heroDoors" type="button">Skip to a room</button>
+        <a class="btn" href="#ch-notice">Follow the question ↓</a>
       </div>
     </div>
     <figure class="doorframe" id="doorframe">
@@ -103,75 +101,30 @@
 </section>
 
 <!-- ============ DUSK · hero to daylight ============ -->
-<section class="dusk" id="dusk" data-room="Threshold" data-short="Inside" data-dark aria-hidden="false">
+<section class="dusk" id="dusk" data-short="Inside" data-dark aria-hidden="false">
   <p class="dusk__note"><b></b> Inside, the light is different. Give it a second.</p>
 </section>
 
-<!-- ============ 01 HELLO ============ -->
-<section class="chapter chapter--quiet" id="ch-notice" data-room="01 Hello" data-short="Hello" data-nav="ch-rooms">
-  <div class="wrap notice-grid">
-    <div>
-      <div class="chapter-head">
-        <p class="chapter-mark"><span class="num">01</span><span class="name">Hello</span><span class="line"></span></p>
-        <h2 class="chapter-head__title chapter-head__title--lead" data-part>I keep noticing the minute a group of people stops being <i>separate</i>.</h2>
-      </div>
-      <div class="observation">
-        <svg class="mark" viewBox="0 0 80 46" aria-hidden="true" style="--len:150"><path d="M4 34c14-22 30-30 44-22 10 6 8 20-4 24-9 3-14-4-9-9 6-6 20-5 34 6"/></svg>
-        <p>It is always smaller than you would expect. A tray pushed to the middle. One sheet of paper instead of six.</p>
-      </div>
-      <p class="body-copy intro">I have been drawing since I was five. The questions I could not answer from inside an art workshop turned into a study, a tool and some very loud nights.</p>
-      <a class="deeper" href="#/about">More about me <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    </div>
-    <div class="stack">
-      <figure class="fig" data-uncover>
-        <div class="fig__plate" data-img="rooms-hall" data-slot="Fig 01" style="--ratio:4/3"><div class="fig__ghost">Replace: workshop in progress, children mid-activity</div></div>
-      </figure>
-      <figure class="fig" data-uncover>
-        <div class="fig__plate" data-img="rooms-hands" data-slot="Fig 02" style="--ratio:1/1"><div class="fig__ghost">Replace: two hands, one box of crayons</div></div>
-      </figure>
-    </div>
-  </div>
-
-  <!-- the whole story in four steps, before any detail -->
-  <nav class="wrap route" aria-label="The story in four steps">
-    <p class="mono route__label">The story in four steps</p>
-    <ol class="route__steps">
-      <li><a class="route__step" href="#ch-rooms" style="--dc:var(--coral)"><span class="route__door" aria-hidden="true"></span><span class="route__verb">Notice</span><span class="route__what">Nét Mơ, an arts programme for children in shelters</span></a></li>
-      <li><a class="route__step" href="#ch-question" style="--dc:var(--violet)"><span class="route__door" aria-hidden="true"></span><span class="route__verb">Study</span><span class="route__what">A 68-person study: art or AI?</span></a></li>
-      <li><a class="route__step" href="#ch-build" style="--dc:var(--blue)"><span class="route__door" aria-hidden="true"></span><span class="route__verb">Build</span><span class="route__what">Contextuary, vocabulary learned in context</span></a></li>
-      <li><a class="route__step" href="#ch-gather" style="--dc:var(--orange)"><span class="route__door" aria-hidden="true"></span><span class="route__verb">Gather</span><span class="route__what">Concerts, leagues and a school festival</span></a></li>
-    </ol>
-  </nav>
-</section>
-
-<!-- ============ 02 NOTICE · Nét Mơ ============ -->
-<section class="chapter" id="ch-rooms" data-room="02 Notice" data-short="Notice" data-nav="ch-rooms">
-  <div class="wrap">
-    <div class="grid split">
-      <div class="rooms-lead">
-        <div class="chapter-head">
-          <p class="chapter-mark"><span class="num">02</span><span class="name">Notice</span><span class="line"></span></p>
-          <h2 class="chapter-head__title" data-part>The first rooms I paid attention to were borrowed ones.</h2>
-        </div>
-        <p class="body-copy" data-mask><span>A shelter dining hall on a Saturday. A care home common room with the fan on too high. I went in to run an art workshop and came out with notes about who sat with their back to the wall.</span></p>
-        <p class="stats"><span><b>200+</b> children</span><span><b>6</b> shelters</span><span><b>80%</b> showed improved emotional expression</span></p>
-        <p class="mono role-line">Nét Mơ · Founder and Director · 2024–now</p>
+<!-- ============ 01 NOTICE ============ -->
+<section class="chapter story" id="ch-notice" data-short="Notice" data-nav="story">
+  <div class="wrap story__grid">
+    <div class="story__text">
+      <p class="chapter-mark"><span class="num">01</span><span class="name">Notice</span><span class="line"></span></p>
+      <h2 class="story__title" data-part>A tray in the middle</h2>
+      <p class="body-copy">When I first started designing art sessions for Nét Mơ, I paid most attention to the activity itself. I thought that if the prompt was creative enough, children would naturally want to join.</p>
+      <p class="body-copy">Then, during one session, I noticed that every child had their own box of crayons. They drew carefully, but mostly alone. The next time, we placed one tray in the middle. Soon, hands were crossing over the table. Children began asking each other for colours, leaning over neighbouring pages and deciding together which green belonged to the grass.</p>
+      <p class="body-copy">The activity had barely changed, but the room had. After that, I began paying attention to choices I had previously treated as background. We used story worlds when “draw whatever you want” felt too open. We changed the arrangement of the tables and rewrote questions when they asked children to explain too much, too soon.</p>
+      <p class="body-copy">Working on Nét Mơ made me more excited about what art could do, but also more careful about what I claimed it could do. After many Saturdays, I had notebooks full of observations. I wanted to know whether those patterns existed beyond the sessions I remembered most clearly.</p>
+      <p class="story__facts">50 workshops · 6 shelters · 2 care facilities</p>
+      <div class="story__more">
+        <p class="mono">Inside · the sessions, what changed, what it led to</p>
         <a class="deeper" href="#/work/net-mo">Read the Nét Mơ story <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      <figure class="fig rooms-fig-a" data-uncover>
-        <div class="fig__plate" data-img="sheet-2" data-slot="Fig 02.1" style="--ratio:1/1"><div class="fig__ghost">Replace: child and facilitator, close</div></div>
-        <figcaption><b>Season 2, Đồng Nai.</b> Tables in a horseshoe, because a circle felt like being watched.</figcaption>
-      </figure>
     </div>
-
-    <div class="grid group">
-      <p class="pull tray-intro" data-part>Same children. Same hour. Change one thing about the room.</p>
-      <div class="tray-note">
-        <div class="observation">
-          <svg class="mark" viewBox="0 0 80 40" aria-hidden="true" style="--len:170"><path d="M6 30c10 6 22 4 28-6 4-7-2-14-8-11-5 3-3 12 6 15 12 4 30-2 42-19"/></svg>
-          <p>Give each child their own box and they draw politely, alone. Put one tray in the middle and they start negotiating.</p>
-        </div>
-      </div>
+    <div class="story__visual">
+      <figure class="fig frame-editorial" data-uncover>
+        <div class="fig__plate" data-img="rooms-hall" data-slot="" style="--ratio:4/3"><div class="fig__ghost">A Nét Mơ session</div></div>
+      </figure>
       <div class="tray">
         <div class="tray__head">
           <p class="mono">Try it · the same fifteen minutes, two ways</p>
@@ -192,169 +145,197 @@
             <p class="meter__note" id="trayNote">Children work in parallel. Materials stay where they were placed. Most talk goes to the facilitator.</p>
           </div>
         </div>
-        <p class="mono mono--sentence">Nét Mơ session tracking, seasons 1 to 3.</p>
       </div>
     </div>
   </div>
-  <div class="wrap"><p class="thread"><b>Next ↓</b> so I stopped guessing and tested it properly</p></div>
 </section>
 
-<!-- ============ 03 STUDY ============ -->
-<section class="chapter" id="ch-question" data-room="03 Study" data-short="Study" data-nav="ch-question">
-  <div class="wrap">
-    <div class="study">
-      <div class="study__stick">
-        <div class="chapter-head">
-          <p class="chapter-mark"><span class="num">03</span><span class="name">Study</span><span class="line"></span></p>
-          <h2 class="chapter-head__title" data-part>Asking it properly.</h2>
-        </div>
-        <h3 data-part>If a feeling comes out easier in the right room, what happens when the room is a conversation with a machine?</h3>
-        <div class="two-doors">
-          <div class="door-tile" style="--dc:var(--pink)"><h5>Art</h5><p class="mono">45 min · materials</p></div>
-          <span class="vs">↔</span>
-          <div class="door-tile" style="--dc:var(--blue)"><h5>AI</h5><p class="mono">45 min · dialogue</p></div>
-        </div>
-        <p class="mono role-line">Two Doors Into the Same Room · Lead author · N = 68 · 2025–26</p>
-        <a class="deeper" href="#/work/research">Method and findings <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<!-- ============ 02 STUDY ============ -->
+<section class="chapter story" id="ch-study" data-short="Study" data-nav="story">
+  <div class="wrap story__grid">
+    <div class="story__text">
+      <p class="chapter-mark"><span class="num">02</span><span class="name">Study</span><span class="line"></span></p>
+      <h2 class="story__title" data-part>Testing what I thought I knew</h2>
+      <p class="body-copy">To find out, I designed a study with 68 young adults. Each participant completed two sessions. In one, they worked through an experience with art materials. In the other, they reflected through a dialogue with AI.</p>
+      <p class="body-copy">I expected one method to feel more natural or personal. Instead, participants responded differently depending partly on how familiar they already were with art. For some, making something with their hands gave them an easier place to begin. For others, conversation did.</p>
+      <p class="body-copy">I stopped asking which method was better and became more interested in fit. What does this person already feel comfortable doing? Where do they hesitate? What kind of first step asks enough of them without asking too much?</p>
+      <div class="story__more">
+        <p class="mono">Inside · the design, the crossover, the seven, three internships</p>
+        <a class="deeper" href="#/work/research">See the method and findings <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      <div class="study__panels">
-        <div class="panel">
-          <h4>What came back</h4>
-          <div class="chartbox" id="chartbox">
-            <svg viewBox="0 0 460 240" role="img" aria-label="Schematic of a crossover interaction: participants low in art familiarity gained more from AI dialogue, participants high in art familiarity gained more from art-making.">
-              <g class="draw" stroke-linecap="round">
-                <line x1="52" y1="198" x2="430" y2="198" stroke="currentColor" stroke-opacity=".3" style="--len:380"/>
-                <line x1="52" y1="24" x2="52" y2="198" stroke="currentColor" stroke-opacity=".3" style="--len:180"/>
-                <path d="M92 58 L392 170" fill="none" stroke="var(--blue)" stroke-width="2.4" style="--len:330"/>
-                <path d="M92 170 L392 54" fill="none" stroke="var(--pink)" stroke-width="2.4" style="--len:330"/>
-              </g>
-              <circle cx="242" cy="113" r="4" fill="currentColor"/>
-              <text x="250" y="109" font-family="IBM Plex Mono" font-size="10" fill="currentColor" opacity=".6">crossover</text>
-              <text x="96" y="48" font-family="IBM Plex Mono" font-size="10" fill="var(--blue)">AI dialogue</text>
-              <text x="304" y="44" font-family="IBM Plex Mono" font-size="10" fill="var(--pink)">art-making</text>
-              <text x="88" y="220" font-family="IBM Plex Mono" font-size="10" fill="currentColor" opacity=".5">low art familiarity</text>
-              <text x="330" y="220" font-family="IBM Plex Mono" font-size="10" fill="currentColor" opacity=".5">high</text>
-            </svg>
-            <p class="mono">The lines cross: neither door won. It depends on who walks in.</p>
-          </div>
-        </div>
+    </div>
+    <div class="story__visual">
+      <div class="chartbox" id="chartbox">
+        <svg viewBox="0 0 460 240" role="img" aria-label="Schematic of a crossover interaction: participants low in art familiarity gained more from AI dialogue, participants high in art familiarity gained more from art-making.">
+          <g class="draw" stroke-linecap="round">
+            <line x1="52" y1="198" x2="430" y2="198" stroke="currentColor" stroke-opacity=".3" style="--len:380"/>
+            <line x1="52" y1="24" x2="52" y2="198" stroke="currentColor" stroke-opacity=".3" style="--len:180"/>
+            <path d="M92 58 L392 170" fill="none" stroke="var(--blue)" stroke-width="2.4" style="--len:330"/>
+            <path d="M92 170 L392 54" fill="none" stroke="var(--pink)" stroke-width="2.4" style="--len:330"/>
+          </g>
+          <circle cx="242" cy="113" r="4" fill="currentColor"/>
+          <text x="250" y="109" font-family="IBM Plex Mono" font-size="10" fill="currentColor" opacity=".6">crossover</text>
+          <text x="96" y="48" font-family="IBM Plex Mono" font-size="10" fill="var(--blue)">AI dialogue</text>
+          <text x="304" y="44" font-family="IBM Plex Mono" font-size="10" fill="var(--pink)">art-making</text>
+          <text x="88" y="220" font-family="IBM Plex Mono" font-size="10" fill="currentColor" opacity=".5">low art familiarity</text>
+          <text x="330" y="220" font-family="IBM Plex Mono" font-size="10" fill="currentColor" opacity=".5">high</text>
+        </svg>
+        <p class="mono">The lines cross: neither door won. It depends on who walks in.</p>
       </div>
     </div>
   </div>
-  <div class="wrap"><p class="thread"><b>Next ↓</b> findings only matter if something uses them</p></div>
 </section>
 
-<!-- ============ 04 BUILD ============ -->
-<section class="chapter" id="ch-build" data-room="04 Build" data-short="Build" data-nav="ch-build">
-  <div class="wrap">
-    <div class="chapter-head">
-      <p class="chapter-mark"><span class="num">04</span><span class="name">Build</span><span class="line"></span></p>
-      <h2 class="chapter-head__title" data-part>Sometimes I answer by building.</h2>
-    </div>
-    <div class="grid split">
-      <div class="build-intro">
-        <p class="pull" data-part>A study asks once. A tool keeps asking after I stop watching.</p>
-        <p class="body-copy">Contextuary explains a word inside the sentence that gave it meaning. Tap one to try it.</p>
-        <p class="stats"><span><b>400+</b> students</span><span><b>~70%</b> back each week</span></p>
-        <p class="mono role-line">Contextuary · Design and build · 2026</p>
-        <a class="deeper" href="#/work/tech">Read the Contextuary story <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<!-- ============ 03 MAKE ============ -->
+<section class="chapter story" id="ch-make" data-short="Make" data-nav="story">
+  <div class="wrap story__grid">
+    <div class="story__text">
+      <p class="chapter-mark"><span class="num">03</span><span class="name">Make</span><span class="line"></span></p>
+      <h2 class="story__title" data-part>Keeping the days we missed</h2>
+      <p class="body-copy">A related problem was appearing inside the project teams I worked with. Our members lived in different cities and countries, so someone was almost always absent. They could read the official update and understand what we had completed, but that was not the same as knowing how the day had felt.</p>
+      <p class="body-copy">They missed the photograph taken while packing supplies, the voice note recorded on the way home and the small stories that disappeared inside a busy group chat.</p>
+      <p class="body-copy">I co-founded The Colorful Journey with a five-person team to give those moments somewhere to stay. I designed the product structure and UX/UI around a shared timeline where members could leave writing, photographs and voice notes, move between projects and dates, and rediscover old entries through “On This Day.”</p>
+      <p class="body-copy">More than 550 people visited, and over 450 returned. That second number mattered because we had made somewhere people wanted to revisit.</p>
+      <div class="story__more">
+        <p class="mono">Inside · the design problem, the decisions, and Contextuary</p>
+        <a class="deeper" href="#/work/colorful-journey">Explore The Colorful Journey <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      <div class="build-demo">
-        <div class="demo">
-          <div class="demo__bar"><i></i><i></i><i></i><span>contextuary · tap a word</span></div>
-          <div class="demo__body">
-            <p class="demo__passage" id="passage">
-              The committee's support proved <button class="wordbtn" type="button" data-word="ephemeral" aria-expanded="false">ephemeral</button>, evaporating once the <button class="wordbtn" type="button" data-word="ostensible" aria-expanded="false">ostensible</button> benefits failed to appear, and the chair was left to <button class="wordbtn" type="button" data-word="temporize" aria-expanded="false">temporize</button> in front of a room that had already made up its mind.
-            </p>
-            <div class="gloss" id="gloss" aria-live="polite">
-              <p class="mono mono--sentence">Tap a highlighted word to see how Contextuary reads it in place.</p>
-            </div>
-          </div>
+    </div>
+    <div class="story__visual">
+      <figure class="journal" aria-label="The Colorful Journey: a shared timeline with a photograph, a voice note and a piece of writing, and an On This Day entry">
+        <div class="journal__bar"><i></i><i></i><i></i><span>the colorful journey</span></div>
+        <div class="journal__body" aria-hidden="true">
+          <p class="journal__today"><b>On This Day</b> an entry from a year ago</p>
+          <ol class="journal__line">
+            <li style="--dc:var(--pink)"><span class="journal__kind">Photograph</span><span class="journal__what">packing supplies</span><span class="journal__pic"></span></li>
+            <li style="--dc:var(--orange)"><span class="journal__kind">Voice note</span><span class="journal__what">on the way home</span><span class="journal__wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span></li>
+            <li style="--dc:var(--teal)"><span class="journal__kind">Writing</span><span class="journal__what">a small story from the day</span></li>
+          </ol>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="wrap"><p class="thread"><b>Next ↓</b> some questions need a bigger room</p></div>
-</section>
-
-<!-- ============ 05 GATHER ============ -->
-<section class="chapter" id="ch-gather" data-room="05 Gather" data-short="Gather" data-nav="ch-gather" data-dark>
-  <div class="wrap">
-    <div class="chapter-head">
-      <p class="chapter-mark"><span class="num">05</span><span class="name">Gather</span><span class="line"></span></p>
-      <h2 class="chapter-head__title" data-part>Rooms with the lights turned up.</h2>
-    </div>
-    <div class="grid split">
-      <div class="gather-copy">
-        <p class="pull" data-part>A concert is a workshop with the lights up. Same question: who feels allowed to move first?</p>
-        <p class="stats"><span><b>10</b> school bands</span><span><b>310+</b> tickets</span><span><b>25M VND</b> to Little Smiles</span></p>
-        <p class="mono role-line">Beats of Hope · charity concert · Organiser · 2025</p>
-        <a class="deeper" href="#/work/events">What each event taught me <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-      <figure class="fig gather-figure" data-uncover>
-        <div class="fig__plate" data-img="gather-2" data-slot="Fig 05.1" style="--ratio:4/3"><div class="fig__ghost">Beats of Hope, band mid-set</div></div>
       </figure>
     </div>
   </div>
-  <div class="wrap"><p class="thread"><b>Next ↓</b> same question, different volume</p></div>
 </section>
 
-<!-- ============ 06 PATTERN ============ -->
-<section class="chapter chapter--quiet" id="ch-pattern" data-room="06 The Pattern" data-short="Pattern" data-nav="ch-open">
-  <div class="wrap">
-    <div class="chapter-head">
-      <p class="chapter-mark"><span class="num">06</span><span class="name">Pattern</span><span class="line"></span></p>
-      <h2 class="chapter-head__title" data-part>Different rooms. The same question.</h2>
+<!-- ============ 04 GATHER ============ -->
+<section class="chapter story" id="ch-gather" data-short="Gather" data-nav="story" data-dark>
+  <div class="wrap story__grid">
+    <div class="story__text">
+      <p class="chapter-mark"><span class="num">04</span><span class="name">Gather</span><span class="line"></span></p>
+      <h2 class="story__title" data-part>Making room at a larger scale</h2>
+      <p class="body-copy">The same attention shaped how I approached larger events. At Beats of Hope, more than ten student bands performed for an audience of over 300, helping us raise 25 million VND for hospital programming. At school, I also worked on a football league, a water-rocket competition and a science festival.</p>
+      <p class="body-copy">Much of that work involved budgets, permission forms and schedules. What kept drawing me back was the moment an event stopped feeling like something we had organised and began to belong to the people inside it.</p>
+      <p class="body-copy">It happened when the first student stepped onto the pitch, when a team ran after a rocket that had finally flown straight, and when one person moved closer to the stage and others followed. Those moments taught me that participation begins before an event starts. It begins with how someone is invited and whether taking the first step feels possible.</p>
+      <div class="story__more">
+        <p class="mono">Inside · Beats of Hope and the other events</p>
+        <a class="deeper" href="#/work/events">See the events <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+    <div class="story__visual">
+      <div class="stub" role="img" aria-label="Beats of Hope ticket: more than 10 bands, 300 plus attendees, 25 million VND raised">
+        <div class="stub__main">
+          <p class="mono">Charity concert · 2025</p>
+          <p class="stub__name">Beats of Hope</p>
+          <p class="mono">Admit one · stand closer to the stage</p>
+        </div>
+        <div class="stub__tear">
+          <p><b>10+</b> bands</p>
+          <p><b>300+</b> attendees</p>
+          <p><b>25M VND</b> raised</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="wrap rooms-swap" id="swap">
-    <ul class="swap__list" id="swapList">
-      <li data-i="0">A shelter dining hall</li>
-      <li data-i="1">A research session</li>
-      <li data-i="2">A concert floor</li>
-      <li data-i="3">A vocabulary app at 11pm</li>
-      <li data-i="4">A dinner table</li>
+</section>
+
+<!-- ============ 05 DRAW ============ -->
+<section class="chapter story" id="ch-draw" data-short="Draw" data-nav="story">
+  <div class="wrap">
+    <div class="story__text story__text--wide">
+      <p class="chapter-mark"><span class="num">05</span><span class="name">Draw</span><span class="line"></span></p>
+      <h2 class="story__title" data-part>Where I began</h2>
+      <p class="body-copy">Long before I knew how to study any of these questions, I drew. I have been drawing since I was five, and it remains the way I stay with something when my first explanation feels incomplete.</p>
+      <p class="body-copy">My paintings often return to perception, memory and emotion, not because they illustrate my research, but because many of them helped me notice the questions before I knew how to name them.</p>
+    </div>
+    <ul class="draw__works">
+      <li><a href="#/exhibition"><span class="draw__frame"><img src="img/art-chemistry.jpg" alt="Chemistry, acrylic on canvas: two pale figures reach toward each other among branching neurons." loading="lazy" width="627" height="942"></span><span class="draw__label"><b>Chemistry</b> Acrylic on canvas, 2026</span></a></li>
+      <li><a href="#/exhibition"><span class="draw__frame draw__frame--paper"><img src="img/art-stardust.jpg" alt="Stardust, acrylic on watercolor paper: a ribcage outlined in turquoise with a bright star bursting behind it." loading="lazy" width="581" height="736"></span><span class="draw__label"><b>Stardust</b> Acrylic on watercolor paper, 2026</span></a></li>
+      <li><a href="#/exhibition"><span class="draw__frame draw__frame--paper"><img src="img/art-ba-son-view.jpg" alt="Ba Son’s view, red ink on paper: the Ho Chi Minh City skyline seen across the river." loading="lazy" width="678" height="497"></span><span class="draw__label"><b>Ba Son’s view</b> Red ink on paper, 2025</span></a></li>
     </ul>
-    <div class="swap__q" id="swapQ">
-      <p>Asked five ways.</p>
-      <span data-i="0">What makes someone stay?</span>
-      <span data-i="1">What makes someone say the true version?</span>
-      <span data-i="2">What makes a stranger move first?</span>
-      <span data-i="3">What makes someone come back tomorrow?</span>
-      <span data-i="4">What turns mine into ours?</span>
+    <div class="story__more">
+      <p class="mono">Inside · eight works, their statements, and films</p>
+      <a class="deeper" href="#/exhibition">Enter the exhibition <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- ============ 07 OPEN ============ -->
-<section class="chapter chapter--quiet" id="ch-open" data-room="07 Open" data-short="Open" data-nav="ch-open">
+<!-- ============ CLOSING ============ -->
+<section class="chapter story story--close" id="ch-close" data-short="The question" data-nav="story">
   <div class="wrap">
-    <div class="chapter-head">
-      <p class="chapter-mark"><span class="num">07</span><span class="name">Open</span><span class="line"></span></p>
-      <h2 class="chapter-head__title" data-part>The door stays open.</h2>
+    <div class="story__text story__text--wide">
+      <p class="chapter-mark"><span class="num">06</span><span class="name">The question</span><span class="line"></span></p>
+      <h2 class="story__title" data-part>The question I am still following</h2>
+      <p class="body-copy">When I look across a shelter dining hall, a research session, a shared timeline and a concert floor, I do not see unrelated activities. I see different versions of the same thing I am still trying to understand.</p>
     </div>
-    <div class="grid open__text">
-      <h3 data-part>There are rooms I have not been let into yet. A few I will have to build.</h3>
-      <p class="body-copy">Next: cognitive science, human-computer interaction, and whatever we end up calling the study of why some spaces make people brave.</p>
-    </div>
+    <!-- the four rooms, joined: each dot returns to its part of the story -->
+    <ol class="dots" aria-label="The four rooms in this story">
+      <li><a href="#ch-notice" style="--dc:var(--coral)"><i></i><b>A shelter dining hall</b><span>01 Notice</span></a></li>
+      <li><a href="#ch-study" style="--dc:var(--violet)"><i></i><b>A research session</b><span>02 Study</span></a></li>
+      <li><a href="#ch-make" style="--dc:var(--blue)"><i></i><b>A shared timeline</b><span>03 Make</span></a></li>
+      <li><a href="#ch-gather" style="--dc:var(--orange)"><i></i><b>A concert floor</b><span>04 Gather</span></a></li>
+    </ol>
+    <p class="story__ask">Why does one person lean in while another stays near the edge? What makes an experience begin to feel like theirs too? How much can change when we move one tray, rewrite one prompt or give a memory somewhere to return?</p>
+  </div>
+</section>
+
+<!-- ============ MORE WORK ============ -->
+<section class="chapter story story--more" id="ch-more" data-short="More work" data-nav="work">
+  <div class="wrap">
+    <p class="chapter-mark"><span class="num">+</span><span class="name">More work</span><span class="line"></span></p>
+    <h2 class="story__title" data-part>Other questions I have followed</h2>
+    <ul class="more">
+      <li>
+        <p class="more__name">Contextuary</p>
+        <p class="more__what">A vocabulary tool that explains a word inside the sentence that gives it meaning.</p>
+        <p class="more__fact">1,200 visitors · 400+ registered users</p>
+        <a class="more__link" href="#/work/tech">View Contextuary →</a>
+      </li>
+      <li>
+        <p class="more__name">TeenCare</p>
+        <p class="more__what">How to strengthen mental fitness the way we strengthen our physical fitness.</p>
+        <p class="more__fact">R&amp;D intern · 56 in-depth interviews</p>
+        <a class="more__link" href="#/work/research/internships">Read more →</a>
+      </li>
+      <li>
+        <p class="more__name">Little Smile Project</p>
+        <p class="more__what">Hospital programming and creative direction across three hospitals in Ho Chi Minh City.</p>
+        <p class="more__fact">3 hospitals</p>
+        <a class="more__link" href="#/work/events/little-smile">Read more →</a>
+      </li>
+      <li>
+        <p class="more__name">Awards</p>
+        <p class="more__what">International Psychology Olympiad, Highest Distinction. RAISE AI national competition, Silver.</p>
+        <p class="more__fact">5 honours, 2023 to 2026</p>
+        <a class="more__link" href="#/awards">See all awards →</a>
+      </li>
+    </ul>
+    <a class="deeper" href="#/cv">View full CV <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   </div>
 </section>
 </main>
 
-<footer class="footer" id="footer" data-short="Open" data-nav="ch-open">
+<footer class="footer" id="footer" data-short="Contact" data-nav="work">
   <div class="footer__inner">
     <div class="footer__lead">
       <span class="footer__door" aria-hidden="true"></span>
       <p class="footer__eyebrow"><b></b> Get in touch</p>
       <h2 class="footer__knock">Knock, <em>knock.</em></h2>
-      <p class="footer__line">If you have a room that is not doing what you hoped, tell me about it.</p>
+      <p class="footer__line">If you are working on a room, tool or question that is not behaving the way you hoped, tell me about it.</p>
     </div>
     <div class="footer__links">
-      <a class="contact-line" href="mailto:hello@example.com" data-replace="email"><span>Email</span><span>hello@example.com</span></a>
-      <a class="contact-line" href="#/work/net-mo"><span>Work</span><span>Four rooms</span></a>
-      <a class="contact-line" href="#/exhibition"><span>Exhibition</span><span>Walk the wall</span></a>
-      <a class="contact-line" href="#/awards"><span>Awards</span><span>Honours</span></a>
-      <a class="contact-line" href="#/about"><span>About</span><span>Contact · CV</span></a>
+      <a class="contact-line" href="mailto:trieungocgiahan@gmail.com"><span>Email me</span><span>trieungocgiahan@gmail.com</span></a>
+      <a class="contact-line" href="#/about"><span>About Gia Hân</span><span>→</span></a>
+      <a class="contact-line" href="#/cv"><span>View CV</span><span>→</span></a>
     </div>
   </div>
   <div class="footer__base">
@@ -367,7 +348,13 @@
 <!-- ============ DEEP SPACES ============ -->
 <div class="room" id="room" role="dialog" aria-modal="true" aria-labelledby="roomTitle" tabindex="-1">
   <div class="room__top">
-    <span class="room__where" id="roomWhere">Deeper</span>
+    <p class="room__here">
+      <a class="brand room__brand" href="#hero" aria-label="Gia Hân, back to the start">
+        <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V5.5C5 4 6 3 7.6 3h8.8C18 3 19 4 19 5.5V21" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="15.4" cy="13" r="1.1" fill="currentColor"/></svg>
+        <span class="brand__name">Gia Hân</span>
+      </a>
+      <span class="room__where" id="roomWhere">Deeper</span>
+    </p>
     <button class="room__close" id="roomClose" type="button">Back to the story ✕</button>
   </div>
   <div class="room__inner" id="roomInner"></div>
