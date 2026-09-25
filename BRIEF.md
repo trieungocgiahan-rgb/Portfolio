@@ -43,14 +43,16 @@ One arc: notice, study, build, gather, then what connects them.
 07 Open, what comes next
 
 Doors has four destinations, and nothing else:
-- Work, which opens into three rooms: Nét Mơ / Community (with the
-  community events), Research & Internships (Two Doors, Brainlife,
-  TeenCare, EUNOIA), Tech Projects (Contextuary, The Colorful Journey)
+- Work, which opens into four rooms: Nét Mơ, Events (Beats of Hope and
+  the others), Research & Internships (Two Doors, Brainlife, TeenCare,
+  EUNOIA), Tech Projects (Contextuary, The Colorful Journey)
 - Exhibition, kept separate and special
 - Awards, the verified honours only
 - About: short intro, interests, contact, CV (the CV room is reached here)
 Deep pages exist for the strongest work only; smaller work is a section
-inside one of these rooms, never a page of its own.
+inside one of these rooms, never a page of its own. Each room opens on a
+hero and tells a story in a few beats, not everything about the project:
+an admissions reader should finish a room in about a minute.
 
 ## Door motif
 Knock entrance, thresholds, reveals, rooms, openings. Felt, not explained.

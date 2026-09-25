@@ -11,17 +11,15 @@ addEventListener("error",e=>{ console.warn("[site] caught:",e.message||e); });
 const MEDIA = {
   "hero-door":{src:"img/hero-door.jpg",alt:"A workshop on a shelter floor: a girl leans in towards a boy holding up a crayon drawing while two younger children lie on the floor beside them.",pos:"50% 42%"},
   "rooms-hall":{src:"img/rooms-hall.jpg",alt:"Two people hug and smile in a shelter hall. Behind them, children work at small plastic tables beside a standing fan."},
-  "rooms-hands":"",
-  "sheet-1":"", "sheet-2":"", "sheet-6":"",
-  "gather-2":"",
+  "rooms-hands":"", "sheet-2":"", "gather-2":"",
   "art-1":"", "art-2":"", "art-3":"", "art-4":"", "art-5":"", "art-6":"",
-  /* deep-space photography: lead images and evidence plates */
-  "nm-lead":"", "nm-1":"", "nm-2":"", "nm-3":"", "nm-4":"", "nm-5":"",
-  "cx-lead":"", "cx-1":"", "cx-2":"", "cx-3":"", "cx-4":"", "cx-5":"", "cx-6":"",
-  "cj-lead":"", "cj-1":"", "cj-2":"",
-  "td-lead":"", "td-1":"", "td-2":"", "td-3":"",
-  "gt-lead":"", "gt-1":"", "gt-2":"", "gt-3":"", "gt-4":"", "gt-5":"", "gt-6":"",
-  "ab-1":"", "ab-2":"", "ab-3":""
+  /* rooms: the photograph in each room's door (-lead), then its evidence plates */
+  "nm-lead":"", "nm-1":"", "nm-2":"", "nm-3":"",
+  "gt-lead":"", "gt-1":"", "gt-2":"", "gt-3":"",
+  "td-lead":"",
+  "cx-lead":"", "cx-1":"", "cx-2":"", "cx-3":"",
+  "cj-lead":"",
+  "ab-2":""
 };
 /* ============================================================
    EVENT LINKS · paste a URL and the event card links out to it.
@@ -403,7 +401,22 @@ window.MOTES=(function(){
    ============================================================ */
 const fig=(o)=>`<figure class="fig${o.screen?" fig--screen":""}" data-uncover><div class="fig__plate" data-img="${o.k||''}" data-slot="${o.slot||''}" style="--ratio:${o.ratio||'4/5'}${o.pos?`;--pos:${o.pos}`:""}"><div class="fig__ghost">${o.ghost||'Replace with photograph'}</div></div>${o.cap?`<figcaption>${o.cap}</figcaption>`:""}</figure>`;
 
+/* the top of every room: navy like the entrance, the photograph seen through a door */
+const hero=o=>`<header class="room-hero">
+  <div class="room-hero__text">
+    <p class="room__kicker">${o.kicker}</p>
+    <h2 id="roomTitle">${o.title}</h2>
+    ${o.lede?`<p class="room-hero__lede">${o.lede}</p>`:""}
+    ${o.facts?`<p class="stats">${o.facts.map(f=>`<span><b>${f.b}</b> ${f.s}</span>`).join("")}</p>`:""}
+    ${o.meta?`<p class="mono room-hero__meta">${o.meta}</p>`:""}
+  </div>
+  <div class="room-hero__door${o.k?"":" is-empty"}"${o.k?"":` aria-hidden="true"`}>
+    <div class="room-hero__open fig__plate${o.screen?" fig--screen":""}" data-img="${o.k||""}" data-slot=""><div class="fig__ghost">${o.ghost||""}</div></div>
+  </div>
+</header>`;
+
 const B={
+  hero,
   kicker:t=>typeof t==="string"?`<p class="room__kicker">${t}</p>`:`<p class="room__kicker" id="room-${t.id}">${t.t}</p>`,
   title:t=>`<h2 id="roomTitle">${t}</h2>`,
   /* a second project inside the same room */
@@ -424,111 +437,117 @@ const B={
   links:a=>`<div class="room__more">${a.map(l=>`<a href="${l.href}">${l.label} →</a>`).join("")}</div>`
 };
 
+/* the verified honours, stated once, shown in Awards and in the CV */
+const AWARDS=[
+    {t:"2026",h:"International Psychology Olympiad",p:"Highest Distinction, Regional Top 1. Annual Final: Advanced Thinking 165/200, Integrated Objective 180/200."},
+    {t:"2025",h:"RAISE AI national competition",p:"Silver, 2nd of 450+. Essay: To Think or to Prompt: The Future of Human Intellect in Education."},
+    {t:"2025",h:"HCMC Youth & Children Creativity Contest",p:"Second Prize, emotion card deck."},
+    {t:"2025",h:"Trưng Vương High School",p:"Most Well-Rounded Student, Grade 11."},
+    {t:"2023",h:"Vietnam Water Rocket Competition",p:"National silver, team lead, top scorer Southern Region."}
+];
+
+/* Each room tells one story, in this order: a hero (what it is, one number
+   line, a photograph through a door), what I noticed, what I changed, what it
+   led to. Lists and archives stay out; the CV holds the dated record. */
 const ROOMS={
-"/work/community":{accent:"var(--coral)",where:"Work · Nét Mơ / Community",blocks:[
-  ["kicker","Work · 2024 to now · Founder and Director"],
-  ["title","Nét Mơ"],
-  ["lead",{k:"nm-lead",slot:"Plate 01",ratio:"16/9",ghost:"Lead photograph · a session in progress, wide crop",cap:"<b>Season 2, Đồng Nai.</b> Fifteen minutes in."}],
+"/work/net-mo":{accent:"var(--coral)",where:"Work · Nét Mơ",blocks:[
+  ["hero",{kicker:"Work · 2024 to now · Founder and Director",title:"Nét Mơ",
+    lede:"An arts-based social-emotional learning programme for children in shelters and elderly residents in care facilities.",
+    facts:[{b:"200+",s:"children"},{b:"6",s:"shelters"},{b:"25",s:"people on the team"}],
+    k:"nm-lead",ghost:"a session in progress"}],
+  ["kicker","What I noticed first"],
   ["para","A boy spent the first session drawing in the bottom right corner of his page. Not shyly. Efficiently, as if the rest of the paper belonged to somebody else. In the third session we ran out of small sheets and put one large one across four tables. He drew across the middle without asking."],
   ["quote","The material was never the problem. The ownership of the surface was."],
-  ["para","Nét Mơ (Traces of Dreams) is an arts-based social-emotional learning programme for children in care homes and for elderly residents at care facilities. It runs on two branches: Shelters, which delivers the curriculum, and OPEN Community, which builds the public rooms that fund and surround it. It is legally sponsored by Bảo Sang."],
-  ["kicker","The system behind the sessions"],
+  ["kicker","What I changed"],
   ["steps",[
-    {b:"Curriculum, not activities",p:"Four sessions in a fixed dramatic order, grounded in narrative therapy, hope theory and trauma-informed care. Season 2 ran as Chuyện Của Mây: Vẽ nỗi lo, tô hi vọng."},
-    {b:"Facilitators are trained, not recruited",p:"Volunteer coordinator training documents, internal regulations, and a briefing structure so a first-time volunteer knows what to do when a child stops drawing."},
     {b:"Story world over free drawing",p:"Immersive framing sustained about 85% engagement against 60% for open free-drawing formats. It also gives children a character to speak through when speaking as themselves is too much."},
-    {b:"Handover is a product",p:"I built the team an activity journal app: three permission roles, media upload, calendar view, and a task board coloured by department, so a season can be inherited rather than re-explained."},
-    {b:"The work leaves the shelter",p:"Once Upon The Inside, co-produced with The APRIL Collective at May Artspace, showed children's work beside pieces by elderly participants and autistic artists."}
-  ]],
-  ["kicker","Season 2 · four sessions, in order"],
-  ["steps",[
-    {b:"Monster workshop · Xưởng Chế Tạo Quái Vật",p:"Build the monster before you name the worry."},
-    {b:"A feast of feelings · Bữa Tiệc Cảm Xúc",p:"A feast where every dish is a feeling. Each one gets a plate and a portion size."},
-    {b:"A sky of wishes · Bầu Trời Khát Vọng",p:"Wishes drawn small, hung high, so the room has to look up together."},
-    {b:"Dreamtopia",p:"Individual work is cut up and rebuilt into one city. Nobody keeps their own piece."}
+    {b:"A shared object, not a finished page",p:"Sessions now end on a shared object rather than individual results, and facilitators are told explicitly that an unfinished page is a fine outcome."},
+    {b:"Handover is a product",p:"I built the team an activity journal app: three permission roles, media upload, calendar view, and a task board coloured by department, so a season can be inherited rather than re-explained."}
   ]],
   ["numbers",[
-    {b:"200+",s:"children reached"},{b:"6",s:"shelters, HCMC and Đồng Nai"},
-    {b:"2",s:"elderly care facilities"},{b:"25",s:"team members, 5 departments"},
-    {b:"80%",s:"showed improved emotional expression or confidence"},{b:"75M VND",s:"raised; 80% direct to shelter children"}
+    {b:"80%",s:"showed improved emotional expression or confidence"},
+    {b:"75M VND",s:"raised; 80% direct to shelter children"},
+    {b:"2",s:"elderly care facilities"}
   ]],
   ["figs",[
     {k:"nm-1",slot:"Plate 02",ratio:"3/4",ghost:"child and facilitator",cap:"Facilitator training pays for itself in the first ten minutes."},
     {k:"nm-2",slot:"Plate 03",ratio:"3/4",ghost:"elderly participant painting",cap:"Intergenerational sessions: two groups used to being cared for, making something for each other."},
     {k:"nm-3",slot:"Plate 04",ratio:"3/4",ghost:"monster drawings on the floor",cap:"Externalised worries. The monster is easier to describe than the fear."}
   ]],
-  ["strip",[
-    {k:"nm-4",slot:"05",ratio:"1/1",ghost:"volunteer briefing"},
-    {k:"nm-5",slot:"06",ratio:"1/1",ghost:"the room after everyone left"},
-    {k:"sheet-1",slot:"07",ratio:"1/1",ghost:"exhibition wall, May Artspace"},
-    {k:"sheet-6",slot:"08",ratio:"1/1",ghost:"wall text, handwritten"}
-  ]],
-  ["kicker","What went wrong first"],
-  ["pairs",[
-    {h:"Season 1 mistake",p:"I planned sessions around outputs. A finished drawing per child, per hour. Children who worked slowly learned they were behind, which is the opposite of the point."},
-    {h:"The fix",p:"Sessions now end on a shared object rather than individual results, and facilitators are told explicitly that an unfinished page is a fine outcome."},
-    {h:"Still unsolved",p:"Handover between seasons. The activity journal app helps, but a volunteer's judgement in the room is still the part I cannot write down."}
-  ]],
-  ["kicker",{t:"Community events · 2024 to 2026 · Organiser",id:"events"}],
-  ["subtitle","Rooms with the lights turned up"],
-  ["lede","Five rooms built for other people to fill. Same design questions as a workshop, only louder and with a budget."],
-  ["steps",[
-    {b:"Beats of Hope · charity concert, 2025",event:"beats-of-hope",p:"Ten high school bands, 310+ tickets distributed across HCMC schools. I ran stage flow, artist coordination, and negotiated venue sponsorship in person. Around 25M VND net went to Little Smiles for a year of workshop materials across three partner hospitals."},
-    {b:"Sol Sound · Nét Mơ OPEN",event:"sol-sound",p:"The community branch's first night, 400+ attendees. Proof that the audience for children's art can be people the children never meet."},
-    {b:"Cerberus Football League · 2024 to 2025",event:"cerberus-league",p:"Co-founded a multi-season amateur league: 15 teams, 200+ student-athletes, 600+ cumulative spectators. Scheduling, pitch procurement, brackets, budget, referees, safety protocol, and the account that made people show up."},
-    {b:"Colors of the Pitch · two editions",event:"colors-of-the-pitch",p:"Football as the excuse, fundraising as the outcome, mixed teams as the actual design decision."},
-    {b:"Tết ơi! · 2025 to 2026",event:"tet-oi",p:"A school-wide music event for 2,400+ students, built with professional artists and school clubs."}
-  ]],
+  ["kicker","Where it led"],
+  ["para","If the format changes engagement this reliably, the effect is not about art. It is about what the room permits. That question is what pushed me into reading psychology properly, and eventually into running a study instead of trusting my own field notes."],
+  ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/work/events",label:"Events"},{href:"#/exhibition",label:"Exhibition"}]]
+]},
+
+"/work/events":{accent:"var(--orange)",where:"Work · Events",blocks:[
+  ["hero",{kicker:"Community events · 2024 to 2026 · Organiser",title:"Rooms with the lights turned up",
+    lede:"Five rooms built for other people to fill. Same design questions as a workshop, only louder and with a budget.",
+    facts:[{b:"5",s:"events"},{b:"2,400+",s:"at the largest"},{b:"25M VND",s:"to Little Smiles"}],
+    k:"gt-lead",ghost:"the room full, from the stage"}],
+  ["kicker","Beats of Hope · charity concert · 2025"],
+  ["para","Ten high school bands, 310+ tickets distributed across HCMC schools. I ran stage flow, artist coordination, and negotiated venue sponsorship in person. Around 25M VND net went to Little Smiles for a year of workshop materials across three partner hospitals."],
   ["kicker","What an event taught me that a workshop could not"],
   ["pairs",[
     {h:"The first two minutes decide everything",p:"If nobody is given something to do immediately, the room stays an audience for the rest of the night."},
     {h:"Mixed teams beat balanced teams",p:"At Colors of the Pitch, sorting players across schools rather than by school changed who spoke to whom, and it kept changing after the final whistle."},
     {h:"Money is a design constraint, not a footnote",p:"Sponsorship terms shaped the room: where people entered, what was on the walls, how long they stayed."}
   ]],
-  ["numbers",[
-    {b:"400+",s:"at Sol Sound"},{b:"310+",s:"tickets, Beats of Hope"},
-    {b:"200+",s:"athletes in the league"},{b:"2,400+",s:"students at Tết ơi!"},
-    {b:"25M VND",s:"to Little Smiles"}
-  ]],
-  ["lead",{k:"gt-lead",slot:"Plate 01",ratio:"16/9",ghost:"Lead photograph · the room full, from the stage",cap:"<b>Beats of Hope.</b> The two minutes before the first band."}],
   ["figs",[
     {k:"gt-1",slot:"Plate 02",ratio:"3/4",ghost:"Sol Sound, crowd from the side",cap:"Sol Sound, from the side of the stage."},
     {k:"gt-2",slot:"Plate 03",ratio:"3/4",ghost:"backstage, artist coordination",cap:"Backstage. Most of the design work happens here."},
     {k:"gt-3",slot:"Plate 04",ratio:"3/4",ghost:"Colors of the Pitch, mixed teams",cap:"Mixed teams, deliberately."}
   ]],
-  ["strip",[
-    {k:"gt-4",slot:"05",ratio:"4/3",ghost:"ticket stubs and set list"},
-    {k:"gt-5",slot:"06",ratio:"4/3",ghost:"league bracket sheet"},
-    {k:"gt-6",slot:"07",ratio:"4/3",ghost:"Tết ơi! stage, 2,400 students"}
+  ["kicker","The others"],
+  ["steps",[
+    {b:"Sol Sound · Nét Mơ OPEN",p:"The community branch's first night, 400+ attendees.",event:"sol-sound"},
+    {b:"Cerberus Football League · 2024 to 2025",p:"Co-founded: 15 teams, 200+ student-athletes, 600+ cumulative spectators.",event:"cerberus-league"},
+    {b:"Colors of the Pitch · two editions",p:"Football as the excuse, fundraising as the outcome, mixed teams as the actual design decision.",event:"colors-of-the-pitch"},
+    {b:"Tết ơi! · 2025 to 2026",p:"A school-wide music event for 2,400+ students, built with professional artists and school clubs.",event:"tet-oi"}
   ]],
-  ["kicker","What I started wondering afterwards"],
-  ["para","If the format changes engagement this reliably, the effect is not about art. It is about what the room permits. That question is what pushed me into reading psychology properly, and eventually into running a study instead of trusting my own field notes."],
-  ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/exhibition",label:"Exhibition"},{href:"#/awards",label:"Awards"}]]
+  ["links",[{href:"#/work/net-mo",label:"Nét Mơ"},{href:"#/work/research",label:"Research & Internships"}]]
+]},
+
+"/work/research":{accent:"var(--violet)",where:"Work · Research & Internships",blocks:[
+  ["hero",{kicker:"Research · Nov 2025 to Feb 2026 · Lead author",title:"Two Doors Into the Same Room",
+    lede:"Does expressive art-making or AI-guided reflective dialogue help a person express what they feel, and does the answer depend on who is walking in?",
+    facts:[{b:"68",s:"participants"},{b:"2",s:"conditions"},{b:"45",s:"minutes each"}],
+    k:"td-lead",ghost:"a session in progress, materials on the table"}],
+  ["kicker","The two doors"],
+  ["pairs",[
+    {h:"Condition A · Art",p:"A 45 minute expressive art-making session with materials and no requirement to explain the result out loud."},
+    {h:"Condition B · AI",p:"A 45 minute guided reflective dialogue. Every participant used the same model version, checked at the start of the session, so the room was identical."}
+  ]],
+  ["kicker","What came back"],
+  ["para","The headline is not that one door is better. It is that the doors swap places. Participants with little prior art experience gained more from dialogue, where the structure is provided for them. Participants already fluent with materials gained more from making, where structure would only get in the way. Averaging the two conditions would have hidden the entire result."],
+  ["quote","Seven participants finished the AI condition in a worse mood than they started."],
+  ["para","They are in the paper, with the reflections they wrote. The most common thread in those seven: being asked a good question at a moment when they had no way to leave the conversation."],
+  ["kicker","How it was done"],
+  ["steps",[
+    {b:"Participants",p:"N = 68, recruited across schools and community groups, with art familiarity recorded before assignment."},
+    {b:"Analysis",p:"SPSS. Interaction tested between condition and prior art familiarity rather than condition alone."},
+    {b:"Supervision",p:"Advised by Nguyễn Phương Thảo, Bảo Sang Psychology Space. Co-authored with Trần Hoàng Anh Thư; prepared for submission to the National High School Journal of Science."}
+  ]],
+  ["kicker",{t:"Internships · questions I carried into other rooms",id:"internships"}],
+  ["pairs",[
+    {h:"Brainlife · 10-month research internship",p:"What does attention look like when you can actually watch it? Trained in EEG and brain mapping, cleaned recorded data, ran surveys with student participants. Cleaning other people's data showed me how much of a finding is decided before analysis starts."},
+    {h:"TeenCare · R&D intern · summers 2025 and 2026",p:"What do teenagers actually say when someone asks properly? 56 in-depth interviews synthesised into one persona, and the core product: a storytelling e-book where teens become a chef. Nobody described their feelings when asked directly; they did while talking about a character."},
+    {h:"EUNOIA · Head of Academic Affairs",p:"Does a room of 600 behave like a room of 20? A team of 8 rewriting psychology research for students, a self-discovery festival reaching 600, and peer support for 200+ around exams. Scale does not dilute participation, structure does."}
+  ]],
+  ["links",[{href:"#/work/net-mo",label:"Where the question came from"},{href:"#/work/tech",label:"Tech Projects"}]]
 ]},
 
 "/work/tech":{accent:"var(--blue)",where:"Work · Tech Projects",blocks:[
-  ["kicker","Work · Jan 2026 to now · Design and build"],
-  ["title","Contextuary"],
-  ["lede","A word. <b>Ephemeral.</b> You learned it on Tuesday. On Friday it appears in a sentence about a coalition and you do not recognise it."],
+  ["hero",{kicker:"Work · Jan 2026 to now · Design and build",title:"Contextuary",
+    lede:"A word. <b>Ephemeral.</b> You learned it on Tuesday. On Friday it appears in a sentence about a coalition and you do not recognise it.",
+    facts:[{b:"400+",s:"student users"},{b:"~70%",s:"back weekly in peak SAT season"}],
+    meta:"Lovable and Supabase, deployed on Vercel",
+    k:"cx-lead",ghost:"the app open on a passage",screen:true}],
+  ["kicker","The idea"],
   ["para","Memorising a definition gives you a word with no room around it. Recognition in a test passage needs the opposite: the word inside a sentence that gave it a job. So Contextuary never shows a word alone. You paste a passage or a single word, and it explains that word as it behaves right there, in English and in Vietnamese, then keeps the sentence."],
-  ["steps",[
-    {b:"Paste anything",p:"A passage, a paragraph from a practice test, or one word you got wrong."},
-    {b:"Read it in place",p:"Meaning in context, part of speech, Vietnamese gloss, and the misreading students usually make."},
-    {b:"It goes to your library",p:"Saved with the sentence it came from, not stripped down to a flashcard."},
-    {b:"Daily Picks",p:"A scrolling bar of new words at the top of My Words, drawn from a 1000-word SAT list, loading more as you scroll so you pick rather than accept."},
-    {b:"Practice two ways",p:"A standard quiz over words you choose, plus an AI mode that writes fresh sentences, and a flashcard mode with audio."}
-  ]],
-  ["numbers",[{b:"400+",s:"student users"},{b:"~70%",s:"returning weekly in peak SAT season"},{b:"1,000",s:"word list, seeded by hand"}]],
-  ["lead",{k:"cx-lead",slot:"UI 00",ratio:"16/9",screen:true,ghost:"Lead screenshot · the app open on a passage",cap:"<b>Contextuary.</b> The sentence never leaves the screen."}],
   ["figs",[
     {k:"cx-1",slot:"UI 01",ratio:"3/4",screen:true,ghost:"My Words with the Daily Picks bar",cap:"Daily Picks sits on top of My Words as a bar, not a separate page, because a separate page is a chore."},
     {k:"cx-2",slot:"UI 02",ratio:"3/4",screen:true,ghost:"context reading view",cap:"The reading view: meaning in place, Vietnamese gloss, common misread."},
     {k:"cx-3",slot:"UI 03",ratio:"3/4",screen:true,ghost:"quiz or flashcard mode",cap:"Practice, scoped to the words you chose."}
-  ]],
-  ["strip",[
-    {k:"cx-4",slot:"09",ratio:"4/3",screen:true,ghost:"stats and streaks"},
-    {k:"cx-5",slot:"10",ratio:"4/3",screen:true,ghost:"word library, saved sentences"},
-    {k:"cx-6",slot:"11",ratio:"4/3",ghost:"a student using it, phone in hand"}
   ]],
   ["kicker","Cut, and better for it"],
   ["pairs",[
@@ -536,82 +555,27 @@ const ROOMS={
     {h:"Topic filters",p:"Nobody used them. Students think in tests, not categories."},
     {h:"A separate Today page",p:"One more tap to reach the thing they came for. Daily Picks moved to the top of My Words instead."}
   ]],
-  ["kicker","What building it taught me"],
-  ["para","Every feature I cut made the app better used: the topic filter, spaced repetition, the separate Today page. What people wanted was not more system. It was permission to choose today's words themselves and see the sentence again. Stack: Lovable and Supabase, deployed on Vercel."],
-  ["kicker",{t:"Work · Co-founder, UX and UI",id:"colorful-journey"}],
+  ["kicker",{t:"Also built · Co-founder, UX and UI",id:"colorful-journey"}],
   ["subtitle","The Colorful Journey"],
   ["lede","A group makes something together, then scatters. Six months later nobody can find it. The thing existed; the memory of it had nowhere to live."],
-  ["para","The Colorful Journey is a project-memory archive: a place where a team, a class or a community can deposit the artefacts of something they built and come back to it as a whole rather than as scattered folders belonging to whoever happened to hold the camera."],
   ["pairs",[
     {h:"Design problem",p:"Archives are organised for retrieval. Memory is organised by who was there and what it felt like. The interface had to hold both."},
-    {h:"Decision",p:"Entries are grouped by moment, not by file type, and every item keeps its contributor. Ownership stays visible while the collection becomes shared."},
-    {h:"Where it connects",p:"The same instinct as the Nét Mơ activity journal: a group cannot inherit its own history unless somebody designs the handover."}
+    {h:"Decision",p:"Entries are grouped by moment, not by file type, and every item keeps its contributor. Ownership stays visible while the collection becomes shared."}
   ]],
-  ["lead",{k:"cj-lead",slot:"UI 01",ratio:"16/9",screen:true,ghost:"Lead screenshot · the archive, opened on one project",cap:"<b>Archive view.</b> Entries grouped by moment, not by file type."}],
-  ["figs",[
-    {k:"cj-1",slot:"UI 02",ratio:"4/3",screen:true,ghost:"contributor view",cap:"Every item keeps its contributor, so ownership stays visible while the collection becomes shared."},
-    {k:"cj-2",slot:"UI 03",ratio:"4/3",screen:true,ghost:"timeline or moment view",cap:"A group can re-enter its own history without asking who had the camera."}
-  ]],
-  ["links",[{href:"#/work/research",label:"Research & Internships"},{href:"#/work/community",label:"Nét Mơ / Community"}]]
+  ["fig",{k:"cj-lead",slot:"UI 01",ratio:"16/9",screen:true,ghost:"Lead screenshot · the archive, opened on one project",cap:"<b>Archive view.</b> Entries grouped by moment, not by file type."}],
+  ["links",[{href:"#/work/research",label:"Research & Internships"},{href:"#/work/net-mo",label:"Nét Mơ"}]]
 ]},
-
-"/work/research":{accent:"var(--violet)",where:"Work · Research & Internships",blocks:[
-  ["kicker","Research · Nov 2025 to Feb 2026 · Lead author"],
-  ["title","Two Doors Into the Same Room"],
-  ["lede","Does expressive art-making or AI-guided reflective dialogue help a person express what they feel, and does the answer depend on who is walking in?"],
-  ["pairs",[
-    {h:"Condition A · Art",p:"A 45 minute expressive art-making session with materials and no requirement to explain the result out loud."},
-    {h:"Condition B · AI",p:"A 45 minute guided reflective dialogue. Every participant used the same model version, checked at the start of the session, so the room was identical."}
-  ]],
-  ["steps",[
-    {b:"Participants",p:"N = 68, recruited across schools and community groups, with art familiarity recorded before assignment."},
-    {b:"Measures",p:"Pre and post mood, expressed emotional detail, and written reflection. Survey instruments built in Typeform and Google Forms."},
-    {b:"Analysis",p:"SPSS. Interaction tested between condition and prior art familiarity rather than condition alone."},
-    {b:"Supervision",p:"Advised by Nguyễn Phương Thảo, Bảo Sang Psychology Space. Co-authored with Trần Hoàng Anh Thư; prepared for submission to the National High School Journal of Science."}
-  ]],
-  ["lead",{k:"td-lead",slot:"Plate 01",ratio:"16/9",ghost:"Lead photograph · a session in progress, materials on the table",cap:"<b>Condition A.</b> Forty-five minutes, materials, no requirement to explain."}],
-  ["strip",[
-    {k:"td-1",slot:"02",ratio:"3/4",ghost:"handwritten coding notes"},
-    {k:"td-2",slot:"03",ratio:"3/4",screen:true,ghost:"survey instrument screenshot"},
-    {k:"td-3",slot:"04",ratio:"3/4",screen:true,ghost:"SPSS output"}
-  ]],
-  ["kicker","Findings"],
-  ["para","The headline is not that one door is better. It is that the doors swap places. Participants with little prior art experience gained more from dialogue, where the structure is provided for them. Participants already fluent with materials gained more from making, where structure would only get in the way. Averaging the two conditions would have hidden the entire result."],
-  ["quote","Seven participants finished the AI condition in a worse mood than they started."],
-  ["para","They are in the paper, with the reflections they wrote. Reporting only the participants a method helped would make the study useless to anyone deciding whether to put it in front of a real teenager. The most common thread in those seven: being asked a good question at a moment when they had no way to leave the conversation."],
-  ["kicker","What I am not claiming"],
-  ["pairs",[
-    {h:"Duration",p:"One session. Nothing here says anything about what either door does over a term."},
-    {h:"Self-report",p:"Mood and expressed detail are reported by the person. Useful, and not the same as measured."},
-    {h:"One model, one moment",p:"A single model version at a single point in time. The AI condition will not be the same room next year."}
-  ]],
-  ["kicker","Next questions"],
-  ["para","Whether the crossover holds when the art condition is social rather than solitary. Whether the seven can be predicted in advance rather than counted afterwards. And whether an interface can be designed to hand structure to the people who need it and get out of the way of the people who do not."],
-  ["kicker",{t:"Internships · questions I carried into other rooms",id:"internships"}],
-  ["pairs",[
-    {h:"Brainlife · 10-month research internship",p:"What does attention look like when you can actually watch it? Trained in EEG and brain mapping, cleaned recorded data, ran surveys with student participants. Cleaning other people's data showed me how much of a finding is decided before analysis starts."},
-    {h:"TeenCare · R&D intern · summers 2025 and 2026",p:"What do teenagers actually say when someone asks properly? 56 in-depth interviews synthesised into one persona, and the core product: a storytelling e-book where teens become a chef. Nobody described their feelings when asked directly; they did while talking about a character."},
-    {h:"EUNOIA · Head of Academic Affairs",p:"Does a room of 600 behave like a room of 20? A team of 8 rewriting psychology research for students, a self-discovery festival reaching 600, and peer support for 200+ around exams. Scale does not dilute participation, structure does."}
-  ]],
-  ["links",[{href:"#/work/community",label:"Where the question came from"},{href:"#/work/tech",label:"Tech Projects"},{href:"#/awards",label:"Awards"}]]
-]},
-
 
 "/about":{accent:"var(--pink)",where:"About",blocks:[
-  ["kicker","About"],
-  ["title","Triệu Ngọc Gia Hân"],
-  ["lede","Grade 12 at Trưng Vương High School, Ho Chi Minh City. I work in Vietnamese and English, and I have been drawing since I was five, which is probably where the noticing started."],
+  ["hero",{kicker:"About",title:"Triệu Ngọc Gia Hân",
+    lede:"Grade 12 at Trưng Vương High School, Ho Chi Minh City. I work in Vietnamese and English, and I have been drawing since I was five, which is probably where the noticing started.",
+    k:"ab-2",ghost:"working at the desk"}],
   ["kicker","Interests"],
   ["pairs",[
     {h:"Making",p:"Digital painting, observational drawing, photography. A pink, orange and teal palette I keep returning to. Mostly self-taught."},
     {h:"Reading",p:"Psychology and cognitive science. Coursera Foundations of Neuroscience and Introduction to Psychology, applied directly to session design."},
     {h:"Building",p:"Interfaces, when a question needs to keep running after I stop watching it."},
     {h:"Gathering",p:"Concerts, tournaments, exhibitions. Rooms with the volume up."}
-  ]],
-  ["strip",[
-    {k:"ab-1",slot:"01",ratio:"3/4",ghost:"a sketchbook spread"},
-    {k:"ab-2",slot:"02",ratio:"3/4",ghost:"working at the desk"},
-    {k:"ab-3",slot:"03",ratio:"3/4",ghost:"in a room, mid-session"}
   ]],
   ["note","Also: eleven consecutive years as class president."],
   ["kicker","Contact and CV"],
@@ -623,8 +587,7 @@ const ROOMS={
 ]},
 
 "/cv":{accent:"var(--blue)",where:"CV",blocks:[
-  ["kicker","Curriculum vitae · updated 2026"],
-  ["title","The facts, dated"],
+  ["hero",{kicker:"Curriculum vitae · updated 2026",title:"The facts, dated"}],
   ["kicker","Founded and led"],
   ["rows",[
     {t:"2024 – now",h:"Nét Mơ (Traces of Dreams) · Founder and Director",p:"Arts-based SEL programme for children in shelters and elderly residents in care facilities. 25-member team across R&D, Tech, Events and PR. 200+ children, 6 shelters, 2 care facilities, ~75M VND raised. Legal sponsorship by Bảo Sang."},
@@ -645,34 +608,23 @@ const ROOMS={
     {t:"2025",h:"Nét Mơ activity journal",p:"Three-role permission system, media upload, calendar, deadline board."}
   ]],
   ["kicker","Selected honours"],
-  ["rows",[
-    {t:"2026",h:"International Psychology Olympiad",p:"Highest Distinction, Regional Top 1. Annual Final: Advanced Thinking 165/200, Integrated Objective 180/200."},
-    {t:"2025",h:"RAISE AI national competition",p:"Silver, 2nd of 450+. Essay: To Think or to Prompt: The Future of Human Intellect in Education."},
-    {t:"2025",h:"HCMC Youth & Children Creativity Contest",p:"Second Prize, emotion card deck."},
-    {t:"2025",h:"Trưng Vương High School",p:"Most Well-Rounded Student, Grade 11."},
-    {t:"2023",h:"Vietnam Water Rocket Competition",p:"National silver, team lead, top scorer Southern Region."}
-  ]],
+  ["rows",AWARDS],
   ["links",[{href:"#/about",label:"About"},{href:"#/awards",label:"Awards"},{href:"#/work/research",label:"Research & Internships"}]]
 ]},
 
 "/awards":{accent:"var(--violet)",where:"Awards",blocks:[
-  ["kicker","Awards · selected honours"],
-  ["title","Awards"],
-  ["rows",[
-    {t:"2026",h:"International Psychology Olympiad",p:"Highest Distinction, Regional Top 1. Annual Final: Advanced Thinking 165/200, Integrated Objective 180/200."},
-    {t:"2025",h:"RAISE AI national competition",p:"Silver, 2nd of 450+. Essay: To Think or to Prompt: The Future of Human Intellect in Education."},
-    {t:"2025",h:"HCMC Youth & Children Creativity Contest",p:"Second Prize, emotion card deck."},
-    {t:"2025",h:"Trưng Vương High School",p:"Most Well-Rounded Student, Grade 11."},
-    {t:"2023",h:"Vietnam Water Rocket Competition",p:"National silver, team lead, top scorer Southern Region."}
-  ]],
+  ["hero",{kicker:"Awards · selected honours",title:"Awards",
+    facts:[{b:"5",s:"honours, 2023 to 2026"}]}],
+  ["rows",AWARDS],
   ["links",[{href:"#/about",label:"About"},{href:"#/cv",label:"CV"}]]
 ]}
 };
 
 /* old links keep working: each resolves to its new room, and an anchor inside it */
 const ROOM_ALIASES={
-  "/work/net-mo":"/work/community",
-  "/work/gather":"/work/community/events",
+  "/work/community":"/work/net-mo",
+  "/work/community/events":"/work/events",
+  "/work/gather":"/work/events",
   "/research/two-doors":"/work/research",
   "/work/contextuary":"/work/tech",
   "/work/colorful-journey":"/work/tech/colorful-journey"
@@ -688,8 +640,9 @@ const ARCHIVE=[
   {t:"Lilies",p:"Acrylic",d:"2024",n:"Painted the week before an exhibition deadline, which shows.",ratio:"3/4",span:3,hang:26}
 ];
 function exhibitionHTML(){
-  return `${B.kicker("Exhibition · a small hang")}${B.title("Six works on one wall")}
-  ${B.lede("Painting is where the noticing started. Take a piece off the wall to look at it properly, then walk through to the rest.")}
+  return `${hero({kicker:"Exhibition · a small hang",title:"Six works on one wall",
+    lede:"Painting is where the noticing started. Take a piece off the wall to look at it properly, then walk through to the rest.",
+    k:"art-1",ghost:"Open door, watercolour"})}
   <div class="gallery" id="gallery">
     <span class="gallery__rail" aria-hidden="true"></span>
     <span class="gallery__spot" id="gallerySpot" aria-hidden="true"></span>
@@ -711,7 +664,7 @@ function exhibitionHTML(){
       <a class="btn btn--ink" href="https://example.com/virtual-gallery" data-replace="gallery-url" target="_blank" rel="noopener">Enter the full exhibition →</a>
     </div>
   </div>
-  ${B.links([{href:"#/about",label:"About the practice"},{href:"#/work/community",label:"Nét Mơ / Community"},{href:"#/awards",label:"Awards"}])}`;
+  ${B.links([{href:"#/about",label:"About the practice"},{href:"#/work/net-mo",label:"Nét Mơ"},{href:"#/awards",label:"Awards"}])}`;
 }
 
 /* ---------- router ---------- */

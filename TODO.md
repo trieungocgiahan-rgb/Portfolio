@@ -1,29 +1,29 @@
 # Before this goes live
 
-## 1. Photographs (43 slots, 41 still empty, all in the MEDIA object at the top of app.js)
+## 1. Photographs (26 slots, 24 still empty, all in the MEDIA object at the top of app.js)
 Filled: hero-door, rooms-hall
 
 Main scroll
 - rooms-hands   two hands sharing one box of crayons, close crop
-- sheet-2       Season 2, child and facilitator, close (4:3)
+- sheet-2       Season 2, child and facilitator, close (square)
 - gather-2      Beats of Hope, band mid-set (4:3)
 
-Exhibition
-- art-1 Open door, watercolour
-- art-2 Two souls sparking, acrylic
-- art-3 District 1 in ink
-- art-4 Portrait, coloured pencil
-- art-5 Eye canvas
-- art-6 Lilies
+Room doors (the photograph in each room's hero, portrait on laptop)
+- nm-lead  Nét Mơ, a session in progress
+- gt-lead  Events, the room full from the stage
+- td-lead  Research, a session with materials on the table
+- cx-lead  Contextuary, the app open on a passage (shown whole)
+- ab-2     About, working at the desk
+- art-1    Exhibition, Open door (watercolour)
 
-Deep spaces
-- nm-lead + nm-1…5    Nét Mơ, wide lead plus evidence and artefacts
-- sheet-1, sheet-6     Nét Mơ strip: exhibition wall, handwritten wall text
-- cx-lead + cx-1…6    Contextuary screenshots (cx-6: a student using it)
-- cj-lead + cj-1…2    The Colorful Journey screenshots
-- td-lead + td-1…3    research, session photo, coding notes, survey, SPSS
-- gt-lead + gt-1…6    events (gt-5 league bracket, gt-6 Tết ơi! stage)
-- ab-1…3              sketchbook, desk, mid-session
+Evidence inside rooms
+- nm-1…3   Nét Mơ: child and facilitator, elderly participant, monster drawings
+- gt-1…3   Events: Sol Sound from the side, backstage, Colors of the Pitch
+- cx-1…3   Contextuary screens: My Words, reading view, practice
+- cj-lead  The Colorful Journey, archive view
+
+Exhibition
+- art-2…6  Two souls sparking, District 1 in ink, Portrait, Eye canvas, Lilies
 
 Faces of shelter children need permission from the mái ấm before going
 public. Blur or crop if in doubt.

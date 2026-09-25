@@ -32,24 +32,25 @@ so the layout never breaks while slots are still empty. Each frame keeps
 its own ratio; the photograph is cropped to it, never stretched. Artworks
 and interface screenshots are shown whole.
 
-Slots: hero-door, rooms-hall, rooms-hands, sheet-1, sheet-2, sheet-6, gather-2,
-art-1…6 (exhibition), nm-lead + nm-1…5, cx-lead + cx-1…6, cj-lead + cj-1…2,
-td-lead + td-1…3, gt-lead + gt-1…6, ab-1…3.
+Slots: hero-door, rooms-hall, rooms-hands, sheet-2, gather-2,
+art-1…6 (exhibition), nm-lead + nm-1…3, gt-lead + gt-1…3, td-lead,
+cx-lead + cx-1…3, cj-lead, ab-2.
 
 ## Edit the deep-space pages
 
 Everything behind a "Read the … story" link or the Doors menu is data, not
-markup. In `app.js`, the `ROOMS` object holds one entry per room:
-Nét Mơ / Community, Research & Internships, Tech Projects, About, CV,
-Awards (the Exhibition is built from `ARCHIVE`). Each room is a list of
-blocks: kicker, title, subtitle, lede, para, quote, steps, numbers, pairs,
-rows, contact, lead, figs, strip, links. Add or reorder blocks and the room
-rebuilds. A kicker written as `{t:"…", id:"events"}` can be linked to
-directly as `#/work/community/events`.
+markup. In `app.js`, the `ROOMS` object holds one entry per room: Nét Mơ,
+Events, Research & Internships, Tech Projects, About, CV, Awards (the
+Exhibition is built from `ARCHIVE`; the honours live once in `AWARDS`).
+Each room starts with a `hero` block (kicker, title, lede, facts, and `k`,
+the photograph shown in its door), then a list of blocks: kicker,
+subtitle, lede, para, quote, steps, numbers, pairs, rows, contact, fig,
+lead, figs, strip, links. A kicker written as `{t:"…", id:"internships"}`
+can be linked to directly as `#/work/research/internships`.
 
 ## Link an event
 
-The five events are listed in the Nét Mơ / Community room. Open `app.js`,
+The events are listed in the Events room. Open `app.js`,
 find `EVENT_LINKS` near the top and paste each URL:
 `"beats-of-hope": "https://…"`. An "Event page ↗" link appears under that
 event only once its URL is filled in.

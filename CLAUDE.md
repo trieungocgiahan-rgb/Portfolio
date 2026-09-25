@@ -10,11 +10,15 @@ sharing a room, then tests it through community work, research and building.
 - No framework, no build step, no dependencies. Plain HTML, CSS, JS.
 - Never reintroduce résumé structure (hero → about → skills → project grid).
 - Keep the door motif: knock entrance, Doors panel, deep spaces as rooms.
-- Doors has four destinations: Work (Nét Mơ / Community, Research &
+- Doors has four destinations: Work (Nét Mơ, Events, Research &
   Internships, Tech Projects), Exhibition, Awards, About. Routes are
-  /work/community, /work/research, /work/tech, /exhibition, /awards,
-  /about, /cv. Old routes resolve through ROOM_ALIASES; /room/anchor
-  scrolls to a kicker with that id.
+  /work/net-mo, /work/events, /work/research, /work/tech, /exhibition,
+  /awards, /about, /cv. Old routes resolve through ROOM_ALIASES;
+  /room/anchor scrolls to a kicker with that id. Rooms open in place.
+- Every room starts with a hero block (navy, the room's accent, its lead
+  photograph through an arched door) and then tells one short story: what
+  was noticed, what changed, what it led to. No long lists or archives;
+  the CV holds the dated record, AWARDS holds the honours once.
 - Keep every interaction: knock entrance, drifting motes canvas, the story
   in four steps, crayon tray toggle, Contextuary word demo, crossover chart,
   Pattern, draggable exhibition wall, archive object viewer,
