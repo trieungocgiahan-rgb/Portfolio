@@ -410,8 +410,6 @@ const B={
   pairs:a=>`<div class="blk blk--pairs" data-n="${a.length}">${a.map(p=>`<div><h4>${p.h}</h4><p>${p.p}</p></div>`).join("")}</div>`,
   rows:a=>`<div class="blk">${a.map(r=>`<div class="cv-row"><p class="mono">${r.t}</p><div><h4>${r.h}</h4><p>${r.p}</p></div></div>`).join("")}</div>`,
   contact:a=>`<div class="blk">${a.map(c=>`<a class="contact-line" href="${c.href}"${c.replace?` data-replace="${c.replace}"`:""}><span>${c.label}</span><span>${c.value}</span></a>`).join("")}</div>`,
-  /* one clear next step, e.g. About → CV */
-  cta:o=>`<div class="blk room-cta"><div><p class="room__kicker">${o.kicker}</p><p class="room-cta__text">${o.text}</p></div><a class="btn btn--ink" href="${o.href}">${o.label} →</a></div>`,
   /* the honours in their three groups; each story opens in place */
   awards:()=>`<div class="blk awards">
     <div class="awards__bar"><p class="mono mono--sentence">Each honour has a short story behind it.</p><button class="awards__all" type="button" aria-pressed="false">Open every story</button></div>
@@ -423,8 +421,92 @@ const B={
       </details>`).join("")}
     </section>`; }).join("")}
   </div>`,
+  about:()=>aboutHTML(),
   links:a=>`<div class="room__more">${a.map(l=>`<a href="${l.href}">${l.label} →</a>`).join("")}</div>`
 };
+
+/* ---------- About · her own words, drawn around with a little art ----------
+   The one room built from a mockup rather than blocks: a sketch hero, the
+   story beside her portrait, a pink band for the line that holds it together,
+   and a close that hands on to the work and the CV. */
+const spark=(c)=>`<svg class="spark ${c}" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4v32M5 19l30 2M9 9l22 22M31 8L9 31"/></svg>`;
+function aboutHTML(){
+  return `<header class="about-hero">
+    <svg class="about-hero__swirl" viewBox="0 0 1200 200" preserveAspectRatio="xMinYMax meet" aria-hidden="true"><path pathLength="1" d="M-20 6c64 0 66 110 128 150 56 36 142 30 144-4 2-28-46-32-58-6-12 28 36 48 96 42 170-16 330-86 560-120"/></svg>
+    <svg class="about-hero__dots" viewBox="0 0 200 200" aria-hidden="true"><path d="M150 10c-60 10-90 60-80 120M40 190c20-30 30-60 20-90"/></svg>
+    ${spark("spark--a")}${spark("spark--b")}${spark("spark--c")}
+    <div class="about-hero__text">
+      <p class="about__kicker">The instinct I keep returning to</p>
+      <h2 id="roomTitle">To make things that bring people together.</h2>
+      <p class="about-hero__sub">I have always been driven by a single, powerful instinct.</p>
+    </div>
+    <figure class="about-sketch" aria-label="A drawing on a shared page: three figures holding hands, a heart and a sun, with crayons reaching in from every side.">
+      <svg viewBox="0 0 300 260" aria-hidden="true">
+        <rect x="26" y="22" width="248" height="216" rx="4" fill="#F9D5E2" transform="translate(8 8)"/>
+        <rect x="26" y="22" width="248" height="216" rx="4" fill="#FFFDF8" stroke="#141C33" stroke-width="1.6"/>
+        <path d="M78 74l142-10 10 124-140 10z" fill="#fff" stroke="#141C33" stroke-width="1.2" stroke-linejoin="round"/>
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M134 162c-8-8-20-2-16 8 4 9 16 14 16 14s12-5 16-14c4-10-8-16-16-8z" stroke="#EE4187"/>
+          <circle cx="196" cy="98" r="9" stroke="#F2872F"/><path d="M196 82v-5M196 119v-5M180 98h-5M217 98h-5M184 86l-3-3M211 113l-3-3M208 86l3-3M184 110l-3 3" stroke="#F2872F"/>
+          <g stroke="#0F918B"><circle cx="112" cy="104" r="6"/><path d="M112 110v18M112 128l-6 12M112 128l6 12"/></g>
+          <g stroke="#2B4DE0"><circle cx="140" cy="100" r="6"/><path d="M140 106v18M140 124l-6 12M140 124l6 12"/></g>
+          <g stroke="#6A4BD6"><circle cx="168" cy="104" r="6"/><path d="M168 110v18M168 128l-6 12M168 128l6 12"/></g>
+          <path d="M100 118l12-2 28-2 28 2 12 2" stroke="#141C33" stroke-width="1.4"/>
+          <path d="M96 176c10-8 18 6 28-2M178 170c8 6 18-4 26 4" stroke="#EE4187" stroke-width="1.4"/>
+        </g>
+        <g stroke="#141C33" stroke-width="1.1" stroke-linejoin="round">
+          <g transform="rotate(38 66 58)"><rect x="40" y="53" width="44" height="10" rx="2" fill="#EE4187"/><path d="M84 53l12 5-12 5z" fill="#FBD3E1"/></g>
+          <g transform="rotate(142 236 58)"><rect x="210" y="53" width="44" height="10" rx="2" fill="#F2872F"/><path d="M254 53l12 5-12 5z" fill="#FDE3CC"/></g>
+          <g transform="rotate(-36 66 206)"><rect x="40" y="201" width="44" height="10" rx="2" fill="#0F918B"/><path d="M84 201l12 5-12 5z" fill="#CDEDEA"/></g>
+          <g transform="rotate(-146 240 206)"><rect x="214" y="201" width="44" height="10" rx="2" fill="#2B4DE0"/><path d="M258 201l12 5-12 5z" fill="#D5DDFB"/></g>
+        </g>
+      </svg>
+    </figure>
+  </header>
+
+  <section class="about-body">
+    <div class="about-body__text">
+      <h3 class="about__lead">When I was a kid, my world revolved around two things—drawing, and making friends.</h3>
+      <p>There was an undeniable magic in watching a world that existed only in my head suddenly take shape on a blank page. But the real spark? That happened the moment someone else leaned over my shoulder to look. Suddenly, the drawing wasn’t just mine anymore. They’d spot details I’d completely missed, tell me what it reminded them of, or start dreaming up what might live just past the edges of the paper.</p>
+      <p>That feeling is exactly why I still love creating today.</p>
+    </div>
+    <figure class="about-photo">
+      <div class="fig__plate" data-img="ab-2" data-slot="" style="--ratio:4/5"><div class="fig__ghost">Your photo</div></div>
+    </figure>
+  </section>
+
+  <blockquote class="about-band">
+    <svg class="about-band__burst" viewBox="0 0 40 40" aria-hidden="true"><path d="M14 8l10 8M8 20h16M14 32l10-8"/></svg>
+    <p>An unfinished idea gives people a safe place to meet.</p>
+    <svg class="about-band__burst about-band__burst--r" viewBox="0 0 40 40" aria-hidden="true"><path d="M14 8l10 8M8 20h16M14 32l10-8"/></svg>
+  </blockquote>
+
+  <section class="about-body about-body--after">
+    <div class="about-body__text">
+      <p>It gives us something to point at, question, laugh about, and build on together. Creating does not magically erase the distance between us, but it makes that very first step feel a lot easier.</p>
+      <p>As I grew older, I started to see how many people have something wonderful to share but just do not know how to start. Sometimes, all it takes to help them is a very small change. It could be asking a different question, giving them something real to hold, or just inviting them in without expecting the perfect words right away.</p>
+      <p>I care so deeply about those small starts. I truly believe our world gets so much better when people feel like what they notice, imagine, and make actually matters.</p>
+    </div>
+    <svg class="about-note" viewBox="0 0 170 190" aria-hidden="true">
+      <path d="M34 34l92-14 16 88-84 14z" fill="#FDE3EC" transform="translate(6 6)"/>
+      <path d="M34 34l92-14 16 88-84 14z" fill="#fff" stroke="#141C33" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M142 108l-24-8 8 22" fill="#fff" stroke="#141C33" stroke-width="1.6" stroke-linejoin="round"/>
+      <path class="about-note__string" pathLength="1" d="M58 122c-8 22-36 22-34 4 2-16 26-10 22 10-4 18-20 30-12 50" fill="none" stroke="#EE4187" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+    ${spark("spark--d")}
+  </section>
+
+  <section class="about-close">
+    ${spark("spark--e")}
+    <p class="about-close__lead">At the end of the day,</p>
+    <p class="about-close__line">the things I love most are the ones that come alive the moment <span class="about-close__mark">another person joins in.</span></p>
+    <div class="about-close__cta">
+      <a class="btn btn--ink" href="#/work/net-mo">See what I make →</a>
+      <a class="about-close__cv" href="#/cv">Open my CV →</a>
+    </div>
+    <a class="contact-line about-close__mail" href="mailto:trieungocgiahan@gmail.com"><span>Email</span><span>trieungocgiahan@gmail.com</span></a>
+  </section>`;
+}
 
 /* the verified honours, stated once, shown in Awards and in the CV.
    t year · h name · p the result · g group · m its mark · s the story behind it, in Gia Hân's words */
@@ -587,24 +669,7 @@ const ROOMS={
   ["links",[{href:"#/work/research",label:"Research & Internships"},{href:"#/work/net-mo",label:"Nét Mơ"}]]
 ]},
 
-"/about":{accent:"var(--pink)",where:"About",blocks:[
-  ["hero",{kicker:"About",title:"Triệu Ngọc Gia Hân",
-    lede:"Grade 12 at Trưng Vương High School, Ho Chi Minh City. I work in Vietnamese and English, and I have been drawing since I was five, which is probably where the noticing started.",
-    k:"ab-2",ghost:"working at the desk"}],
-  ["kicker","Where it started"],
-  ["para","I have been drawing since I was five, mostly self-taught: digital painting, observational drawing, photography, and a pink, orange and teal palette I keep returning to. Drawing made me look for a long time at one thing, and then at who was around it."],
-  ["kicker","The room I share every day"],
-  ["para","I have been class president for eleven consecutive years. In Grade 11, Trưng Vương named me its Most Well-Rounded Student. A class was the first room where I saw that the same people behave differently depending on how the room is set up."],
-  ["kicker","What I read"],
-  ["para","Psychology and cognitive science. I took Coursera’s Foundations of Neuroscience and Introduction to Psychology and used them directly in how I design sessions. In 2026 I won a Silver Award at the International Psychology Olympiad, first in Asia and in the top 15 worldwide."],
-  ["kicker","Where it led"],
-  ["para","Those three things met in a shelter dining hall, when one tray of crayons changed a room. The rest followed from that: a study to test what I thought I saw, a shared diary for a team that could not meet, and events for hundreds of people. I build interfaces when a question needs to keep running after I stop watching it, and I organise concerts, tournaments and exhibitions because they are rooms with the volume up."],
-  ["links",[{href:"#/work/net-mo",label:"Nét Mơ"},{href:"#/work/research",label:"The study"},{href:"#/exhibition",label:"Exhibition"},{href:"#/awards",label:"Awards"}]],
-  ["cta",{kicker:"The dated record",text:"Every role, date and award on one page.",href:"#/cv",label:"Open my CV"}],
-  ["contact",[
-    {href:"mailto:trieungocgiahan@gmail.com",label:"Email",value:"trieungocgiahan@gmail.com"}
-  ]]
-]},
+"/about":{accent:"var(--pink)",where:"About",blocks:[["about"]]},
 
 "/cv":{accent:"var(--blue)",where:"CV",blocks:[
   ["hero",{kicker:"Curriculum vitae · updated 2026",title:"The facts, dated"}],

@@ -22,7 +22,11 @@ sharing a room, then tests it through community work, research and building.
   Awards teal) and paper heroes (Nét Mơ peach, Research lavender graph
   paper, Exhibition paint washes, About blush, CV ruled paper); the lead
   photograph is always seen through an arched door and then tells one short story: what
-  was noticed, what changed, what it led to. No long lists or archives;
+  was noticed, what changed, what it led to. About is the one exception,
+  built from her mockup (aboutHTML in app.js): a sketch hero with line-only
+  art (sparkles, one pink swirl), the story beside her portrait box (ab-2),
+  a pink band for its key line, then "See what I make" and "Open my CV".
+  No long lists or archives;
   the CV holds the dated record, AWARDS holds the honours once.
 - Keep every interaction: the entrance, drifting motes canvas, the story
   thread and the closing dots, crayon tray toggle, crossover chart,

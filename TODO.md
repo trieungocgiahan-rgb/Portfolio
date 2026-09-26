@@ -12,7 +12,7 @@ Room doors (the photograph in each room's hero, portrait on laptop)
 - gt-lead  Events, the room full from the stage
 - td-lead  Research, a session with materials on the table
 - cx-lead  Contextuary, the app open on a passage (shown whole)
-- ab-2     About, working at the desk
+- ab-2     About, your portrait (4:5), in the box beside the story
 
 Evidence inside rooms
 - nm-1…3   Nét Mơ: child and facilitator, elderly participant, monster drawings
