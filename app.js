@@ -20,7 +20,7 @@ const MEDIA = {
   "td-lead":"",
   "cx-lead":"", "cx-1":"", "cx-2":"", "cx-3":"",
   "cj-lead":"",
-  "ab-2":""
+  "ab-2":{src:"img/about-portrait.jpg",alt:"Gia Hân in her school uniform, smiling and holding up a pink crayon; the words Nét Mơ, a crown and yellow scribbles are drawn over the photograph.",pos:"50% 38%"}
 };
 /* ============================================================
    EVENT LINKS · paste a URL and the event card links out to it.
@@ -49,6 +49,65 @@ const COARSE = window.matchMedia("(hover:none)").matches;
 const $ = (s,c=document)=>c.querySelector(s);
 const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
 
+/* ---------- no lonely words ----------
+   The last line of a paragraph never holds only one or two words. The last
+   three words are tied with non-breaking spaces (two for large type), so they
+   travel together. A tie is skipped when the tied words would be too wide for
+   the narrowest phone line, so nothing is ever forced to break mid-word.
+   text-wrap:pretty does the same where the browser supports it; this keeps it
+   true in every browser, iPad Safari included. */
+const TIE_SEL="p, li, dd, figcaption, h1, h2, h3, h4, .bridge__text";
+function tieLastWords(scope=document){
+  const els=scope.matches&&scope.matches(TIE_SEL)?[scope]:$$(TIE_SEL,scope);
+  els.forEach(el=>{
+    if(el.dataset.tied||el.closest("button, .chapnav, svg")) return;
+    const cs=getComputedStyle(el);
+    if(/flex|grid/.test(cs.display)) return;
+    /* only text that flows inline inside this element */
+    const nodes=[]; const tw=document.createTreeWalker(el,NodeFilter.SHOW_TEXT);
+    let n; while((n=tw.nextNode())){
+      let ok=true; for(let q=n.parentElement;q&&q!==el;q=q.parentElement){ if(getComputedStyle(q).display!=="inline"){ ok=false; break; } }
+      if(ok) nodes.push(n);
+    }
+    const text=nodes.map(t=>t.data).join("");
+    const words=text.trim().split(/\s+/);
+    if(words.length<4) return;
+    /* the tied words must fit comfortably on one line of this element */
+    const size=parseFloat(cs.fontSize)||16, maxChars=Math.floor(Math.min(el.clientWidth||300,720)*.9/(size*.56));
+    let tie=3;
+    while(tie>1 && words.slice(-tie).join(" ").length>maxChars) tie--;
+    if(tie<2) return;
+    el.dataset.tied="1";
+    /* usual case: the last words sit in one text node, so wrap them in a span that
+       never breaks (not even at a hyphen, as in "in-depth") */
+    const last=nodes[nodes.length-1], m=last&&last.data.match(new RegExp("(\\S+(?:\\s+\\S+){"+(tie-1)+"})\\s*$"));
+    if(m){
+      const tail=last.splitText(m.index), span=document.createElement("span");
+      span.className="tie"; tail.parentNode.insertBefore(span,tail); span.appendChild(tail);
+      fitTie(span);
+      return;
+    }
+    /* otherwise tie across inline elements with non-breaking spaces */
+    let left=tie-1, seenWord=false;
+    for(let i=nodes.length-1;i>=0&&left>0;i--){
+      const d=nodes[i].data.split("");
+      for(let j=d.length-1;j>=0&&left>0;j--){
+        if(/\s/.test(d[j])){ if(seenWord){ let k=j; while(k>0&&/\s/.test(d[k-1])){ d[k]=""; k--; } d[k]="\u00A0"; j=k; left--; seenWord=false; } }
+        else seenWord=true;
+      }
+      nodes[i].data=d.join("");
+    }
+  });
+}
+
+/* a tie wider than its line is let go again, so a word never has to break */
+function fitTie(span){
+  const box=span.parentElement.closest(TIE_SEL)||span.parentElement;
+  if(span.getBoundingClientRect().width>box.clientWidth*.92){ span.replaceWith(...span.childNodes); }
+}
+let tieTimer=0;
+addEventListener("resize",()=>{ clearTimeout(tieTimer); tieTimer=setTimeout(()=>$$(".tie").forEach(fitTie),150); },{passive:true});
+
 const media=key=>{ const m=MEDIA[key]; return !m ? null : typeof m==="string" ? {src:m} : m; };
 function paintMedia(scope=document){
   $$("[data-img]",scope).forEach(el=>{
@@ -63,6 +122,7 @@ function paintMedia(scope=document){
   });
 }
 paintMedia();
+tieLastWords(document.body);
 /* an event link appears only once its URL is filled in */
 function wireEvents(scope=document){
   scope.querySelectorAll("[data-event]").forEach(a=>{
@@ -251,9 +311,11 @@ $("#footerTop")?.addEventListener("click",()=>window.scrollTo({top:0,behavior:RE
     layout(mode);
     const on=mode==="story";
     val.textContent=on?"85%":"60%"; bar.style.width=on?"85%":"60%";
+    delete note.dataset.tied;
     note.textContent=on
       ? "One shared world, one shared tray. Children negotiate colours, narrate for each other, and keep going after the facilitator steps back."
       : "Children work in parallel. Materials stay where they were placed. Most talk goes to the facilitator.";
+    tieLastWords(note);
     $$(".tray__switch button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.mode===mode)));
   }
   $$(".tray__switch button").forEach(b=>b.addEventListener("click",()=>set(b.dataset.mode)));
@@ -501,9 +563,15 @@ function aboutHTML(){
     <p class="about-close__lead">At the end of the day,</p>
     <p class="about-close__line">the things I love most are the ones that come alive the moment <span class="about-close__mark">another person joins in.</span></p>
     <div class="about-close__cta">
-      <a class="btn btn--ink" href="#/work/net-mo">See what I make →</a>
+      <a class="btn btn--ink" href="#/exhibition">See my drawings →</a>
       <a class="about-close__cv" href="#/cv">Open my CV →</a>
     </div>
+    <a class="about-practice" href="#/work/net-mo">
+      <span class="about-practice__kicker">Where I put this into practice</span>
+      <span class="about-practice__name">Nét Mơ</span>
+      <span class="about-practice__what">Art workshops for children in shelters, where one shared tray of crayons changed the room.</span>
+      <span class="about-practice__go">Step inside →</span>
+    </a>
     <a class="contact-line about-close__mail" href="mailto:trieungocgiahan@gmail.com"><span>Email</span><span>trieungocgiahan@gmail.com</span></a>
   </section>`;
 }
@@ -838,6 +906,7 @@ function bindScreening(){
   function render(route){
     if(route==="/exhibition"||route==="/archive"||route==="/exhibition/films"){
       inner.innerHTML=exhibitionHTML();
+      tieLastWords(inner);
       room.dataset.room="exhibition";
       room.style.setProperty("--accent","var(--pink)");
       where.textContent="Exhibition";
@@ -853,6 +922,7 @@ function bindScreening(){
       room.dataset.room=route.split("/").pop();
       where.textContent=r.where||"Deeper";
       inner.innerHTML=r.blocks.map(([type,arg])=>B[type](arg)).join("");
+      tieLastWords(inner);
       paintMedia(inner); wireEvents(inner);
       $$("[data-uncover],[data-part],[data-mask]",inner).forEach(el=>io.observe(el));
       room.scrollTop=0;
@@ -913,7 +983,7 @@ function bindArchive(){
     const m=media("art-"+a.id);
     plate.innerHTML=m&&m.src?`<img src="${m.src}" alt="${(m.alt||`${a.t}, ${a.p}`).replace(/"/g,"&quot;")}">`:`<span class="mono">${a.t}</span>`;
     $("#objTitle").textContent=a.t;
-    $("#objNote").textContent=a.n;
+    $("#objNote").textContent=a.n; delete $("#objNote").dataset.tied; tieLastWords($("#objNote"));
     $("#objMeta").textContent=label(a);
     $("#objCount").textContent=`${String(idx+1).padStart(2,"0")} of ${ARCHIVE.length}`;
   }

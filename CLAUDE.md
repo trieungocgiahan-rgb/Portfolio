@@ -25,7 +25,8 @@ sharing a room, then tests it through community work, research and building.
   was noticed, what changed, what it led to. About is the one exception,
   built from her mockup (aboutHTML in app.js): a sketch hero with line-only
   art (sparkles, one pink swirl), the story beside her portrait box (ab-2),
-  a pink band for its key line, then "See what I make" and "Open my CV".
+  a pink band for its key line, then "See my drawings", "Open my CV" and a
+  Nét Mơ card: where she puts this into practice.
   No long lists or archives;
   the CV holds the dated record, AWARDS holds the honours once.
 - Keep every interaction: the entrance, drifting motes canvas, the story
@@ -83,6 +84,12 @@ the accent appears only in numbers, rules, dots, nav state and small labels.
   visual can never slide over it while scrolling.
 - Fix overflow at the element that is too wide. body{overflow-x:clip} is a
   last guard, not a fix. Words never break mid-word; only URLs may.
+- No lonely words: the last line of a paragraph never holds only one or
+  two words. tieLastWords() in app.js ties the last three words (it runs on
+  the homepage, on every room render, and wherever JS changes text; call it
+  after setting new text). If a tie still leaves a short last line, the
+  column is too narrow: widen the content, do not shrink the type. Big
+  display headings may end on two words when text-wrap:balance splits them.
 - Image roles: hero, evidence (numbered plate), artifact (object seen whole),
   screen (interface seen whole), contact sheet (square crops), gallery
   (framed artwork, seen whole), deep-space lead and strip. Photographs are

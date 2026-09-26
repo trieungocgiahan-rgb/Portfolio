@@ -97,6 +97,8 @@ body{hyphens:manual;word-break:normal;overflow-wrap:break-word}
 /* headings resolve their own line breaks, prose avoids one-word last lines */
 h1,h2,h3,h4,h5,.blk--quote{text-wrap:balance}
 p,li,dd,figcaption{text-wrap:pretty}
+/* the last words of a paragraph travel together (tieLastWords in app.js) */
+.tie{white-space:nowrap}
 
 .mono{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;line-height:1.7;text-transform:uppercase;color:var(--ink-45)}
 /* mono written as a sentence rather than a label */
@@ -843,6 +845,11 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .numbers span{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.11em;text-transform:uppercase;color:var(--ink-45);display:block;margin-top:.35rem;line-height:1.6}
 .blk--pairs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-3) var(--sp-4)}
 .blk--pairs[data-n="2"],.blk--pairs[data-n="4"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* three notes read as full-width rows: a narrow third of the column squeezed
+   their last words onto lines of their own */
+.blk--pairs[data-n="3"]{grid-template-columns:minmax(0,1fr);row-gap:0}
+.blk--pairs[data-n="3"] > div{padding-block:.9rem}
+.blk--pairs[data-n="3"] p{max-width:min(100%,68ch)}
 .blk--pairs > div{border-top:1px solid var(--rule);padding-top:.7rem}
 .blk--pairs h4{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 .35rem;font-weight:500}
 .blk--pairs p{color:var(--ink-70);font-size:.96rem}
@@ -910,14 +917,14 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
   padding:var(--sp-6) max(var(--gutter),(100% - var(--wide)) / 2) calc(var(--sp-5) + min(12vw,150px));
   background:radial-gradient(45% 60% at 92% 10%,rgba(238,65,135,.1),transparent 64%),#FBF5EE}
 .about-hero__swirl{position:absolute;left:0;bottom:0;width:100%;height:min(16.7vw,200px);fill:none;stroke:var(--pink);stroke-width:2;stroke-linecap:round;pointer-events:none}
-.about-hero__dots{position:absolute;left:44%;top:22%;width:160px;height:160px;fill:none;stroke:var(--pink);stroke-width:2;stroke-linecap:round;stroke-dasharray:1 8;opacity:.8;pointer-events:none}
+.about-hero__dots{position:absolute;left:47%;top:58%;width:130px;height:130px;fill:none;stroke:var(--pink);stroke-width:2;stroke-linecap:round;stroke-dasharray:1 8;opacity:.8;pointer-events:none}
 @media(prefers-reduced-motion:no-preference){
   .about-hero__swirl path{stroke-dasharray:1;stroke-dashoffset:1;animation:about-draw 2.4s .35s var(--ease-soft) forwards}
   @keyframes about-draw{to{stroke-dashoffset:0}}
 }
 .about-hero__text{position:relative;z-index:1}
 .about__kicker{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.18em;text-transform:uppercase;color:var(--pink)}
-.about-hero h2{margin-top:var(--sp-2);font-size:clamp(2.6rem,6.2vw,4.8rem);line-height:1;letter-spacing:-.035em;max-width:min(100%,11ch);color:var(--navy)}
+.about-hero h2{margin-top:var(--sp-2);font-size:clamp(2.6rem,6.2vw,4.8rem);line-height:1;letter-spacing:-.035em;max-width:min(100%,17ch);color:var(--navy)}
 .about-hero__sub{margin-top:var(--sp-3);font-size:var(--t-lead);line-height:1.5;color:var(--ink-70);max-width:min(100%,30ch)}
 .about-sketch{position:relative;z-index:1;margin:0;justify-self:center;width:min(100%,380px);rotate:-6deg}
 .about-sketch svg{display:block;width:100%;height:auto}
@@ -937,18 +944,28 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 }
 
 .about-band{position:relative;margin:0;display:flex;align-items:center;justify-content:center;gap:var(--sp-3);padding:var(--sp-4) var(--gutter);background:var(--about-band)}
-.about-band p{font-family:var(--display);font-size:clamp(1.5rem,3.3vw,2.4rem);line-height:1.2;letter-spacing:-.02em;color:var(--navy);text-align:center;max-width:min(100%,30ch)}
+.about-band p{text-wrap:balance;font-family:var(--display);font-size:clamp(1.5rem,3.3vw,2.4rem);line-height:1.2;letter-spacing:-.02em;color:var(--navy);text-align:center;max-width:min(100%,30ch)}
 .about-band__burst{flex:none;width:40px;height:40px;fill:none;stroke:var(--pink);stroke-width:2.2;stroke-linecap:round}
 .about-band__burst--r{scale:-1 1}
 
 .about-close{position:relative;padding:var(--sp-4) 0 0;text-align:center}
 .about-close__lead{font-family:var(--display);font-style:italic;font-size:var(--t-lead);color:var(--ink-45)}
-.about-close__line{margin:.4rem auto 0;font-family:var(--display);font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.2;letter-spacing:-.02em;color:var(--navy);max-width:min(100%,30ch)}
+.about-close__line{text-wrap:balance;margin:.4rem auto 0;font-family:var(--display);font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.2;letter-spacing:-.02em;color:var(--navy);max-width:min(100%,30ch)}
 /* a hand-drawn pink underline, one stroke per line of text */
 .about-close__mark{padding-bottom:.18em;-webkit-box-decoration-break:clone;box-decoration-break:clone;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8c40-6 90-6 130-3s50 4 66 0' fill='none' stroke='%23EE4187' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") left bottom/100% .38em no-repeat}
 .about-close__cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--sp-2) var(--sp-4);margin-top:var(--sp-4)}
 .about-close__cv{padding:.6rem 0;font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--pink);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--pink) 40%,transparent);text-underline-offset:.45em}
+/* Nét Mơ, as the place where all of this is practised: a card, not a button */
+.about-practice{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.35rem var(--sp-3);align-items:end;margin:var(--sp-5) auto 0;max-width:36rem;padding:var(--sp-3);
+  text-align:left;text-decoration:none;color:inherit;background:#fff;border:2px solid var(--navy);border-radius:16px;box-shadow:8px 8px 0 var(--about-pink);
+  transition:translate .4s var(--ease),box-shadow .4s var(--ease)}
+.about-practice:hover,.about-practice:focus-visible{translate:0 -3px;box-shadow:10px 12px 0 var(--about-pink)}
+.about-practice__kicker{grid-column:1/-1;font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.16em;text-transform:uppercase;color:var(--coral)}
+.about-practice__name{grid-column:1;font-family:var(--display);font-size:clamp(1.6rem,3vw,2.1rem);line-height:1.1;letter-spacing:-.02em;color:var(--navy)}
+.about-practice__what{grid-column:1;color:var(--ink-70);font-size:.98rem;line-height:1.6}
+.about-practice__go{grid-column:2;grid-row:2/4;align-self:end;padding:.6rem 0;font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--coral);white-space:nowrap}
+@media(max-width:560px){.about-practice{grid-template-columns:minmax(0,1fr)}.about-practice__go{grid-column:1;grid-row:auto}}
 .about-close__mail{margin:var(--sp-5) auto 0;max-width:34rem;text-align:left}
 @media(max-width:900px){
   .about-hero{grid-template-columns:minmax(0,1fr);padding-top:var(--sp-5)}
@@ -985,11 +1002,6 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
   box-shadow:0 30px 55px -45px rgba(20,28,51,.8);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
 .blk--figs .fig:hover .fig__plate,.blk--strip .fig:hover .fig__plate{transform:translateY(-4px);box-shadow:0 34px 55px -38px rgba(20,28,51,.75)}
 
-/* portrait tablet: three short notes read as rows, label beside text */
-@media(min-width:700px) and (max-width:900px){
-  .blk--pairs[data-n="3"]{grid-template-columns:minmax(0,1fr);row-gap:0}
-  .blk--pairs[data-n="3"] > div{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr);column-gap:var(--sp-3);padding-block:.7rem}
-}
 @media(max-width:699px){
   .blk--pairs,.blk--pairs[data-n]{grid-template-columns:minmax(0,1fr)}
   .blk--figs,.blk--figs[data-n]{grid-template-columns:minmax(0,1fr)}
