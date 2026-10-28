@@ -15,8 +15,16 @@ const MEDIA = {
   "gather-2":{src:"img/gather-2.jpg",alt:"Beats of Hope, seen from the stage: a singer in a white T-shirt faces a packed crowd under pink and green lights, hands raised, people singing along.",pos:"45% 50%"},
   /* the exhibition's own works register themselves from ARCHIVE below */
   /* rooms: the photograph in each room's door (-lead), then its evidence plates */
-  "nm-lead":"", "nm-1":"", "nm-2":"", "nm-3":"",
-  "gt-lead":"", "gt-1":"", "gt-2":"", "gt-3":"",
+  "nm-lead":{src:"img/nm-lead.jpg",alt:"From above: children’s hands reach toward a shared floor painting of crayon and clay panels.",pos:"50% 50%"},
+  "nm-1":{src:"img/nm-1.jpg",alt:"Gia Han leans in to talk with a child at a small blue table, while two boys draw in the foreground beside a box of oil pastels.",pos:"50% 45%"},
+  "nm-2":{src:"img/nm-2.jpg",alt:"Two care-home sessions: Gia Han shows a paper flower to an older man, then leans in to talk with an older woman.",pos:"50% 30%"},
+  "nm-3":{src:"img/nm-3.jpg",alt:"Two children’s drawings held up side by side: a singer in pixel sunglasses and a grinning strongman with a gold chain.",pos:"52% 50%"},
+  "nm-4":{src:"img/nm-4.jpg",alt:"A classroom of children and volunteers making finger hearts and holding up the paper crafts they made.",pos:"50% 55%"},
+  "gt-lead":{src:"img/gt-lead.jpg",alt:"Sol Sound, from behind the band: a bass player faces the crowd under stage lights, in sepia.",pos:"58% 50%"},
+  "gt-1":{src:"img/gt-1.jpg",alt:"The Sol Sound team posing in front of a red tinsel curtain with the Sol Sound sign.",pos:"50% 45%"},
+  "gt-2":{src:"img/gt-2.jpg",alt:"Sol Sound: a row of people clapping along, in sepia, their hands blurred with movement.",pos:"55% 50%"},
+  "gt-4":{src:"img/gt-4.jpg",alt:"The Beats of Hope poster: A night full of music and smiles, with a group photo of the bands and the Little Smiles team.",fit:"contain"},
+  "gt-5":{src:"img/gt-5.jpg",alt:"A student band on stage at Beats of Hope under pink light, holding guitars and a bouquet after its set.",pos:"56% 72%"},
   "td-lead":"",
   "cx-lead":"", "cx-1":"", "cx-2":"", "cx-3":"",
   "cj-lead":"",
@@ -562,6 +570,7 @@ function aboutHTML(){
     ${spark("spark--e")}
     <p class="about-close__lead">At the end of the day,</p>
     <p class="about-close__line">the things I love most are the ones that come alive the moment <span class="about-close__mark">another person joins in.</span></p>
+    <img class="about-close__sign" src="img/signature.png" alt="Gia Han’s signature" width="900" height="432" loading="lazy">
     <div class="about-close__cta">
       <a class="btn btn--ink" href="#/exhibition">See my drawings →</a>
       <a class="about-close__cv" href="#/cv">Open my CV →</a>
@@ -638,9 +647,10 @@ const ROOMS={
   ]],
   ["figs",[
     {k:"nm-1",slot:"Plate 02",ratio:"3/4",ghost:"child and facilitator",cap:"Facilitator training pays for itself in the first ten minutes."},
-    {k:"nm-2",slot:"Plate 03",ratio:"3/4",ghost:"elderly participant painting",cap:"Intergenerational sessions: two groups used to being cared for, making something for each other."},
-    {k:"nm-3",slot:"Plate 04",ratio:"3/4",ghost:"monster drawings on the floor",cap:"Externalised worries. The monster is easier to describe than the fear."}
+    {k:"nm-2",slot:"Plate 03",ratio:"3/4",ghost:"older participant",cap:"In care homes: two groups used to being cared for, making something for each other."},
+    {k:"nm-3",slot:"Plate 04",ratio:"3/4",ghost:"drawings held up",cap:"Characters to speak through, held up for the room."}
   ]],
+  ["lead",{k:"nm-4",slot:"Plate 05",ratio:"3/2",ghost:"the end of a session",cap:"The end of a session: everyone holding up what they made."}],
   ["kicker","Where it led"],
   ["para","If the format changes engagement this reliably, the effect is not about art. It is about what the room permits. That question is what pushed me into reading psychology properly, and eventually into running a study instead of trusting my own field notes."],
   ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/work/events",label:"Events"},{href:"#/exhibition",label:"Exhibition"}]]
@@ -650,9 +660,13 @@ const ROOMS={
   ["hero",{kicker:"Community events · 2024 to 2026 · Organiser",title:"Rooms with the lights turned up",
     lede:"Five rooms built for other people to fill. Same design questions as a workshop, only louder and with a budget.",
     facts:[{b:"5",s:"events"},{b:"2,400+",s:"at the largest"},{b:"25M VND",s:"raised at Beats of Hope"}],
-    k:"gt-lead",ghost:"the room full, from the stage"}],
+    k:"gt-lead",ghost:"Sol Sound, from the stage"}],
   ["kicker","Beats of Hope · charity concert · 2025"],
   ["para","Produced for the Little Smiles Project: more than ten student bands, 310+ tickets distributed across Ho Chi Minh City schools. I ran stage flow, artist coordination, and negotiated venue sponsorship in person. It raised about 25M VND for hospital play and storytelling sessions, donated to two hospitals in France."],
+  ["figs",[
+    {k:"gt-4",slot:"Poster",ratio:"1/1",ghost:"the Beats of Hope poster",cap:"The poster, made with the Little Smiles team."},
+    {k:"gt-5",slot:"Plate 02",ratio:"1/1",ghost:"a band after its set",cap:"One of the bands, after its set."}
+  ]],
   ["kicker","What an event taught me that a workshop could not"],
   ["pairs",[
     {h:"The first two minutes decide everything",p:"If nobody is given something to do immediately, the room stays an audience for the rest of the night."},
@@ -660,9 +674,8 @@ const ROOMS={
     {h:"Money is a design constraint, not a footnote",p:"Sponsorship terms shaped the room: where people entered, what was on the walls, how long they stayed."}
   ]],
   ["figs",[
-    {k:"gt-1",slot:"Plate 02",ratio:"3/4",ghost:"Sol Sound, crowd from the side",cap:"Sol Sound, from the side of the stage."},
-    {k:"gt-2",slot:"Plate 03",ratio:"3/4",ghost:"backstage, artist coordination",cap:"Backstage. Most of the design work happens here."},
-    {k:"gt-3",slot:"Plate 04",ratio:"3/4",ghost:"Colors of the Pitch, mixed teams",cap:"Mixed teams, deliberately."}
+    {k:"gt-1",slot:"Plate 03",ratio:"4/3",ghost:"the Sol Sound team",cap:"Sol Sound: the team in front of the backdrop."},
+    {k:"gt-2",slot:"Plate 04",ratio:"4/3",ghost:"the room clapping along",cap:"Sol Sound: the room, clapping along."}
   ]],
   ["kicker",{t:"Little Smiles Project · Creative Director",id:"little-smile"}],
   ["para","A recurring play and storytelling initiative for children in hospitals. I led a 4-person creative team designing 8 adaptive sessions for about 100 children across three hospitals."],

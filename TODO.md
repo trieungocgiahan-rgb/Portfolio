@@ -1,26 +1,18 @@
 # Before this goes live
 
-## 1. Photographs (19 slots, 16 still empty; the 8 exhibition works are in img/art-*.jpg, all in the MEDIA object at the top of app.js)
-Filled: hero-door, rooms-hall, gather-2
+## 1. Photographs (all in the MEDIA object at the top of app.js; the 8 exhibition works are in img/art-*.jpg)
+Filled: hero-door, rooms-hall, gather-2, ab-2 (portrait), nm-lead, nm-1…4
+(Dream Strokes), gt-lead, gt-1, gt-2 (Sol Sound), gt-4, gt-5 (Beats of Hope),
+img/signature.png (About).
 
-Main scroll
-- rooms-hands   two hands sharing one box of crayons, close crop
-- sheet-2       Season 2, child and facilitator, close (square)
-
-Room doors (the photograph in each room's hero, portrait on laptop)
-- nm-lead  Dream Strokes, a session in progress
-- gt-lead  Events, the room full from the stage
+Still empty
 - td-lead  Research, a session with materials on the table
 - cx-lead  Contextuary, the app open on a passage (shown whole)
-- ab-2     About portrait (filled: img/about-portrait.jpg)
-
-Evidence inside rooms
-- nm-1…3   Dream Strokes: child and facilitator, elderly participant, monster drawings
-- gt-1…3   Events: Sol Sound from the side, backstage, Colors of the Pitch
 - cx-1…3   Contextuary screens: My Words, reading view, practice
-- cj-lead  Together!, archive view
+- cj-lead  Together!, archive view (16:9)
+- FILMS    three YouTube links for the screening room (title, year, one line)
 
-Faces of shelter children need permission from the mái ấm before going
+Faces of shelter children need permission from the shelter before going
 public. Blur or crop if in doubt.
 
 ## 2. Links to replace
