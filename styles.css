@@ -741,11 +741,6 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .room__inner > .blk--lead,.room__inner > .blk--figs,.room__inner > .blk--strip,.room__inner > .gallery{grid-column:wide}
 
 .room__sub{font-size:var(--t-title);max-width:min(100%,22ch)}
-.room__sub--logo{display:flex;align-items:center;gap:var(--sp-2)}
-.room__sub--logo img{width:clamp(40px,4.5vw,56px);height:auto;border-radius:12px;flex:none;box-shadow:0 10px 20px -14px rgba(20,28,51,.5)}
-/* a way out to the real product */
-.room__visit{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem var(--sp-3);margin-top:var(--sp-3)}
-.room__visit .mono{color:var(--ink-45)}
 .room__sub + .blk{margin-top:var(--sp-2)}
 .room__kicker{margin-top:var(--sp-5);font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.18em;line-height:1.7;text-transform:uppercase;color:var(--accent)}
 .room__kicker + *{margin-top:.55rem}
@@ -822,6 +817,13 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .room-hero__open .fig__ghost{background:none;color:var(--ink-70)}
 /* a drawing in the door instead of a photograph (Awards: a medal in gold line) */
 .room-hero__open:has(.room-hero__art){display:grid;place-items:center}
+/* app marks in the door instead of a photograph (Tech): the icons, the way a phone shows them */
+.room-hero__open:has(.room-hero__marks){display:grid;place-items:center;background:radial-gradient(70% 55% at 50% 45%,rgba(255,255,255,.28),transparent 70%),linear-gradient(180deg,color-mix(in srgb,var(--accent) 70%,#fff 0%),color-mix(in srgb,var(--accent) 30%,transparent))}
+.room-hero__marks{position:relative;width:min(58%,190px);aspect-ratio:1}
+.room-hero__marks img{position:absolute;border-radius:24%;box-shadow:0 22px 40px -18px rgba(10,16,60,.75);height:auto}
+.room-hero__marks img:first-child{inset:0 auto auto 0;width:82%;rotate:-6deg}
+.room-hero__marks img:last-child{right:-8%;bottom:-10%;width:52%;rotate:8deg;outline:4px solid rgba(255,255,255,.85)}
+@media(max-width:900px){.room-hero__marks{width:auto;height:62%}}
 .room-hero__art{width:min(52%,170px);height:auto;fill:none;stroke:var(--lit);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;
   filter:drop-shadow(0 0 18px color-mix(in srgb,var(--lit) 40%,transparent))}
 @media(max-width:900px){.room-hero__art{width:auto;height:72%}}
@@ -1020,6 +1022,43 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
   .numbers{grid-template-columns:repeat(2,minmax(0,1fr))}
   .cv-row{grid-template-columns:minmax(0,1fr);gap:.3rem}
 }
+
+/* ---- products (Tech) · each one introduced on one line, its screens in browser windows ---- */
+.room__inner > :is(.product,.browsers,.beside){grid-column:wide}
+.product{margin-top:var(--sp-5);padding-top:var(--sp-5);border-top:1px solid var(--rule)}
+.room-hero + .product{border-top:0;padding-top:0}
+.product__head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:var(--sp-2) var(--sp-3)}
+.product__logo{width:clamp(56px,6vw,76px);height:auto;border-radius:24%;box-shadow:0 16px 28px -18px rgba(20,28,51,.6)}
+.product__id .room__kicker{margin:0}
+.product__name{margin:.2rem 0 0;font-size:var(--t-title);line-height:1.05;letter-spacing:-.02em}
+.product__lede{margin-top:var(--sp-3);max-width:min(100%,46ch);font-family:var(--display);font-size:var(--t-idea);line-height:1.35;letter-spacing:-.01em}
+.product__facts{display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-5);margin-top:var(--sp-3)}
+.product__facts b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(1.8rem,3.2vw,2.4rem);line-height:1;letter-spacing:-.02em;color:var(--accent)}
+.product__facts span{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.08em;color:var(--ink-45)}
+.product > .browser{margin-top:var(--sp-4)}
+@media(max-width:699px){
+  .product__head{grid-template-columns:auto minmax(0,1fr)}
+  .product__visit{grid-column:1/-1;justify-self:start}
+}
+.browser{margin:0;min-width:0}
+.browser__bar{display:flex;align-items:center;gap:.4rem;padding:.55rem .8rem;border:1px solid var(--rule);border-bottom:0;border-radius:12px 12px 0 0;background:#EFEAF6}
+.browser__bar i{width:9px;height:9px;border-radius:50%;background:#D9D2E6;flex:none}
+.browser__bar i:first-child{background:#F2A7A0}.browser__bar i:nth-child(2){background:#F5D58A}.browser__bar i:nth-child(3){background:#A7DDB8}
+.browser__bar span{margin-left:.6rem;min-width:0;padding:.15rem .7rem;border-radius:999px;background:#fff;font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:var(--ink-45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.browser__plate{border:1px solid var(--rule);border-radius:0 0 12px 12px;box-shadow:0 40px 70px -50px rgba(20,28,51,.75)}
+.browser figcaption{margin-top:.7rem;max-width:min(100%,46ch);font-family:var(--mono);font-size:var(--t-caption);letter-spacing:.02em;line-height:1.7;color:var(--ink-45)}
+.browsers{display:flex;gap:var(--sp-3);align-items:flex-start;margin-top:var(--sp-4)}
+.browsers > .browser{flex:var(--ar) 1 0}
+.beside{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:var(--sp-5);align-items:center;margin-top:var(--sp-5)}
+.beside--flip > .browser{order:-1}
+.beside__text > .room__kicker:first-child{margin-top:0}
+.beside .blk--pairs{grid-template-columns:minmax(0,1fr)}
+@media(max-width:900px){
+  .beside{grid-template-columns:minmax(0,1fr);gap:var(--sp-3)}
+  .beside--flip > .browser{order:0}
+  .beside > .browser{max-width:34rem}
+}
+@media(max-width:699px){.browsers{flex-direction:column}.browsers > .browser{flex:none;width:100%}}
 
 /* ---- exhibition · a lit gallery wall, works hung on one eye line ----
    Each work is sized by height (--wall-h × --size, its size relative to the

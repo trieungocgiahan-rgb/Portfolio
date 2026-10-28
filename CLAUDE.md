@@ -27,6 +27,10 @@ sharing a room, then tests it through community work, research and building.
   art (sparkles, one pink swirl), the story beside her portrait box (ab-2),
   a pink band for its key line, then "See my drawings", "Open my CV" and a
   Dream Strokes card: where she puts this into practice.
+  Tech is the other: its door holds the two app icons (marks), never a
+  cropped screenshot; each product opens on a product block (logo, name,
+  role, Visit link) and its screens sit in browser frames (.browser), shown
+  whole at their own proportions.
   No long lists or archives;
   the CV holds the dated record, AWARDS holds the honours once.
 - Keep every interaction: the entrance, drifting motes canvas, the story

@@ -28,7 +28,7 @@ const MEDIA = {
   "gt-4":{src:"img/gt-4.jpg",alt:"The Beats of Hope poster: A night full of music and smiles, with a group photo of the bands and the Little Smiles team.",fit:"contain"},
   "gt-5":{src:"img/gt-5.jpg",alt:"A student band on stage at Beats of Hope under pink light, holding guitars and a bouquet after its set.",pos:"56% 72%"},
   "td-lead":"",
-  "cx-lead":{src:"img/cx-lead.jpg",alt:"Contextuary’s home page: the word ubiquitous highlighted in an SAT passage, its AI word card with a Vietnamese meaning and example, a sample quiz and a mastery ring.",pos:"0% 55%"},
+  "cx-home":{src:"img/cx-home.jpg",alt:"Contextuary’s home page: Understand words. In context. For real. Beside it, an SAT passage with the word ubiquitous, its AI word card, a sample quiz and a mastery ring."},
   "cx-1":{src:"img/cx-1.jpg",alt:"Contextuary’s My Words library: each saved word with its Vietnamese meaning, an SAT-style example, a status and a topic tag, beside a weekly overview."},
   "cx-2":{src:"img/cx-2.jpg",alt:"A Contextuary fill-in-the-blank question, 2 of 20: During the debate, the candidate’s blank point resonated with undecided voters, with four answer choices."},
   "cx-3":{src:"img/cx-3.jpg",alt:"Contextuary’s Start practice panel: Practice or AI Challenge, quiz or flashcards, which words, how many, and six question types."},
@@ -452,6 +452,13 @@ window.MOTES=(function(){
    ============================================================ */
 const fig=(o)=>`<figure class="fig${o.screen?" fig--screen":""}" data-uncover><div class="fig__plate" data-img="${o.k||''}" data-slot="${o.slot||''}" style="--ratio:${o.ratio||'4/5'}${o.pos?`;--pos:${o.pos}`:""}"><div class="fig__ghost">${o.ghost||'Replace with photograph'}</div></div>${o.cap?`<figcaption>${o.cap}</figcaption>`:""}</figure>`;
 
+/* an interface seen whole, in a browser window: never cropped, never squeezed */
+const screenFrame=o=>{ const [w,h]=o.ratio.split("/").map(Number); return `<figure class="browser" style="--ar:${(w/h).toFixed(3)}">
+  <div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span>${o.url||""}</span></div>
+  <div class="fig__plate browser__plate" data-img="${o.k}" style="--ratio:${o.ratio}"><div class="fig__ghost">${o.ghost||""}</div></div>
+  ${o.cap?`<figcaption>${o.cap}</figcaption>`:""}
+</figure>`; };
+
 /* the top of every room: navy like the entrance, the photograph seen through a door */
 const hero=o=>`<header class="room-hero">
   <div class="room-hero__text">
@@ -463,8 +470,8 @@ const hero=o=>`<header class="room-hero">
     ${o.facts?`<p class="stats">${o.facts.map(f=>`<span><b>${f.b}</b> ${f.s}</span>`).join("")}</p>`:""}
     ${o.meta?`<p class="mono mono--sentence room-hero__meta">${o.meta}</p>`:""}
   </div>
-  <div class="room-hero__door${o.k||o.art?"":" is-empty"}"${o.k?"":` aria-hidden="true"`}>
-    <div class="room-hero__open fig__plate${o.screen?" fig--screen":""}" data-img="${o.k||""}" data-slot="">${o.art?`<svg class="room-hero__art" viewBox="0 0 120 150">${o.art}</svg>`:`<div class="fig__ghost">${o.ghost||""}</div>`}</div>
+  <div class="room-hero__door${o.k||o.art||o.marks?"":" is-empty"}"${o.k?"":` aria-hidden="true"`}>
+    <div class="room-hero__open fig__plate${o.screen?" fig--screen":""}" data-img="${o.k||""}" data-slot="">${o.marks?`<div class="room-hero__marks">${o.marks.map(m=>`<img src="${m}" alt="" width="300" height="300">`).join("")}</div>`:o.art?`<svg class="room-hero__art" viewBox="0 0 120 150">${o.art}</svg>`:`<div class="fig__ghost">${o.ghost||""}</div>`}</div>
   </div>
 </header>`;
 
@@ -473,9 +480,7 @@ const B={
   kicker:t=>typeof t==="string"?`<p class="room__kicker">${t}</p>`:`<p class="room__kicker" id="room-${t.id}">${t.t}</p>`,
   title:t=>`<h2 id="roomTitle">${t}</h2>`,
   /* a second project inside the same room */
-  subtitle:t=>typeof t==="string"?`<h2 class="room__sub">${t}</h2>`:`<h2 class="room__sub room__sub--logo">${t.logo?`<img src="${t.logo}" alt="" width="300" height="300">`:""}${t.t}</h2>`,
-  /* a way out to the real product, opened in a new tab */
-  visit:o=>`<p class="blk room__visit"><a class="btn btn--ink" href="${o.href}" target="_blank" rel="noopener">${o.label} ↗</a><span class="mono mono--sentence">${o.note||""}</span></p>`,
+  subtitle:t=>`<h2 class="room__sub">${t}</h2>`,
   lede:t=>`<p class="blk blk--lede">${t}</p>`,
   para:t=>`<p class="blk blk--para">${t}</p>`,
   quote:t=>`<p class="blk blk--quote">${t}</p>`,
@@ -501,6 +506,21 @@ const B={
     </section>`; }).join("")}
   </div>`,
   about:()=>aboutHTML(),
+  /* a product, introduced on one line: its mark, its name, my role, and the way to the real thing */
+  product:o=>`<section class="product" id="room-${o.id}">
+    <header class="product__head">
+      <img class="product__logo" src="${o.logo}" alt="${o.logoAlt||""}" width="300" height="300">
+      <div class="product__id"><p class="room__kicker">${o.kicker}</p><h3 class="product__name">${o.name}</h3></div>
+      <a class="btn btn--ink product__visit" href="${o.href}" target="_blank" rel="noopener">${o.label} ↗</a>
+    </header>
+    <p class="product__lede">${o.lede}</p>
+    ${o.facts?`<div class="product__facts">${o.facts.map(f=>`<p><b>${f.b}</b><span>${f.s}</span></p>`).join("")}</div>`:""}
+    ${o.shot?screenFrame(o.shot):""}
+  </section>`,
+  /* screens side by side, each as wide as its own proportions so their heights match */
+  screens:a=>`<div class="blk browsers">${a.map(screenFrame).join("")}</div>`,
+  /* words beside one screen */
+  beside:o=>`<div class="blk beside${o.flip?" beside--flip":""}"><div class="beside__text">${o.blocks.map(([t,a])=>B[t](a)).join("")}</div>${screenFrame(o.shot)}</div>`,
   links:a=>`<div class="room__more">${a.map(l=>`<a href="${l.href}">${l.label} →</a>`).join("")}</div>`
 };
 
@@ -736,38 +756,45 @@ const ROOMS={
 ]},
 
 "/work/tech":{accent:"var(--blue)",where:"Work · Tech Projects",blocks:[
-  ["hero",{kicker:"Work · Jan 2025 to now · Founder and Product Designer",title:"Contextuary",
-    logo:"img/contextuary-logo.png",logoAlt:"The Contextuary logo: a purple C around an open book and a star.",
+  ["hero",{kicker:"Work · Tech Projects · 2025 to now",title:"Contextuary and Together!",
+    lede:"Two products I designed in Figma and built with a front end in React. One helps a student meet a hard word inside its sentence. The other gives a scattered team one place to keep its days.",
+    marks:["img/contextuary-logo.png","img/together-logo.png"]}],
+
+  ["product",{id:"contextuary",logo:"img/contextuary-logo.png",logoAlt:"The Contextuary logo",
+    kicker:"Founder and Product Designer · Jan 2025 to now · team of 4",name:"Contextuary",
+    href:"https://contextuary.app",label:"Visit Contextuary",
     lede:"A word. <b>Ephemeral.</b> You learned it on Tuesday. On Friday it appears in a sentence about a coalition and you do not recognise it.",
     facts:[{b:"~2,200",s:"visitors"},{b:"500+",s:"registered users"}],
-    meta:"Designed in Figma, front end in React",
-    k:"cx-lead",ghost:"the app open on a passage"}],
+    shot:{k:"cx-home",ratio:"1600/989",url:"contextuary.app",ghost:"the home page"}}],
   ["kicker","The idea"],
-  ["para","Memorising a definition gives you a word with no room around it. Recognition in a test passage needs the opposite: the word inside a sentence that gave it a job. So Contextuary never shows a word alone. You paste a passage or a single word, and it explains that word as it behaves right there, in English and in Vietnamese, then keeps the sentence."],
-  ["visit",{href:"https://contextuary.app",label:"Visit Contextuary",note:"contextuary.app · free to use"}],
-  ["lead",{k:"cx-1",slot:"UI 01",ratio:"1290/907",screen:true,ghost:"My Words",cap:"My Words: every saved word with its Vietnamese meaning, an SAT-style example, its status and a topic tag."}],
-  ["figs",[
-    {k:"cx-2",slot:"UI 02",ratio:"1600/920",screen:true,ghost:"a fill-in-the-blank question",cap:"Practice: a fill-in-the-blank question built from the words you saved."},
-    {k:"cx-3",slot:"UI 03",ratio:"1138/1200",screen:true,ghost:"Start practice",cap:"Start practice: quiz or flashcards, an AI Challenge, and six question types."}
+  ["para","Memorising a definition gives you a word with no room around it. Recognition in a test passage needs the opposite: the word inside a sentence that gave it a job. So Contextuary never shows a word alone. You add a word, and it explains it as it behaves in a real SAT-style sentence, in English and in Vietnamese, then keeps the sentence."],
+  ["screens",[
+    {k:"cx-1",ratio:"1290/907",url:"contextuary.app/words",ghost:"My Words",cap:"My Words: every saved word with its Vietnamese meaning, an SAT-style example, its status and a topic tag."},
+    {k:"cx-2",ratio:"1600/920",url:"contextuary.app/practice",ghost:"a quiz question",cap:"Practice: a fill-in-the-blank question built from the words you saved."}
   ]],
-  ["kicker","Cut, and better for it"],
-  ["pairs",[
-    {h:"Spaced repetition",p:"Built the logic, removed it. It scheduled words nobody cared about that day and made opening the app feel like a debt."},
-    {h:"Topic filters",p:"Nobody used them. Students think in tests, not categories."},
-    {h:"A separate Today page",p:"One more tap to reach the thing they came for. Daily Picks moved to the top of My Words instead."}
-  ]],
-  ["kicker",{t:"Also built · Co-Founder and UI/UX Designer · Dec 2025 to now",id:"together"}],
-  ["subtitle",{t:"Together!",logo:"img/together-logo.png"}],
-  ["lede","A group makes something together, then scatters. Six months later nobody can find it. The thing existed; the memory of it had nowhere to live."],
-  ["pairs",[
-    {h:"Design problem",p:"Archives are organised for retrieval. Memory is organised by who was there and what it felt like. The interface had to hold both."},
-    {h:"Decision",p:"Entries are grouped by moment, not by file type, and every item keeps its contributor. Ownership stays visible while the collection becomes shared."},
-    {h:"On This Day",p:"Members leave writing, photographs and voice notes on a shared timeline, move between projects and dates, and rediscover old entries through “On This Day.”"}
-  ]],
-  ["numbers",[{b:"5",s:"people on the team"},{b:"1,550+",s:"visitors"},{b:"450+",s:"returning"}]],
-  ["lead",{k:"cj-lead",slot:"UI 01",ratio:"1600/916",screen:true,ghost:"Together’s home page",cap:"<b>Our story, written together.</b> Workshops, trips and meetings logged with photos and voice notes on one shared calendar."}],
-  ["fig",{k:"cj-1",slot:"UI 02",ratio:"1600/997",screen:true,ghost:"a sample project calendar",cap:"A sample project: each activity has a type, a colour and a day."}],
-  ["visit",{href:"https://toghether.contextuary.app",label:"Visit Together!",note:"sign in with Google to start a journal"}],
+  ["beside",{flip:true,blocks:[
+    ["kicker","Cut, and better for it"],
+    ["pairs",[
+      {h:"Spaced repetition",p:"Built the logic, removed it. It scheduled words nobody cared about that day and made opening the app feel like a debt."},
+      {h:"Topic filters",p:"Nobody used them. Students think in tests, not categories."},
+      {h:"A separate Today page",p:"One more tap to reach the thing they came for. Daily Picks moved to the top of My Words instead."}
+    ]]],
+    shot:{k:"cx-3",ratio:"1138/1200",url:"contextuary.app/practice",ghost:"Start practice",cap:"What stayed: quiz or flashcards, an AI Challenge, and six question types."}}],
+
+  ["product",{id:"together",logo:"img/together-logo.png",logoAlt:"The Together! logo",
+    kicker:"Co-Founder and UI/UX Designer · Dec 2025 to now",name:"Together!",
+    href:"https://toghether.contextuary.app",label:"Visit Together!",
+    lede:"A group makes something together, then scatters. Six months later nobody can find it. The thing existed; the memory of it had nowhere to live.",
+    facts:[{b:"1,550+",s:"visitors"},{b:"450+",s:"returning to the platform"}],
+    shot:{k:"cj-lead",ratio:"1600/916",url:"together · home",ghost:"the home page"}}],
+  ["beside",{blocks:[
+    ["kicker","How it holds a memory"],
+    ["pairs",[
+      {h:"Design problem",p:"Archives are organised for retrieval. Memory is organised by who was there and what it felt like. The interface had to hold both."},
+      {h:"Decision",p:"Entries are grouped by moment, not by file type, and every item keeps its contributor. Ownership stays visible while the collection becomes shared."},
+      {h:"My part",p:"I conceived the product idea and built its information architecture and user flows, then designed the interface in Figma and coded the front end in React."}
+    ]]],
+    shot:{k:"cj-1",ratio:"1600/997",url:"together · sample project",ghost:"a sample project",cap:"A sample project: every activity has a type, a colour and a day, and opens into its photos, voice notes and reactions."}}],
   ["links",[{href:"#/work/research",label:"Research & Internships"},{href:"#/work/net-mo",label:"Dream Strokes"}]]
 ]},
 
