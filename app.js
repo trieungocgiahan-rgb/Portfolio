@@ -609,8 +609,7 @@ const B={
 const spark=(c)=>`<svg class="spark ${c}" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4v32M5 19l30 2M9 9l22 22M31 8L9 31"/></svg>`;
 function aboutHTML(){
   return `<header class="about-hero">
-    <svg class="about-hero__swirl" viewBox="0 0 1200 200" preserveAspectRatio="xMinYMax meet" aria-hidden="true"><path pathLength="1" d="M-20 6c64 0 66 110 128 150 56 36 142 30 144-4 2-28-46-32-58-6-12 28 36 48 96 42 170-16 330-86 560-120"/></svg>
-    <svg class="about-hero__dots" viewBox="0 0 200 200" aria-hidden="true"><path d="M150 10c-60 10-90 60-80 120M40 190c20-30 30-60 20-90"/></svg>
+    <svg class="about-hero__swirl" viewBox="0 0 1200 160" preserveAspectRatio="xMinYMax slice" aria-hidden="true"><path pathLength="1" d="M-10 52C70 52 92 118 150 132C206 145 246 124 236 104C226 84 190 92 194 116C199 145 262 150 330 142C560 116 880 60 1210 34"/></svg>
     ${spark("spark--a")}${spark("spark--b")}${spark("spark--c")}
     <div class="about-hero__text">
       <p class="about__kicker">The instinct I keep returning to</p>
@@ -677,7 +676,6 @@ function aboutHTML(){
     ${spark("spark--e")}
     <p class="about-close__lead">At the end of the day,</p>
     <p class="about-close__line">the things I love most are the ones that come alive the moment <span class="about-close__mark">another person joins in.</span></p>
-    <img class="about-close__sign" src="img/signature.png" alt="Gia Han’s signature" width="900" height="432" loading="lazy">
     <div class="about-close__cta">
       <a class="btn btn--ink" href="#/exhibition">See my drawings →</a>
       <a class="about-close__cv" href="#/cv">Open my CV →</a>

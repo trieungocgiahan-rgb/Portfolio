@@ -5,7 +5,7 @@ Filled: hero-door, rooms-hall, gather-2, ab-2 (portrait), nm-lead, nm-1…6, dre
 once-upon, bl-1…4,
 contextuary-logo, together-logo
 (Dream Strokes), gt-lead, gt-1, gt-2 (Sol Sound), gt-4, gt-5 (Beats of Hope),
-img/signature.png (About).
+
 
 Still empty
 - rs-1     AI & Art: Inkling, the drawing journal (screenshot)
