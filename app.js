@@ -585,6 +585,7 @@ const B={
     <div class="gtheme__why"><p class="gtheme__num">${t.num}</p><h3>${t.h}</h3><p>${t.why}</p></div>
     <div class="gtheme__events">${t.events.map(e=>`<article class="gevent">
       <div class="fig__plate" data-img="${e.k}" data-slot="" style="--ratio:4/3"><div class="fig__ghost">${e.ghost}</div></div>
+      ${e.first?`<p class="gevent__first">${e.first}</p>`:""}
       <p class="gevent__meta">${e.meta}</p>
       <h4 class="gevent__name">${e.name}</h4>
       <p class="gevent__what">${e.p}</p>
@@ -772,60 +773,70 @@ const ROOMS={
 
 "/work/events":{accent:"var(--orange)",where:"Work · Events",blocks:[
   ["hero",{kicker:"Gatherings and events · 2024 to 2026",title:"Rooms with the lights turned up",
-    lede:"A workshop has ten children at a table. An event has hundreds of strangers. I kept asking the same question at a larger scale: how do people who do not know each other begin together?",
-    facts:[{b:"9",s:"gatherings"},{b:"2,400+",s:"at the largest"},{b:"VND 25M",s:"raised at Beats of Hope"}],
+    lede:"I make gatherings for the same reason I run workshops: when people make something together, they stop being strangers. Some of these rooms did not exist at my school yet, so I started them.",
+    facts:[{b:"9",s:"gatherings"},{b:"2,400+",s:"at the largest"},{b:"3",s:"firsts at my school"}],
     k:"gather-2",ghost:"Beats of Hope, from the stage"}],
+
+  ["kicker","Why I make gatherings"],
+  ["para","At a Dream Strokes table I learned that a room changes when people stop watching and start making. A gathering is the same idea at a larger scale. A concert, a match, a science festival or a sketch walk can each give strangers one thing to create together, and that shared thing is often what lets someone feel they belong. Everything on this page follows four threads."],
+  ["pains",[
+    {h:"Create together",p:"Give people something to make, not only something to watch."},
+    {h:"Mix the room",p:"Put people next to someone they would not have met."},
+    {h:"Make room to belong",p:"Build a place where a quiet person can join at their own pace."},
+    {h:"Start what isn’t there",p:"When the room I wanted did not exist yet, I started it, in science as much as in music."}
+  ]],
 
   ["kicker",{t:"The flagship · benefit concert · 2025",id:"little-smile"}],
   ["subtitle","Beats of Hope"],
-  ["lede","A night of music for children in hospital, produced with the Little Smiles Project."],
-  ["kicker","Why it mattered to me"],
-  ["para","As Creative Director at the Little Smiles Project, I led a 4-person creative team in South Korea, France, Taiwan and Vietnam, designing 8 adaptive play and storytelling sessions for about 100 children across 3 hospitals. Those sessions needed funding, and I wanted students in my own city to be part of them, not only to hear about them. A concert could do both."],
+  ["lede","Ten bands from different schools, one stage, and one reason to be in the same room."],
+  ["para","As Creative Director of the Little Smiles Project, I design play and storytelling sessions for children in hospitals with a team spread across South Korea, France, Taiwan and Vietnam. Beats of Hope brought that work home. I wanted students in my city to make something for those children together, so I produced a concert where more than ten student bands from different schools shared one stage. People came for a friend’s band and stayed for everyone else’s, and the night raised about VND 25 million for play and storytelling sessions, donated to two hospitals in France."],
   ["figs",[
     {k:"gt-4",slot:"Poster",ratio:"1/1",ghost:"the Beats of Hope poster",cap:"The poster, made with the Little Smiles team."},
     {k:"gt-5",slot:"Plate 02",ratio:"1/1",ghost:"a band after its set",cap:"One of the bands, after its set."}
   ]],
-  ["kicker","What I did, and what each part taught me"],
+  ["kicker","All four threads in one night"],
   ["tasks",[
-    {h:"Bringing the bands together",did:"I produced the night with more than ten student bands from different schools, and ran the stage flow and artist coordination.",
-      learned:"If nobody is given something to do in the first two minutes, the room stays an audience for the rest of the night."},
-    {h:"Filling the room",did:"We distributed 310+ tickets across Ho Chi Minh City schools, and I negotiated the venue sponsorship in person.",
-      learned:"Money is a design constraint, not a footnote. The terms shaped where people entered and how long they stayed."},
-    {h:"Watching the first move",did:"On the night, I watched for the moment the concert began to belong to the people inside it: when one person moved closer to the stage, and others followed.",
-      learned:"A room changes when one person goes first. My job is to make that first step easy."}
+    {h:"Create together",did:"I produced the night as one shared show rather than ten separate sets, and ran the stage flow and artist coordination so each band handed the room on to the next.",
+      learned:"A shared stage turns ten small audiences into one crowd."},
+    {h:"Mix the room",did:"We distributed 310+ tickets across Ho Chi Minh City schools, so most people stood beside someone from another school.",
+      learned:"Who stands next to whom is a design decision, not an accident."},
+    {h:"Make room to belong",did:"On the night I watched for the moment the concert began to belong to the people inside it: when one person moved closer to the stage, and others followed.",
+      learned:"A room changes when one person goes first. My job is to make that first step easy."},
+    {h:"Start what isn’t there",did:"There was no stage for student bands to play for children in hospital, so we built one, and I negotiated the venue sponsorship in person to make it happen.",
+      learned:"Starting something new mostly means asking, in person, more often than feels comfortable."}
   ]],
   ["numbers",[
-    {b:"10+",s:"student bands"},
+    {b:"10+",s:"student bands from different schools"},
     {b:"310+",s:"tickets across city schools"},
     {b:"~VND 25M",s:"raised, donated to two hospitals in France"}
   ]],
 
-  ["kicker","The same question, in other rooms"],
-  ["para","After Beats of Hope I kept using the same first move in very different gatherings. They fall into four kinds, each for a reason."],
+  ["kicker","The same four threads, eight more rooms"],
+  ["para","Beats of Hope held all four threads at once. Each of these gatherings pulls one of them further."],
   ["gatherings",[
-    {num:"01",c:"var(--pink)",h:"Music that turns strangers into a crowd",why:"A song gives everyone the same thing to do at the same moment. Nobody has to speak first.",
+    {num:"01",c:"var(--pink)",h:"Create together",why:"Give people something to make, not only something to watch. A song, a sketch or a stage gives everyone the same thing to do, and nobody has to speak first.",
       events:[
-        {k:"ev-solsound",ghost:"Sol Sound, the stage",meta:"Dream Strokes · music concert",name:"Sol Sound",p:"A concert from Dream Strokes’ public programme, widening who could take part beyond our partner shelters.",fact:"400+ tickets",event:"sol-sound"},
-        {k:"ev-tet",ghost:"Hey Tet!, the school stage",meta:"Program Vice Organizer · Dec 2025 to Feb 2026",name:"Hey Tet!",p:"I reorganised and trained the programme team in a 36-student committee and directed full-day programming for the school’s first fully student-run Lunar New Year music event.",fact:"2,400+ attendees",event:"tet-oi"}
+        {k:"ev-solsound",ghost:"Sol Sound, the stage",meta:"Dream Strokes · music concert",name:"Sol Sound",p:"A Dream Strokes concert that opened the project to a wider community, beyond our partner shelters.",fact:"400+ tickets",event:"sol-sound"},
+        {k:"ev-tours",ghost:"a sketch tour in the city",meta:"Founder and Program Organizer · summers 2025 and 2026",name:"Photography & Sketch Tours",p:"Walks through Ho Chi Minh City where locals, art lovers and international visitors photograph and sketch the same streets side by side, at landmarks and at hidden spots our members love.",fact:"70+ participants"}
       ]},
-    {num:"02",c:"var(--orange)",h:"Games that mix the teams",why:"Sorting players across schools, rather than by school, changed who spoke to whom, and it kept changing after the final whistle.",
+    {num:"02",c:"var(--orange)",h:"Mix the room",why:"Put people next to someone they would not have met. Sorting players across schools, rather than by school, changed who spoke to whom, and it kept changing after the final whistle.",
       events:[
         {k:"ev-pitch",ghost:"Colors of the Pitch, mixed teams",meta:"Dream Strokes · football tournaments",name:"Colors of the Pitch",p:"Two tournaments where football was the excuse, fundraising the outcome, and mixed teams the real design decision.",fact:"10 teams · 1,000+ spectators",event:"colors-of-the-pitch"},
-        {k:"ev-league",ghost:"Trung Vuong Football League",meta:"Operations Lead · Aug 2024 to Feb 2025",name:"Trung Vuong Football League",p:"I co-led a 7-member team through two seasons and managed budgeting, equipment and match operations.",fact:"15 teams · 8 schools",event:"cerberus-league"}
+        {k:"ev-league",ghost:"Trung Vuong Football League",meta:"Operations Lead · Aug 2024 to Feb 2025",name:"Trung Vuong Football League",p:"I co-led a 7-member team through two seasons that brought players from eight schools onto one pitch, and managed budgeting, equipment and match operations.",fact:"15 teams · 8 schools",event:"cerberus-league"}
       ]},
-    {num:"03",c:"var(--blue)",h:"Science you can hold",why:"People join faster when there is something to build or test with their own hands, not only something to listen to.",
+    {num:"03",c:"var(--teal)",h:"Make room to belong",why:"Not everyone joins from the front. A station, a prompt or a role in the crew lets a quiet person take part at their own pace and still feel the event is partly theirs.",
       events:[
-        {k:"ev-rocket",ghost:"a water rocket launch",meta:"Initiator · Physics Club",name:"Water Rocket Design Contest",p:"I launched Trung Vuong’s first water-rocket design challenge and wrote its proposal and technical guide. It became an annual programme and later opened to teams from other schools, as in this photograph.",fact:"80+ participants · ~12 teams in the first edition"},
-        {k:"ev-sciphony",ghost:"a SciPhony booth",meta:"Academic Design Lead · Physics Club",name:"SciPhony Science Festival",p:"I led the academic design of an interdisciplinary festival: a human-body investigation that needed physics, chemistry and biology at every booth.",fact:"5 booths"}
+        {k:"ev-identity",ghost:"a Colors of Identity station",first:"First of its kind at my school",meta:"Eunoia Psychology Club · Head of Academic Affairs",name:"Colors of Identity",p:"I secured school approval and directed 25 volunteers for a self-discovery programme of five stations, where students explored who they are one small activity at a time.",fact:"600 registrants"},
+        {k:"ev-tet",ghost:"Hey Tet!, the school stage",first:"The school’s first fully student-run",meta:"Program Vice Organizer · Dec 2025 to Feb 2026",name:"Hey Tet!",p:"I reorganised and trained the programme team in a 36-student committee and directed full-day programming for the school’s Lunar New Year music event, run entirely by students.",fact:"2,400+ attendees",event:"tet-oi"}
       ]},
-    {num:"04",c:"var(--teal)",h:"Quiet ways to open up",why:"Not everyone opens up on a stage. A prompt, a station or a walk lets people begin at their own pace.",
+    {num:"04",c:"var(--blue)",h:"Start what isn’t there",why:"Some of the rooms I wanted did not exist yet, so I started them. Science can gather people too, when there is something to build or test with your own hands.",
       events:[
-        {k:"ev-identity",ghost:"a Colors of Identity station",meta:"Eunoia Psychology Club · Head of Academic Affairs",name:"Colors of Identity",p:"I secured school approval and directed 25 volunteers for a self-discovery programme of five stations, the first of its kind at our school.",fact:"600 registrants"},
-        {k:"ev-tours",ghost:"a sketch tour in the city",meta:"Founder and Program Organizer · summers 2025 and 2026",name:"Photography & Sketch Tours",p:"Photography and sketch walks through Ho Chi Minh City that bring locals and art lovers together with international visitors, at landmarks and at hidden spots our members love.",fact:"70+ participants"}
+        {k:"ev-rocket",ghost:"a water rocket launch",first:"A first at Trung Vuong",meta:"Initiator · Physics Club",name:"Water Rocket Design Contest",p:"I launched the school’s first water-rocket design challenge and wrote its proposal and technical guide. It became an annual programme and later opened to teams from other schools, as in this photograph.",fact:"80+ participants · ~12 teams in the first edition"},
+        {k:"ev-sciphony",ghost:"a SciPhony booth",meta:"Academic Design Lead · Physics Club",name:"SciPhony Science Festival",p:"I led the academic design of an interdisciplinary festival: a human-body investigation that needed physics, chemistry and biology at every booth, so no visitor could solve it alone.",fact:"5 booths"}
       ]}
   ]],
   ["kicker","What ties them together"],
-  ["para","A concert, a league, a rocket launch and a sketch walk look nothing alike. Each one still began the same way: give people something to do together in the first few minutes, and make it easy for one person to go first."],
+  ["para","A concert, a league, a rocket launch and a sketch walk look nothing alike. Each one still began the same way: give people something to make together, put them beside someone new, leave room for the quiet ones, and if the room does not exist yet, start it."],
   ["links",[{href:"#/work/net-mo",label:"Dream Strokes"},{href:"#/work/research",label:"Research & Internships"}]]
 ]},
 
