@@ -19,7 +19,11 @@ sharing a room, then tests it through community work, research and building.
   piece of work, so none is skimmed past: /work/research/ai-art,
   /work/research/teencare, /work/research/brain-life. Research rooms never
   show participants; their doors hold line drawings and their evidence is
-  charts (bars, crossover). Old routes resolve through ROOM_ALIASES;
+  charts (bars, crossover). The two internship rooms wear their company's
+  own look: TeenCare a soft sunrise in its yellow and orange with slate
+  ink, Brain-Life white with its electric blue (#0041E7) and a dot grid;
+  each company's wordmark stands in for the room title and its icon sits
+  in the door. Old routes resolve through ROOM_ALIASES;
   /room/anchor scrolls to a kicker with that id. Rooms open in place.
 - Every room starts with a hero block with its own light, set by
   data-room on #room: dark heroes (Events night stage, Tech electric blue,

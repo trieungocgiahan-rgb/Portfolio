@@ -465,15 +465,16 @@ const screenFrame=o=>{ const [w,h]=o.ratio.split("/").map(Number); return `<figu
 const hero=o=>`<header class="room-hero">
   <div class="room-hero__text">
     ${o.logo?`<img class="room-hero__logo" src="${o.logo}" alt="${o.logoAlt||""}" width="480" height="480">`:""}
+    ${o.wordmark?`<img class="room-hero__wordmark" src="${o.wordmark}" alt="" height="64">`:""}
     <p class="room__kicker">${o.kicker}</p>
-    <h2 id="roomTitle">${o.title}</h2>
+    <h2 id="roomTitle"${o.wordmark?' class="vh"':""}>${o.title}</h2>
     ${o.sub?`<p class="room-hero__sub">${o.sub}</p>`:""}
     ${o.lede?`<p class="room-hero__lede">${o.lede}</p>`:""}
     ${o.facts?`<p class="stats">${o.facts.map(f=>`<span><b>${f.b}</b> ${f.s}</span>`).join("")}</p>`:""}
     ${o.meta?`<p class="mono mono--sentence room-hero__meta">${o.meta}</p>`:""}
   </div>
   <div class="room-hero__door${o.k||o.art||o.marks?"":" is-empty"}"${o.k?"":` aria-hidden="true"`}>
-    <div class="room-hero__open fig__plate${o.screen?" fig--screen":""}" data-img="${o.k||""}" data-slot="">${o.marks?`<div class="room-hero__marks">${o.marks.map(m=>`<img src="${m}" alt="" width="300" height="300">`).join("")}</div>`:o.art?`<svg class="room-hero__art" viewBox="0 0 120 150">${o.art}</svg>`:`<div class="fig__ghost">${o.ghost||""}</div>`}</div>
+    <div class="room-hero__open fig__plate${o.screen?" fig--screen":""}" data-img="${o.k||""}" data-slot="">${o.marks?`<div class="room-hero__marks${o.marks.length===1?" room-hero__marks--one":""}">${o.marks.map(m=>`<img src="${m}" alt="" width="300" height="300">`).join("")}</div>`:o.art?`<svg class="room-hero__art" viewBox="0 0 120 150">${o.art}</svg>`:`<div class="fig__ghost">${o.ghost||""}</div>`}</div>
   </div>
 </header>`;
 
@@ -537,7 +538,7 @@ const B={
   studies:a=>`<ol class="blk studies">${a.map(x=>`<li style="--dc:${x.c}"><a href="${x.href}">
     <span class="studies__num">${x.num}</span>
     <span class="studies__kind">${x.kind}</span>
-    <span class="studies__name">${x.name}</span>
+    ${x.logo?`<img class="studies__logo" src="${x.logo}" alt="${x.name}" height="40">`:`<span class="studies__name">${x.name}</span>`}
     <span class="studies__role">${x.role}</span>
     <span class="studies__q">${x.q}</span>
     <span class="studies__facts">${x.facts.map(f=>`<span><b>${f.b}</b> ${f.s}</span>`).join("")}</span>
@@ -786,10 +787,10 @@ const ROOMS={
     {num:"01",c:"var(--violet)",href:"#/work/research/ai-art",kind:"Study · First author",name:"AI &amp; Art",role:"Oct 2025 to now · under review at NHSJS",
       q:"Does art-making or an AI-guided dialogue make it easier to express what you feel, and for whom?",
       facts:[{b:"68",s:"young adults"},{b:"136",s:"sessions"},{b:"p < .001",s:"crossover"}],go:"Open the study"},
-    {num:"02",c:"var(--coral)",href:"#/work/research/teencare",kind:"Internship · Research Associate, R&D",name:"TeenCare",role:"May to Dec 2025 · Jun 2026 to now",
+    {num:"02",c:"#C2610A",href:"#/work/research/teencare",kind:"Internship · Research Associate, R&D",name:"TeenCare",logo:"img/teencare-wordmark.png",role:"May to Dec 2025 · Jun 2026 to now",
       q:"What do teenagers actually say when someone asks properly?",
       facts:[{b:"100+",s:"interviews"},{b:"5",s:"narrative survey formats"}],go:"Open TeenCare"},
-    {num:"03",c:"var(--teal)",href:"#/work/research/brain-life",kind:"Internship · R&D Intern",name:"Brain-Life",role:"Aug 2026 to now",
+    {num:"03",c:"#0041E7",href:"#/work/research/brain-life",kind:"Internship · R&D Intern",name:"Brain-Life",logo:"img/brainlife-wordmark.png",role:"Aug 2026 to now",
       q:"Where do global research on attention and local behaviour part ways?",
       facts:[{b:"40+",s:"papers"},{b:"20",s:"products"},{b:"25",s:"interviews"}],go:"Open Brain-Life"}
   ]],
@@ -846,11 +847,12 @@ const ROOMS={
   ["links",[{href:"#/work/research",label:"All research"},{href:"#/work/research/teencare",label:"Next · TeenCare"}]]
 ]},
 
-"/work/research/teencare":{accent:"var(--coral)",where:"Research · TeenCare",blocks:[
+"/work/research/teencare":{accent:"#C2610A",where:"Research · TeenCare",blocks:[
   ["hero",{kicker:"Internship · Part-time Research Associate, R&D · May to Dec 2025, Jun 2026 to now",title:"TeenCare",
+    wordmark:"img/teencare-wordmark.png",
     lede:"A youth mental-fitness startup building story-based tools that help teenagers notice and express what they feel.",
     facts:[{b:"100+",s:"semi-structured interviews"},{b:"5",s:"narrative survey formats"},{b:"1",s:"core product built on one of them"}],
-    art:'<path d="M34 70c-14 0-18-20-4-24 2-14 22-18 30-6 8-12 28-8 30 6 14 4 10 24-4 24z"/><path d="M38 70v18h46V70"/><path d="M38 80h46" opacity=".5"/><path d="M28 104h62a8 8 0 0 1 8 8v8a8 8 0 0 1-8 8H46l-10 8v-8h-8a8 8 0 0 1-8-8v-8a8 8 0 0 1 8-8z"/><path d="M34 116h44" opacity=".5"/>'}],
+    marks:["img/teencare-mark.png"]}],
   ["visit",{href:"https://teencare.co/vn",label:"Visit TeenCare"}],
   ["kicker","Why I joined"],
   ["para","In Vietnamese public schools, students get very little psychological support, and awareness of mental health is still low. I believe mental health matters as much as physical health. It is only easier to ignore because no one can see it. TeenCare was building tools to help teenagers notice and say what they feel, and I wanted to work on that problem rather than only notice it."],
@@ -877,12 +879,13 @@ const ROOMS={
   ["links",[{href:"#/work/research",label:"All research"},{href:"#/work/research/brain-life",label:"Next · Brain-Life"}]]
 ]},
 
-"/work/research/brain-life":{accent:"var(--teal)",where:"Research · Brain-Life",blocks:[
+"/work/research/brain-life":{accent:"#0041E7",where:"Research · Brain-Life",blocks:[
   ["hero",{kicker:"Internship · Research & Development Intern · Aug 2026 to now",title:"Brain-Life",
+    wordmark:"img/brainlife-wordmark.png",
     lede:"A neurotechnology startup developing evidence-based tools to improve attention, learning and cognitive well-being.",
     facts:[{b:"3",s:"patterns where research and local behaviour diverged"},{b:"EEG",s:"recordings processed in Python"}],
-    art:'<path d="M10 52h14l6-14 8 30 8-40 8 34 6-10h50" stroke="#0F918B" stroke-width="2.6"/><path d="M10 100h20l8-6 8 10 8-14 8 12 8-6 8 8 8-10 8 6h18" stroke="#EE4187" stroke-width="2.6"/><path d="M10 132h100" opacity=".4"/>'}],
-  ["visit",{href:"https://brainlife.ai/",label:"Visit Brain-Life"}],
+    marks:["img/brainlife-mark.png"]}],
+  ["visit",{href:"https://brainlife.ai",label:"Visit Brain-Life"}],
   ["kicker","Why I joined"],
   ["para","I care about neuroscience because so much of how we feel, learn and pay attention starts in the nervous system. Looking after the brain is part of being healthy, not something separate from it. I wanted to see how that science becomes something people actually use, so I looked for a professional setting where I could work on it, and joined Brain-Life as an R&D intern."],
   ["figs",[
