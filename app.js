@@ -38,6 +38,7 @@ const MEDIA = {
   "ev-tet":{src:"img/ev-tet.jpg",alt:"Hey Tet!: a packed schoolyard of students in uniform crowding toward the stage, phones up, under the yellow arches of the school.",pos:"50% 60%"},
   "ev-sciphony":{src:"img/ev-sciphony.jpg",alt:"The SciPhony team, in purple shirts, gathered in front of the festival backdrop under the school’s yellow archway.",pos:"50% 50%"},
   "ev-tours":{src:"img/ev-tours.jpg",alt:"Two visitors on a sketch tour hold up their drawings of the city on a bridge at night, the Ho Chi Minh City skyline lit behind them.",pos:"50% 60%"},
+  "ev-solsound":{src:"img/ev-solsound.jpg",alt:"The Sol Sound stage before the show: drums, guitars and keyboards under a big red screen reading Sol Sound.",pos:"50% 62%"},
   "ev-pitch":{src:"img/ev-pitch.jpg",alt:"Colors of the Pitch: players in red jerseys huddle together on the pitch, hands raised.",pos:"50% 60%"},
   "ev-league":{src:"img/ev-league.jpg",alt:"Trung Vuong Football League: players sit in a circle on the turf, their boots meeting in the middle.",pos:"50% 45%"},
   "ev-identity":{src:"img/ev-identity.jpg",alt:"Colors of Identity: a volunteer stacks decorated cans into a tower at one of the stations.",pos:"60% 50%"},
@@ -804,7 +805,7 @@ const ROOMS={
   ["gatherings",[
     {num:"01",c:"var(--pink)",h:"Music that turns strangers into a crowd",why:"A song gives everyone the same thing to do at the same moment. Nobody has to speak first.",
       events:[
-        {k:"gt-lead",ghost:"Sol Sound, the stage",meta:"Dream Strokes · music concert",name:"Sol Sound",p:"A concert from Dream Strokes’ public programme, widening who could take part beyond our partner shelters.",fact:"400+ tickets",event:"sol-sound"},
+        {k:"ev-solsound",ghost:"Sol Sound, the stage",meta:"Dream Strokes · music concert",name:"Sol Sound",p:"A concert from Dream Strokes’ public programme, widening who could take part beyond our partner shelters.",fact:"400+ tickets",event:"sol-sound"},
         {k:"ev-tet",ghost:"Hey Tet!, the school stage",meta:"Program Vice Organizer · Dec 2025 to Feb 2026",name:"Hey Tet!",p:"I reorganised and trained the programme team in a 36-student committee and directed full-day programming for the school’s first fully student-run Lunar New Year music event.",fact:"2,400+ attendees",event:"tet-oi"}
       ]},
     {num:"02",c:"var(--orange)",h:"Games that mix the teams",why:"Sorting players across schools, rather than by school, changed who spoke to whom, and it kept changing after the final whistle.",
