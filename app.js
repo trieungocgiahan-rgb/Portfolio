@@ -764,6 +764,9 @@ const ROOMS={
     {k:"nm-5",slot:"Plate 06",ratio:"1/1",ghost:"painting at the studio",cap:"Colors of Joy, Hanoi: painting together at the studio."},
     {k:"nm-6",slot:"Plate 07",ratio:"1/1",ghost:"a facilitator with two children",cap:"A facilitator painting alongside two children."}
   ]],
+  ["kicker",{t:"Beyond the shelters · Once Upon the Inside · 2026",id:"once-upon"}],
+  ["para","Dream Strokes also runs public programmes that open the project beyond our partner shelters. I co-produced one of them, Once Upon the Inside, a youth painting exhibition with The APRIL Collective at May Artspace that welcomed more than 300 visitors."],
+  ["lead",{k:"once-upon",slot:"Plate 08",ratio:"4/3",ghost:"the exhibition",cap:"Once Upon the Inside: visitors among the paintings."}],
   ["kicker","Where it led"],
   ["para","If the format changes engagement this reliably, the effect is not about art. It is about what the room permits. That question is what pushed me into reading psychology properly, and eventually into running a study instead of trusting my own field notes."],
   ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/work/events",label:"Events"},{href:"#/exhibition",label:"Exhibition"}]]
@@ -1156,9 +1159,6 @@ function exhibitionHTML(){
       <a class="btn btn--ink" href="https://canva.link/uouxvz39irst7qt" target="_blank" rel="noopener">See the full portfolio ↗</a>
     </div>
   </div>
-  ${B.kicker({t:"Also · Once Upon the Inside · co-producer · 2026",id:"once-upon"})}
-  ${B.para("A youth painting exhibition with The APRIL Collective at May Artspace, part of Dream Strokes’ public programme. It welcomed more than 300 visitors.")}
-  ${B.lead({k:"once-upon",slot:"",ratio:"4/3",ghost:"the exhibition",cap:"Once Upon the Inside: visitors among the paintings."})}
   ${screeningHTML()}
   ${B.links([{href:"#/about",label:"About the practice"},{href:"#/work/net-mo",label:"Dream Strokes"},{href:"#/awards",label:"Awards"}])}`;
 }
