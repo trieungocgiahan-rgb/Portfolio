@@ -8,14 +8,14 @@ Main scroll
 - sheet-2       Season 2, child and facilitator, close (square)
 
 Room doors (the photograph in each room's hero, portrait on laptop)
-- nm-lead  Net Mo, a session in progress
+- nm-lead  Dream Strokes, a session in progress
 - gt-lead  Events, the room full from the stage
 - td-lead  Research, a session with materials on the table
 - cx-lead  Contextuary, the app open on a passage (shown whole)
 - ab-2     About portrait (filled: img/about-portrait.jpg)
 
 Evidence inside rooms
-- nm-1…3   Net Mo: child and facilitator, elderly participant, monster drawings
+- nm-1…3   Dream Strokes: child and facilitator, elderly participant, monster drawings
 - gt-1…3   Events: Sol Sound from the side, backstage, Colors of the Pitch
 - cx-1…3   Contextuary screens: My Words, reading view, practice
 - cj-lead  Together!, archive view

@@ -38,9 +38,9 @@ can follow how one question connects everything:
 - Entrance · Knock, knock. One button: Come in.
 - Hero · Hi, I'm Gia Han, and the question. Follow the question ↓
 - 00 Who I am · Before the first room. Grade 12, drawing since five, class
-  president twelve consecutive years; the noticing that led to Net Mo. Visual: a
+  president twelve consecutive years; the noticing that led to Dream Strokes. Visual: a
   catalogue card with the question at the foot. Read more about me → About.
-- 01 Notice · A tray in the middle (Net Mo). Visual: the photograph in an
+- 01 Notice · A tray in the middle (Dream Strokes). Visual: the photograph in an
   editorial frame; the crayon tray runs full width under the story.
 - 02 Study · Testing what I thought I knew (Two Doors). Visual: the crossover,
   and the paper seen as an object.
@@ -74,7 +74,7 @@ six numbered parts and nothing else. The Rooms button opens Doors, which
 lists the pages behind the story.
 
 Doors has four destinations:
-- Work, which opens into four rooms: Net Mo, Events (Beats of Hope and
+- Work, which opens into four rooms: Dream Strokes, Events (Beats of Hope and
   the others), Research & Internships (Two Doors, Brainlife, TeenCare,
   Eunoia), Tech Projects (Contextuary, Together!)
 - Exhibition, kept separate and special
