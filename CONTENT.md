@@ -19,6 +19,12 @@ Professionally guided and legally sponsored by Bao Sang Art Therapy Center.
 - "Once Upon the Inside", youth painting exhibition with The APRIL Collective
   at May Artspace, 300+ visitors
 
+## Colors of Joy Workshop, curriculum designer, Aug to Oct 2025
+Hanoi, with Bao Sang Art Therapy Center. Dream Strokes activities rewritten into
+a 4-session curriculum for 24 children aged 6 to 12 (session plans,
+facilitator guides, revised with licensed art therapists); by the final
+session 23 of 24 could name their emotions through drawing.
+
 ## AI & Art, first author, Oct 2025 to now (under review at NHSJS)
 Expressive art-making versus AI-guided reflective dialogue. N = 68 young
 adults; each completed both sessions (136 sessions), 45 minutes each, art

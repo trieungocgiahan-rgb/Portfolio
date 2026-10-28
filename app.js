@@ -19,6 +19,8 @@ const MEDIA = {
   "nm-1":{src:"img/nm-1.jpg",alt:"Gia Han leans in to talk with a child at a small blue table, while two boys draw in the foreground beside a box of oil pastels.",pos:"50% 45%"},
   "nm-2":{src:"img/nm-2.jpg",alt:"Two care-home sessions: Gia Han shows a paper flower to an older man, then leans in to talk with an older woman.",pos:"50% 30%"},
   "nm-3":{src:"img/nm-3.jpg",alt:"Two children’s drawings held up side by side: a singer in pixel sunglasses and a grinning strongman with a gold chain.",pos:"52% 50%"},
+  "nm-5":{src:"img/nm-5.jpg",alt:"Colors of Joy in Hanoi: a girl paints a small canvas at a long studio table covered in paint jars, with others painting beside her.",pos:"72% 55%"},
+  "nm-6":{src:"img/nm-6.jpg",alt:"Colors of Joy in Hanoi: a facilitator leans over to paint alongside two young children at a table.",pos:"50% 62%"},
   "nm-4":{src:"img/nm-4.jpg",alt:"A classroom of children and volunteers making finger hearts and holding up the paper crafts they made.",pos:"50% 55%"},
   "gt-lead":{src:"img/gt-lead.jpg",alt:"Sol Sound, from behind the band: a bass player faces the crowd under stage lights, in sepia.",pos:"58% 50%"},
   "gt-1":{src:"img/gt-1.jpg",alt:"The Sol Sound team posing in front of a red tinsel curtain with the Sol Sound sign.",pos:"50% 45%"},
@@ -449,6 +451,7 @@ const fig=(o)=>`<figure class="fig${o.screen?" fig--screen":""}" data-uncover><d
 /* the top of every room: navy like the entrance, the photograph seen through a door */
 const hero=o=>`<header class="room-hero">
   <div class="room-hero__text">
+    ${o.logo?`<img class="room-hero__logo" src="${o.logo}" alt="${o.logoAlt||""}" width="480" height="480">`:""}
     <p class="room__kicker">${o.kicker}</p>
     <h2 id="roomTitle">${o.title}</h2>
     ${o.sub?`<p class="room-hero__sub">${o.sub}</p>`:""}
@@ -576,6 +579,7 @@ function aboutHTML(){
       <a class="about-close__cv" href="#/cv">Open my CV →</a>
     </div>
     <a class="about-practice" href="#/work/net-mo">
+      <img class="about-practice__logo" src="img/dream-strokes-logo.jpg" alt="" width="480" height="480" loading="lazy">
       <span class="about-practice__kicker">Where I put this into practice</span>
       <span class="about-practice__name">Dream Strokes</span>
       <span class="about-practice__what">Art workshops for children in shelters, where one shared tray of crayons changed the room.</span>
@@ -628,6 +632,7 @@ const AWARD_MARKS={
 const ROOMS={
 "/work/net-mo":{accent:"var(--coral)",where:"Work · Dream Strokes",blocks:[
   ["hero",{kicker:"Work · Apr 2025 to now · Founder and Project Director",title:"Dream Strokes",
+    logo:"img/dream-strokes-logo.jpg",logoAlt:"The Dream Strokes logo: a hand-drawn child with star eyes and a paintbrush, under the project’s name in dripping paint.",
     lede:"An arts-based emotional-learning programme for children in shelters and older adults in care homes, professionally guided and legally sponsored by Bao Sang Art Therapy Center.",
     facts:[{b:"50",s:"workshops"},{b:"6",s:"shelters"},{b:"2",s:"care homes"}],
     k:"nm-lead",ghost:"a session in progress"}],
@@ -651,6 +656,12 @@ const ROOMS={
     {k:"nm-3",slot:"Plate 04",ratio:"3/4",ghost:"drawings held up",cap:"Characters to speak through, held up for the room."}
   ]],
   ["lead",{k:"nm-4",slot:"Plate 05",ratio:"3/2",ghost:"the end of a session",cap:"The end of a session: everyone holding up what they made."}],
+  ["kicker",{t:"Colors of Joy Workshop · Hanoi · with Bao Sang Art Therapy Center · Aug to Oct 2025",id:"colors-of-joy"}],
+  ["para","As curriculum designer for an art-based emotional-learning programme for children in Hanoi, I selected and rewrote Dream Strokes activities into a 4-session curriculum for 24 children aged 6 to 12, writing session plans and facilitator guides and revising each session with licensed art therapists. By the final session, 23 of the 24 children could name their emotions through drawing."],
+  ["figs",[
+    {k:"nm-5",slot:"Plate 06",ratio:"1/1",ghost:"painting at the studio",cap:"Colors of Joy, Hanoi: painting together at the studio."},
+    {k:"nm-6",slot:"Plate 07",ratio:"1/1",ghost:"a facilitator with two children",cap:"A facilitator painting alongside two children."}
+  ]],
   ["kicker","Where it led"],
   ["para","If the format changes engagement this reliably, the effect is not about art. It is about what the room permits. That question is what pushed me into reading psychology properly, and eventually into running a study instead of trusting my own field notes."],
   ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/work/events",label:"Events"},{href:"#/exhibition",label:"Exhibition"}]]
@@ -934,7 +945,7 @@ function bindScreening(){
       const r=ROOMS[route]; if(!r){ try{ location.hash=""; }catch(err){} return; }
       room.style.setProperty("--accent",r.accent);
       room.dataset.room=route.split("/").pop();
-      where.textContent=r.where||"Deeper";
+      { const w=(r.where||"Deeper").split(" · "); where.innerHTML=(w.length>1?`<span class="room__where-pre">${w[0]} · </span>`:"")+w[w.length-1]; }
       inner.innerHTML=r.blocks.map(([type,arg])=>B[type](arg)).join("");
       tieLastWords(inner);
       paintMedia(inner); wireEvents(inner);
