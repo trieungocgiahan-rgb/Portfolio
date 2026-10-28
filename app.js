@@ -746,69 +746,59 @@ const ROOMS={
   ["quote","The material was never the problem. The ownership of the surface was."],
   ["kicker","What I changed"],
   ["steps",[
-    {b:"Story world over free drawing",p:"Story worlds raised active participation from 60% to an average of 85%, with the clearest gains among quiet children. It also gives children a character to speak through when speaking as themselves is too much."},
-    {b:"A shared object, not a finished page",p:"Sessions now end on a shared object rather than individual results, and facilitators are told explicitly that an unfinished page is a fine outcome."},
-    {b:"Handover is a product",p:"I built the team an activity journal app: three permission roles, media upload, calendar view, and a task board coloured by department, so a season can be inherited rather than re-explained."}
+    {b:"Story worlds instead of free drawing",p:"Active participation rose from 60% to an average of 85%, and the quiet children changed most. A character gave them someone to speak through when speaking as themselves was too much."},
+    {b:"One shared piece at the end",p:"Sessions now end on something the whole table made together. Facilitators know an unfinished page is a good outcome."},
+    {b:"A journal the next team can pick up",p:"I built an activity journal app with roles, photos, a calendar and a task board, so each new season could start where the last one ended."}
   ]],
   ["numbers",[
-    {b:"80%",s:"showed improved emotional expression or confidence"},
-    {b:"~75M VND",s:"net proceeds, reinvested in materials and programmes"},
-    {b:"~200",s:"children, with a team of 25"}
+    {b:"~200",s:"children in 6 shelters"},
+    {b:"22",s:"older adults in 2 care homes"},
+    {b:"~VND 75M",s:"net proceeds, reinvested in the project"}
   ]],
   ["figs",[
-    {k:"nm-1",slot:"Plate 02",ratio:"3/4",ghost:"child and facilitator",cap:"Facilitator training pays for itself in the first ten minutes."},
-    {k:"nm-2",slot:"Plate 03",ratio:"3/4",ghost:"older participant",cap:"In care homes: two groups used to being cared for, making something for each other."},
-    {k:"nm-3",slot:"Plate 04",ratio:"3/4",ghost:"drawings held up",cap:"Characters to speak through, held up for the room."}
+    {k:"nm-1",slot:"Plate 02",ratio:"3/4",ghost:"child and facilitator",cap:"At the table with a child, mid-drawing."},
+    {k:"nm-2",slot:"Plate 03",ratio:"3/4",ghost:"older participant",cap:"A care home session with older adults."},
+    {k:"nm-3",slot:"Plate 04",ratio:"3/4",ghost:"drawings held up",cap:"Characters to speak through, held up for everyone to see."}
   ]],
   ["lead",{k:"nm-4",slot:"Plate 05",ratio:"3/2",ghost:"the end of a session",cap:"The end of a session: everyone holding up what they made."}],
   ["kicker",{t:"Colors of Joy Workshop · Hanoi · with Bao Sang Art Therapy Center · Aug to Oct 2025",id:"colors-of-joy"}],
-  ["para","As curriculum designer for an art-based emotional-learning programme for children in Hanoi, I selected and rewrote Dream Strokes activities into a 4-session curriculum for 24 children aged 6 to 12, writing session plans and facilitator guides and revising each session with licensed art therapists. By the final session, 23 of the 24 children could name their emotions through drawing."],
+  ["para","In Hanoi, I adapted Dream Strokes activities into a 4-session curriculum for 24 children aged 6 to 12, writing the session plans and facilitator guides and revising each session with licensed art therapists. By the final session, 23 of the 24 children could name their emotions through drawing."],
   ["figs",[
     {k:"nm-5",slot:"Plate 06",ratio:"1/1",ghost:"painting at the studio",cap:"Colors of Joy, Hanoi: painting together at the studio."},
     {k:"nm-6",slot:"Plate 07",ratio:"1/1",ghost:"a facilitator with two children",cap:"A facilitator painting alongside two children."}
   ]],
   ["kicker",{t:"Beyond the shelters · Dream Strokes OPEN",id:"once-upon"}],
-  ["para","Dream Strokes has a second branch, OPEN, with public programmes that bring a wider community into the project, beyond our partner shelters. It runs three of them: Sol Sound, a music concert (400+ tickets); Colors of the Pitch, two football tournaments (10 teams, 1,000+ spectators); and Once Upon the Inside, a youth painting exhibition with The APRIL Collective at May Artspace, which I co-produced (300+ visitors)."],
+  ["para","Dream Strokes has a second branch, OPEN, for people beyond our partner shelters. It runs three public programmes: Sol Sound, a music concert (400+ tickets); Colors of the Pitch, two football tournaments (10 teams, 1,000+ spectators); and Once Upon the Inside, a youth painting exhibition with The APRIL Collective at May Artspace, which I co-produced (300+ visitors)."],
   ["lead",{k:"once-upon",slot:"Plate 08",ratio:"4/3",ghost:"the exhibition",cap:"Once Upon the Inside: visitors among the paintings."}],
   ["go",{href:"#/work/events",label:"See these events"}],
   ["kicker","Where it led"],
-  ["para","If the format changes engagement this reliably, the effect is not about art. It is about what the room permits. That question is what pushed me into reading psychology properly, and eventually into running a study instead of trusting my own field notes."],
+  ["para","If one change of format could shift participation that much, the crayons were never the point. What mattered was what the room allowed. That pushed me to read psychology properly, and then to run a real study instead of trusting my own notes."],
   ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/work/events",label:"Events"},{href:"#/exhibition",label:"Exhibition"}]]
 ]},
 
 "/work/events":{accent:"var(--orange)",where:"Work · Events",blocks:[
   ["hero",{kicker:"Gatherings and events · 2024 to 2026",title:"Rooms with the lights turned up",
-    lede:"I make gatherings for the same reason I run workshops: when people make something together, they stop being strangers. Some of these rooms did not exist at my school yet, so I started them.",
+    lede:"When people make something together, they stop being strangers. That is why I run workshops, and why I make gatherings. Some of them did not exist at my school yet, so I started them.",
     facts:[{b:"9",s:"gatherings"},{b:"2,400+",s:"at the largest"},{b:"3",s:"firsts at my school"}],
     k:"gather-2",ghost:"Beats of Hope, from the stage"}],
 
   ["kicker","Why I make gatherings"],
-  ["para","At a Dream Strokes table I learned that a room changes when people stop watching and start making. A gathering is the same idea at a larger scale. A concert, a match, a science festival or a sketch walk can each give strangers one thing to create together, and that shared thing is often what lets someone feel they belong. Everything on this page follows four threads."],
+  ["para","It started at a Dream Strokes table, where the room changed the moment children stopped watching and started making. A concert, a match, a science fair or a sketch walk can do the same for hundreds of people. Four ideas run through all of them."],
   ["pains",[
-    {h:"Create together",p:"Give people something to make, not only something to watch."},
-    {h:"Cheer for the same thing",p:"Give people one thing to cheer for, and strangers start to become friends."},
-    {h:"Make room to belong",p:"Build a place where a quiet person can join at their own pace."},
-    {h:"Start what isn’t there",p:"When the room I wanted did not exist yet, I started it, in science as much as in music."}
+    {h:"Create together",p:"Something to make, not only something to watch."},
+    {h:"Cheer for the same thing",p:"One thing to cheer for, so strangers start talking."},
+    {h:"Make room to belong",p:"A way in for the quiet ones, at their own pace."},
+    {h:"Start what isn’t there",p:"If the room does not exist yet, start it."}
   ]],
 
   ["kicker",{t:"The flagship · benefit concert · 2025",id:"little-smile"}],
   ["subtitle","Beats of Hope"],
   ["lede","Ten bands from different schools, one stage, and one reason to be in the same room."],
-  ["para","As Creative Director of the Little Smiles Project, I design play and storytelling sessions for children in hospitals with a team spread across South Korea, France, Taiwan and Vietnam. Beats of Hope brought that work home. I wanted students in my city to make something for those children together, so I produced a concert where more than ten student bands from different schools shared one stage. People came for a friend’s band and stayed for everyone else’s, and the night raised about VND 25 million for play and storytelling sessions, donated to two hospitals in France."],
+  ["para","At the Little Smiles Project I was Creative Director, designing play and storytelling sessions for children in hospitals with a team spread across South Korea, France, Taiwan and Vietnam. I wanted students in my own city to be part of that work, not just hear about it."],
+  ["para","So I produced Beats of Hope. More than ten student bands from different schools played one shared show, and we spread 310+ tickets across the city’s schools. I ran the stage and the artists and negotiated the venue sponsorship in person. People came for a friend’s band and stayed for everyone else’s. The night raised about VND 25 million for play and storytelling sessions, donated to two hospitals in France."],
   ["figs",[
     {k:"gt-4",slot:"Poster",ratio:"1/1",ghost:"the Beats of Hope poster",cap:"The poster, made with the Little Smiles team."},
     {k:"gt-5",slot:"Plate 02",ratio:"1/1",ghost:"a band after its set",cap:"One of the bands, after its set."}
-  ]],
-  ["kicker","All four threads in one night"],
-  ["tasks",[
-    {h:"Create together",did:"I produced the night as one shared show rather than ten separate sets, and ran the stage flow and artist coordination so each band handed the room on to the next.",
-      learned:"A shared stage turns ten small audiences into one crowd."},
-    {h:"Cheer for the same thing",did:"We distributed 310+ tickets across Ho Chi Minh City schools, so the crowd came from many schools to cheer for the same night.",
-      learned:"Cheering for the same thing is one of the quickest ways strangers become friends."},
-    {h:"Make room to belong",did:"On the night I watched for the moment the concert began to belong to the people inside it: when one person moved closer to the stage, and others followed.",
-      learned:"A room changes when one person goes first. My job is to make that first step easy."},
-    {h:"Start what isn’t there",did:"There was no stage for student bands to play for children in hospital, so we built one, and I negotiated the venue sponsorship in person to make it happen.",
-      learned:"Starting something new mostly means asking, in person, more often than feels comfortable."}
   ]],
   ["numbers",[
     {b:"10+",s:"student bands from different schools"},
@@ -816,38 +806,36 @@ const ROOMS={
     {b:"~VND 25M",s:"raised, donated to two hospitals in France"}
   ]],
 
-  ["kicker","The same four threads, eight more rooms"],
-  ["para","Beats of Hope held all four threads at once. Each of these gatherings pulls one of them further."],
+  ["kicker","Eight more gatherings"],
+  ["para","Each of these follows one of the four ideas a little further."],
   ["gatherings",[
-    {num:"01",c:"var(--pink)",h:"Create together",why:"Give people something to make, not only something to watch. A song, a sketch or a stage gives everyone the same thing to do, and nobody has to speak first.",
+    {num:"01",c:"var(--pink)",h:"Create together",why:"A song or a sketchbook hands everyone the same task at the same moment. Nobody has to speak first.",
       events:[
-        {k:"ev-solsound",ghost:"Sol Sound, the stage",meta:"Dream Strokes · music concert",name:"Sol Sound",p:"A Dream Strokes concert that opened the project to a wider community, beyond our partner shelters.",fact:"400+ tickets",event:"sol-sound"},
-        {k:"ev-tours",ghost:"a sketch tour in the city",meta:"Founder and Program Organizer · summers 2025 and 2026",name:"Photography & Sketch Tours",p:"Walks through Ho Chi Minh City where locals, art lovers and international visitors photograph and sketch the same streets side by side, at landmarks and at hidden spots our members love.",fact:"70+ participants"}
+        {k:"ev-solsound",ghost:"Sol Sound, the stage",meta:"Dream Strokes · music concert",name:"Sol Sound",p:"A Dream Strokes OPEN concert, our first night for the wider community beyond the shelters.",fact:"400+ tickets",event:"sol-sound"},
+        {k:"ev-tours",ghost:"a sketch tour in the city",meta:"Founder and Program Organizer · summers 2025 and 2026",name:"Photography & Sketch Tours",p:"Walks through Ho Chi Minh City where locals and international visitors photograph and sketch the same streets side by side, from landmarks to hidden spots our members love.",fact:"70+ participants"}
       ]},
-    {num:"02",c:"var(--orange)",h:"Cheer for the same thing",why:"Football is a way to express yourself too, on the pitch and in the stands. When a crowd cheers for the same goal, people who arrived as strangers often leave as friends.",
+    {num:"02",c:"var(--orange)",h:"Cheer for the same thing",why:"Football is self-expression too, on the pitch and in the stands. A goal everyone is cheering for is where a lot of friendships start.",
       events:[
-        {k:"ev-pitch",ghost:"Colors of the Pitch, a team huddle",meta:"Dream Strokes · football tournaments",name:"Colors of the Pitch",p:"Two tournaments in Dream Strokes’ public programme that brought people beyond our partner shelters into the project, on the pitch and in the stands.",fact:"10 teams · 1,000+ spectators",event:"colors-of-the-pitch"},
+        {k:"ev-pitch",ghost:"Colors of the Pitch, a team huddle",meta:"Dream Strokes · football tournaments",name:"Colors of the Pitch",p:"Two Dream Strokes OPEN tournaments that brought new people into the project, on the pitch and in the stands.",fact:"10 teams · 1,000+ spectators",event:"colors-of-the-pitch"},
         {k:"ev-league",ghost:"Trung Vuong Football League",meta:"Operations Lead · Aug 2024 to Feb 2025",name:"Trung Vuong Football League",p:"I co-led a 7-member team through two seasons that brought players from eight schools onto one pitch, and managed budgeting, equipment and match operations.",fact:"15 teams · 8 schools",event:"cerberus-league"}
       ]},
-    {num:"03",c:"var(--teal)",h:"Make room to belong",why:"Not everyone joins from the front. A station, a prompt or a role in the crew lets a quiet person take part at their own pace and still feel the event is partly theirs.",
+    {num:"03",c:"var(--teal)",h:"Make room to belong",why:"Not everyone joins from the front. A station, a prompt or a job on the crew lets someone take part without standing on a stage.",
       events:[
-        {k:"ev-identity",ghost:"a Colors of Identity station",first:"First of its kind at my school",meta:"Eunoia Psychology Club · Head of Academic Affairs",name:"Colors of Identity",p:"I secured school approval and directed 25 volunteers for a self-discovery programme of five stations, where students explored who they are one small activity at a time.",fact:"600 registrants"},
+        {k:"ev-identity",ghost:"a Colors of Identity station",first:"First of its kind at my school",meta:"Eunoia Psychology Club · Head of Academic Affairs",name:"Colors of Identity",p:"I got school approval and directed 25 volunteers for a self-discovery programme of five stations, one small activity at a time.",fact:"600 registrants"},
         {k:"ev-tet",ghost:"Hey Tet!, the school stage",first:"The school’s first fully student-run",meta:"Program Vice Organizer · Dec 2025 to Feb 2026",name:"Hey Tet!",p:"I reorganised and trained the programme team in a 36-student committee and directed full-day programming for the school’s Lunar New Year music event, run entirely by students.",fact:"2,400+ attendees",event:"tet-oi"}
       ]},
-    {num:"04",c:"var(--blue)",h:"Start what isn’t there",why:"Some of the rooms I wanted did not exist yet, so I started them. Science can gather people too, when there is something to build or test with your own hands.",
+    {num:"04",c:"var(--blue)",h:"Start what isn’t there",why:"Science can gather people as well as music can, when there is something to build with your own hands.",
       events:[
         {k:"ev-rocket",ghost:"a water rocket launch",first:"A first at Trung Vuong",meta:"Initiator · Physics Club",name:"Water Rocket Design Contest",p:"I launched the school’s first water-rocket design challenge and wrote its proposal and technical guide. It became an annual programme and later opened to teams from other schools, as in this photograph.",fact:"80+ participants · ~12 teams in the first edition"},
-        {k:"ev-sciphony",ghost:"a SciPhony booth",meta:"Academic Design Lead · Physics Club",name:"SciPhony Science Festival",p:"I led the academic design of an interdisciplinary festival: a human-body investigation that needed physics, chemistry and biology at every booth, so no visitor could solve it alone.",fact:"5 booths"}
+        {k:"ev-sciphony",ghost:"a SciPhony booth",meta:"Academic Design Lead · Physics Club",name:"SciPhony Science Festival",p:"I led the academic design: a human-body investigation that needed physics, chemistry and biology at every booth.",fact:"5 booths"}
       ]}
   ]],
-  ["kicker","What ties them together"],
-  ["para","A concert, a league, a rocket launch and a sketch walk look nothing alike. Each one still began the same way: give people something to make together and something to cheer for, leave room for the quiet ones, and if the room does not exist yet, start it."],
   ["links",[{href:"#/work/net-mo",label:"Dream Strokes"},{href:"#/work/research",label:"Research & Internships"}]]
 ]},
 
 "/work/research":{accent:"var(--violet)",where:"Work · Research & Internships",blocks:[
   ["hero",{kicker:"Work · Research & Internships · 2025 to now",title:"Research &amp; Internships",
-    lede:"One study I designed and ran, and two research internships at startups building tools for how young people feel, learn and pay attention. Each one has its own page.",
+    lede:"One study I designed and ran, and two internships at startups building tools for how young people feel, learn and pay attention.",
     facts:[{b:"68",s:"study participants"},{b:"100+",s:"interviews with teenagers"},{b:"40+",s:"papers reviewed"}],
     art:'<path d="M14 132h94M14 132V20" opacity=".45"/><path d="M24 46l80 70" stroke="#2B4DE0" stroke-width="3"/><path d="M24 116l80-74" stroke="#EE4187" stroke-width="3"/><circle cx="64" cy="81" r="4.5" fill="currentColor" stroke="none"/>'}],
   ["studies",[
@@ -862,7 +850,7 @@ const ROOMS={
       facts:[{b:"40+",s:"papers"},{b:"20",s:"products"},{b:"25",s:"interviews"}],go:"Open Brain-Life"}
   ]],
   ["kicker","How they connect"],
-  ["para","The study asked which way into a feeling works, and for whom. TeenCare asked what teenagers say when the question is built gently enough. Brain-Life asks what attention looks like when the brain’s signal and a student’s own report disagree. Each time, the answer depended on the person, not only on the tool."],
+  ["para","The study asked which way into a feeling works, and for whom. TeenCare asked what teenagers say when the question is gentle enough. Brain-Life asks what to do when the brain’s signal and a student’s own report disagree. All three kept giving me the same answer: it depends on the person."],
   ["links",[{href:"#/work/net-mo",label:"Where the question came from"},{href:"#/work/tech",label:"Tech Projects"}]]
 ]},
 
@@ -873,7 +861,7 @@ const ROOMS={
     meta:"Under review at the National High School Journal of Science · advised by Phuong Thao Nguyen, M.A. in Psychology and licensed art therapist",
     art:'<path d="M14 132h94" opacity=".45"/><path d="M26 132V58M40 132V84" stroke-width="9" stroke-linecap="butt"/><path d="M26 132V58" stroke="#2B4DE0" stroke-width="9" stroke-linecap="butt"/><path d="M40 132V84" stroke="#EE4187" stroke-width="9" stroke-linecap="butt"/><path d="M78 132V85" stroke="#2B4DE0" stroke-width="9" stroke-linecap="butt"/><path d="M92 132V60" stroke="#EE4187" stroke-width="9" stroke-linecap="butt"/>'}],
   ["kicker","The question"],
-  ["para","In Dream Strokes, a small change in format changed how much children expressed. Field notes could show me what I thought I was seeing. I wanted to know whether the pattern would hold when I tested it, and AI tools had just offered a new way in: a patient conversation."],
+  ["para","In Dream Strokes I had seen one change of format shift how much children said. I wanted to test that properly, beyond my own notes. AI chat tools had just offered a new way in, a conversation that never runs out of patience, so I put it next to the oldest way I knew: making something with your hands."],
   ["kicker","The design"],
   ["pairs",[
     {h:"Door A · Art",p:"An expressive art-making session with materials and no requirement to explain the result out loud."},
@@ -893,12 +881,12 @@ const ROOMS={
     alt:"Schematic of a crossover: with little prior art experience, AI dialogue improved mood more; with a lot, art-making did.",
     note:"Schematic of the interaction (p < .001): it shows the direction of the effect, not plotted values."}],
   ["pains",[
-    {h:"AI opens the door",p:"Starting was easier with AI: 7.91 against 5.57 out of 10. A first question lowers the cost of the first sentence."},
-    {h:"Art makes it yours",p:"Ownership was stronger after art-making: 7.40 against 5.38. What you make with your hands stays yours."},
-    {h:"It depends who walks in",p:"Prior art experience reversed which format improved mood more. Averaging the two conditions would have hidden the result."}
+    {h:"AI helps you start",p:"With a question waiting, the first sentence came more easily."},
+    {h:"Art makes it yours",p:"What people made with their own hands felt more like their own."},
+    {h:"It depends who walks in",p:"Prior art experience flipped which format lifted mood more. An average would have hidden it."}
   ]],
   ["kicker","What I built from it"],
-  ["para","If AI is better at the first step and art is better at what follows, the answer is not to choose one. So I built Inkling, a drawing journal where the AI offers a first line and the person takes over: a proposed hybrid of the two doors."],
+  ["para","AI was better at the first step, and art at everything after. So I built Inkling, a drawing journal where the AI draws the first line and you decide the rest."],
   ["figs",[
     {k:"rs-1",slot:"Plate 01",ratio:"10/7",ghost:"Inkling, the drawing journal",cap:"Inkling: the AI draws the first line, the person decides the rest."},
     {k:"rs-2",slot:"Plate 02",ratio:"10/7",ghost:"presenting the study",cap:"Presenting the study."}
@@ -910,7 +898,7 @@ const ROOMS={
     {b:"Presented",p:"Presented the study to faculty from the University of Social Sciences and Humanities, Ho Chi Minh City."}
   ]],
   ["kicker","What it taught me"],
-  ["para","Before this study I trusted what I saw in a room. Now I test it, I look for who an effect works for rather than whether it works on average, and I build from the answer instead of stopping at it."],
+  ["para","Before this study I trusted my own eyes. Now I test what I think I see, and I ask who something works for, not only whether it works."],
   ["links",[{href:"#/work/research",label:"All research"},{href:"#/work/research/teencare",label:"Next · TeenCare"}]]
 ]},
 
@@ -922,8 +910,7 @@ const ROOMS={
     marks:["img/teencare-mark.png"]}],
   ["visit",{href:"https://teencare.co/vn",label:"Visit TeenCare"}],
   ["kicker","Why I joined"],
-  ["para","In Vietnamese public schools, students get very little psychological support, and awareness of mental health is still low. I believe mental health matters as much as physical health. It is only easier to ignore because no one can see it. TeenCare was building tools to help teenagers notice and say what they feel, and I wanted to work on that problem rather than only notice it."],
-  ["quote","Mental health is as important as physical health. It is only easier to overlook, because it is invisible."],
+  ["para","In Vietnamese public schools, students get very little psychological support, and awareness of mental health is still low. I believe mental health matters as much as physical health. It is only easier to ignore because no one can see it. TeenCare was building tools to help teenagers notice and say what they feel, and I wanted to work on that problem, not only notice it."],
   ["figs",[
     {k:"tc-1",slot:"Plate 01",ratio:"4/3",ghost:"the team at work",cap:"Working with the R&D team."},
     {k:"tc-2",slot:"Plate 02",ratio:"4/3",ghost:"a wireframe or the e-book",cap:"From interview insight to the product."}
@@ -931,18 +918,18 @@ const ROOMS={
   ["kicker","What I did, and what each part taught me"],
   ["tasks",[
     {h:"Listening at scale",did:"I conducted and analysed more than 100 semi-structured interviews with teenagers, using thematic coding and affinity mapping to find the barriers that kept coming back.",
-      learned:"How to hear a pattern across a hundred voices without flattening any single one of them."},
-    {h:"Finding where people go quiet",did:"In a pilot interview, the questions turned abruptly from easy to personal, and that was exactly where disclosure became difficult. I co-designed 5 narrative survey formats with gradual reflective prompts and branching choices.",
-      learned:"When someone stops talking, the shape of the question is usually the problem, not the person."},
+      learned:"To find what a hundred people share while keeping each person’s own words."},
+    {h:"Finding where people go quiet",did:"In a pilot interview, the questions jumped from easy to personal, and that was exactly where people stopped talking. I co-designed 5 narrative survey formats that ease in gradually, with branching choices.",
+      learned:"When someone stops talking, I now look at the question before I look at the person."},
     {h:"Turning insight into a product",did:"One of those formats, the chef narrative, became the basis of TeenCare’s core product. I helped carry the insights into an interactive e-book and a form-building web product: flows, wireframes, interface design and automated pattern summaries.",
-      learned:"Research matters most once it changes what actually gets built."},
+      learned:"Research only counted once it changed what we built."},
     {h:"Testing with real users",did:"I took part in user testing and the V1 revisions that fixed its usability issues.",
-      learned:"A tool for wellbeing has to be easy to use before it can help anyone."}
+      learned:"Before a tool can help anyone feel better, it has to be easy to use."}
   ]],
   ["flow",{before:{label:"The pilot interview",steps:["A few easy questions","Then, suddenly, personal ones","Disclosure became difficult"]},
     after:{label:"What I co-designed",steps:["5 narrative survey formats","Gradual reflective prompts and branching choices","A story to speak through: the chef narrative"]}}],
   ["kicker","What I took away"],
-  ["para","TeenCare showed me what it takes to make an invisible problem visible: listen widely, notice where people go quiet, and change the question before asking for more. It is what I watch for in a Dream Strokes session, at the scale of a product."],
+  ["para","At TeenCare I saw what I see at a Dream Strokes table, at the size of a product: people open up when the first step is small enough."],
   ["links",[{href:"#/work/research",label:"All research"},{href:"#/work/research/brain-life",label:"Next · Brain-Life"}]]
 ]},
 
@@ -954,7 +941,7 @@ const ROOMS={
     marks:["img/brainlife-mark.png"]}],
   ["visit",{href:"https://brainlife.ai",label:"Visit Brain-Life"}],
   ["kicker","Why I joined"],
-  ["para","I care about neuroscience because so much of how we feel, learn and pay attention starts in the nervous system. Looking after the brain is part of being healthy, not something separate from it. I wanted to see how that science becomes something people actually use, so I looked for a professional setting where I could work on it, and joined Brain-Life as an R&D intern."],
+  ["para","I care about neuroscience because so much of how we feel, learn and pay attention starts in the nervous system. Looking after the brain is part of being healthy. I wanted to see how that science becomes something people actually use, so I went looking for a place to work on it and joined Brain-Life as an R&D intern."],
   ["figs",[
     {k:"bl-2",slot:"Plate 01",ratio:"4/3",ghost:"the team",cap:"The Brain-Life team."},
     {k:"bl-4",slot:"Plate 02",ratio:"4/3",ghost:"a team meeting",cap:"A working session with the R&D team."}
@@ -962,26 +949,20 @@ const ROOMS={
   ["kicker","What I did, and what each part taught me"],
   ["tasks",[
     {h:"Reading the evidence",did:"I reviewed more than 40 peer-reviewed papers on attention, learning and cognitive well-being.",
-      learned:"To ask what a study actually shows, and for whom, before trusting its headline."},
+      learned:"To check what a study actually measured, and on whom, before trusting its headline."},
     {h:"Looking at what exists",did:"I benchmarked 20 international neurotechnology and wellness products against that evidence.",
       learned:"How the same science can turn into very different products."},
     {h:"Asking the people here",did:"I tested the evidence against 25 contextual interviews with Vietnamese users, and found 3 behavioural patterns where global research and local behaviour diverged. From them I wrote early product hypotheses.",
-      learned:"Evidence from elsewhere does not automatically fit here. The people in front of you have to be part of the evidence."},
+      learned:"Research from elsewhere does not automatically fit students here. They have to be part of the evidence."},
     {h:"Signal and self-report",did:"I process EEG recordings in Python and analyse student surveys side by side, looking for the gaps between neural signals and what students report about their own attention. Those gaps informed product iterations.",
-      learned:"Neither the signal nor a person’s own account is the whole picture. The useful part is where they disagree."}
+      learned:"Neither the brain signal nor a student’s own account tells the whole story. The gap between them is where the questions are."}
   ]],
   ["figs",[
     {k:"bl-1",slot:"Plate 03",ratio:"3/4",ghost:"an EEG demonstration",cap:"Fitting an EEG headband at a Brain-Life booth."},
     {k:"bl-3",slot:"Plate 04",ratio:"3/4",ghost:"the product on the table",cap:"The headband, the app and the tools that come out of the research."}
   ]],
-  ["numbers",[
-    {b:"40+",s:"peer-reviewed papers reviewed"},
-    {b:"20",s:"neurotechnology and wellness products benchmarked"},
-    {b:"25",s:"contextual interviews with Vietnamese users"},
-    {b:"3",s:"patterns where research and local behaviour diverged"}
-  ]],
   ["kicker","What I took away"],
-  ["para","Brain-Life gave me my first professional view of neuroscience, from papers to products to the people meant to use them. It also returned me to the question from AI &amp; Art: a tool only works when it responds to the person using it."],
+  ["para","Brain-Life gave me my first professional view of neuroscience, from papers to products to the people meant to use them. It brought me back to what AI &amp; Art showed: a tool works when it responds to the person using it."],
   ["links",[{href:"#/work/research",label:"All research"},{href:"#/work/research/ai-art",label:"First · AI & Art"}]]
 ]},
 
@@ -996,7 +977,7 @@ const ROOMS={
     lede:"While I was studying vocabulary, I noticed how much work it took just to keep one new word, and how little of that work helped anyone remember it. That was where students gave up.",
     facts:[{b:"~2,200",s:"visitors"},{b:"500+",s:"registered users"}]}],
   ["kicker","The pain point"],
-  ["para","Saving a single word meant a chain of small jobs, each one extra cognitive load that taught nothing about the word itself. By the third or fourth word, most students stopped."],
+  ["para","Saving one word meant a chain of small jobs. Each one added cognitive load, and none of them taught anything about the word itself."],
   ["flow",{before:{label:"Before · to keep one word",steps:["Look the word up","Translate it into Vietnamese","Find a real example sentence","Copy it all into a notebook","Make your own flashcards","Remember to come back and test yourself"]},
     after:{label:"With Contextuary",steps:["Add the word once","Get its Vietnamese meaning, SAT-style examples and a memory hint","Practise with quizzes, flashcards and AI challenges built from your own list"]}}],
   ["shot",{kicker:"The product",k:"cx-home",ratio:"1600/989",url:"contextuary.app",ghost:"the home page"}],

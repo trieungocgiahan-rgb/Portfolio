@@ -113,6 +113,11 @@ the accent appears only in numbers, rules, dots, nav state and small labels.
   <img> elements inside a frame: the frame owns the ratio (--ratio), the
   image is never stretched (--fit cover or contain, --pos focal point).
 - Copy is specific and plain. No personal-brand language.
+- One voice everywhere: first person, plain, short, like telling a friend.
+  No aphorisms or "not X, but Y" slogans, no repeated lines across rooms
+  (each idea is said once, where it belongs), no captions that claim more
+  than the photograph shows. Her own texts (About, award stories, the
+  Exhibition statement) stay word for word.
 - English only. Every visible word on the site is English. The project is
   called Dream Strokes; other Vietnamese names are written without
   diacritics, as on her CV (Trung Vuong, Gia Han, Bao Sang Art Therapy
