@@ -7,6 +7,10 @@ contextuary-logo, together-logo
 img/signature.png (About).
 
 Still empty
+- ev-tet, ev-pitch, ev-league, ev-rocket, ev-sciphony, ev-identity, ev-tours
+           Events: one photograph each for Hey Tet!, Colors of the Pitch, the
+           football league, the water rocket contest, SciPhony, Colors of
+           Identity, the sketch tours (4:3)
 - rs-1     AI & Art: Inkling, the drawing journal (screenshot)
 - rs-2     AI & Art: presenting the study (no participants)
 - tc-1     TeenCare: the team at work

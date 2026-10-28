@@ -23,7 +23,10 @@ sharing a room, then tests it through community work, research and building.
   own look: TeenCare a soft sunrise in its yellow and orange with slate
   ink, Brain-Life white with its electric blue (#0041E7) and a dot grid;
   each company's wordmark stands in for the room title and its icon sits
-  in the door. Old routes resolve through ROOM_ALIASES;
+  in the door. Events tells one flagship (Beats of Hope: why, what she
+  did and what it taught her, its numbers), then the other gatherings from
+  her CV in four themes, each with the reason behind it and two event
+  cards with a photo slot (ev-* in MEDIA). Old routes resolve through ROOM_ALIASES;
   /room/anchor scrolls to a kicker with that id. Rooms open in place.
 - Every room starts with a hero block with its own light, set by
   data-room on #room: dark heroes (Events night stage, Tech electric blue,
