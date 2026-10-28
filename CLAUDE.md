@@ -1,7 +1,7 @@
 # Working on this site
 
 ## What it is
-A personal site for Triệu Ngọc Gia Hân (Suki), Grade 12, Ho Chi Minh City,
+A personal site for Trieu Ngoc Gia Han (Suki), Grade 12, Ho Chi Minh City,
 applying to US universities. It is an editorial narrative, not a résumé.
 Eight chapters carry one thesis: she notices what changes when people start
 sharing a room, then tests it through community work, research and building.
@@ -11,7 +11,7 @@ sharing a room, then tests it through community work, research and building.
 - Never reintroduce résumé structure (hero → about → skills → project grid).
 - Keep the door motif: the entrance (Knock, knock. and one "Come in"
   button), Doors panel, deep spaces as rooms.
-- Doors has four destinations: Work (Nét Mơ, Events, Research &
+- Doors has four destinations: Work (Net Mo, Events, Research &
   Internships, Tech Projects), Exhibition, Awards, About. The CV is not in
   Doors; About tells the longer story and ends on a CTA to it. Routes are
   /work/net-mo, /work/events, /work/research, /work/tech, /exhibition,
@@ -19,14 +19,14 @@ sharing a room, then tests it through community work, research and building.
   /room/anchor scrolls to a kicker with that id. Rooms open in place.
 - Every room starts with a hero block with its own light, set by
   data-room on #room: dark heroes (Events night stage, Tech electric blue,
-  Awards teal) and paper heroes (Nét Mơ peach, Research lavender graph
+  Awards teal) and paper heroes (Net Mo peach, Research lavender graph
   paper, Exhibition paint washes, About blush, CV ruled paper); the lead
   photograph is always seen through an arched door and then tells one short story: what
   was noticed, what changed, what it led to. About is the one exception,
   built from her mockup (aboutHTML in app.js): a sketch hero with line-only
   art (sparkles, one pink swirl), the story beside her portrait box (ab-2),
   a pink band for its key line, then "See my drawings", "Open my CV" and a
-  Nét Mơ card: where she puts this into practice.
+  Net Mo card: where she puts this into practice.
   No long lists or archives;
   the CV holds the dated record, AWARDS holds the honours once.
 - Keep every interaction: the entrance, drifting motes canvas, the story
@@ -41,7 +41,7 @@ sharing a room, then tests it through community work, research and building.
   lists the pages behind the story.
 - The homepage is one continuous story in the owner's own words (see
   BRIEF.md): hero, 00 Who I am (who she is, "Read more about me" into
-  About, then on to Nét Mơ), 01 Notice, 02 Study, 03 Make, 04 Gather, 05 Draw,
+  About, then on to Net Mo), 01 Notice, 02 Study, 03 Make, 04 Gather, 05 Draw,
   06 The question, More work, footer. Each part: title, story, one visual,
   one "Inside ·" line saying what the detail page holds, one way in, then a
   bridge (a.bridge): one serif sentence that hands on to the next part. Numbers
@@ -80,7 +80,7 @@ the accent appears only in numbers, rules, dots, nav state and small labels.
   data: --ratio, --len, --dl, --dc.
 - Prefer grid and flex. Absolute positioning only for decorative layers.
 - In a story part the sticky visual lives inside .story__grid; anything
-  after the grid (the Nét Mơ tray, the bridge) sits outside it, so the
+  after the grid (the Net Mo tray, the bridge) sits outside it, so the
   visual can never slide over it while scrolling.
 - Fix overflow at the element that is too wide. body{overflow-x:clip} is a
   last guard, not a fix. Words never break mid-word; only URLs may.
@@ -96,3 +96,9 @@ the accent appears only in numbers, rules, dots, nav state and small labels.
   <img> elements inside a frame: the frame owns the ratio (--ratio), the
   image is never stretched (--fit cover or contain, --pos focal point).
 - Copy is specific and plain. No personal-brand language.
+- English only. Every visible word on the site is English; Vietnamese names
+  are written without diacritics, exactly as on her CV (Net Mo ("Dream
+  Strokes"), Trung Vuong, Gia Han, Bao Sang Art Therapy Center, Hey Tet!).
+- Her CV is the source of truth for every fact: names, roles, dates and
+  numbers (see CONTENT.md). The site never states a number the CV
+  contradicts; her phone number stays off the public site.

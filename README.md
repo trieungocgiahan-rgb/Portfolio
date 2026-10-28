@@ -39,7 +39,7 @@ cx-lead + cx-1…3, cj-lead, ab-2.
 ## Edit the deep-space pages
 
 Everything behind a "Read the … story" link or the Doors menu is data, not
-markup. In `app.js`, the `ROOMS` object holds one entry per room: Nét Mơ,
+markup. In `app.js`, the `ROOMS` object holds one entry per room: Net Mo,
 Events, Research & Internships, Tech Projects, About, CV, Awards (the
 Exhibition is built from `ARCHIVE`; the honours live once in `AWARDS`).
 Each room starts with a `hero` block (kicker, title, lede, facts, and `k`,

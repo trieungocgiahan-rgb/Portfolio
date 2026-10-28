@@ -1,95 +1,87 @@
-# Content source of truth (do not invent numbers)
+# Content (source of truth: Gia Han's CV, 2026)
 
-## Nét Mơ (Traces of Dreams), founder and director, 2024 to now
-Arts-based social-emotional learning for children in shelters and elderly
-residents in care facilities. Two branches, Shelters and OPEN Community.
-Legal sponsorship by Bảo Sang.
-- 50 workshops, 200+ children, 6 shelters in HCMC and Đồng Nai, 2 elderly
-  care facilities
-- 25-member team across R&D, Tech, Events, PR
-- around 75M VND raised, 80% direct to shelter children
-- 80% of participating children showed improved emotional expression
-- story-world immersion held about 85% engagement against 60% for open
-  free-drawing formats
-- Season 2, "Chuyện Của Mây: Vẽ nỗi lo, tô hi vọng", four sessions in order:
-  Xưởng Chế Tạo Quái Vật, Bữa Tiệc Cảm Xúc, Bầu Trời Khát Vọng, Dreamtopia
-- grounded in narrative therapy, hope theory, trauma-informed care
-- curriculum published open-access in English and Vietnamese, Sept 2026
-- built the team an activity journal app, three permission roles, media
-  upload, calendar, deadline board
-- "Once Upon The Inside", exhibition with The APRIL Collective at May
-  Artspace, 300+ visitors
+Every fact on the site follows her CV. When the CV changes, change this file,
+then the site (index.html, ROOMS / AWARDS in app.js). The site is English only;
+Vietnamese names are written without diacritics, as on the CV.
 
-## Research, lead author, Nov 2025 to Feb 2026
-Expressive art-making versus AI-guided reflective dialogue. N = 68 young
-adults; each completed both sessions (136 sessions), 45 minutes each, art
-familiarity recorded beforehand.
-AI sessions used the same model version for every participant. Analysed in
-SPSS. Advised by Nguyễn Phương Thảo, Bảo Sang Psychology Space.
-Posted as a public preprint, Sept 2026.
-- crossover interaction: low art familiarity gained more from dialogue,
-  high art familiarity gained more from making
-- seven participants finished the AI condition in a worse mood
+## Identity
+Trieu Ngoc Gia Han (Katherine Trieu), Ho Chi Minh City, Vietnam.
+trieungocgiahan@gmail.com (the phone number stays off the public site).
 
-## Contextuary, design and build
-SAT vocabulary in context. Paste a passage, tap a word, get meaning in
-place plus a Vietnamese gloss and the common misread. Daily Picks sits on
-top of My Words. Quiz, AI practice and flashcard modes. Lovable and
-Supabase, deployed on Vercel. 1,200 visitors, 400+ registered users,
-around 70% returning weekly in peak SAT season. Cut features: spaced repetition, topic filters,
-a separate Today page.
+## Education
+- Trung Vuong High School. Grade 10 GPA 9.4/10 (rank 5/844); Grade 11 GPA
+  9.6/10 (rank 1/844); Most Well-Rounded Student, Grade 11.
+- Dinh Thien Ly School (Lawrence S. Ting School), Grade 9, GPA 9.3/10 (top 5% in class).
 
-## The Colorful Journey, co-founder, product structure and UX/UI
-Shared timeline for project teams whose members are often apart: writing,
-photographs and voice notes, moving between projects and dates, old entries
-resurfaced through "On This Day". Five-person team. 550+ visitors, 450+
-returning. Entries grouped by moment rather than file type, every item keeps
-its contributor.
+## Honours (as on the CV)
+- International Psychology Olympiad 2026: Silver Award (Final Round, Top 15
+  Globally); 1st in Asia in the Global Grand Test.
+- International Mathematics Olympiad Competition of Southeast Asia 2026: Gold
+  Medal (Top 3 Nationally).
+- Ho Chi Minh City Youth Creativity Contest 2025: Second Prize; emotional-learning
+  card deck for preadolescents.
+- Ho Chi Minh City Youth Basketball Tournament 2025: Bronze Medal.
+- Ho Chi Minh City Regional Academic Excellence Contest 2025: Third Prize, Biology.
+- Vietnam Water Rocket Competition 2023: Team Lead; National Silver Medal.
+Also on the Awards page, from her own award stories (not on the CV):
+RAIS Essay Competition 2026 (Top 2 of about 450); Ho Chi Minh City Youth
+Innovation 2026 (Top 10 of 200).
 
-## Questions carried into other rooms
-- Brainlife, 10-month internship. Brain mapping and EEG training, filtering
-  and cleaning recorded data, running surveys with student participants.
-- TeenCare (formerly Unwrapit / Unwrapped), R&D intern, summers 2025 and
-  2026. 56 in-depth interviews synthesised into one persona, designed the
-  core product (a storytelling e-book where teens become a chef), five
-  themed storytelling surveys, outreach through a character account.
-- EUNOIA, Head of Academic Affairs. Team of 8 rewriting psychology research
-  for students, self-discovery festival reaching 600, peer support around
-  exam season reaching 200+.
+## Research and professional experience
+- AI & Art, first author, Oct 2025 to now. Under review at the National High
+  School Journal of Science; advised by Phuong Thao Nguyen, M.A. in Psychology and
+  licensed art therapist. Counterbalanced within-subjects study, N = 68, 136
+  sessions, art-making vs AI-guided reflective dialogue. 8 post-session measures in
+  Python (paired t-tests, effect sizes, moderation); 136 reflections coded. AI made
+  starting easier (7.91 vs 5.57/10), art produced stronger ownership (7.40 vs
+  5.38/10), prior art experience reversed which format improved mood more
+  (p < .001). Built Inkling (AI offers a first line, the user takes over). One of 3
+  school teams for the city-level science research competition; presented to
+  faculty from the University of Social Sciences and Humanities, HCMC.
+- TeenCare, Part-time Research Associate in R&D, May to Dec 2025 and Jun 2026 to
+  now. 100+ semi-structured interviews; 5 narrative survey formats; the chef
+  narrative became the core product; interactive e-book and form-building web product.
+- Brain-Life, R&D Intern, Aug 2026 to now. 40+ papers reviewed, 20 neurotech
+  products benchmarked, 25 interviews, 3 behavioural patterns; EEG in Python.
 
-## Little Smile Project
-Hospital programming and creative direction across three hospitals in
-Ho Chi Minh City.
+## Youth programs and community development
+- Net Mo ("Dream Strokes") Project, Founder & Project Director, Apr 2025 to now.
+  Guided and legally sponsored by Bao Sang Art Therapy Center. 25-member team
+  (R&D, Tech, Events, PR), three seasons. 4-session curriculum for ~200 children
+  across 6 shelters in HCMC and Dong Nai; participation 60% to 85%. 8 sessions with
+  22 older adults at 2 care homes. Public programmes: Sol Sound (400+ tickets),
+  Colors of the Pitch (2 tournaments, 10 teams, 1,000+ spectators), Once Upon the
+  Inside (youth painting exhibition, 300+ visitors). Website and UI/UX;
+  open-access curriculum in Vietnamese and English; ~VND 75 million net proceeds.
+- Little Smiles Project, Ideas Team member to Creative Director, Dec 2024 to Dec
+  2025. 4-person team (South Korea, France, Taiwan, Vietnam); 8 adaptive sessions
+  for ~100 children across 3 hospitals. Produced Beats of Hope (10+ student bands,
+  ~VND 25 million, donated to two hospitals in France).
+- Colors of Joy Workshop, Curriculum Designer, Aug to Oct 2025, Hanoi, with Bao
+  Sang. 4-session curriculum for 24 children aged 6 to 12; 23/24 named emotions.
 
-## Gather
-- Beats of Hope, 2025. 10+ school bands, 310+ tickets (300+ attendees),
-  about 25M VND raised for hospital programming (Little Smiles).
-- Also at school: a football league, a water-rocket competition and a
-  science festival.
-- Sol Sound, Nét Mơ OPEN. 400+ attendees.
-- Cerberus Football League, 2024 to 2025. 15 teams, 200+ athletes,
-  600+ cumulative spectators.
-- Colors of the Pitch, two editions, mixed teams by design.
-- Tết ơi!, 2025 to 2026. School-wide music event, 2,400+ students.
+## Product design and development
+- Contextuary, Founder & Product Designer, Jan 2025 to now. 4-member team; Figma,
+  React. ~2,200 visitors, 500+ registered users.
+- Together!, Co-Founder & UI/UX Designer, Dec 2025 to now. Digital diary for
+  teams. 1,550+ visitors, 450+ returning.
 
-## Honours
-The story behind each one, in her words, lives in AWARDS in app.js.
-Ideas & research
-- International Psychology Olympiad, 2026. Silver Award, 1st in Asia, Top 15 Global.
-- RAIS Essay Competition, 2026. Top 2 of about 450.
-- HCMC Youth Innovation, 2026. Top 10 of 200.
-Science & making
-- HCMC Youth and Children Creativity Contest, 2025. Second Prize, Emotion Card Deck.
-- HCMC Academic Excellence in Biology, 2024. Third Prize, one of 3 students selected from 45.
-- Vietnam Water Rocket Competition, 2023. National Silver, Team Lead.
-Team & school
-- HCMC Youth Basketball Championship, 2025. Bronze Medal.
-- Most Well-Rounded Student, 2025. Grade 11, Trưng Vương High School; ranked first of 844.
-- Coursera, Foundations of Neuroscience, Introduction to Psychology.
+## Gatherings and event leadership
+- Photography & Sketch Tours, Founder & Program Organizer, summers 2025 and 2026. 70+ participants.
+- Eunoia Psychology Club, Head of Academic Affairs, Oct 2024 to now. 8-member
+  team, 2,000-follower page; Colors of Identity (25 volunteers, 5 stations, 600 registrants).
+- Physics Club, Member of Academic Affairs, Aug 2024 to Apr 2026. Water Rocket
+  Design Contest initiator (80+ participants, ~12 teams, now annual); SciPhony
+  Science Festival academic design lead (5 booths).
+- Hey Tet! School Music Event, Program Vice Organizer, Dec 2025 to Feb 2026.
+  36-student committee; 2,400+ attendees.
+- Trung Vuong Football League, Operations Lead, Aug 2024 to Feb 2025. 7-member
+  team, 2 seasons, 15 teams from 8 schools.
+- Class President, Grades 1 to 12 (12 consecutive years).
 
-## Contact
-trieungocgiahan@gmail.com
-
-## Voice
-First person, plain, specific. Short sentences. No personal-brand language.
-Vietnamese titles keep their diacritics.
+## Creative practice and skills
+Research: Python, survey and experimental design, qualitative coding. Build: UI/UX,
+rapid prototyping, front-end web, Arduino. Creative and athletic: painting,
+documentary photography, short filmmaking, lead guitar, competitive football and
+basketball. Languages: Vietnamese (native), English (advanced), Cantonese and
+Mandarin (limited). Organiser: music shows, football tournaments, exploration tours.

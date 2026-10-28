@@ -10,7 +10,7 @@ The experience of meeting a person through the web. An interactive
 editorial story, an exhibition, a personal archive. Not a digital résumé.
 
 ## The person
-Triệu Ngọc Gia Hân, English name Katherine Trieu, Grade 12, Trưng Vương
+Trieu Ngoc Gia Han, English name Katherine Trieu, Grade 12, Trung Vuong
 High School, Ho Chi Minh City. Works in Vietnamese and English. Interested
 in cognitive science, psychology, HCI, human behaviour, art and community
 building. Those labels are not the story.
@@ -36,21 +36,21 @@ If an element could appear on 500 other student portfolios, redesign it.
 One continuous story, told in the owner's own words, so an admissions reader
 can follow how one question connects everything:
 - Entrance · Knock, knock. One button: Come in.
-- Hero · Hi, I'm Gia Hân, and the question. Follow the question ↓
+- Hero · Hi, I'm Gia Han, and the question. Follow the question ↓
 - 00 Who I am · Before the first room. Grade 12, drawing since five, class
-  president eleven years; the noticing that led to Nét Mơ. Visual: a
+  president twelve consecutive years; the noticing that led to Net Mo. Visual: a
   catalogue card with the question at the foot. Read more about me → About.
-- 01 Notice · A tray in the middle (Nét Mơ). Visual: the photograph in an
+- 01 Notice · A tray in the middle (Net Mo). Visual: the photograph in an
   editorial frame; the crayon tray runs full width under the story.
 - 02 Study · Testing what I thought I knew (Two Doors). Visual: the crossover,
   and the paper seen as an object.
-- 03 Make · Keeping the days we missed (The Colorful Journey). Visual: the
+- 03 Make · Keeping the days we missed (Together!). Visual: the
   project mark and the shared timeline.
 - 04 Gather · Making room at a larger scale (Beats of Hope). Visual: a photograph
   of the night from the stage (gather-2) with the ticket below it.
 - 05 Draw · Where I began. Visual: three works, no more.
 - 06 The question · the four rooms joined as dots, each a way back.
-- More work · Contextuary, TeenCare, Little Smile Project, Awards, CV.
+- More work · Contextuary, TeenCare, Little Smiles Project, Awards, CV.
 - Footer · Knock, knock, email, About, CV.
 A thread runs down the margin through every part. Each part ends with an
 "Inside ·" line naming what its detail page holds, then one link, then a
@@ -74,9 +74,9 @@ six numbered parts and nothing else. The Rooms button opens Doors, which
 lists the pages behind the story.
 
 Doors has four destinations:
-- Work, which opens into four rooms: Nét Mơ, Events (Beats of Hope and
+- Work, which opens into four rooms: Net Mo, Events (Beats of Hope and
   the others), Research & Internships (Two Doors, Brainlife, TeenCare,
-  EUNOIA), Tech Projects (Contextuary, The Colorful Journey)
+  Eunoia), Tech Projects (Contextuary, Together!)
 - Exhibition, kept separate and special
 - Awards, the verified honours only
 - About: the longer story (where it started, the room I share every day,

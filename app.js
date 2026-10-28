@@ -20,7 +20,7 @@ const MEDIA = {
   "td-lead":"",
   "cx-lead":"", "cx-1":"", "cx-2":"", "cx-3":"",
   "cj-lead":"",
-  "ab-2":{src:"img/about-portrait.jpg",alt:"Gia Hân in her school uniform, smiling and holding up a pink crayon; the words Nét Mơ, a crown and yellow scribbles are drawn over the photograph.",pos:"50% 38%"}
+  "ab-2":{src:"img/about-portrait.jpg",alt:"Gia Han in her school uniform, smiling and holding up a pink crayon; the words Net Mo, a crown and yellow scribbles are drawn over the photograph.",pos:"50% 38%"}
 };
 /* ============================================================
    EVENT LINKS · paste a URL and the event card links out to it.
@@ -29,8 +29,8 @@ const MEDIA = {
 const EVENT_LINKS = {
   "beats-of-hope":"",
   "sol-sound":"",
-  "cerberus-league":"",
-  "tet-oi":"",
+  "football-league":"",
+  "hey-tet":"",
   "colors-of-the-pitch":""
 };
 /* ============================================================
@@ -474,13 +474,15 @@ const B={
   contact:a=>`<div class="blk">${a.map(c=>`<a class="contact-line" href="${c.href}"${c.replace?` data-replace="${c.replace}"`:""}><span>${c.label}</span><span>${c.value}</span></a>`).join("")}</div>`,
   /* the honours in their three groups; each story opens in place */
   awards:()=>`<div class="blk awards">
-    <div class="awards__bar"><p class="mono mono--sentence">Each honour has a short story behind it.</p><button class="awards__all" type="button" aria-pressed="false">Open every story</button></div>
+    <div class="awards__bar"><p class="mono mono--sentence">Most honours have a short story behind them.</p><button class="awards__all" type="button" aria-pressed="false">Open every story</button></div>
     ${AWARD_GROUPS.map(g=>{ const list=AWARDS.filter(a=>a.g===g.id); return `<section class="awards__group" style="--dc:${g.dc}">
       <h3 class="awards__label"><span>${g.label}</span><i aria-hidden="true"></i><span>${list.length}</span></h3>
-      ${list.map(a=>`<details class="award">
-        <summary><span class="award__year">${a.t}</span><svg class="award__mark" viewBox="0 0 24 24" aria-hidden="true">${AWARD_MARKS[a.m]}</svg><span class="award__head"><b>${a.h}</b><span>${a.p}</span></span><span class="award__toggle"><span>Behind the award</span></span></summary>
+      ${list.map(a=>{ const row=`<span class="award__year">${a.t}</span><svg class="award__mark" viewBox="0 0 24 24" aria-hidden="true">${AWARD_MARKS[a.m]}</svg><span class="award__head"><b>${a.h}</b><span>${a.p}</span></span>`;
+        /* an honour without a story yet is a plain line, not a toggle that opens on nothing */
+        return a.s ? `<details class="award">
+        <summary>${row}<span class="award__toggle"><span>Behind the award</span></span></summary>
         <p class="award__story">${a.s}</p>
-      </details>`).join("")}
+      </details>` : `<div class="award award--plain"><div class="award__row">${row}</div></div>`; }).join("")}
     </section>`; }).join("")}
   </div>`,
   about:()=>aboutHTML(),
@@ -568,7 +570,7 @@ function aboutHTML(){
     </div>
     <a class="about-practice" href="#/work/net-mo">
       <span class="about-practice__kicker">Where I put this into practice</span>
-      <span class="about-practice__name">Nét Mơ</span>
+      <span class="about-practice__name">Net Mo</span>
       <span class="about-practice__what">Art workshops for children in shelters, where one shared tray of crayons changed the room.</span>
       <span class="about-practice__go">Step inside →</span>
     </a>
@@ -577,28 +579,29 @@ function aboutHTML(){
 }
 
 /* the verified honours, stated once, shown in Awards and in the CV.
-   t year · h name · p the result · g group · m its mark · s the story behind it, in Gia Hân's words */
+   t year · h name · p the result (as on her CV) · g group · m its mark · s the story behind it, in Gia Han's words */
 const AWARD_GROUPS=[
   {id:"ideas",label:"Ideas & research",dc:"var(--violet)"},
   {id:"making",label:"Science & making",dc:"var(--blue)"},
   {id:"team",label:"Team & school",dc:"var(--orange)"}
 ];
 const AWARDS=[
-  {t:"2026",g:"ideas",m:"mind",h:"International Psychology Olympiad",p:"Silver Award · 1st in Asia · Top 15 Global",
+  {t:"2026",g:"ideas",m:"mind",h:"International Psychology Olympiad",p:"Silver Award, Final Round (Top 15 Globally) · 1st in Asia, Global Grand Test",
     s:"Psychology interested me before I knew it could become a competition. Preparing for the Olympiad made me move beyond explanations that merely sounded reasonable. I had to compare possibilities, return to evidence and notice where my first interpretation was incomplete. The award mattered because it showed me how much more there was to learn about a subject I already wanted to pursue."},
   {t:"2026",g:"ideas",m:"pen",h:"RAIS Essay Competition",p:"Top 2 of about 450",
     s:"I entered with an essay about AI and the future of human thinking in education. The difficult part was resisting an easy argument for or against technology. I kept revising whenever a paragraph made either humans or AI sound too simple. The final essay asked a question I am still carrying into my work. When does a tool extend our thinking, and when does it begin thinking in our place?"},
-  {t:"2026",g:"ideas",m:"bulb",h:"HCMC Youth Innovation",p:"Top 10 of 200",
+  {t:"2026",g:"ideas",m:"bulb",h:"Ho Chi Minh City Youth Innovation",p:"Top 10 of 200",
     s:"I entered because I wanted to know whether an idea that made sense to our own team would still make sense to people meeting it for the first time. Preparing for the competition forced me to explain the problem clearly, show who the product was for and separate the features we liked from the ones users actually needed. Reaching the Top 10 felt less like approval of a finished product and more like evidence that the problem was worth continuing to work on."},
-  {t:"2025",g:"making",m:"cards",h:"HCMC Youth & Children Creativity Contest",p:"Second Prize · Emotion Card Deck",
+  {t:"2026",g:"making",m:"sigma",h:"International Mathematics Olympiad Competition of Southeast Asia",p:"Gold Medal · Top 3 Nationally"},
+  {t:"2025",g:"making",m:"cards",h:"Ho Chi Minh City Youth Creativity Contest",p:"Second Prize · an emotional-learning card deck for preadolescents",
     s:"I wanted to make something children could hold when talking about feelings became difficult. A lesson or long explanation would have asked them to find the right words first, which was often the hardest part. The card deck used colours, images and situations to give children somewhere simpler to begin. Turning that idea into a real product meant thinking about every choice from the child’s side, not only whether the psychology behind it was correct."},
-  {t:"2024",g:"making",m:"cell",h:"HCMC Academic Excellence in Biology",p:"Third Prize · One of 3 students selected from 45",
+  {t:"2025",g:"making",m:"cell",h:"Ho Chi Minh City Regional Academic Excellence Contest",p:"Third Prize · Biology",
     s:"I was one of three students selected from 45 to represent my school in the city competition. Preparing meant learning beyond what appeared in our regular lessons and becoming more precise about processes I had previously understood only in broad outlines. Biology was one of the first subjects that made me want to look beneath what I could see and ask what had to be happening underneath."},
-  {t:"2023",g:"making",m:"rocket",h:"Vietnam Water Rocket Competition",p:"National Silver · Team Lead",
+  {t:"2023",g:"making",m:"rocket",h:"Vietnam Water Rocket Competition",p:"National Silver Medal · Team Lead",
     s:"I joined because I loved Physics and wanted to find out what I could do with it outside a classroom. The competition asked for more than launching a rocket. Our team moved between calculations, construction, coding and problems that only appeared once we began testing. I did not know all of those things when we started. That was part of why I wanted to go. Winning National Silver gave me the confidence to keep entering unfamiliar kinds of work before I felt completely ready."},
-  {t:"2025",g:"team",m:"ball",h:"HCMC Youth Basketball Championship",p:"Bronze Medal",
+  {t:"2025",g:"team",m:"ball",h:"Ho Chi Minh City Youth Basketball Tournament",p:"Bronze Medal",
     s:"Basketball tested a part of me that no written competition could. I could prepare on my own, but I could not control how a match unfolded or do another player’s job for her. I had to read what was happening, recover quickly from mistakes and remain useful to the team even when I was not the person scoring. That is why this medal belongs beside the academic ones."},
-  {t:"2025",g:"team",m:"star",h:"Most Well-Rounded Student",p:"Grade 11 · Trưng Vương High School",
+  {t:"2025",g:"team",m:"star",h:"Most Well-Rounded Student",p:"Grade 11 · Trung Vuong High School",
     s:"This award meant more to me because it did not recognise one exam or one project. That year, I ranked first among 844 students while serving as class president and working on projects outside school. I often worried that exploring too many things would make me look unfocused. The award made me see that those parts of my life did not have to compete with one another."}
 ];
 /* a small line drawing for each honour, in its group's colour */
@@ -610,6 +613,7 @@ const AWARD_MARKS={
   cell:'<ellipse cx="12" cy="12" rx="9" ry="7.5"/><circle cx="13.5" cy="11" r="2.6"/><circle cx="7.5" cy="13.5" r=".9"/><circle cx="9" cy="8.5" r=".7"/><circle cx="16.5" cy="15.5" r=".8"/>',
   rocket:'<path d="M12 2.5c3.2 3 4.3 7.3 3.2 11.5H8.8C7.7 9.8 8.8 5.5 12 2.5z"/><path d="M8.8 12l-2.6 4.5h3.2M15.2 12l2.6 4.5h-3.2M12 17v4.5"/><circle cx="12" cy="8.5" r="1.4"/>',
   ball:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5.6 5.6c3.4 3.4 3.4 9.4 0 12.8M18.4 5.6c-3.4 3.4-3.4 9.4 0 12.8"/>',
+  sigma:'<path d="M17.5 5H6.5l6.5 7-6.5 7h11"/><path d="M17.5 5v2M17.5 17v2"/>',
   star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>'
 };
 
@@ -617,42 +621,46 @@ const AWARD_MARKS={
    line, a photograph through a door), what I noticed, what I changed, what it
    led to. Lists and archives stay out; the CV holds the dated record. */
 const ROOMS={
-"/work/net-mo":{accent:"var(--coral)",where:"Work · Nét Mơ",blocks:[
-  ["hero",{kicker:"Work · 2024 to now · Founder and Director",title:"Nét Mơ",
-    lede:"An arts-based social-emotional learning programme for children in shelters and elderly residents in care facilities.",
-    facts:[{b:"50",s:"workshops"},{b:"6",s:"shelters"},{b:"2",s:"care facilities"}],
+"/work/net-mo":{accent:"var(--coral)",where:"Work · Net Mo",blocks:[
+  ["hero",{kicker:"Work · Apr 2025 to now · Founder and Project Director",title:"Net Mo",
+    lede:"Net Mo (“Dream Strokes”) is a youth emotional-learning and creative-community project spanning shelters, care homes and public programmes, professionally guided and legally sponsored by Bao Sang Art Therapy Center.",
+    facts:[{b:"~200",s:"children"},{b:"6",s:"shelters"},{b:"2",s:"care homes"}],
     k:"nm-lead",ghost:"a session in progress"}],
   ["kicker","What I noticed first"],
   ["para","A boy spent the first session drawing in the bottom right corner of his page. Not shyly. Efficiently, as if the rest of the paper belonged to somebody else. In the third session we ran out of small sheets and put one large one across four tables. He drew across the middle without asking."],
   ["quote","The material was never the problem. The ownership of the surface was."],
   ["kicker","What I changed"],
   ["steps",[
-    {b:"Story world over free drawing",p:"Immersive framing sustained about 85% engagement against 60% for open free-drawing formats. It also gives children a character to speak through when speaking as themselves is too much."},
-    {b:"A shared object, not a finished page",p:"Sessions now end on a shared object rather than individual results, and facilitators are told explicitly that an unfinished page is a fine outcome."},
-    {b:"Handover is a product",p:"I built the team an activity journal app: three permission roles, media upload, calendar view, and a task board coloured by department, so a season can be inherited rather than re-explained."}
+    {b:"A 4-session curriculum built on story worlds",p:"I developed and iterated a 4-session emotional-learning curriculum for about 200 children across 6 shelters in Ho Chi Minh City and Dong Nai Province. Active participation rose from 60% to an average of 85%, with the clearest gains among quiet children. A story world gives a child a character to speak through when speaking as themselves is too much."},
+    {b:"A shared object, not a finished page",p:"Sessions end on a shared object rather than individual results, and facilitators are told explicitly that an unfinished page is a fine outcome."},
+    {b:"The same model, a different age",p:"I adapted the model across age and context: 8 sessions with 22 older adults at 2 care homes."},
+    {b:"Open to anyone who runs a room",p:"I helped build the project’s website and designed its UI/UX. We published the full curriculum as open-access resources in Vietnamese and English, so facilitators beyond our workshops can adapt and deliver the activities."}
   ]],
   ["numbers",[
-    {b:"80%",s:"showed improved emotional expression or confidence"},
-    {b:"75M VND",s:"raised; 80% direct to shelter children"},
-    {b:"200+",s:"children, with a team of 25"}
+    {b:"85%",s:"average active participation, up from 60%"},
+    {b:"~VND 75M",s:"net proceeds, reinvested in materials, partners and programming"},
+    {b:"25",s:"members across R&D, Tech, Events and PR"}
   ]],
   ["figs",[
     {k:"nm-1",slot:"Plate 02",ratio:"3/4",ghost:"child and facilitator",cap:"Facilitator training pays for itself in the first ten minutes."},
-    {k:"nm-2",slot:"Plate 03",ratio:"3/4",ghost:"elderly participant painting",cap:"Intergenerational sessions: two groups used to being cared for, making something for each other."},
+    {k:"nm-2",slot:"Plate 03",ratio:"3/4",ghost:"older participant painting",cap:"Intergenerational sessions: two groups used to being cared for, making something for each other."},
     {k:"nm-3",slot:"Plate 04",ratio:"3/4",ghost:"monster drawings on the floor",cap:"Externalised worries. The monster is easier to describe than the fear."}
   ]],
+  ["kicker","Beyond the shelters"],
+  ["para","Net Mo grew from cold outreach into a 25-member team over three seasons. Its public programmes widen access to creative participation and build ties beyond our partner shelters: Sol Sound, a music concert (400+ tickets); Colors of the Pitch, two football tournaments (10 teams, 1,000+ cumulative spectators); and Once Upon the Inside, a youth painting exhibition (300+ visitors). Ticketed programmes, a virtual exhibition of children’s artwork and sponsorships generated about VND 75 million in net proceeds."],
+  ["para","In Hanoi, as curriculum designer for the Colors of Joy Workshop with Bao Sang Art Therapy Center (Aug to Oct 2025), I rewrote Net Mo activities into a 4-session curriculum for 24 children aged 6 to 12. By the final session, 23 of the 24 children could name their emotions through drawing."],
   ["kicker","Where it led"],
-  ["para","If the format changes engagement this reliably, the effect is not about art. It is about what the room permits. That question is what pushed me into reading psychology properly, and eventually into running a study instead of trusting my own field notes."],
+  ["para","If the format changes participation this reliably, the effect is not about art. It is about what the room permits. That question is what pushed me into reading psychology properly, and eventually into running a study instead of trusting my own field notes."],
   ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/work/events",label:"Events"},{href:"#/exhibition",label:"Exhibition"}]]
 ]},
 
 "/work/events":{accent:"var(--orange)",where:"Work · Events",blocks:[
-  ["hero",{kicker:"Community events · 2024 to 2026 · Organiser",title:"Rooms with the lights turned up",
-    lede:"Five rooms built for other people to fill. Same design questions as a workshop, only louder and with a budget.",
-    facts:[{b:"5",s:"events"},{b:"2,400+",s:"at the largest"},{b:"25M VND",s:"to Little Smiles"}],
+  ["hero",{kicker:"Gatherings and events · 2024 to 2026 · Organiser",title:"Rooms with the lights turned up",
+    lede:"Rooms built for other people to fill. Same design questions as a workshop, only louder and with a budget.",
+    facts:[{b:"2,400+",s:"at the largest"},{b:"1,000+",s:"spectators across two tournaments"},{b:"VND 25M",s:"raised at Beats of Hope"}],
     k:"gt-lead",ghost:"the room full, from the stage"}],
-  ["kicker","Beats of Hope · charity concert · 2025"],
-  ["para","Ten high school bands, 310+ tickets distributed across HCMC schools. I ran stage flow, artist coordination, and negotiated venue sponsorship in person. Around 25M VND net went to Little Smiles for a year of workshop materials across three partner hospitals."],
+  ["kicker","Beats of Hope · benefit concert · 2025"],
+  ["para","I produced Beats of Hope for the Little Smiles Project: a benefit concert featuring 10+ student bands from multiple schools, with 310+ tickets distributed across Ho Chi Minh City schools. I ran stage flow and artist coordination and negotiated venue sponsorship in person. It raised about VND 25 million to fund hospital-based play and storytelling sessions, donated to two hospitals in France."],
   ["kicker","What an event taught me that a workshop could not"],
   ["pairs",[
     {h:"The first two minutes decide everything",p:"If nobody is given something to do immediately, the room stays an audience for the rest of the night."},
@@ -664,52 +672,56 @@ const ROOMS={
     {k:"gt-2",slot:"Plate 03",ratio:"3/4",ghost:"backstage, artist coordination",cap:"Backstage. Most of the design work happens here."},
     {k:"gt-3",slot:"Plate 04",ratio:"3/4",ghost:"Colors of the Pitch, mixed teams",cap:"Mixed teams, deliberately."}
   ]],
-  ["kicker",{t:"Little Smile Project",id:"little-smile"}],
-  ["para","Hospital programming and creative direction across three hospitals in Ho Chi Minh City."],
+  ["kicker",{t:"Little Smiles Project · Ideas Team member, then Creative Director · Dec 2024 to Dec 2025",id:"little-smile"}],
+  ["para","A recurring play and storytelling initiative for children in hospitals and children with disabilities across France, South Korea and Vietnam. I led a 4-person creative team based in South Korea, France, Taiwan and Vietnam in designing 8 adaptive play and storytelling sessions for about 100 children across 3 hospitals, tailoring collaborative and individual activities to each child’s preferences."],
   ["kicker","The others"],
   ["steps",[
-    {b:"Sol Sound · Nét Mơ OPEN",p:"The community branch's first night, 400+ attendees.",event:"sol-sound"},
-    {b:"Cerberus Football League · 2024 to 2025",p:"Co-founded: 15 teams, 200+ student-athletes, 600+ cumulative spectators.",event:"cerberus-league"},
-    {b:"Colors of the Pitch · two editions",p:"Football as the excuse, fundraising as the outcome, mixed teams as the actual design decision.",event:"colors-of-the-pitch"},
-    {b:"Tết ơi! · 2025 to 2026",p:"A school-wide music event for 2,400+ students, built with professional artists and school clubs.",event:"tet-oi"}
+    {b:"Hey Tet! School Music Event · Program Vice Organizer · Dec 2025 to Feb 2026",p:"Reorganised and trained the program team within a 36-student committee, and directed full-day programming for 2,400+ attendees at the school’s first fully student-run Lunar New Year music event.",event:"hey-tet"},
+    {b:"Sol Sound · a Net Mo music concert",p:"400+ tickets.",event:"sol-sound"},
+    {b:"Colors of the Pitch · a Net Mo programme",p:"Two football tournaments, 10 teams, 1,000+ cumulative spectators. Mixed teams were the real design decision.",event:"colors-of-the-pitch"},
+    {b:"Trung Vuong Football League · Operations Lead · Aug 2024 to Feb 2025",p:"Co-led a 7-member team through 2 seasons for 15 teams representing 8 schools, and managed budgeting, equipment and match operations.",event:"football-league"},
+    {b:"Water Rocket Design Contest · Initiator · Physics Club",p:"Launched Trung Vuong’s first water-rocket design challenge for 80+ participants across about 12 teams, and wrote the proposal and technical guide. The contest became an annual school programme."},
+    {b:"SciPhony Science Festival · Academic Design Lead · Physics Club",p:"Led the academic design of a 5-booth interdisciplinary science festival, with a multi-stage human-body investigation that needed physics, chemistry and biology at every booth."},
+    {b:"Eunoia Psychology Club · Head of Academic Affairs · Oct 2024 to now",p:"Lead an 8-member academic team turning psychology into characters, comics and plain explainers for the club’s 2,000-follower page. Secured school approval and directed 25 volunteers for Colors of Identity, a first-of-its-kind, 5-station self-discovery programme with 600 registrants."},
+    {b:"Photography & Sketch Tours · Founder and Program Organizer · Summers 2025 and 2026",p:"Photography and sketch tours of Ho Chi Minh City for 70+ participants, bringing locals and art enthusiasts together with international visitors at landmarks and at hidden spots our members love."}
   ]],
-  ["links",[{href:"#/work/net-mo",label:"Nét Mơ"},{href:"#/work/research",label:"Research & Internships"}]]
+  ["links",[{href:"#/work/net-mo",label:"Net Mo"},{href:"#/work/research",label:"Research & Internships"}]]
 ]},
 
 "/work/research":{accent:"var(--violet)",where:"Work · Research & Internships",blocks:[
-  ["hero",{kicker:"Research · Nov 2025 to Feb 2026 · Lead author",title:"Two Doors Into the Same Room",
-    lede:"Does expressive art-making or AI-guided reflective dialogue help a person express what they feel, and does the answer depend on who is walking in?",
-    facts:[{b:"68",s:"young adults"},{b:"136",s:"sessions, two each"},{b:"45",s:"minutes a session"}],
+  ["hero",{kicker:"Research · Oct 2025 to now · First author",title:"AI &amp; Art",
+    lede:"Hands-on art-making or AI-guided dialogue: which helps a person express what they feel, and does the answer depend on who is walking in?",
+    facts:[{b:"68",s:"young adults"},{b:"136",s:"sessions, two each"},{b:"8",s:"post-session measures"}],
+    meta:"Under review at the National High School Journal of Science",
     k:"td-lead",ghost:"a session in progress, materials on the table"}],
   ["kicker","The two doors"],
   ["pairs",[
-    {h:"Condition A · Art",p:"A 45 minute expressive art-making session with materials and no requirement to explain the result out loud."},
-    {h:"Condition B · AI",p:"A 45 minute guided reflective dialogue. Every participant used the same model version, checked at the start of the session, so the room was identical."}
+    {h:"Condition A · Art",p:"An expressive art-making session with materials and no requirement to explain the result out loud."},
+    {h:"Condition B · AI",p:"A guided reflective dialogue. I wrote the AI role prompt, the safety protocol and the consent procedure, reviewed by my advisor."}
   ]],
   ["kicker","What came back"],
-  ["para","The headline is not that one door is better. It is that the doors swap places. Participants with little prior art experience gained more from dialogue, where the structure is provided for them. Participants already fluent with materials gained more from making, where structure would only get in the way. Averaging the two conditions would have hidden the entire result."],
-  ["quote","Seven participants finished the AI condition in a worse mood than they started."],
-  ["para","They are in the paper, with the reflections they wrote. The most common thread in those seven: being asked a good question at a moment when they had no way to leave the conversation."],
+  ["para","Neither door was simply better. AI made starting easier (7.91 vs. 5.57 out of 10), while art produced stronger ownership (7.40 vs. 5.38). Prior art experience reversed which format improved mood more (p &lt; .001): participants with little art experience gained more from dialogue, and those already fluent with materials gained more from making. Averaging the two conditions would have hidden the result."],
+  ["para","So I built Inkling, a drawing journal where AI offers a first line and the user takes over, as the hybrid the findings pointed to."],
   ["kicker","How it was done"],
   ["steps",[
-    {b:"Participants",p:"N = 68 young adults, recruited across schools and community groups. Each completed both sessions, 136 in all, with art familiarity recorded beforehand."},
-    {b:"Analysis",p:"SPSS. Interaction tested between condition and prior art familiarity rather than condition alone."},
-    {b:"Supervision",p:"Advised by Nguyễn Phương Thảo, Bảo Sang Psychology Space. Co-authored with Trần Hoàng Anh Thư; prepared for submission to the National High School Journal of Science."}
+    {b:"Design",p:"A counterbalanced within-subjects study: 68 young adults each completed both sessions, 136 in all, with prior art experience recorded first."},
+    {b:"Analysis",p:"8 post-session measures analysed in Python with paired t-tests, effect sizes and moderation; all 136 reflections coded thematically."},
+    {b:"Supervision",p:"Advised by Phuong Thao Nguyen, M.A. in Psychology and licensed art therapist. Now under review at the National High School Journal of Science."},
+    {b:"Recognition",p:"Selected as one of 3 school teams for the city-level science research competition, and presented the study to faculty from the University of Social Sciences and Humanities, Ho Chi Minh City."}
   ]],
   ["kicker",{t:"Internships · questions I carried into other rooms",id:"internships"}],
   ["pairs",[
-    {h:"Brainlife · 10-month research internship",p:"What does attention look like when you can actually watch it? Trained in EEG and brain mapping, cleaned recorded data, ran surveys with student participants. Cleaning other people's data showed me how much of a finding is decided before analysis starts."},
-    {h:"TeenCare · R&D intern · summers 2025 and 2026",p:"What do teenagers actually say when someone asks properly? 56 in-depth interviews synthesised into one persona, and the core product: a storytelling e-book where teens become a chef. Nobody described their feelings when asked directly; they did while talking about a character."},
-    {h:"EUNOIA · Head of Academic Affairs",p:"Does a room of 600 behave like a room of 20? A team of 8 rewriting psychology research for students, a self-discovery festival reaching 600, and peer support for 200+ around exams. Scale does not dilute participation, structure does."}
+    {h:"TeenCare · Part-time Research Associate, R&D · May to Dec 2025, Jun 2026 to now",p:"A youth mental-fitness startup building story-based tools for emotional awareness. What do teenagers actually say when someone asks properly? I conducted and analysed 100+ semi-structured interviews with thematic coding and affinity mapping. When a pilot interview shifted abruptly at personal questions, I co-designed 5 narrative survey formats with gradual reflective prompts; the chef narrative became the basis of TeenCare’s core product, an interactive e-book and form-building web product I helped shape through flows, wireframes and user testing."},
+    {h:"Brain-Life · Research & Development Intern · Aug 2026 to now",p:"A neurotechnology startup developing evidence-based tools for attention, learning and cognitive well-being. I reviewed 40+ peer-reviewed papers, benchmarked 20 international neurotechnology products and tested that evidence against 25 interviews with Vietnamese users, finding 3 patterns where global research and local behaviour diverged. I also process EEG recordings in Python and compare neural signals with students’ self-reported attention."}
   ]],
   ["links",[{href:"#/work/net-mo",label:"Where the question came from"},{href:"#/work/tech",label:"Tech Projects"}]]
 ]},
 
 "/work/tech":{accent:"var(--blue)",where:"Work · Tech Projects",blocks:[
-  ["hero",{kicker:"Work · Jan 2026 to now · Design and build",title:"Contextuary",
+  ["hero",{kicker:"Work · Jan 2025 to now · Founder and Product Designer",title:"Contextuary",
     lede:"A word. <b>Ephemeral.</b> You learned it on Tuesday. On Friday it appears in a sentence about a coalition and you do not recognise it.",
-    facts:[{b:"1,200",s:"visitors"},{b:"400+",s:"registered users"}],
-    meta:"Lovable and Supabase, deployed on Vercel",
+    facts:[{b:"~2,200",s:"visitors"},{b:"500+",s:"registered users"}],
+    meta:"A free vocabulary-learning website · designed in Figma, front end in React",
     k:"cx-lead",ghost:"the app open on a passage",screen:true}],
   ["kicker","The idea"],
   ["para","Memorising a definition gives you a word with no room around it. Recognition in a test passage needs the opposite: the word inside a sentence that gave it a job. So Contextuary never shows a word alone. You paste a passage or a single word, and it explains that word as it behaves right there, in English and in Vietnamese, then keeps the sentence."],
@@ -724,51 +736,82 @@ const ROOMS={
     {h:"Topic filters",p:"Nobody used them. Students think in tests, not categories."},
     {h:"A separate Today page",p:"One more tap to reach the thing they came for. Daily Picks moved to the top of My Words instead."}
   ]],
-  ["kicker",{t:"Also built · Co-founder · product structure and UX/UI",id:"colorful-journey"}],
-  ["subtitle","The Colorful Journey"],
+  ["kicker","How it was built"],
+  ["para","I led a 4-member team from problem definition to launch, designed the product in Figma and coded the front end in React. Recurring in-app feedback decided which word suggestions and practice formats came next."],
+  ["kicker",{t:"Also built · Co-founder and UI/UX Designer · Dec 2025 to now",id:"together"}],
+  ["subtitle","Together!"],
   ["lede","A group makes something together, then scatters. Six months later nobody can find it. The thing existed; the memory of it had nowhere to live."],
   ["pairs",[
     {h:"Design problem",p:"Archives are organised for retrieval. Memory is organised by who was there and what it felt like. The interface had to hold both."},
     {h:"Decision",p:"Entries are grouped by moment, not by file type, and every item keeps its contributor. Ownership stays visible while the collection becomes shared."},
-    {h:"On This Day",p:"Members leave writing, photographs and voice notes on a shared timeline, move between projects and dates, and rediscover old entries through “On This Day.”"}
+    {h:"On This Day",p:"Members leave writing, photographs and voice notes on a shared timeline, move between projects and dates, and rediscover old entries through “On This Day.”"},
+    {h:"My part",p:"I conceived the product idea and built the app’s information architecture and user flows, then designed the interface in Figma and coded the front end in React."}
   ]],
-  ["numbers",[{b:"5",s:"people on the team"},{b:"550+",s:"visitors"},{b:"450+",s:"returning"}]],
+  ["numbers",[{b:"1,550+",s:"visitors"},{b:"450+",s:"returning to the platform"}]],
   ["fig",{k:"cj-lead",slot:"UI 01",ratio:"16/9",screen:true,ghost:"Lead screenshot · the archive, opened on one project",cap:"<b>Archive view.</b> Entries grouped by moment, not by file type."}],
-  ["links",[{href:"#/work/research",label:"Research & Internships"},{href:"#/work/net-mo",label:"Nét Mơ"}]]
+  ["links",[{href:"#/work/research",label:"Research & Internships"},{href:"#/work/net-mo",label:"Net Mo"}]]
 ]},
 
 "/about":{accent:"var(--pink)",where:"About",blocks:[["about"]]},
 
 "/cv":{accent:"var(--blue)",where:"CV",blocks:[
-  ["hero",{kicker:"Curriculum vitae · updated 2026",title:"The facts, dated"}],
-  ["kicker","Founded and led"],
+  ["hero",{kicker:"Curriculum vitae · 2026",title:"The facts, dated",
+    meta:"Trieu Ngoc Gia Han · Ho Chi Minh City, Vietnam · trieungocgiahan@gmail.com"}],
+  ["kicker","Education"],
   ["rows",[
-    {t:"2024 – now",h:"Nét Mơ (Traces of Dreams) · Founder and Director",p:"Arts-based SEL programme for children in shelters and elderly residents in care facilities. 25-member team across R&D, Tech, Events and PR. 50 workshops, 200+ children, 6 shelters, 2 care facilities, ~75M VND raised. Legal sponsorship by Bảo Sang."},
-    {t:"2026",h:"Once Upon The Inside · Co-producer",p:"Mixed-media exhibition with The APRIL Collective at May Artspace. 300+ visitors."},
-    {t:"2025",h:"Beats of Hope · Organiser",p:"Charity concert, 10 school bands, 310+ tickets, ~25M VND net to Little Smiles for a year of hospital workshop materials."},
-    {t:"2024 – 2025",h:"Cerberus Football League · Co-founder",p:"15 teams, 200+ student-athletes, 600+ cumulative spectators. Scheduling, budget, referees, safety protocol."}
+    {t:"Grades 10 – 12",h:"Trung Vuong High School",p:"Grade 10 GPA 9.4/10 (rank 5 of 844). Grade 11 GPA 9.6/10 (rank 1 of 844). Most Well-Rounded Student, Grade 11."},
+    {t:"Grade 9",h:"Dinh Thien Ly School (Lawrence S. Ting School)",p:"GPA 9.3/10, top 5% in class."}
   ]],
-  ["kicker","Research"],
+  ["kicker","Honours"],
   ["rows",[
-    {t:"2025 – 2026",h:"Two Doors Into the Same Room · Lead author",p:"Mixed-methods study, N = 68, 136 sessions, expressive art-making versus AI-guided reflective dialogue. Crossover interaction by art familiarity. SPSS. Prepared for NHSJS. Advised by Nguyễn Phương Thảo."},
-    {t:"2026",h:"Brainlife · Research intern",p:"EEG and brain-mapping training, data cleaning, student survey work."},
-    {t:"2025",h:"Coursera",p:"Foundations of Neuroscience; Introduction to Psychology."}
+    {t:"2026",h:"International Psychology Olympiad",p:"Silver Award (Final Round, Top 15 Globally); 1st in Asia in the Global Grand Test."},
+    {t:"2026",h:"International Mathematics Olympiad Competition of Southeast Asia",p:"Gold Medal (Top 3 Nationally)."},
+    {t:"2025",h:"Ho Chi Minh City Youth Creativity Contest",p:"Second Prize; developed an emotional-learning card deck for preadolescents."},
+    {t:"2025",h:"Ho Chi Minh City Youth Basketball Tournament",p:"Bronze Medal."},
+    {t:"2025",h:"Ho Chi Minh City Regional Academic Excellence Contest",p:"Third Prize, Biology."},
+    {t:"2023",h:"Vietnam Water Rocket Competition",p:"Team Lead; National Silver Medal."}
   ]],
-  ["kicker","Built"],
+  ["kicker","Research and professional experience"],
   ["rows",[
-    {t:"2026 – now",h:"Contextuary",p:"SAT vocabulary in context. Lovable and Supabase, deployed on Vercel. 1,200 visitors, 400+ registered users, ~70% weekly return."},
-    {t:"2025 – now",h:"The Colorful Journey · Co-founder, product structure and UX/UI",p:"Shared project timeline for a five-person team. 550+ visitors, 450+ returning."},
-    {t:"2025",h:"Nét Mơ activity journal",p:"Three-role permission system, media upload, calendar, deadline board."}
+    {t:"Oct 2025 – now",h:"AI &amp; Art · First Author",p:"Under review at the National High School Journal of Science; advised by Phuong Thao Nguyen, M.A. in Psychology and licensed art therapist. Counterbalanced within-subjects study (N = 68, 136 sessions) comparing hands-on art-making with AI-guided reflective dialogue. 8 post-session measures analysed in Python: AI made starting easier (7.91 vs. 5.57/10), art produced stronger ownership (7.40 vs. 5.38/10), and prior art experience reversed which format improved mood more (p &lt; .001). Built Inkling as a proposed hybrid. Selected as one of 3 school teams for the city-level science research competition; presented to faculty from the University of Social Sciences and Humanities, Ho Chi Minh City."},
+    {t:"May – Dec 2025; Jun 2026 – now",h:"TeenCare · Part-time Research Associate, R&amp;D",p:"Youth mental-fitness startup. Conducted and analysed 100+ semi-structured interviews; co-designed 5 narrative survey formats, one of which became the basis of the core product; contributed to flows, wireframes, interface design and user testing of an interactive e-book and form-building web product."},
+    {t:"Aug 2026 – now",h:"Brain-Life · Research &amp; Development Intern",p:"Neurotechnology startup. Reviewed 40+ peer-reviewed papers, benchmarked 20 international neurotechnology products and tested the evidence against 25 interviews with Vietnamese users; processed EEG recordings in Python."}
   ]],
-  ["kicker","Selected honours"],
-  ["rows",[...AWARDS].sort((a,b)=>b.t-a.t)],
+  ["kicker","Youth programs and community development"],
+  ["rows",[
+    {t:"Apr 2025 – now",h:"Net Mo (“Dream Strokes”) Project · Founder &amp; Project Director",p:"Built from cold outreach into a 25-member team across R&amp;D, Tech, Events and PR over three seasons; professionally guided and legally sponsored by Bao Sang Art Therapy Center. 4-session emotional-learning curriculum for ~200 children across 6 shelters in Ho Chi Minh City and Dong Nai Province (active participation from 60% to an average of 85%); 8 sessions with 22 older adults at 2 care homes. Public programmes: Sol Sound (400+ tickets), Colors of the Pitch (2 tournaments, 10 teams, 1,000+ spectators), Once Upon the Inside (youth painting exhibition, 300+ visitors). Open-access curriculum in Vietnamese and English; ~VND 75 million in net proceeds."},
+    {t:"Dec 2024 – Dec 2025",h:"Little Smiles Project · Ideas Team member → Creative Director",p:"Led a 4-person creative team in South Korea, France, Taiwan and Vietnam designing 8 adaptive play and storytelling sessions for ~100 children across 3 hospitals. Produced Beats of Hope, a benefit concert with 10+ student bands; raised ~VND 25 million, donated to two hospitals in France."},
+    {t:"Aug – Oct 2025",h:"Colors of Joy Workshop · Curriculum Designer",p:"Art-based emotional-learning programme for children in Hanoi with Bao Sang Art Therapy Center. Rewrote Net Mo activities into a 4-session curriculum for 24 children aged 6–12; by the final session, 23 of 24 could name their emotions through drawing."}
+  ]],
+  ["kicker","Product design and development"],
+  ["rows",[
+    {t:"Jan 2025 – now",h:"Contextuary · Founder &amp; Product Designer",p:"Free vocabulary-learning website. Led a 4-member team from problem definition to launch; designed in Figma and coded the front end in React. ~2,200 visitors and 500+ registered users."},
+    {t:"Dec 2025 – now",h:"Together! · Co-Founder &amp; UI/UX Designer",p:"Digital diary app for teams to record and revisit milestones and reflections. Product idea, information architecture and user flows; interface in Figma, front end in React. 1,550+ visitors, 450+ returning."}
+  ]],
+  ["kicker","Gatherings and event leadership"],
+  ["rows",[
+    {t:"Summers 2025, 2026",h:"Photography &amp; Sketch Tours · Founder &amp; Program Organizer",p:"Photography and sketch tours for 70+ participants, bringing locals and art enthusiasts together with international visitors."},
+    {t:"Oct 2024 – now",h:"Eunoia Psychology Club · Head of Academic Affairs",p:"Led an 8-member team translating psychology into characters, comics and explainers for a 2,000-follower page. Directed 25 volunteers for Colors of Identity, a 5-station self-discovery programme with 600 registrants."},
+    {t:"Aug 2024 – Apr 2026",h:"Physics Club · Member of Academic Affairs",p:"Initiated Trung Vuong’s first Water Rocket Design Contest (80+ participants, ~12 teams; now an annual programme). Academic design lead for the SciPhony Science Festival, a 5-booth interdisciplinary festival."},
+    {t:"Dec 2025 – Feb 2026",h:"Hey Tet! School Music Event · Program Vice Organizer",p:"Trained the programme team within a 36-student committee; directed full-day programming for 2,400+ attendees at the school’s first fully student-run Lunar New Year music event."},
+    {t:"Aug 2024 – Feb 2025",h:"Trung Vuong Football League · Operations Lead",p:"Co-led a 7-member team through 2 seasons for 15 teams representing 8 schools; budgeting, equipment and match operations."},
+    {t:"Grades 1 – 12",h:"Class President",p:"Elected for 12 consecutive years across primary, middle and high school."}
+  ]],
+  ["kicker","Creative practice and skills"],
+  ["rows",[
+    {t:"Research",h:"Research &amp; methods",p:"Python for statistical analysis; survey and experimental design; qualitative coding."},
+    {t:"Build",h:"Product &amp; build",p:"UI/UX design; rapid prototyping; front-end web development; Arduino and hardware integration."},
+    {t:"Practice",h:"Creative &amp; athletic",p:"Painting; documentary photography; short filmmaking; lead guitar; competitive football and basketball."},
+    {t:"Languages",h:"Languages",p:"Vietnamese (native); English (advanced); Cantonese and Mandarin (limited proficiency)."},
+    {t:"Organiser",h:"Organiser",p:"Music shows; football tournaments; exploration tours."}
+  ]],
   ["links",[{href:"#/about",label:"About"},{href:"#/awards",label:"Awards"},{href:"#/work/research",label:"Research & Internships"}]]
 ]},
 
 "/awards":{accent:"var(--teal)",where:"Awards",blocks:[
   ["hero",{kicker:"Awards · 2023 to 2026",title:"Awards",
-    lede:"I like that these awards do not fit neatly into one category. They came from psychology, writing, design, science, engineering and sport.",
-    facts:[{b:"8",s:"selected honours"}],
+    lede:"I like that these awards do not fit neatly into one category. They came from psychology, mathematics, writing, design, science, engineering and sport.",
+    facts:[{b:"9",s:"selected honours"}],
     /* a medal drawn in the door, where other rooms show a photograph */
     art:'<path d="M42 4l14 58M78 4L64 62" stroke-width="9" opacity=".55"/><path d="M42 4l14 58M78 4L64 62"/><circle cx="60" cy="98" r="34"/><circle cx="60" cy="98" r="25" opacity=".6"/><path d="M60 82l4.7 9.6 10.6 1.5-7.7 7.5 1.8 10.5-9.4-5-9.4 5 1.8-10.5-7.7-7.5 10.6-1.5z"/>'}],
   ["awards"],
@@ -783,7 +826,8 @@ const ROOM_ALIASES={
   "/work/gather":"/work/events",
   "/research/two-doors":"/work/research",
   "/work/contextuary":"/work/tech",
-  "/work/colorful-journey":"/work/tech/colorful-journey"
+  "/work/colorful-journey":"/work/tech/together",
+  "/work/together":"/work/tech/together"
 };
 
 /* ---------- exhibition · a small hang, then the full gallery ---------- */
@@ -815,7 +859,7 @@ const ARCHIVE=[
    alt:"Red ink sketch of the Ho Chi Minh City skyline seen across the river, a tree-lined embankment in front."},
   {id:"post-office",t:"My city Post Office",p:"Black ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"691/525",size:.78,support:"paper",
    n:"Redrawing the building I passed unnoticed every single day opened my eyes to its timeless beauty.",
-   alt:"Black ink sketch of the Saigon Central Post Office facade with its clock and arched windows, lettered Bưu Điện TP.HCM."}
+   alt:"Black ink sketch of the Saigon Central Post Office facade with its clock and arched windows, lettered with its Vietnamese name."}
 ];
 /* every work is shown whole: contain, never cropped */
 ARCHIVE.forEach(a=>{ MEDIA["art-"+a.id]={src:`img/art-${a.id}.jpg`,alt:a.alt,fit:"contain"}; });
@@ -846,12 +890,12 @@ function exhibitionHTML(){
       </button>`).join("")}</div>
     <p class="mono gallery__hint">Drag along the wall →</p>
     <div class="gallery__cta">
-      <p class="mono mono--sentence">Eight of them. The rest of the collection hangs in the full portfolio.</p>
+      <p class="mono mono--sentence">Eight of them. The rest of the collection hangs in the full portfolio. Through Net Mo I also organised Once Upon the Inside, a youth painting exhibition that welcomed 300+ visitors.</p>
       <a class="btn btn--ink" href="https://canva.link/uouxvz39irst7qt" target="_blank" rel="noopener">See the full portfolio ↗</a>
     </div>
   </div>
   ${screeningHTML()}
-  ${B.links([{href:"#/about",label:"About the practice"},{href:"#/work/net-mo",label:"Nét Mơ"},{href:"#/awards",label:"Awards"}])}`;
+  ${B.links([{href:"#/about",label:"About the practice"},{href:"#/work/net-mo",label:"Net Mo"},{href:"#/awards",label:"Awards"}])}`;
 }
 
 /* ---------- screening room · films, below the paintings ---------- */
