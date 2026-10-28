@@ -44,12 +44,25 @@ front end in React. ~2,200 visitors, 500+ registered users,
 around 70% returning weekly in peak SAT season. Cut features: spaced repetition, topic filters,
 a separate Today page.
 
+Story (her words): while studying vocabulary she saw how many steps it took
+to keep one word, extra cognitive load that taught nothing, and where students
+gave up. Contextuary cuts that to one step. User messages (translated): "Since
+Contextuary came along, learning vocabulary has become so much easier." "The
+founder keeps listening and improving it. I love it."
+
 ## Together!, co-founder and UI/UX designer, Dec 2025 to now
 Shared timeline for project teams whose members are often apart: writing,
 photographs and voice notes, moving between projects and dates, old entries
 resurfaced through "On This Day". Five-person team. 1,550+ visitors, 450+
 returning. Entries grouped by moment rather than file type, every item keeps
 its contributor.
+Story (her words): Dream Strokes runs on many people in many places with
+different jobs; members could not see each other's work, activities were
+forgotten, people felt they did not belong and the group lost its connection.
+Together! is the shared journal built for that. Member messages (translated):
+"The activities are so adorable." "I had no idea the design team worked this
+hard." "Today's football match was a great one." "The class was so sweet.
+Reading everyone's journal feels like being there."
 
 ## Questions carried into other rooms
 - Brain-Life, R&D intern, Aug 2026 to now. Brain mapping and EEG training, filtering

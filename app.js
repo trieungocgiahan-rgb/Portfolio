@@ -519,6 +519,18 @@ const B={
   </section>`,
   /* screens side by side, each as wide as its own proportions so their heights match */
   screens:a=>`<div class="blk browsers">${a.map(screenFrame).join("")}</div>`,
+  /* a pain point drawn as work: every step it used to take, crossed out, then what is left */
+  flow:o=>`<div class="blk flow">
+    <div class="flow__col flow__col--before"><p class="flow__label">${o.before.label}</p><ol>${o.before.steps.map(x=>`<li><s>${x}</s></li>`).join("")}</ol></div>
+    <div class="flow__arrow" aria-hidden="true">→</div>
+    <div class="flow__col flow__col--after"><p class="flow__label">${o.after.label}</p><ol>${o.after.steps.map(x=>`<li>${x}</li>`).join("")}</ol></div>
+  </div>`,
+  /* the pain points, one card each: a word, then what it felt like */
+  pains:a=>`<ol class="blk pains">${a.map(x=>`<li><b>${x.h}</b><p>${x.p}</p></li>`).join("")}</ol>`,
+  /* what people wrote back, as the messages they were */
+  voices:o=>`<div class="blk voices"><p class="room__kicker">${o.kicker}</p><ul>${o.items.map(x=>`<li><p class="voices__msg">${x.q}</p><p class="voices__who">${x.who}</p></li>`).join("")}</ul>${o.note?`<p class="voices__note">${o.note}</p>`:""}</div>`,
+  /* one screen across the wide column: the product, answering the pain point above it */
+  shot:o=>`<div class="blk shotwide">${o.kicker?`<p class="room__kicker">${o.kicker}</p>`:""}${screenFrame(o)}</div>`,
   /* words beside one screen */
   beside:o=>`<div class="blk beside${o.flip?" beside--flip":""}"><div class="beside__text">${o.blocks.map(([t,a])=>B[t](a)).join("")}</div>${screenFrame(o.shot)}</div>`,
   links:a=>`<div class="room__more">${a.map(l=>`<a href="${l.href}">${l.label} →</a>`).join("")}</div>`
@@ -763,38 +775,58 @@ const ROOMS={
   ["product",{id:"contextuary",logo:"img/contextuary-logo.png",logoAlt:"The Contextuary logo",
     kicker:"Founder and Product Designer · Jan 2025 to now · team of 4",name:"Contextuary",
     href:"https://contextuary.app",label:"Visit Contextuary",
-    lede:"A word. <b>Ephemeral.</b> You learned it on Tuesday. On Friday it appears in a sentence about a coalition and you do not recognise it.",
-    facts:[{b:"~2,200",s:"visitors"},{b:"500+",s:"registered users"}],
-    shot:{k:"cx-home",ratio:"1600/989",url:"contextuary.app",ghost:"the home page"}}],
+    lede:"While I was studying vocabulary, I noticed how much work it took just to keep one new word, and how little of that work helped anyone remember it. That was where students gave up.",
+    facts:[{b:"~2,200",s:"visitors"},{b:"500+",s:"registered users"}]}],
+  ["kicker","The pain point"],
+  ["para","Saving a single word meant a chain of small jobs, each one extra cognitive load that taught nothing about the word itself. By the third or fourth word, most students stopped."],
+  ["flow",{before:{label:"Before · to keep one word",steps:["Look the word up","Translate it into Vietnamese","Find a real example sentence","Copy it all into a notebook","Make your own flashcards","Remember to come back and test yourself"]},
+    after:{label:"With Contextuary",steps:["Add the word once","Get its Vietnamese meaning, SAT-style examples and a memory hint","Practise with quizzes, flashcards and AI challenges built from your own list"]}}],
+  ["shot",{kicker:"The product",k:"cx-home",ratio:"1600/989",url:"contextuary.app",ghost:"the home page"}],
   ["kicker","The idea"],
-  ["para","Memorising a definition gives you a word with no room around it. Recognition in a test passage needs the opposite: the word inside a sentence that gave it a job. So Contextuary never shows a word alone. You add a word, and it explains it as it behaves in a real SAT-style sentence, in English and in Vietnamese, then keeps the sentence."],
+  ["para","Memorising a definition gives you a word with no room around it. Recognition in a test passage needs the opposite: the word inside a sentence that gave it a job. So Contextuary never shows a word alone. It explains each word as it behaves in a real SAT-style sentence, in English and in Vietnamese, then keeps the sentence."],
   ["screens",[
     {k:"cx-1",ratio:"1290/907",url:"contextuary.app/words",ghost:"My Words",cap:"My Words: every saved word with its Vietnamese meaning, an SAT-style example, its status and a topic tag."},
     {k:"cx-2",ratio:"1600/920",url:"contextuary.app/practice",ghost:"a quiz question",cap:"Practice: a fill-in-the-blank question built from the words you saved."}
   ]],
   ["beside",{flip:true,blocks:[
-    ["kicker","Cut, and better for it"],
+    ["kicker","Listening, then cutting"],
     ["pairs",[
       {h:"Spaced repetition",p:"Built the logic, removed it. It scheduled words nobody cared about that day and made opening the app feel like a debt."},
       {h:"Topic filters",p:"Nobody used them. Students think in tests, not categories."},
       {h:"A separate Today page",p:"One more tap to reach the thing they came for. Daily Picks moved to the top of My Words instead."}
     ]]],
     shot:{k:"cx-3",ratio:"1138/1200",url:"contextuary.app/practice",ghost:"Start practice",cap:"What stayed: quiz or flashcards, an AI Challenge, and six question types."}}],
+  ["voices",{kicker:"What users wrote",note:"Messages from users, translated from Vietnamese.",items:[
+    {q:"Since Contextuary came along, learning vocabulary has become so much easier.",who:"A Contextuary user"},
+    {q:"The founder keeps listening and improving it. I love it.",who:"A Contextuary user"}
+  ]}],
 
   ["product",{id:"together",logo:"img/together-logo.png",logoAlt:"The Together! logo",
     kicker:"Co-Founder and UI/UX Designer · Dec 2025 to now",name:"Together!",
     href:"https://toghether.contextuary.app",label:"Visit Together!",
-    lede:"A group makes something together, then scatters. Six months later nobody can find it. The thing existed; the memory of it had nowhere to live.",
-    facts:[{b:"1,550+",s:"visitors"},{b:"450+",s:"returning to the platform"}],
-    shot:{k:"cj-lead",ratio:"1600/916",url:"together · home",ghost:"the home page"}}],
+    lede:"Dream Strokes runs on many people, in many places, each doing a different job. I watched how easily that kind of team drifts apart.",
+    facts:[{b:"1,550+",s:"visitors"},{b:"450+",s:"returning to the platform"}]}],
+  ["kicker","The pain points"],
+  ["pains",[
+    {h:"Out of sight",p:"Members worked in different places and on different jobs, so most of them never saw what the others did."},
+    {h:"Forgotten",p:"A good session lived in one group chat for a day, then sank. A season later, nobody could find it."},
+    {h:"Not belonging",p:"When you cannot see the team’s work, it is easy to feel you are not really part of it, and the whole group slowly loses its connection."}
+  ]],
+  ["shot",{kicker:"The product",k:"cj-lead",ratio:"1600/916",url:"together · home",ghost:"the home page"}],
   ["beside",{blocks:[
-    ["kicker","How it holds a memory"],
+    ["kicker","What we built"],
+    ["para","One shared journal for the whole team. Every workshop, meeting and match goes on a common calendar, with its photos and voice notes, and everyone can react and comment, whichever branch or role they are in."],
     ["pairs",[
-      {h:"Design problem",p:"Archives are organised for retrieval. Memory is organised by who was there and what it felt like. The interface had to hold both."},
       {h:"Decision",p:"Entries are grouped by moment, not by file type, and every item keeps its contributor. Ownership stays visible while the collection becomes shared."},
       {h:"My part",p:"I conceived the product idea and built its information architecture and user flows, then designed the interface in Figma and coded the front end in React."}
     ]]],
     shot:{k:"cj-1",ratio:"1600/997",url:"together · sample project",ghost:"a sample project",cap:"A sample project: every activity has a type, a colour and a day, and opens into its photos, voice notes and reactions."}}],
+  ["voices",{kicker:"What the team wrote",note:"Messages from Dream Strokes members, translated from Vietnamese.",items:[
+    {q:"The activities are so adorable.",who:"A Dream Strokes member"},
+    {q:"I had no idea the design team worked this hard.",who:"A Dream Strokes member"},
+    {q:"Today’s football match was a great one.",who:"A Dream Strokes member"},
+    {q:"The class was so sweet. Reading everyone’s journal feels like being there.",who:"A Dream Strokes member"}
+  ]}],
   ["links",[{href:"#/work/research",label:"Research & Internships"},{href:"#/work/net-mo",label:"Dream Strokes"}]]
 ]},
 

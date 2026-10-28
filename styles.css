@@ -1058,6 +1058,43 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
   .beside--flip > .browser{order:0}
   .beside > .browser{max-width:34rem}
 }
+/* the pain point as work: crossed-out steps, an arrow, what is left */
+.room__inner > :is(.flow,.pains,.voices,.shotwide){grid-column:wide}
+.shotwide{margin-top:var(--sp-5)}
+.shotwide > .room__kicker{margin:0 0 var(--sp-2)}
+.flow{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:var(--sp-3);align-items:center}
+.flow__col{padding:var(--sp-3);border-radius:14px;border:1px solid var(--rule)}
+.flow__col--before{background:rgba(255,255,255,.45)}
+.flow__col--after{background:#fff;border:2px solid var(--accent);box-shadow:8px 8px 0 color-mix(in srgb,var(--accent) 18%,transparent)}
+.flow__label{margin-bottom:var(--sp-2);font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-45)}
+.flow__col--after .flow__label{color:var(--accent)}
+.flow ol{list-style:none;margin:0;padding:0;counter-reset:f}
+.flow li{counter-increment:f;display:grid;grid-template-columns:1.8rem minmax(0,1fr);gap:.4rem;padding:.45rem 0;border-top:1px solid var(--ink-10);color:var(--ink-70)}
+.flow li:first-child{border-top:0}
+.flow li::before{content:counter(f);font-family:var(--mono);font-size:var(--t-meta);color:var(--ink-45);padding-top:.15rem}
+.flow s{text-decoration-color:color-mix(in srgb,var(--pink) 75%,transparent);text-decoration-thickness:1.5px;color:var(--ink-45)}
+.flow__col--after li{font-size:1.02rem;color:var(--ink)}
+.flow__col--after li::before{color:var(--accent)}
+.flow__arrow{font-family:var(--display);font-size:2.2rem;color:var(--accent)}
+@media(max-width:699px){.flow{grid-template-columns:minmax(0,1fr)}.flow__arrow{justify-self:center;rotate:90deg}}
+/* pain points: one card each */
+.pains{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-3);counter-reset:p}
+.pains li{counter-increment:p;padding:var(--sp-3);border:1px solid var(--rule);border-radius:14px;background:rgba(255,255,255,.55)}
+.pains b{display:block;margin-bottom:.5rem;font-family:var(--display);font-weight:400;font-size:var(--t-idea);letter-spacing:-.01em}
+.pains b::before{content:"0" counter(p);display:block;margin-bottom:.4rem;font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;color:var(--accent)}
+.pains p{color:var(--ink-70);font-size:.96rem;line-height:1.65}
+@media(max-width:900px){.pains{grid-template-columns:minmax(0,1fr)}}
+/* what people wrote back, as messages */
+.voices{margin-top:var(--sp-5)}
+.voices ul{list-style:none;margin:var(--sp-2) 0 0;padding:0;display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-3);align-items:flex-start}
+.voices li{flex:1 1 15rem;max-width:26rem}
+.voices li:nth-child(even){margin-top:var(--sp-3)}
+.voices__msg{position:relative;padding:.85rem 1.1rem;border-radius:18px 18px 18px 4px;background:#fff;border:1px solid var(--rule);
+  font-family:var(--display);font-size:1.12rem;line-height:1.4;letter-spacing:-.005em;box-shadow:0 18px 30px -24px rgba(20,28,51,.6)}
+.voices li:nth-child(even) .voices__msg{background:color-mix(in srgb,var(--accent) 9%,#fff)}
+.voices__who{margin:.45rem 0 0 .4rem;font-family:var(--mono);font-size:var(--t-caption);letter-spacing:.04em;color:var(--ink-45)}
+.voices__note{margin-top:var(--sp-2);font-family:var(--mono);font-size:var(--t-caption);letter-spacing:.04em;color:var(--ink-45)}
+@media(max-width:699px){.voices li{max-width:none}.voices li:nth-child(even){margin-top:0}}
 @media(max-width:699px){.browsers{flex-direction:column}.browsers > .browser{flex:none;width:100%}}
 
 /* ---- exhibition · a lit gallery wall, works hung on one eye line ----
