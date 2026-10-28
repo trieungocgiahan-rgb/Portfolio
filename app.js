@@ -37,8 +37,11 @@ const MEDIA = {
   /* events: one photograph per gathering, filled as they arrive */
   "ev-tet":{src:"img/ev-tet.jpg",alt:"Hey Tet!: a packed schoolyard of students in uniform crowding toward the stage, phones up, under the yellow arches of the school.",pos:"50% 60%"},
   "ev-sciphony":{src:"img/ev-sciphony.jpg",alt:"The SciPhony team, in purple shirts, gathered in front of the festival backdrop under the school’s yellow archway.",pos:"50% 50%"},
-  "ev-tours":{src:"img/ev-tours.jpg",alt:"A photography and sketch tour group smiling together in a wood-panelled coffee shop, shot on film.",pos:"50% 55%"},
-  "ev-pitch":"", "ev-league":"", "ev-rocket":"", "ev-identity":"",
+  "ev-tours":{src:"img/ev-tours.jpg",alt:"Two visitors on a sketch tour hold up their drawings of the city on a bridge at night, the Ho Chi Minh City skyline lit behind them.",pos:"50% 60%"},
+  "ev-pitch":{src:"img/ev-pitch.jpg",alt:"Colors of the Pitch: players in red jerseys huddle together on the pitch, hands raised.",pos:"50% 60%"},
+  "ev-league":{src:"img/ev-league.jpg",alt:"Trung Vuong Football League: players sit in a circle on the turf, their boots meeting in the middle.",pos:"50% 45%"},
+  "ev-identity":{src:"img/ev-identity.jpg",alt:"Colors of Identity: a volunteer stacks decorated cans into a tower at one of the stations.",pos:"60% 50%"},
+  "ev-rocket":{src:"img/ev-rocket.jpg",alt:"The open edition of the water rocket contest: three students from another school pump up their bottle rocket on the launch pad.",pos:"55% 50%"},
   "once-upon":{src:"img/once-upon.jpg",alt:"Once Upon the Inside: visitors walk a lit gallery lined with colourful paintings; a child reads the programme.",pos:"50% 55%"},
   /* research rooms: never participants; the work, the team, the tools */
   "rs-1":"", "rs-2":"", "tc-1":"", "tc-2":"", 
@@ -811,7 +814,7 @@ const ROOMS={
       ]},
     {num:"03",c:"var(--blue)",h:"Science you can hold",why:"People join faster when there is something to build or test with their own hands, not only something to listen to.",
       events:[
-        {k:"ev-rocket",ghost:"a water rocket launch",meta:"Initiator · Physics Club",name:"Water Rocket Design Contest",p:"I launched Trung Vuong’s first water-rocket design challenge and wrote its proposal and technical guide. It became an annual school programme.",fact:"80+ participants · ~12 teams"},
+        {k:"ev-rocket",ghost:"a water rocket launch",meta:"Initiator · Physics Club",name:"Water Rocket Design Contest",p:"I launched Trung Vuong’s first water-rocket design challenge and wrote its proposal and technical guide. It became an annual programme and later opened to teams from other schools, as in this photograph.",fact:"80+ participants · ~12 teams in the first edition"},
         {k:"ev-sciphony",ghost:"a SciPhony booth",meta:"Academic Design Lead · Physics Club",name:"SciPhony Science Festival",p:"I led the academic design of an interdisciplinary festival: a human-body investigation that needed physics, chemistry and biology at every booth.",fact:"5 booths"}
       ]},
     {num:"04",c:"var(--teal)",h:"Quiet ways to open up",why:"Not everyone opens up on a stage. A prompt, a station or a walk lets people begin at their own pace.",
