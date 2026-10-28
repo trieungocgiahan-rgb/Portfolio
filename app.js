@@ -781,7 +781,7 @@ const ROOMS={
   ["para","At a Dream Strokes table I learned that a room changes when people stop watching and start making. A gathering is the same idea at a larger scale. A concert, a match, a science festival or a sketch walk can each give strangers one thing to create together, and that shared thing is often what lets someone feel they belong. Everything on this page follows four threads."],
   ["pains",[
     {h:"Create together",p:"Give people something to make, not only something to watch."},
-    {h:"Mix the room",p:"Put people next to someone they would not have met."},
+    {h:"Cheer for the same thing",p:"Give people one thing to cheer for, and strangers start to become friends."},
     {h:"Make room to belong",p:"Build a place where a quiet person can join at their own pace."},
     {h:"Start what isn’t there",p:"When the room I wanted did not exist yet, I started it, in science as much as in music."}
   ]],
@@ -798,8 +798,8 @@ const ROOMS={
   ["tasks",[
     {h:"Create together",did:"I produced the night as one shared show rather than ten separate sets, and ran the stage flow and artist coordination so each band handed the room on to the next.",
       learned:"A shared stage turns ten small audiences into one crowd."},
-    {h:"Mix the room",did:"We distributed 310+ tickets across Ho Chi Minh City schools, so most people stood beside someone from another school.",
-      learned:"Who stands next to whom is a design decision, not an accident."},
+    {h:"Cheer for the same thing",did:"We distributed 310+ tickets across Ho Chi Minh City schools, so the crowd came from many schools to cheer for the same night.",
+      learned:"Cheering for the same thing is one of the quickest ways strangers become friends."},
     {h:"Make room to belong",did:"On the night I watched for the moment the concert began to belong to the people inside it: when one person moved closer to the stage, and others followed.",
       learned:"A room changes when one person goes first. My job is to make that first step easy."},
     {h:"Start what isn’t there",did:"There was no stage for student bands to play for children in hospital, so we built one, and I negotiated the venue sponsorship in person to make it happen.",
@@ -819,9 +819,9 @@ const ROOMS={
         {k:"ev-solsound",ghost:"Sol Sound, the stage",meta:"Dream Strokes · music concert",name:"Sol Sound",p:"A Dream Strokes concert that opened the project to a wider community, beyond our partner shelters.",fact:"400+ tickets",event:"sol-sound"},
         {k:"ev-tours",ghost:"a sketch tour in the city",meta:"Founder and Program Organizer · summers 2025 and 2026",name:"Photography & Sketch Tours",p:"Walks through Ho Chi Minh City where locals, art lovers and international visitors photograph and sketch the same streets side by side, at landmarks and at hidden spots our members love.",fact:"70+ participants"}
       ]},
-    {num:"02",c:"var(--orange)",h:"Mix the room",why:"Put people next to someone they would not have met. Sorting players across schools, rather than by school, changed who spoke to whom, and it kept changing after the final whistle.",
+    {num:"02",c:"var(--orange)",h:"Cheer for the same thing",why:"Football is a way to express yourself too, on the pitch and in the stands. When a crowd cheers for the same goal, people who arrived as strangers often leave as friends.",
       events:[
-        {k:"ev-pitch",ghost:"Colors of the Pitch, mixed teams",meta:"Dream Strokes · football tournaments",name:"Colors of the Pitch",p:"Two tournaments where football was the excuse, fundraising the outcome, and mixed teams the real design decision.",fact:"10 teams · 1,000+ spectators",event:"colors-of-the-pitch"},
+        {k:"ev-pitch",ghost:"Colors of the Pitch, a team huddle",meta:"Dream Strokes · football tournaments",name:"Colors of the Pitch",p:"Two tournaments in Dream Strokes’ public programme that brought people beyond our partner shelters into the project, on the pitch and in the stands.",fact:"10 teams · 1,000+ spectators",event:"colors-of-the-pitch"},
         {k:"ev-league",ghost:"Trung Vuong Football League",meta:"Operations Lead · Aug 2024 to Feb 2025",name:"Trung Vuong Football League",p:"I co-led a 7-member team through two seasons that brought players from eight schools onto one pitch, and managed budgeting, equipment and match operations.",fact:"15 teams · 8 schools",event:"cerberus-league"}
       ]},
     {num:"03",c:"var(--teal)",h:"Make room to belong",why:"Not everyone joins from the front. A station, a prompt or a role in the crew lets a quiet person take part at their own pace and still feel the event is partly theirs.",
@@ -836,7 +836,7 @@ const ROOMS={
       ]}
   ]],
   ["kicker","What ties them together"],
-  ["para","A concert, a league, a rocket launch and a sketch walk look nothing alike. Each one still began the same way: give people something to make together, put them beside someone new, leave room for the quiet ones, and if the room does not exist yet, start it."],
+  ["para","A concert, a league, a rocket launch and a sketch walk look nothing alike. Each one still began the same way: give people something to make together and something to cheer for, leave room for the quiet ones, and if the room does not exist yet, start it."],
   ["links",[{href:"#/work/net-mo",label:"Dream Strokes"},{href:"#/work/research",label:"Research & Internships"}]]
 ]},
 

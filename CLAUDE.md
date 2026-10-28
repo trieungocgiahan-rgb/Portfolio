@@ -24,7 +24,7 @@ sharing a room, then tests it through community work, research and building.
   ink, Brain-Life white with its electric blue (#0041E7) and a dot grid;
   each company's wordmark stands in for the room title and its icon sits
   in the door. Events is one story about why she makes gatherings,
-  told in four threads (Create together, Mix the room, Make room to belong,
+  told in four threads (Create together, Cheer for the same thing, Make room to belong,
   Start what isn't there): the threads first, then Beats of Hope as the
   flagship that holds all four, then the other gatherings from her CV, two
   per thread, each card with a photo slot (ev-* in MEDIA) and a tag where

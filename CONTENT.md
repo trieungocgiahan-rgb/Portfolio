@@ -96,7 +96,7 @@ for about 100 children across three hospitals.
 - Sol Sound, Dream Strokes OPEN. 400+ tickets.
 - Trung Vuong Football League, Operations Lead, Aug 2024 to Feb 2025.
   2 seasons, 15 teams from 8 schools, 200+ athletes, 600+ cumulative spectators.
-- Colors of the Pitch, two tournaments, 10 teams, 1,000+ spectators, mixed teams by design.
+- Colors of the Pitch, two tournaments, 10 teams, 1,000+ spectators.
 - Hey Tet!, Program Vice Organizer, Dec 2025 to Feb 2026. School-wide music
   event, 2,400+ attendees.
 
