@@ -1,22 +1,20 @@
 # Before this goes live
 
 ## 1. Photographs (all in the MEDIA object at the top of app.js; the 8 exhibition works are in img/art-*.jpg)
-Filled: hero-door, rooms-hall, gather-2, ab-2 (portrait), nm-lead, nm-1…6, dream-strokes-logo, cx-lead, cx-1…3, cj-lead, cj-1,
+Filled: hero-door, rooms-hall, gather-2, ab-2 (portrait), nm-lead, nm-1…6, dream-strokes-logo, cx-home, cx-1…3, cj-lead, cj-1, ev-tet, ev-sciphony, ev-tours,
+once-upon, bl-1…4,
 contextuary-logo, together-logo
 (Dream Strokes), gt-lead, gt-1, gt-2 (Sol Sound), gt-4, gt-5 (Beats of Hope),
 img/signature.png (About).
 
 Still empty
-- ev-tet, ev-pitch, ev-league, ev-rocket, ev-sciphony, ev-identity, ev-tours
-           Events: one photograph each for Hey Tet!, Colors of the Pitch, the
-           football league, the water rocket contest, SciPhony, Colors of
-           Identity, the sketch tours (4:3)
+- ev-pitch, ev-league, ev-rocket, ev-identity
+           Events: Colors of the Pitch, the football league, the water
+           rocket contest, Colors of Identity (4:3)
 - rs-1     AI & Art: Inkling, the drawing journal (screenshot)
 - rs-2     AI & Art: presenting the study (no participants)
 - tc-1     TeenCare: the team at work
 - tc-2     TeenCare: a wireframe or the e-book
-- bl-1     Brain-Life: an EEG session or the workspace (no identifiable participants)
-- bl-2     Brain-Life: the team at work
 - FILMS    three YouTube links for the screening room (title, year, one line)
 
 Faces of shelter children need permission from the shelter before going

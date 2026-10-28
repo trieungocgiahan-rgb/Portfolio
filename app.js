@@ -35,9 +35,17 @@ const MEDIA = {
   "cj-lead":{src:"img/cj-lead.jpg",alt:"Together’s home page: Our story, written together, beside a shared October calendar with coloured activity bars, a voice note and a completed workshop card."},
   "cj-1":{src:"img/cj-1.jpg",alt:"Together’s sample project: a month calendar with a kick-off workshop, a team meeting, a field survey and a launch event, and a workshop card below."},
   /* events: one photograph per gathering, filled as they arrive */
-  "ev-tet":"", "ev-pitch":"", "ev-league":"", "ev-rocket":"", "ev-sciphony":"", "ev-identity":"", "ev-tours":"",
+  "ev-tet":{src:"img/ev-tet.jpg",alt:"Hey Tet!: a packed schoolyard of students in uniform crowding toward the stage, phones up, under the yellow arches of the school.",pos:"50% 60%"},
+  "ev-sciphony":{src:"img/ev-sciphony.jpg",alt:"The SciPhony team, in purple shirts, gathered in front of the festival backdrop under the school’s yellow archway.",pos:"50% 50%"},
+  "ev-tours":{src:"img/ev-tours.jpg",alt:"A photography and sketch tour group smiling together in a wood-panelled coffee shop, shot on film.",pos:"50% 55%"},
+  "ev-pitch":"", "ev-league":"", "ev-rocket":"", "ev-identity":"",
+  "once-upon":{src:"img/once-upon.jpg",alt:"Once Upon the Inside: visitors walk a lit gallery lined with colourful paintings; a child reads the programme.",pos:"50% 55%"},
   /* research rooms: never participants; the work, the team, the tools */
-  "rs-1":"", "rs-2":"", "tc-1":"", "tc-2":"", "bl-1":"", "bl-2":"",
+  "rs-1":"", "rs-2":"", "tc-1":"", "tc-2":"", 
+  "bl-1":{src:"img/bl-1.jpg",alt:"At a Brain-Life booth, two team members fit an EEG headband on a visitor beside a model mountain.",pos:"50% 35%"},
+  "bl-2":{src:"img/bl-2.jpg",alt:"The Brain-Life team in the office, in front of the logo wall, giving thumbs up.",pos:"50% 50%"},
+  "bl-3":{src:"img/bl-3.jpg",alt:"A Brain-Life booth table: a laptop with the logo, an EEG headband, the app on a phone, notebooks and a Just Breathe tote.",pos:"50% 50%"},
+  "bl-4":{src:"img/bl-4.jpg",alt:"A Brain-Life team meeting in the office, notebooks open, by the blue wall.",pos:"50% 50%"},
   "ab-2":{src:"img/about-portrait.jpg",alt:"Gia Han in her school uniform, smiling and holding up a pink crayon; the project’s Vietnamese name, a crown and yellow scribbles are drawn over the photograph.",pos:"50% 38%"}
 };
 /* ============================================================
@@ -928,8 +936,8 @@ const ROOMS={
   ["kicker","Why I joined"],
   ["para","I care about neuroscience because so much of how we feel, learn and pay attention starts in the nervous system. Looking after the brain is part of being healthy, not something separate from it. I wanted to see how that science becomes something people actually use, so I looked for a professional setting where I could work on it, and joined Brain-Life as an R&D intern."],
   ["figs",[
-    {k:"bl-1",slot:"Plate 01",ratio:"4/3",ghost:"an EEG session or the workspace",cap:"Where the recordings come from."},
-    {k:"bl-2",slot:"Plate 02",ratio:"4/3",ghost:"the team at work",cap:"Working with the R&D team."}
+    {k:"bl-2",slot:"Plate 01",ratio:"4/3",ghost:"the team",cap:"The Brain-Life team."},
+    {k:"bl-4",slot:"Plate 02",ratio:"4/3",ghost:"a team meeting",cap:"A working session with the R&D team."}
   ]],
   ["kicker","What I did, and what each part taught me"],
   ["tasks",[
@@ -941,6 +949,10 @@ const ROOMS={
       learned:"Evidence from elsewhere does not automatically fit here. The people in front of you have to be part of the evidence."},
     {h:"Signal and self-report",did:"I process EEG recordings in Python and analyse student surveys side by side, looking for the gaps between neural signals and what students report about their own attention. Those gaps informed product iterations.",
       learned:"Neither the signal nor a person’s own account is the whole picture. The useful part is where they disagree."}
+  ]],
+  ["figs",[
+    {k:"bl-1",slot:"Plate 03",ratio:"3/4",ghost:"an EEG demonstration",cap:"Fitting an EEG headband at a Brain-Life booth."},
+    {k:"bl-3",slot:"Plate 04",ratio:"3/4",ghost:"the product on the table",cap:"The headband, the app and the tools that come out of the research."}
   ]],
   ["numbers",[
     {b:"40+",s:"peer-reviewed papers reviewed"},
@@ -1131,6 +1143,9 @@ function exhibitionHTML(){
       <a class="btn btn--ink" href="https://canva.link/uouxvz39irst7qt" target="_blank" rel="noopener">See the full portfolio ↗</a>
     </div>
   </div>
+  ${B.kicker({t:"Also · Once Upon the Inside · co-producer · 2026",id:"once-upon"})}
+  ${B.para("A youth painting exhibition with The APRIL Collective at May Artspace, part of Dream Strokes’ public programme. It welcomed more than 300 visitors.")}
+  ${B.lead({k:"once-upon",slot:"",ratio:"4/3",ghost:"the exhibition",cap:"Once Upon the Inside: visitors among the paintings."})}
   ${screeningHTML()}
   ${B.links([{href:"#/about",label:"About the practice"},{href:"#/work/net-mo",label:"Dream Strokes"},{href:"#/awards",label:"Awards"}])}`;
 }
