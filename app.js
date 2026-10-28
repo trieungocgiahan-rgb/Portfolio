@@ -45,7 +45,8 @@ const MEDIA = {
   "ev-rocket":{src:"img/ev-rocket.jpg",alt:"The open edition of the water rocket contest: three students from another school pump up their bottle rocket on the launch pad.",pos:"55% 50%"},
   "once-upon":{src:"img/once-upon.jpg",alt:"Once Upon the Inside: visitors walk a lit gallery lined with colourful paintings; a child reads the programme.",pos:"50% 55%"},
   /* research rooms: never participants; the work, the team, the tools */
-  "rs-1":"", "rs-2":"", "tc-1":"", "tc-2":"", 
+  "rs-1":{src:"img/rs-1.jpg",alt:"Inkling’s home page: AI draws the first line. You decide the rest. Beside it, a drawing where a dotted AI line turns into the user’s own strokes, a hill and a sun.",pos:"30% 40%"},
+  "rs-2":{src:"img/rs-2.jpg",alt:"Gia Han, holding a microphone, presents in front of a screen showing a warning sign.",pos:"55% 40%"}, "tc-1":"", "tc-2":"", 
   "bl-1":{src:"img/bl-1.jpg",alt:"At a Brain-Life booth, two team members fit an EEG headband on a visitor beside a model mountain.",pos:"50% 35%"},
   "bl-2":{src:"img/bl-2.jpg",alt:"The Brain-Life team in the office, in front of the logo wall, giving thumbs up.",pos:"50% 50%"},
   "bl-3":{src:"img/bl-3.jpg",alt:"A Brain-Life booth table: a laptop with the logo, an EEG headband, the app on a phone, notebooks and a Just Breathe tote.",pos:"50% 50%"},
@@ -595,6 +596,8 @@ const B={
   </section>`).join("")}</div>`,
   /* each part of the work on one row: what I did, then what it taught me */
   tasks:a=>`<ol class="blk tasks">${a.map(x=>`<li><div class="tasks__did"><b>${x.h}</b><p>${x.did}</p></div><p class="tasks__learned"><span>What it taught me</span>${x.learned}</p></li>`).join("")}</ol>`,
+  /* a way on to another room on this site */
+  go:o=>`<p class="blk room__visit"><a class="btn btn--ink" href="${o.href}">${o.label} →</a></p>`,
   /* a way out to the real organisation, in a new tab */
   visit:o=>`<p class="blk room__visit"><a class="btn btn--ink" href="${o.href}" target="_blank" rel="noopener">${o.label} ↗</a></p>`,
   /* words beside one screen */
@@ -764,9 +767,10 @@ const ROOMS={
     {k:"nm-5",slot:"Plate 06",ratio:"1/1",ghost:"painting at the studio",cap:"Colors of Joy, Hanoi: painting together at the studio."},
     {k:"nm-6",slot:"Plate 07",ratio:"1/1",ghost:"a facilitator with two children",cap:"A facilitator painting alongside two children."}
   ]],
-  ["kicker",{t:"Beyond the shelters · Once Upon the Inside · 2026",id:"once-upon"}],
-  ["para","Dream Strokes also runs public programmes that open the project beyond our partner shelters. I co-produced one of them, Once Upon the Inside, a youth painting exhibition with The APRIL Collective at May Artspace that welcomed more than 300 visitors."],
+  ["kicker",{t:"Beyond the shelters · Dream Strokes OPEN",id:"once-upon"}],
+  ["para","Dream Strokes has a second branch, OPEN, with public programmes that bring a wider community into the project, beyond our partner shelters. It runs three of them: Sol Sound, a music concert (400+ tickets); Colors of the Pitch, two football tournaments (10 teams, 1,000+ spectators); and Once Upon the Inside, a youth painting exhibition with The APRIL Collective at May Artspace, which I co-produced (300+ visitors)."],
   ["lead",{k:"once-upon",slot:"Plate 08",ratio:"4/3",ghost:"the exhibition",cap:"Once Upon the Inside: visitors among the paintings."}],
+  ["go",{href:"#/work/events",label:"See these events"}],
   ["kicker","Where it led"],
   ["para","If the format changes engagement this reliably, the effect is not about art. It is about what the room permits. That question is what pushed me into reading psychology properly, and eventually into running a study instead of trusting my own field notes."],
   ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/work/events",label:"Events"},{href:"#/exhibition",label:"Exhibition"}]]
@@ -896,8 +900,8 @@ const ROOMS={
   ["kicker","What I built from it"],
   ["para","If AI is better at the first step and art is better at what follows, the answer is not to choose one. So I built Inkling, a drawing journal where the AI offers a first line and the person takes over: a proposed hybrid of the two doors."],
   ["figs",[
-    {k:"rs-1",slot:"Plate 01",ratio:"4/3",ghost:"Inkling, the drawing journal",cap:"Inkling: the AI offers a first line, the person takes over."},
-    {k:"rs-2",slot:"Plate 02",ratio:"4/3",ghost:"presenting the study",cap:"Presenting the study to university faculty."}
+    {k:"rs-1",slot:"Plate 01",ratio:"10/7",ghost:"Inkling, the drawing journal",cap:"Inkling: the AI draws the first line, the person decides the rest."},
+    {k:"rs-2",slot:"Plate 02",ratio:"10/7",ghost:"presenting the study",cap:"Presenting the study."}
   ]],
   ["kicker","Where it went"],
   ["steps",[

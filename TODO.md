@@ -8,8 +8,6 @@ contextuary-logo, together-logo
 
 
 Still empty
-- rs-1     AI & Art: Inkling, the drawing journal (screenshot)
-- rs-2     AI & Art: presenting the study (no participants)
 - tc-1     TeenCare: the team at work
 - tc-2     TeenCare: a wireframe or the e-book
 - FILMS    three YouTube links for the screening room (title, year, one line)
