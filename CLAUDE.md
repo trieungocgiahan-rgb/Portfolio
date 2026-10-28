@@ -15,7 +15,11 @@ sharing a room, then tests it through community work, research and building.
   Internships, Tech Projects), Exhibition, Awards, About. The CV is not in
   Doors; About tells the longer story and ends on a CTA to it. Routes are
   /work/net-mo, /work/events, /work/research, /work/tech, /exhibition,
-  /awards, /about, /cv. Old routes resolve through ROOM_ALIASES;
+  /awards, /about, /cv. Research is a hub with three sub-rooms, one per
+  piece of work, so none is skimmed past: /work/research/ai-art,
+  /work/research/teencare, /work/research/brain-life. Research rooms never
+  show participants; their doors hold line drawings and their evidence is
+  charts (bars, crossover). Old routes resolve through ROOM_ALIASES;
   /room/anchor scrolls to a kicker with that id. Rooms open in place.
 - Every room starts with a hero block with its own light, set by
   data-room on #room: dark heroes (Events night stage, Tech electric blue,

@@ -26,15 +26,17 @@ facilitator guides, revised with licensed art therapists); by the final
 session 23 of 24 could name their emotions through drawing.
 
 ## AI & Art, first author, Oct 2025 to now (under review at NHSJS)
-Expressive art-making versus AI-guided reflective dialogue. N = 68 young
-adults; each completed both sessions (136 sessions), 45 minutes each, art
-familiarity recorded beforehand.
-AI sessions used the same model version for every participant. Analysed in
-Python. Advised by Phuong Thao Nguyen, M.A. in Psychology and licensed art therapist.
-Posted as a public preprint, Sept 2026.
-- crossover interaction: low art familiarity gained more from dialogue,
-  high art familiarity gained more from making
-- seven participants finished the AI condition in a worse mood
+Advised by Phuong Thao Nguyen, M.A. in Psychology and licensed art therapist.
+Counterbalanced within-subjects study, N = 68 young adults, 136 sessions,
+art-making vs AI-guided reflective dialogue. She wrote the AI role prompt,
+safety protocol and consent procedure (advisor review). 8 post-session
+measures in Python (paired t-tests, effect sizes, moderation); all 136
+reflections coded thematically. AI made starting easier (7.91 vs 5.57/10);
+art produced stronger ownership (7.40 vs 5.38/10); prior art experience
+reversed which format improved mood more (p < .001). Built Inkling (AI offers
+a first line, the user takes over). One of 3 school teams for the city-level
+science research competition; presented to faculty from the University of
+Social Sciences and Humanities, HCMC. No participant photographs, ever.
 
 ## Contextuary, founder and product designer, Jan 2025 to now
 SAT vocabulary in context. Paste a passage, tap a word, get meaning in
@@ -64,16 +66,22 @@ Together! is the shared journal built for that. Member messages (translated):
 hard." "Today's football match was a great one." "The class was so sweet.
 Reading everyone's journal feels like being there."
 
-## Questions carried into other rooms
-- Brain-Life, R&D intern, Aug 2026 to now. Brain mapping and EEG training, filtering
-  and cleaning recorded data, running surveys with student participants.
-- TeenCare (formerly Unwrapit / Unwrapped), part-time research associate (R&D),
-  May to Dec 2025 and Jun 2026 to now. 100+ semi-structured interviews synthesised into one persona, designed the
-  core product (a storytelling e-book where teens become a chef), five
-  themed storytelling surveys, outreach through a character account.
-- Eunoia Psychology Club, Head of Academic Affairs. Team of 8 rewriting psychology research
-  for students, self-discovery festival reaching 600, peer support around
-  exam season reaching 200+.
+## TeenCare, part-time research associate (R&D), May to Dec 2025, Jun 2026 to now
+Youth mental-fitness startup, story-based tools. 100+ semi-structured
+interviews, thematic coding and affinity mapping. A pilot interview's abrupt
+shift to personal questions made disclosure difficult; co-designed 5 narrative
+survey formats (gradual prompts, branching choices); the chef narrative became
+the core product. Interactive e-book and form-building web product: flows,
+wireframes, interface design, automated pattern summaries, user testing, V1.
+
+## Brain-Life, R&D intern, Aug 2026 to now
+Neurotechnology startup. 40+ papers reviewed, 20 products benchmarked, 25
+contextual interviews with Vietnamese users, 3 behavioural patterns where
+global research and local behaviour diverged, early product hypotheses. EEG
+processed in Python, compared with student self-reports; gaps informed
+product iterations.
+
+## Eunoia Psychology Club, Head of Academic Affairs (shown under Events)
 
 ## Little Smiles Project
 Creative Director. 4-person team, 8 adaptive play and storytelling sessions

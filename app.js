@@ -87,7 +87,7 @@ function tieLastWords(scope=document){
     const words=text.trim().split(/\s+/);
     if(words.length<4) return;
     /* the tied words must fit comfortably on one line of this element */
-    const size=parseFloat(cs.fontSize)||16, maxChars=Math.floor(Math.min(el.clientWidth||300,720)*.9/(size*.56));
+    const size=parseFloat(cs.fontSize)||16, maxChars=Math.floor(Math.min(el.clientWidth||300,720)*.9/(size*.45)); /* a rough first guess; fitTie measures the real width after */
     let tie=3;
     while(tie>1 && words.slice(-tie).join(" ").length>maxChars) tie--;
     if(tie<2) return;
@@ -531,6 +531,40 @@ const B={
   voices:o=>`<div class="blk voices"><p class="room__kicker">${o.kicker}</p><ul>${o.items.map(x=>`<li><p class="voices__msg">${x.q}</p><p class="voices__who">${x.who}</p></li>`).join("")}</ul>${o.note?`<p class="voices__note">${o.note}</p>`:""}</div>`,
   /* one screen across the wide column: the product, answering the pain point above it */
   shot:o=>`<div class="blk shotwide">${o.kicker?`<p class="room__kicker">${o.kicker}</p>`:""}${screenFrame(o)}</div>`,
+  /* the way into each sub-room: one card per piece of work, so none is missed */
+  studies:a=>`<ol class="blk studies">${a.map(x=>`<li style="--dc:${x.c}"><a href="${x.href}">
+    <span class="studies__num">${x.num}</span>
+    <span class="studies__kind">${x.kind}</span>
+    <span class="studies__name">${x.name}</span>
+    <span class="studies__role">${x.role}</span>
+    <span class="studies__q">${x.q}</span>
+    <span class="studies__facts">${x.facts.map(f=>`<span><b>${f.b}</b> ${f.s}</span>`).join("")}</span>
+    <span class="studies__go">${x.go} →</span></a></li>`).join("")}</ol>`,
+  /* paired bars on one 0 to max scale, every value labelled, a table for screen readers */
+  bars:o=>`<figure class="blk bars">
+    <figcaption class="bars__title">${o.title}</figcaption>
+    <ul class="bars__legend">${o.series.map(x=>`<li style="--dc:${x.c}"><i></i>${x.n}</li>`).join("")}</ul>
+    ${o.groups.map(g=>`<div class="bars__group"><p class="bars__label">${g.label}</p>${g.v.map((v,i)=>`<div class="bars__row" style="--dc:${o.series[i].c};--len:${(v/o.max).toFixed(3)}" title="${g.label}, ${o.series[i].n}: ${v.toFixed(o.dp||0)} out of ${o.max}"><span class="bars__name">${o.series[i].n}</span><span class="bars__track"><i></i></span><b>${v.toFixed(o.dp||0)}</b></div>`).join("")}</div>`).join("")}
+    <p class="bars__note">${o.note}</p>
+    <div class="vh"><table><caption>${o.title}</caption><tr><th>Measure</th>${o.series.map(x=>`<th>${x.n}</th>`).join("")}</tr>${o.groups.map(g=>`<tr><th>${g.label}</th>${g.v.map(v=>`<td>${v.toFixed(o.dp||0)} / ${o.max}</td>`).join("")}</tr>`).join("")}</table></div>
+  </figure>`,
+  /* the crossover, drawn as a schematic: which way the effect runs, not plotted values */
+  crossover:o=>`<figure class="blk cross">
+    <figcaption class="bars__title">${o.title}</figcaption>
+    <ul class="bars__legend"><li style="--dc:var(--blue)"><i></i>AI dialogue</li><li style="--dc:var(--pink)"><i></i>Art-making</li></ul>
+    <p class="cross__y">↑ mood improved more</p>
+    <svg viewBox="0 0 520 220" role="img" aria-label="${o.alt}">
+      <path d="M20 200H510M20 200V10" stroke="currentColor" stroke-opacity=".3" fill="none"/>
+      <path d="M50 50L480 170" stroke="#2B4DE0" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <path d="M50 170L480 46" stroke="#EE4187" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <circle cx="50" cy="50" r="6" fill="#2B4DE0" stroke="#fff" stroke-width="2"/><circle cx="480" cy="170" r="6" fill="#2B4DE0" stroke="#fff" stroke-width="2"/>
+      <circle cx="50" cy="170" r="6" fill="#EE4187" stroke="#fff" stroke-width="2"/><circle cx="480" cy="46" r="6" fill="#EE4187" stroke="#fff" stroke-width="2"/>
+    </svg>
+    <p class="cross__x"><span>little prior art experience</span><span>a lot →</span></p>
+    <p class="bars__note">${o.note}</p>
+  </figure>`,
+  /* a way out to the real organisation, in a new tab */
+  visit:o=>`<p class="blk room__visit"><a class="btn btn--ink" href="${o.href}" target="_blank" rel="noopener">${o.label} ↗</a></p>`,
   /* words beside one screen */
   beside:o=>`<div class="blk beside${o.flip?" beside--flip":""}"><div class="beside__text">${o.blocks.map(([t,a])=>B[t](a)).join("")}</div>${screenFrame(o.shot)}</div>`,
   links:a=>`<div class="room__more">${a.map(l=>`<a href="${l.href}">${l.label} →</a>`).join("")}</div>`
@@ -733,38 +767,121 @@ const ROOMS={
     {b:"Sol Sound · Dream Strokes OPEN",p:"The community branch's first night, 400+ tickets.",event:"sol-sound"},
     {b:"Trung Vuong Football League · Aug 2024 to Feb 2025",p:"Operations Lead: 2 seasons, 15 teams from 8 schools, 200+ student-athletes, 600+ cumulative spectators.",event:"cerberus-league"},
     {b:"Colors of the Pitch · two tournaments",p:"10 teams, 1,000+ cumulative spectators. Football as the excuse, fundraising as the outcome, mixed teams as the actual design decision.",event:"colors-of-the-pitch"},
+    {b:"Eunoia Psychology Club · Head of Academic Affairs",p:"A team of 8 rewriting psychology research for students, a self-discovery festival reaching 600, and peer support for 200+ around exams."},
     {b:"Hey Tet! · Dec 2025 to Feb 2026",p:"Program Vice Organizer of a school-wide Lunar New Year music event for 2,400+ attendees, built with professional artists and school clubs.",event:"tet-oi"}
   ]],
   ["links",[{href:"#/work/net-mo",label:"Dream Strokes"},{href:"#/work/research",label:"Research & Internships"}]]
 ]},
 
 "/work/research":{accent:"var(--violet)",where:"Work · Research & Internships",blocks:[
-  ["hero",{kicker:"Research · Oct 2025 to now · First author",title:"AI &amp; Art",
-    lede:"Does expressive art-making or AI-guided reflective dialogue help a person express what they feel, and does the answer depend on who is walking in?",
-    facts:[{b:"68",s:"young adults"},{b:"136",s:"sessions, two each"},{b:"45",s:"minutes a session"}],
-    k:"td-lead",ghost:"a session in progress, materials on the table"}],
-  ["kicker","The two doors"],
+  ["hero",{kicker:"Work · Research & Internships · 2025 to now",title:"Research &amp; Internships",
+    lede:"One study I designed and ran, and two research internships at startups building tools for how young people feel, learn and pay attention. Each one has its own page.",
+    facts:[{b:"68",s:"study participants"},{b:"100+",s:"interviews with teenagers"},{b:"40+",s:"papers reviewed"}],
+    art:'<path d="M14 132h94M14 132V20" opacity=".45"/><path d="M24 46l80 70" stroke="#2B4DE0" stroke-width="3"/><path d="M24 116l80-74" stroke="#EE4187" stroke-width="3"/><circle cx="64" cy="81" r="4.5" fill="currentColor" stroke="none"/>'}],
+  ["studies",[
+    {num:"01",c:"var(--violet)",href:"#/work/research/ai-art",kind:"Study · First author",name:"AI &amp; Art",role:"Oct 2025 to now · under review at NHSJS",
+      q:"Does art-making or an AI-guided dialogue make it easier to express what you feel, and for whom?",
+      facts:[{b:"68",s:"young adults"},{b:"136",s:"sessions"},{b:"p < .001",s:"crossover"}],go:"Open the study"},
+    {num:"02",c:"var(--coral)",href:"#/work/research/teencare",kind:"Internship · Research Associate, R&D",name:"TeenCare",role:"May to Dec 2025 · Jun 2026 to now",
+      q:"What do teenagers actually say when someone asks properly?",
+      facts:[{b:"100+",s:"interviews"},{b:"5",s:"narrative survey formats"}],go:"Open TeenCare"},
+    {num:"03",c:"var(--teal)",href:"#/work/research/brain-life",kind:"Internship · R&D Intern",name:"Brain-Life",role:"Aug 2026 to now",
+      q:"Where do global research on attention and local behaviour part ways?",
+      facts:[{b:"40+",s:"papers"},{b:"20",s:"products"},{b:"25",s:"interviews"}],go:"Open Brain-Life"}
+  ]],
+  ["kicker","How they connect"],
+  ["para","The study asked which way into a feeling works, and for whom. TeenCare asked what teenagers say when the question is built gently enough. Brain-Life asks what attention looks like when the brain’s signal and a student’s own report disagree. Each time, the answer depended on the person, not only on the tool."],
+  ["links",[{href:"#/work/net-mo",label:"Where the question came from"},{href:"#/work/tech",label:"Tech Projects"}]]
+]},
+
+"/work/research/ai-art":{accent:"var(--violet)",where:"Research · AI & Art",blocks:[
+  ["hero",{kicker:"Study · First author · Oct 2025 to now",title:"AI &amp; Art",
+    lede:"Does hands-on art-making or an AI-guided reflective dialogue make it easier to express what you feel, and does the answer depend on who is walking in?",
+    facts:[{b:"68",s:"young adults"},{b:"136",s:"sessions, two each"},{b:"8",s:"post-session measures"}],
+    meta:"Under review at the National High School Journal of Science · advised by Phuong Thao Nguyen, M.A. in Psychology and licensed art therapist",
+    art:'<path d="M14 132h94" opacity=".45"/><path d="M26 132V58M40 132V84" stroke-width="9" stroke-linecap="butt"/><path d="M26 132V58" stroke="#2B4DE0" stroke-width="9" stroke-linecap="butt"/><path d="M40 132V84" stroke="#EE4187" stroke-width="9" stroke-linecap="butt"/><path d="M78 132V85" stroke="#2B4DE0" stroke-width="9" stroke-linecap="butt"/><path d="M92 132V60" stroke="#EE4187" stroke-width="9" stroke-linecap="butt"/>'}],
+  ["kicker","The question"],
+  ["para","In Dream Strokes, a small change in format changed how much children expressed. Field notes could show me what I thought I was seeing. I wanted to know whether the pattern would hold when I tested it, and AI tools had just offered a new way in: a patient conversation."],
+  ["kicker","The design"],
   ["pairs",[
-    {h:"Condition A · Art",p:"A 45 minute expressive art-making session with materials and no requirement to explain the result out loud."},
-    {h:"Condition B · AI",p:"A 45 minute guided reflective dialogue. Every participant used the same model version, checked at the start of the session, so the room was identical."}
+    {h:"Door A · Art",p:"An expressive art-making session with materials and no requirement to explain the result out loud."},
+    {h:"Door B · AI",p:"A guided reflective dialogue. I wrote the AI’s role prompt, the safety protocol and the consent procedure, with my advisor’s review."}
+  ]],
+  ["steps",[
+    {b:"Everyone walked through both doors",p:"A counterbalanced within-subjects study: 68 young adults each completed both sessions, in alternating order, 136 sessions in all."},
+    {b:"Eight questions after every session",p:"I built 8 post-session measures and analysed them in Python with paired t-tests, effect sizes and moderation."},
+    {b:"Every reflection read",p:"I coded all 136 written reflections thematically, so the numbers could be checked against what people said."}
   ]],
   ["kicker","What came back"],
-  ["para","The headline is not that one door is better. It is that the doors swap places. Participants with little prior art experience gained more from dialogue, where the structure is provided for them. Participants already fluent with materials gained more from making, where structure would only get in the way. Averaging the two conditions would have hidden the entire result."],
-  ["quote","Seven participants finished the AI condition in a worse mood than they started."],
-  ["para","They are in the paper, with the reflections they wrote. The most common thread in those seven: being asked a good question at a moment when they had no way to leave the conversation."],
-  ["kicker","How it was done"],
+  ["bars",{title:"Two doors, two strengths · mean ratings out of 10",max:10,dp:2,
+    series:[{n:"AI dialogue",c:"#2B4DE0"},{n:"Art-making",c:"#EE4187"}],
+    groups:[{label:"How easy it was to start",v:[7.91,5.57]},{label:"How much the result felt like my own",v:[5.38,7.40]}],
+    note:"68 participants, both conditions each. Higher is more."}],
+  ["crossover",{title:"Which door improved mood more depended on prior art experience",
+    alt:"Schematic of a crossover: with little prior art experience, AI dialogue improved mood more; with a lot, art-making did.",
+    note:"Schematic of the interaction (p < .001): it shows the direction of the effect, not plotted values."}],
+  ["pains",[
+    {h:"AI opens the door",p:"Starting was easier with AI: 7.91 against 5.57 out of 10. A first question lowers the cost of the first sentence."},
+    {h:"Art makes it yours",p:"Ownership was stronger after art-making: 7.40 against 5.38. What you make with your hands stays yours."},
+    {h:"It depends who walks in",p:"Prior art experience reversed which format improved mood more. Averaging the two conditions would have hidden the result."}
+  ]],
+  ["kicker","What I built from it"],
+  ["para","If AI is better at the first step and art is better at what follows, the answer is not to choose one. So I built Inkling, a drawing journal where the AI offers a first line and the person takes over: a proposed hybrid of the two doors."],
+  ["kicker","Where it went"],
   ["steps",[
-    {b:"Participants",p:"N = 68 young adults, recruited across schools and community groups. Each completed both sessions, 136 in all, with art familiarity recorded beforehand."},
-    {b:"Analysis",p:"Python: paired t-tests and effect sizes. Interaction tested between condition and prior art familiarity rather than condition alone."},
-    {b:"Supervision",p:"Advised by Phuong Thao Nguyen, M.A. in Psychology and licensed art therapist. Co-authored with Tran Hoang Anh Thu; under review at the National High School Journal of Science."}
+    {b:"Under review",p:"Submitted to the National High School Journal of Science; I am first author."},
+    {b:"City-level competition",p:"Selected as one of 3 school teams to enter the city’s science research competition."},
+    {b:"Presented",p:"Presented the study to faculty from the University of Social Sciences and Humanities, Ho Chi Minh City."}
   ]],
-  ["kicker",{t:"Internships · questions I carried into other rooms",id:"internships"}],
-  ["pairs",[
-    {h:"Brain-Life · Research & Development Intern · Aug 2026 to now",p:"What does attention look like when you can actually watch it? Trained in EEG and brain mapping, cleaned recorded data, ran surveys with student participants. Cleaning other people's data showed me how much of a finding is decided before analysis starts."},
-    {h:"TeenCare · Part-time Research Associate, R&D · May to Dec 2025, Jun 2026 to now",p:"What do teenagers actually say when someone asks properly? 100+ semi-structured interviews synthesised into one persona, and the core product: a storytelling e-book where teens become a chef. Nobody described their feelings when asked directly; they did while talking about a character."},
-    {h:"Eunoia Psychology Club · Head of Academic Affairs",p:"Does a room of 600 behave like a room of 20? A team of 8 rewriting psychology research for students, a self-discovery festival reaching 600, and peer support for 200+ around exams. Scale does not dilute participation, structure does."}
+  ["links",[{href:"#/work/research",label:"All research"},{href:"#/work/research/teencare",label:"Next · TeenCare"}]]
+]},
+
+"/work/research/teencare":{accent:"var(--coral)",where:"Research · TeenCare",blocks:[
+  ["hero",{kicker:"Internship · Part-time Research Associate, R&D · May to Dec 2025, Jun 2026 to now",title:"TeenCare",
+    lede:"A youth mental-fitness startup building story-based tools that help teenagers notice and express what they feel.",
+    facts:[{b:"100+",s:"semi-structured interviews"},{b:"5",s:"narrative survey formats"},{b:"1",s:"core product built on one of them"}],
+    art:'<path d="M34 70c-14 0-18-20-4-24 2-14 22-18 30-6 8-12 28-8 30 6 14 4 10 24-4 24z"/><path d="M38 70v18h46V70"/><path d="M38 80h46" opacity=".5"/><path d="M28 104h62a8 8 0 0 1 8 8v8a8 8 0 0 1-8 8H46l-10 8v-8h-8a8 8 0 0 1-8-8v-8a8 8 0 0 1 8-8z"/><path d="M34 116h44" opacity=".5"/>'}],
+  ["visit",{href:"https://teencare.co/vn",label:"Visit TeenCare"}],
+  ["kicker","Listening"],
+  ["para","I conducted and analysed more than 100 semi-structured interviews with teenagers, then used thematic coding and affinity mapping to find the barriers that kept coming back and turn them into product directions."],
+  ["kicker","The pain point"],
+  ["para","In a pilot interview, the questions moved abruptly from easy ones to personal ones, and that was exactly where disclosure became difficult. The problem was not the teenager. It was the shape of the questions."],
+  ["flow",{before:{label:"The pilot interview",steps:["A few easy questions","Then, suddenly, personal ones","Disclosure became difficult"]},
+    after:{label:"What I co-designed",steps:["5 narrative survey formats","Gradual reflective prompts and branching choices","A story to speak through: the chef narrative"]}}],
+  ["quote","Nobody described their feelings when asked directly. They did while talking about a character."],
+  ["para","The chef narrative later became the basis of TeenCare’s core product."],
+  ["kicker","Building it"],
+  ["steps",[
+    {b:"From insight to product",p:"I carried the interview insights into an interactive e-book and a form-building web product."},
+    {b:"Design",p:"I contributed to the flows, wireframes, interface design and automated pattern summaries."},
+    {b:"Testing",p:"I took part in user testing and the V1 revisions that fixed its usability issues."}
   ]],
-  ["links",[{href:"#/work/net-mo",label:"Where the question came from"},{href:"#/work/tech",label:"Tech Projects"}]]
+  ["links",[{href:"#/work/research",label:"All research"},{href:"#/work/research/brain-life",label:"Next · Brain-Life"}]]
+]},
+
+"/work/research/brain-life":{accent:"var(--teal)",where:"Research · Brain-Life",blocks:[
+  ["hero",{kicker:"Internship · Research & Development Intern · Aug 2026 to now",title:"Brain-Life",
+    lede:"A neurotechnology startup developing evidence-based tools to improve attention, learning and cognitive well-being.",
+    facts:[{b:"3",s:"patterns where research and local behaviour diverged"},{b:"EEG",s:"recordings processed in Python"}],
+    art:'<path d="M10 52h14l6-14 8 30 8-40 8 34 6-10h50" stroke="#0F918B" stroke-width="2.6"/><path d="M10 100h20l8-6 8 10 8-14 8 12 8-6 8 8 8-10 8 6h18" stroke="#EE4187" stroke-width="2.6"/><path d="M10 132h100" opacity=".4"/>'}],
+  ["visit",{href:"https://brainlife.ai/",label:"Visit Brain-Life"}],
+  ["kicker","Global evidence, local behaviour"],
+  ["para","Most of the evidence behind attention tools comes from outside Vietnam. I wanted to know where it still holds for Vietnamese students, and where it does not."],
+  ["numbers",[
+    {b:"40+",s:"peer-reviewed papers reviewed"},
+    {b:"20",s:"international neurotechnology and wellness products benchmarked"},
+    {b:"25",s:"contextual interviews with Vietnamese users"},
+    {b:"3",s:"behavioural patterns where global research and local behaviour diverged"}
+  ]],
+  ["para","From those three patterns I wrote early product hypotheses: places where a tool built on the global evidence would need to work differently here."],
+  ["kicker","Signal and self-report"],
+  ["para","I process EEG recordings in Python and analyse student surveys side by side. The interesting part is the gap: moments where the neural signal and what a student reports about their own attention do not agree."],
+  ["steps",[
+    {b:"Process",p:"EEG recordings cleaned and processed in Python."},
+    {b:"Compare",p:"Neural signals set against students’ self-reported attention in surveys."},
+    {b:"Feed back",p:"The gaps informed product iterations, to make the tools more responsive to how students actually learn."}
+  ]],
+  ["links",[{href:"#/work/research",label:"All research"},{href:"#/work/research/ai-art",label:"First · AI & Art"}]]
 ]},
 
 "/work/tech":{accent:"var(--blue)",where:"Work · Tech Projects",blocks:[
@@ -874,7 +991,8 @@ const ROOM_ALIASES={
   "/work/community":"/work/net-mo",
   "/work/community/events":"/work/events",
   "/work/gather":"/work/events",
-  "/research/two-doors":"/work/research",
+  "/research/two-doors":"/work/research/ai-art",
+  "/work/research/internships":"/work/research/teencare",
   "/work/contextuary":"/work/tech",
   "/work/colorful-journey":"/work/tech/together",
   "/work/together":"/work/tech/together"

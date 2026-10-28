@@ -7,7 +7,6 @@ contextuary-logo, together-logo
 img/signature.png (About).
 
 Still empty
-- td-lead  Research, a session with materials on the table
 - FILMS    three YouTube links for the screening room (title, year, one line)
 
 Faces of shelter children need permission from the shelter before going
