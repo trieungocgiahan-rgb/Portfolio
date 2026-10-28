@@ -34,6 +34,8 @@ const MEDIA = {
   "cx-3":{src:"img/cx-3.jpg",alt:"Contextuary’s Start practice panel: Practice or AI Challenge, quiz or flashcards, which words, how many, and six question types."},
   "cj-lead":{src:"img/cj-lead.jpg",alt:"Together’s home page: Our story, written together, beside a shared October calendar with coloured activity bars, a voice note and a completed workshop card."},
   "cj-1":{src:"img/cj-1.jpg",alt:"Together’s sample project: a month calendar with a kick-off workshop, a team meeting, a field survey and a launch event, and a workshop card below."},
+  /* research rooms: never participants; the work, the team, the tools */
+  "rs-1":"", "rs-2":"", "tc-1":"", "tc-2":"", "bl-1":"", "bl-2":"",
   "ab-2":{src:"img/about-portrait.jpg",alt:"Gia Han in her school uniform, smiling and holding up a pink crayon; the project’s Vietnamese name, a crown and yellow scribbles are drawn over the photograph.",pos:"50% 38%"}
 };
 /* ============================================================
@@ -563,6 +565,8 @@ const B={
     <p class="cross__x"><span>little prior art experience</span><span>a lot →</span></p>
     <p class="bars__note">${o.note}</p>
   </figure>`,
+  /* each part of the work on one row: what I did, then what it taught me */
+  tasks:a=>`<ol class="blk tasks">${a.map(x=>`<li><div class="tasks__did"><b>${x.h}</b><p>${x.did}</p></div><p class="tasks__learned"><span>What it taught me</span>${x.learned}</p></li>`).join("")}</ol>`,
   /* a way out to the real organisation, in a new tab */
   visit:o=>`<p class="blk room__visit"><a class="btn btn--ink" href="${o.href}" target="_blank" rel="noopener">${o.label} ↗</a></p>`,
   /* words beside one screen */
@@ -827,12 +831,18 @@ const ROOMS={
   ]],
   ["kicker","What I built from it"],
   ["para","If AI is better at the first step and art is better at what follows, the answer is not to choose one. So I built Inkling, a drawing journal where the AI offers a first line and the person takes over: a proposed hybrid of the two doors."],
+  ["figs",[
+    {k:"rs-1",slot:"Plate 01",ratio:"4/3",ghost:"Inkling, the drawing journal",cap:"Inkling: the AI offers a first line, the person takes over."},
+    {k:"rs-2",slot:"Plate 02",ratio:"4/3",ghost:"presenting the study",cap:"Presenting the study to university faculty."}
+  ]],
   ["kicker","Where it went"],
   ["steps",[
     {b:"Under review",p:"Submitted to the National High School Journal of Science; I am first author."},
     {b:"City-level competition",p:"Selected as one of 3 school teams to enter the city’s science research competition."},
     {b:"Presented",p:"Presented the study to faculty from the University of Social Sciences and Humanities, Ho Chi Minh City."}
   ]],
+  ["kicker","What it taught me"],
+  ["para","Before this study I trusted what I saw in a room. Now I test it, I look for who an effect works for rather than whether it works on average, and I build from the answer instead of stopping at it."],
   ["links",[{href:"#/work/research",label:"All research"},{href:"#/work/research/teencare",label:"Next · TeenCare"}]]
 ]},
 
@@ -842,20 +852,28 @@ const ROOMS={
     facts:[{b:"100+",s:"semi-structured interviews"},{b:"5",s:"narrative survey formats"},{b:"1",s:"core product built on one of them"}],
     art:'<path d="M34 70c-14 0-18-20-4-24 2-14 22-18 30-6 8-12 28-8 30 6 14 4 10 24-4 24z"/><path d="M38 70v18h46V70"/><path d="M38 80h46" opacity=".5"/><path d="M28 104h62a8 8 0 0 1 8 8v8a8 8 0 0 1-8 8H46l-10 8v-8h-8a8 8 0 0 1-8-8v-8a8 8 0 0 1 8-8z"/><path d="M34 116h44" opacity=".5"/>'}],
   ["visit",{href:"https://teencare.co/vn",label:"Visit TeenCare"}],
-  ["kicker","Listening"],
-  ["para","I conducted and analysed more than 100 semi-structured interviews with teenagers, then used thematic coding and affinity mapping to find the barriers that kept coming back and turn them into product directions."],
-  ["kicker","The pain point"],
-  ["para","In a pilot interview, the questions moved abruptly from easy ones to personal ones, and that was exactly where disclosure became difficult. The problem was not the teenager. It was the shape of the questions."],
+  ["kicker","Why I joined"],
+  ["para","In Vietnamese public schools, students get very little psychological support, and awareness of mental health is still low. I believe mental health matters as much as physical health. It is only easier to ignore because no one can see it. TeenCare was building tools to help teenagers notice and say what they feel, and I wanted to work on that problem rather than only notice it."],
+  ["quote","Mental health is as important as physical health. It is only easier to overlook, because it is invisible."],
+  ["figs",[
+    {k:"tc-1",slot:"Plate 01",ratio:"4/3",ghost:"the team at work",cap:"Working with the R&D team."},
+    {k:"tc-2",slot:"Plate 02",ratio:"4/3",ghost:"a wireframe or the e-book",cap:"From interview insight to the product."}
+  ]],
+  ["kicker","What I did, and what each part taught me"],
+  ["tasks",[
+    {h:"Listening at scale",did:"I conducted and analysed more than 100 semi-structured interviews with teenagers, using thematic coding and affinity mapping to find the barriers that kept coming back.",
+      learned:"How to hear a pattern across a hundred voices without flattening any single one of them."},
+    {h:"Finding where people go quiet",did:"In a pilot interview, the questions turned abruptly from easy to personal, and that was exactly where disclosure became difficult. I co-designed 5 narrative survey formats with gradual reflective prompts and branching choices.",
+      learned:"When someone stops talking, the shape of the question is usually the problem, not the person."},
+    {h:"Turning insight into a product",did:"One of those formats, the chef narrative, became the basis of TeenCare’s core product. I helped carry the insights into an interactive e-book and a form-building web product: flows, wireframes, interface design and automated pattern summaries.",
+      learned:"Research matters most once it changes what actually gets built."},
+    {h:"Testing with real users",did:"I took part in user testing and the V1 revisions that fixed its usability issues.",
+      learned:"A tool for wellbeing has to be easy to use before it can help anyone."}
+  ]],
   ["flow",{before:{label:"The pilot interview",steps:["A few easy questions","Then, suddenly, personal ones","Disclosure became difficult"]},
     after:{label:"What I co-designed",steps:["5 narrative survey formats","Gradual reflective prompts and branching choices","A story to speak through: the chef narrative"]}}],
-  ["quote","Nobody described their feelings when asked directly. They did while talking about a character."],
-  ["para","The chef narrative later became the basis of TeenCare’s core product."],
-  ["kicker","Building it"],
-  ["steps",[
-    {b:"From insight to product",p:"I carried the interview insights into an interactive e-book and a form-building web product."},
-    {b:"Design",p:"I contributed to the flows, wireframes, interface design and automated pattern summaries."},
-    {b:"Testing",p:"I took part in user testing and the V1 revisions that fixed its usability issues."}
-  ]],
+  ["kicker","What I took away"],
+  ["para","TeenCare showed me what it takes to make an invisible problem visible: listen widely, notice where people go quiet, and change the question before asking for more. It is what I watch for in a Dream Strokes session, at the scale of a product."],
   ["links",[{href:"#/work/research",label:"All research"},{href:"#/work/research/brain-life",label:"Next · Brain-Life"}]]
 ]},
 
@@ -865,22 +883,31 @@ const ROOMS={
     facts:[{b:"3",s:"patterns where research and local behaviour diverged"},{b:"EEG",s:"recordings processed in Python"}],
     art:'<path d="M10 52h14l6-14 8 30 8-40 8 34 6-10h50" stroke="#0F918B" stroke-width="2.6"/><path d="M10 100h20l8-6 8 10 8-14 8 12 8-6 8 8 8-10 8 6h18" stroke="#EE4187" stroke-width="2.6"/><path d="M10 132h100" opacity=".4"/>'}],
   ["visit",{href:"https://brainlife.ai/",label:"Visit Brain-Life"}],
-  ["kicker","Global evidence, local behaviour"],
-  ["para","Most of the evidence behind attention tools comes from outside Vietnam. I wanted to know where it still holds for Vietnamese students, and where it does not."],
+  ["kicker","Why I joined"],
+  ["para","I care about neuroscience because so much of how we feel, learn and pay attention starts in the nervous system. Looking after the brain is part of being healthy, not something separate from it. I wanted to see how that science becomes something people actually use, so I looked for a professional setting where I could work on it, and joined Brain-Life as an R&D intern."],
+  ["figs",[
+    {k:"bl-1",slot:"Plate 01",ratio:"4/3",ghost:"an EEG session or the workspace",cap:"Where the recordings come from."},
+    {k:"bl-2",slot:"Plate 02",ratio:"4/3",ghost:"the team at work",cap:"Working with the R&D team."}
+  ]],
+  ["kicker","What I did, and what each part taught me"],
+  ["tasks",[
+    {h:"Reading the evidence",did:"I reviewed more than 40 peer-reviewed papers on attention, learning and cognitive well-being.",
+      learned:"To ask what a study actually shows, and for whom, before trusting its headline."},
+    {h:"Looking at what exists",did:"I benchmarked 20 international neurotechnology and wellness products against that evidence.",
+      learned:"How the same science can turn into very different products."},
+    {h:"Asking the people here",did:"I tested the evidence against 25 contextual interviews with Vietnamese users, and found 3 behavioural patterns where global research and local behaviour diverged. From them I wrote early product hypotheses.",
+      learned:"Evidence from elsewhere does not automatically fit here. The people in front of you have to be part of the evidence."},
+    {h:"Signal and self-report",did:"I process EEG recordings in Python and analyse student surveys side by side, looking for the gaps between neural signals and what students report about their own attention. Those gaps informed product iterations.",
+      learned:"Neither the signal nor a person’s own account is the whole picture. The useful part is where they disagree."}
+  ]],
   ["numbers",[
     {b:"40+",s:"peer-reviewed papers reviewed"},
-    {b:"20",s:"international neurotechnology and wellness products benchmarked"},
+    {b:"20",s:"neurotechnology and wellness products benchmarked"},
     {b:"25",s:"contextual interviews with Vietnamese users"},
-    {b:"3",s:"behavioural patterns where global research and local behaviour diverged"}
+    {b:"3",s:"patterns where research and local behaviour diverged"}
   ]],
-  ["para","From those three patterns I wrote early product hypotheses: places where a tool built on the global evidence would need to work differently here."],
-  ["kicker","Signal and self-report"],
-  ["para","I process EEG recordings in Python and analyse student surveys side by side. The interesting part is the gap: moments where the neural signal and what a student reports about their own attention do not agree."],
-  ["steps",[
-    {b:"Process",p:"EEG recordings cleaned and processed in Python."},
-    {b:"Compare",p:"Neural signals set against students’ self-reported attention in surveys."},
-    {b:"Feed back",p:"The gaps informed product iterations, to make the tools more responsive to how students actually learn."}
-  ]],
+  ["kicker","What I took away"],
+  ["para","Brain-Life gave me my first professional view of neuroscience, from papers to products to the people meant to use them. It also returned me to the question from AI &amp; Art: a tool only works when it responds to the person using it."],
   ["links",[{href:"#/work/research",label:"All research"},{href:"#/work/research/ai-art",label:"First · AI & Art"}]]
 ]},
 

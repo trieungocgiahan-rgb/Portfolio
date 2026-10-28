@@ -7,6 +7,12 @@ contextuary-logo, together-logo
 img/signature.png (About).
 
 Still empty
+- rs-1     AI & Art: Inkling, the drawing journal (screenshot)
+- rs-2     AI & Art: presenting the study (no participants)
+- tc-1     TeenCare: the team at work
+- tc-2     TeenCare: a wireframe or the e-book
+- bl-1     Brain-Life: an EEG session or the workspace (no identifiable participants)
+- bl-2     Brain-Life: the team at work
 - FILMS    three YouTube links for the screening room (title, year, one line)
 
 Faces of shelter children need permission from the shelter before going
