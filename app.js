@@ -28,8 +28,12 @@ const MEDIA = {
   "gt-4":{src:"img/gt-4.jpg",alt:"The Beats of Hope poster: A night full of music and smiles, with a group photo of the bands and the Little Smiles team.",fit:"contain"},
   "gt-5":{src:"img/gt-5.jpg",alt:"A student band on stage at Beats of Hope under pink light, holding guitars and a bouquet after its set.",pos:"56% 72%"},
   "td-lead":"",
-  "cx-lead":"", "cx-1":"", "cx-2":"", "cx-3":"",
-  "cj-lead":"",
+  "cx-lead":{src:"img/cx-lead.jpg",alt:"Contextuary’s home page: the word ubiquitous highlighted in an SAT passage, its AI word card with a Vietnamese meaning and example, a sample quiz and a mastery ring.",pos:"0% 55%"},
+  "cx-1":{src:"img/cx-1.jpg",alt:"Contextuary’s My Words library: each saved word with its Vietnamese meaning, an SAT-style example, a status and a topic tag, beside a weekly overview."},
+  "cx-2":{src:"img/cx-2.jpg",alt:"A Contextuary fill-in-the-blank question, 2 of 20: During the debate, the candidate’s blank point resonated with undecided voters, with four answer choices."},
+  "cx-3":{src:"img/cx-3.jpg",alt:"Contextuary’s Start practice panel: Practice or AI Challenge, quiz or flashcards, which words, how many, and six question types."},
+  "cj-lead":{src:"img/cj-lead.jpg",alt:"Together’s home page: Our story, written together, beside a shared October calendar with coloured activity bars, a voice note and a completed workshop card."},
+  "cj-1":{src:"img/cj-1.jpg",alt:"Together’s sample project: a month calendar with a kick-off workshop, a team meeting, a field survey and a launch event, and a workshop card below."},
   "ab-2":{src:"img/about-portrait.jpg",alt:"Gia Han in her school uniform, smiling and holding up a pink crayon; the project’s Vietnamese name, a crown and yellow scribbles are drawn over the photograph.",pos:"50% 38%"}
 };
 /* ============================================================
@@ -469,7 +473,9 @@ const B={
   kicker:t=>typeof t==="string"?`<p class="room__kicker">${t}</p>`:`<p class="room__kicker" id="room-${t.id}">${t.t}</p>`,
   title:t=>`<h2 id="roomTitle">${t}</h2>`,
   /* a second project inside the same room */
-  subtitle:t=>`<h2 class="room__sub">${t}</h2>`,
+  subtitle:t=>typeof t==="string"?`<h2 class="room__sub">${t}</h2>`:`<h2 class="room__sub room__sub--logo">${t.logo?`<img src="${t.logo}" alt="" width="300" height="300">`:""}${t.t}</h2>`,
+  /* a way out to the real product, opened in a new tab */
+  visit:o=>`<p class="blk room__visit"><a class="btn btn--ink" href="${o.href}" target="_blank" rel="noopener">${o.label} ↗</a><span class="mono mono--sentence">${o.note||""}</span></p>`,
   lede:t=>`<p class="blk blk--lede">${t}</p>`,
   para:t=>`<p class="blk blk--para">${t}</p>`,
   quote:t=>`<p class="blk blk--quote">${t}</p>`,
@@ -731,16 +737,18 @@ const ROOMS={
 
 "/work/tech":{accent:"var(--blue)",where:"Work · Tech Projects",blocks:[
   ["hero",{kicker:"Work · Jan 2025 to now · Founder and Product Designer",title:"Contextuary",
+    logo:"img/contextuary-logo.png",logoAlt:"The Contextuary logo: a purple C around an open book and a star.",
     lede:"A word. <b>Ephemeral.</b> You learned it on Tuesday. On Friday it appears in a sentence about a coalition and you do not recognise it.",
     facts:[{b:"~2,200",s:"visitors"},{b:"500+",s:"registered users"}],
     meta:"Designed in Figma, front end in React",
-    k:"cx-lead",ghost:"the app open on a passage",screen:true}],
+    k:"cx-lead",ghost:"the app open on a passage"}],
   ["kicker","The idea"],
   ["para","Memorising a definition gives you a word with no room around it. Recognition in a test passage needs the opposite: the word inside a sentence that gave it a job. So Contextuary never shows a word alone. You paste a passage or a single word, and it explains that word as it behaves right there, in English and in Vietnamese, then keeps the sentence."],
+  ["visit",{href:"https://contextuary.app",label:"Visit Contextuary",note:"contextuary.app · free to use"}],
+  ["lead",{k:"cx-1",slot:"UI 01",ratio:"1290/907",screen:true,ghost:"My Words",cap:"My Words: every saved word with its Vietnamese meaning, an SAT-style example, its status and a topic tag."}],
   ["figs",[
-    {k:"cx-1",slot:"UI 01",ratio:"3/4",screen:true,ghost:"My Words with the Daily Picks bar",cap:"Daily Picks sits on top of My Words as a bar, not a separate page, because a separate page is a chore."},
-    {k:"cx-2",slot:"UI 02",ratio:"3/4",screen:true,ghost:"context reading view",cap:"The reading view: meaning in place, Vietnamese gloss, common misread."},
-    {k:"cx-3",slot:"UI 03",ratio:"3/4",screen:true,ghost:"quiz or flashcard mode",cap:"Practice, scoped to the words you chose."}
+    {k:"cx-2",slot:"UI 02",ratio:"1600/920",screen:true,ghost:"a fill-in-the-blank question",cap:"Practice: a fill-in-the-blank question built from the words you saved."},
+    {k:"cx-3",slot:"UI 03",ratio:"1138/1200",screen:true,ghost:"Start practice",cap:"Start practice: quiz or flashcards, an AI Challenge, and six question types."}
   ]],
   ["kicker","Cut, and better for it"],
   ["pairs",[
@@ -749,7 +757,7 @@ const ROOMS={
     {h:"A separate Today page",p:"One more tap to reach the thing they came for. Daily Picks moved to the top of My Words instead."}
   ]],
   ["kicker",{t:"Also built · Co-Founder and UI/UX Designer · Dec 2025 to now",id:"together"}],
-  ["subtitle","Together!"],
+  ["subtitle",{t:"Together!",logo:"img/together-logo.png"}],
   ["lede","A group makes something together, then scatters. Six months later nobody can find it. The thing existed; the memory of it had nowhere to live."],
   ["pairs",[
     {h:"Design problem",p:"Archives are organised for retrieval. Memory is organised by who was there and what it felt like. The interface had to hold both."},
@@ -757,7 +765,9 @@ const ROOMS={
     {h:"On This Day",p:"Members leave writing, photographs and voice notes on a shared timeline, move between projects and dates, and rediscover old entries through “On This Day.”"}
   ]],
   ["numbers",[{b:"5",s:"people on the team"},{b:"1,550+",s:"visitors"},{b:"450+",s:"returning"}]],
-  ["fig",{k:"cj-lead",slot:"UI 01",ratio:"16/9",screen:true,ghost:"Lead screenshot · the archive, opened on one project",cap:"<b>Archive view.</b> Entries grouped by moment, not by file type."}],
+  ["lead",{k:"cj-lead",slot:"UI 01",ratio:"1600/916",screen:true,ghost:"Together’s home page",cap:"<b>Our story, written together.</b> Workshops, trips and meetings logged with photos and voice notes on one shared calendar."}],
+  ["fig",{k:"cj-1",slot:"UI 02",ratio:"1600/997",screen:true,ghost:"a sample project calendar",cap:"A sample project: each activity has a type, a colour and a day."}],
+  ["visit",{href:"https://toghether.contextuary.app",label:"Visit Together!",note:"sign in with Google to start a journal"}],
   ["links",[{href:"#/work/research",label:"Research & Internships"},{href:"#/work/net-mo",label:"Dream Strokes"}]]
 ]},
 
