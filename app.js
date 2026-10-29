@@ -44,6 +44,18 @@ const MEDIA = {
   "ev-identity":{src:"img/ev-identity.jpg",alt:"Colors of Identity: a volunteer stacks decorated cans into a tower at one of the stations.",pos:"60% 50%"},
   "ev-rocket":{src:"img/ev-rocket.jpg",alt:"The open edition of the water rocket contest: three students from another school pump up their bottle rocket on the launch pad.",pos:"55% 50%"},
   "once-upon":{src:"img/once-upon.jpg",alt:"Once Upon the Inside: visitors walk a lit gallery lined with colourful paintings; a child reads the programme.",pos:"50% 55%"},
+  /* Dream Strokes OPEN: the ways in, Sol Sound, and the team */
+  "op-cards":{src:"img/op-cards.jpg",alt:"The Feel-it! emotion card box beside a fan of rainbow-coloured cards: Joy, Worried and Angry, 24 emotions for ages 5 to 10.",pos:"50% 42%"},
+  "op-cardsheet":{src:"img/op-cardsheet.jpg",alt:"The Feel-it! card system on one sheet: the front and back of a card, the 24-card emotion family, five ways to play, the packaging and the design system.",fit:"contain"},
+  "op-calendar":{src:"img/op-calendar.jpg",alt:"The cover of the Dream Strokes 2026 calendar: a girl with a paintbrush rides a pink horse across a pastel sky.",pos:"62% 50%"},
+  "op-comic":{src:"img/op-comic.jpg",alt:"A panel from Cloud’s Story: a girl with sky-blue hair throws open both arms among stars and purple clouds.",pos:"50% 28%"},
+  "ss-band":{src:"img/ss-band.jpg",alt:"Sol Sound in black and white: a singer with a guitar at the microphone, the rest of the band behind.",pos:"45% 50%"},
+  "ss-bandages":{src:"img/ss-bandages.jpg",alt:"The Bandages on stage at Sol Sound, their name on the big screen, the audience in rows in front.",pos:"52% 60%"},
+  "ss-logo":{src:"img/ss-logo.jpg",alt:"The Sol Sound Show poster art: glowing hand-drawn letters, and a girl in a red coat hugging a heart on the D."},
+  "ds-team-1":{src:"img/ds-team-1.jpg",alt:"Eight members of the Dream Strokes team on a football pitch, making heart shapes with their hands.",pos:"62% 55%"},
+  "ds-team-2":{src:"img/ds-team-2.jpg",alt:"The Dream Strokes team together in a sunny alley under yellow flowers.",pos:"42% 60%"},
+  "ds-team-3":{src:"img/ds-team-3.jpg",alt:"The Dream Strokes team in a school hall, everyone making a heart with their hands.",pos:"50% 55%"},
+  "ds-advisor":{src:"img/ds-advisor.jpg",alt:"A video call with our advisor; I am in the small window in the corner.",pos:"60% 45%"},
   /* research rooms: never participants; the work, the team, the tools */
   "rs-1":{src:"img/rs-1.jpg",alt:"Inkling’s home page: AI draws the first line. You decide the rest. Beside it, a drawing where a dotted AI line turns into the user’s own strokes, a hill and a sun.",pos:"30% 40%"},
   "rs-2":{src:"img/rs-2.jpg",alt:"Gia Han, holding a microphone, presents in front of a screen showing a warning sign.",pos:"55% 40%"}, "tc-1":"", "tc-2":"", 
@@ -493,9 +505,22 @@ const hero=o=>`<header class="room-hero">
   </div>
 </header>`;
 
+/* one gathering or way in: a photo, what kind of thing it is, its name, what it was, one number */
+const gcard=e=>`<article class="gevent">
+  <div class="fig__plate" data-img="${e.k}" data-slot="" style="--ratio:4/3"><div class="fig__ghost">${e.ghost}</div></div>
+  ${e.first?`<p class="gevent__first">${e.first}</p>`:""}
+  <p class="gevent__meta">${e.meta}</p>
+  <h4 class="gevent__name">${e.name}</h4>
+  <p class="gevent__what">${e.p}</p>
+  ${e.fact?`<p class="gevent__fact">${e.fact}</p>`:""}
+  ${e.event?`<p class="aside-link" data-event-row hidden><a data-event="${e.event}" href="#">Event page ↗</a></p>`:""}
+</article>`;
+
 const B={
   hero,
-  kicker:t=>typeof t==="string"?`<p class="room__kicker">${t}</p>`:`<p class="room__kicker" id="room-${t.id}">${t.t}</p>`,
+  /* a section heading: the title, then whatever follows the first " · " as metadata */
+  kicker:t=>{ const o=typeof t==="string"?{t}:t, [h,...m]=o.t.split(" · ");
+    return `<h3 class="room__head"${o.id?` id="room-${o.id}"`:""}><span class="room__head-t">${h}</span>${m.length?`<span class="room__head-meta">${m.join(" · ")}</span>`:""}</h3>`; },
   title:t=>`<h2 id="roomTitle">${t}</h2>`,
   /* a second project inside the same room */
   subtitle:t=>`<h2 class="room__sub">${t}</h2>`,
@@ -584,16 +609,10 @@ const B={
   /* gatherings grouped by the reason behind them: the reason on the left, two events on the right */
   gatherings:a=>`<div class="blk gatherings">${a.map(t=>`<section class="gtheme" style="--dc:${t.c}">
     <div class="gtheme__why"><p class="gtheme__num">${t.num}</p><h3>${t.h}</h3><p>${t.why}</p></div>
-    <div class="gtheme__events">${t.events.map(e=>`<article class="gevent">
-      <div class="fig__plate" data-img="${e.k}" data-slot="" style="--ratio:4/3"><div class="fig__ghost">${e.ghost}</div></div>
-      ${e.first?`<p class="gevent__first">${e.first}</p>`:""}
-      <p class="gevent__meta">${e.meta}</p>
-      <h4 class="gevent__name">${e.name}</h4>
-      <p class="gevent__what">${e.p}</p>
-      <p class="gevent__fact">${e.fact}</p>
-      ${e.event?`<p class="aside-link" data-event-row hidden><a data-event="${e.event}" href="#">Event page ↗</a></p>`:""}
-    </article>`).join("")}</div>
+    <div class="gtheme__events">${t.events.map(gcard).join("")}</div>
   </section>`).join("")}</div>`,
+  /* the ways into Dream Strokes OPEN: the same cards, three to a row */
+  ways:a=>`<div class="blk ways">${a.map(gcard).join("")}</div>`,
   /* each part of the work on one row: what I did, then what it taught me */
   tasks:a=>`<ol class="blk tasks">${a.map(x=>`<li><div class="tasks__did"><b>${x.h}</b><p>${x.did}</p></div><p class="tasks__learned"><span>What it taught me</span>${x.learned}</p></li>`).join("")}</ol>`,
   /* a way on to another room on this site */
@@ -767,10 +786,33 @@ const ROOMS={
     {k:"nm-5",slot:"Plate 06",ratio:"1/1",ghost:"painting at the studio",cap:"Colors of Joy, Hanoi: painting together at the studio."},
     {k:"nm-6",slot:"Plate 07",ratio:"1/1",ghost:"a facilitator with two children",cap:"A facilitator painting alongside two children."}
   ]],
-  ["kicker",{t:"Beyond the shelters · Dream Strokes OPEN",id:"once-upon"}],
-  ["para","Dream Strokes has a second branch, OPEN, for people beyond our partner shelters. It runs three public programmes: Sol Sound, a music concert (400+ tickets); Colors of the Pitch, two football tournaments (10 teams, 1,000+ spectators); and Once Upon the Inside, a youth painting exhibition with The APRIL Collective at May Artspace, which I co-produced (300+ visitors)."],
-  ["lead",{k:"once-upon",slot:"Plate 08",ratio:"4/3",ghost:"the exhibition",cap:"Once Upon the Inside: visitors among the paintings."}],
+  ["kicker",{t:"Dream Strokes OPEN · for anyone, anywhere",id:"once-upon"}],
+  ["para","At the shelters I watched children say things through a drawing that they could not say out loud. I didn’t want that to stop at the shelter door. So we started OPEN, a second branch for everyone else, and gave it as many ways in as we could think of. You don’t have to call yourself an artist. You can play, cheer, listen, paint, or take something home."],
+  ["ways",[
+    {k:"ss-band",ghost:"Sol Sound, the band",meta:"Music",name:"Sol Sound: A December to Remember",p:"A winter night of young bands, open to anyone with a ticket.",fact:"400+ tickets"},
+    {k:"ev-pitch",ghost:"Colors of the Pitch",meta:"Football",name:"Colors of the Pitch",p:"Two tournaments where you could join a team or just come and cheer.",fact:"10 teams · 1,000+ spectators"},
+    {k:"once-upon",ghost:"the exhibition",meta:"Painting",name:"Once Upon the Inside",p:"A youth painting exhibition I co-produced with The APRIL Collective at May Artspace.",fact:"300+ visitors"},
+    {k:"op-cards",ghost:"the Feel-it! box",meta:"Emotion cards · ages 5 to 10",name:"Feel-it!",p:"24 emotion characters and five games, so a child can name a feeling by pointing at it.",fact:"Second Prize · Ho Chi Minh City Youth Creativity Contest 2025"},
+    {k:"op-calendar",ghost:"the 2026 calendar",meta:"Calendar",name:"The 2026 calendar",p:"Drawn by our team and sold to pay for the next season of workshops."},
+    {k:"op-comic",ghost:"a page of the comic",meta:"Comic series",name:"Cloud’s Story",p:"Drawing Worries, Colouring Hope: the workshop idea told as a story anyone can read."}
+  ]],
+  ["figs",[
+    {k:"ss-logo",slot:"Plate 08",ratio:"4/3",ghost:"the Sol Sound poster",cap:"The Sol Sound Show poster art."},
+    {k:"ss-bandages",slot:"Plate 09",ratio:"4/3",ghost:"The Bandages on stage",cap:"The Bandages on stage at A December to Remember."}
+  ]],
+  ["lead",{k:"op-cardsheet",slot:"Plate 10",ratio:"3/2",ghost:"the Feel-it! card system",cap:"The Feel-it! card system: 24 emotions in families, five ways to play, and the box it comes in."}],
+  ["para","More than 1,700 people came to the three events, many of them hearing about Dream Strokes for the first time. Tickets and calendar sales went back into the shelter workshops, and the cards took what we do to children outside our sessions."],
   ["go",{href:"#/work/events",label:"See these events"}],
+  ["kicker","The team · 25 members"],
+  ["para","Dream Strokes is a team of 25, split across R&D, Tech, Events and PR. Most of what you see on this page is their work as much as mine."],
+  ["figs",[
+    {k:"ds-team-1",slot:"Plate 11",ratio:"3/2",ghost:"the team on the pitch",cap:"Part of the team, on the pitch."},
+    {k:"ds-team-2",slot:"Plate 12",ratio:"3/2",ghost:"the team in an alley",cap:"Out together, November 2025."}
+  ]],
+  ["figs",[
+    {k:"ds-team-3",slot:"Plate 13",ratio:"3/2",ghost:"the team in a hall",cap:"Hearts for the camera."},
+    {k:"ds-advisor",slot:"Plate 14",ratio:"3/2",ghost:"a call with our advisor",cap:"A video call with our advisor."}
+  ]],
   ["kicker","Where it led"],
   ["para","If one change of format could shift participation that much, the crayons were never the point. What mattered was what the room allowed. That pushed me to read psychology properly, and then to run a real study instead of trusting my own notes."],
   ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/work/events",label:"Events"},{href:"#/exhibition",label:"Exhibition"}]]

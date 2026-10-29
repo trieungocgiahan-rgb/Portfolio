@@ -93,6 +93,9 @@ the accent appears only in numbers, rules, dots, nav state and small labels.
   component's breakpoint changes written beside it. Change the component's
   own block. Never append an override layer ("FIXES") at the end, never add
   a second definition of a component, avoid !important.
+- A room's section heading is a ["kicker", …] block: it renders an h3
+  (.room__head) whose text before the first " · " is the title and the
+  rest is mono metadata. Keep the title short; put dates and places after.
 - Layout lives in CSS classes, not inline styles. Inline style is only for
   data: --ratio, --len, --dl, --dc.
 - Prefer grid and flex. Absolute positioning only for decorative layers.

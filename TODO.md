@@ -3,6 +3,8 @@
 ## 1. Photographs (all in the MEDIA object at the top of app.js; the 8 exhibition works are in img/art-*.jpg)
 Filled: hero-door, rooms-hall, gather-2, ab-2 (portrait), nm-lead, nm-1…6, dream-strokes-logo, cx-home, cx-1…3, cj-lead, cj-1, ev-tet, ev-sciphony, ev-tours, ev-pitch, ev-league, ev-identity, ev-rocket,
 once-upon, bl-1…4,
+op-cards, op-cardsheet, op-calendar, op-comic, ss-band, ss-bandages, ss-logo (Dream Strokes OPEN),
+ds-team-1…3, ds-advisor (the team),
 contextuary-logo, together-logo
 (Dream Strokes), gt-lead, gt-1, gt-2 (Sol Sound), gt-4, gt-5 (Beats of Hope),
 
@@ -10,6 +12,8 @@ contextuary-logo, together-logo
 Still empty
 - tc-1     TeenCare: the team at work
 - tc-2     TeenCare: a wireframe or the e-book
+- two framed drawings (a girl with a crown, a boy with a basketball): sent
+           without a label, not placed yet
 - FILMS    three YouTube links for the screening room (title, year, one line)
 
 Faces of shelter children need permission from the shelter before going
