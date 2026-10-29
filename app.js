@@ -665,6 +665,7 @@ const B={
   vnmap:o=>{ const pl=o.places.map(p=>({...p,xy:vnXY(p.lon,p.lat)})), st=pl.find(p=>p.start).xy;
     return `<figure class="blk vnmap" data-draw>
     <svg class="vnmap__svg" viewBox="0 0 500 615" role="img" aria-labelledby="vnmapT"><title id="vnmapT">${o.title}</title>
+      <defs><linearGradient id="vnLand" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="#F7C9DA"/><stop offset=".5" stop-color="#D3E3F8"/><stop offset="1" stop-color="#FBE6B6"/></linearGradient></defs>
       <path class="vnmap__land" d="${VN_OUTLINE}"/>
       ${o.isles.map(i=>{ const [x,y]=vnXY(i.lon,i.lat); return `<g class="vnmap__isles">${[[0,0],[9,-5],[-8,6],[5,9],[-11,-4],[14,4]].map(([dx,dy])=>`<circle cx="${x+dx}" cy="${y+dy}" r="1.7"/>`).join("")}<text x="${x}" y="${y+28}" text-anchor="middle">${i.name}</text></g>`; }).join("")}
       ${pl.filter(p=>!p.start).map((p,i)=>`<path class="vnmap__arc" style="--dl:${i*160}ms" d="M${st[0]},${st[1]} Q${((st[0]+p.xy[0])/2+.7*Math.hypot(p.xy[0]-st[0],p.xy[1]-st[1])).toFixed(1)},${((st[1]+p.xy[1])/2).toFixed(1)} ${p.xy[0]},${p.xy[1]}"/>`).join("")}
@@ -1400,7 +1401,7 @@ function bindScreening(){
   let chapRaf=0;
   function markChapter(){
     chapRaf=0;
-    const bar=$(".chbar",inner); if(!bar) return;
+    const bar=$(".chbar",inner); if(!bar){ delete room.dataset.chap; return; }
     const y=room.scrollTop+chapGap()+room.clientHeight*.25;
     let cur=null; $$(".chap",inner).forEach(c=>{ if(c.offsetTop<=y) cur=c.id; });
     $$("a",bar).forEach(l=>{
@@ -1409,6 +1410,7 @@ function bindScreening(){
       if(on) $(".chbar__now",bar).textContent=l.title;
     });
     if(!cur) $(".chbar__now",bar).textContent="";
+    if(room.dataset.chap!==(cur||"")) room.dataset.chap=cur||"";
   }
   room.addEventListener("scroll",()=>{ if(!chapRaf) chapRaf=requestAnimationFrame(markChapter); },{passive:true});
   /* switchers: one tab open at a time, arrow keys move between them */

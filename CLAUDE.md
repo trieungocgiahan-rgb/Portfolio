@@ -45,7 +45,8 @@ sharing a room, then tests it through community work, research and building.
   /room/anchor scrolls to a kicker with that id. Rooms open in place.
 - Every room starts with a hero block with its own light, set by
   data-room on #room: dark heroes (Events night stage, Tech electric blue,
-  Awards teal) and paper heroes (Dream Strokes peach, Research lavender graph
+  Awards teal) and paper heroes (Dream Strokes a pink-sky-butter ombre that carries
+  through the whole room and shifts per chapter, with frosted-glass cards, Research lavender graph
   paper, Exhibition paint washes, About blush, CV ruled paper); the lead
   photograph is always seen through an arched door and then tells one short story: what
   was noticed, what changed, what it led to. About is the one exception,
