@@ -23,9 +23,16 @@ sharing a room, then tests it through community work, research and building.
   own look: TeenCare a soft sunrise in its yellow and orange with slate
   ink, Brain-Life white with its electric blue (#0041E7) and a dot grid;
   each company's wordmark stands in for the room title and its icon sits
-  in the door. Dream Strokes shows how the workshops grew into an
-  ecosystem (the eco block: Workshops, OPEN, Things to keep, People), then
-  OPEN's six ways in, then the team and advisors who make it possible.
+  in the door. Dream Strokes is the flagship and tells the
+  whole ecosystem in eight numbered chapters, each with its own layout so
+  the page never reads as one long scroll: 01 Why (purpose, vision, the
+  boy in the corner), 02 Sessions (lesson plans, the Magic Mirror, Colors
+  of Joy), 03 OPEN (a switcher: Sol Sound, Colors of the Pitch, Once Upon
+  the Inside), 04 Art that keeps going (website, virtual exhibition, the
+  money loop), 05 Partners (Bao Sang, Phuong Thao Nguyen, Fing3rprint
+  Education), 06 The team, 07 What we make (Feel-it!, curriculum,
+  calendar, comic), 08 Money and impact, then Follow the journey
+  (netmoproject.page and the Facebook page, NETMO_FACEBOOK).
   Events is one story about why she makes gatherings,
   told in four threads (Create together, Cheer for the same thing, Make room to belong,
   Start what isn't there): the threads first, then Beats of Hope as the

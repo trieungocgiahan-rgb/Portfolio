@@ -44,9 +44,13 @@ Events, Research & Internships, Tech Projects, About, CV, Awards (the
 Exhibition is built from `ARCHIVE`; the honours live once in `AWARDS`).
 Each room starts with a `hero` block (kicker, title, lede, facts, and `k`,
 the photograph shown in its door), then a list of blocks: kicker,
-subtitle, lede, para, quote, steps, numbers, pairs, rows, contact, fig,
-lead, figs, strip, links. A kicker written as `{t:"…", id:"internships"}`
-can be linked to directly as `#/work/research/internships`.
+lede, para, quote, steps, numbers, pairs, rows, contact, fig,
+lead, figs, strip, links, and more (see `B` in app.js). A kicker written as
+`{t:"…", id:"internships"}` can be linked to directly as
+`#/work/research/internships`. Dream Strokes, the flagship, is told in
+numbered chapters: `chapters` draws the map and the sticky chapter bar,
+`chapter` opens each one, and each chapter uses its own layout (statements,
+split, feature, switcher, loop, partners, mosaic, shelf, impact, follow).
 
 ## Add or change an artwork
 

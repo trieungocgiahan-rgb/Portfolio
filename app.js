@@ -55,7 +55,9 @@ const MEDIA = {
   "ds-team-1":{src:"img/ds-team-1.jpg",alt:"Eight members of the Dream Strokes team on a football pitch, making heart shapes with their hands.",pos:"62% 55%"},
   "ds-team-2":{src:"img/ds-team-2.jpg",alt:"The Dream Strokes team together in a sunny alley under yellow flowers.",pos:"42% 60%"},
   "ds-team-3":{src:"img/ds-team-3.jpg",alt:"The Dream Strokes team in a school hall, everyone making a heart with their hands.",pos:"50% 55%"},
-  "ds-advisor":{src:"img/ds-advisor.jpg",alt:"A video call with our advisor; I am in the small window in the corner.",pos:"60% 45%"},
+  "ds-mirror-1":{src:"img/ds-mirror-1.jpg",alt:"A child’s self-portrait from The Magic Mirror: a girl with black hair and a gold crown, in a pink mirror frame.",fit:"contain"},
+  "ds-mirror-2":{src:"img/ds-mirror-2.jpg",alt:"A child’s self-portrait from The Magic Mirror: a boy spinning a basketball on one finger on a court, in a blue mirror frame.",fit:"contain"},
+  "ds-advisor":{src:"img/ds-advisor.jpg",alt:"A video call with Phuong Thao Nguyen, our advisor; I am in the small window in the corner.",pos:"60% 45%"},
   /* research rooms: never participants; the work, the team, the tools */
   "rs-1":{src:"img/rs-1.jpg",alt:"Inkling’s home page: AI draws the first line. You decide the rest. Beside it, a drawing where a dotted AI line turns into the user’s own strokes, a hill and a sun.",pos:"30% 40%"},
   "rs-2":{src:"img/rs-2.jpg",alt:"Gia Han, holding a microphone, presents in front of a screen showing a warning sign.",pos:"55% 40%"}, "tc-1":"", "tc-2":"", 
@@ -76,6 +78,8 @@ const EVENT_LINKS = {
   "tet-oi":"",
   "colors-of-the-pitch":""
 };
+/* Dream Strokes on Facebook (the page is called Net Mo Project). Empty hides the button. */
+const NETMO_FACEBOOK = "";
 /* ============================================================
    FILMS · the screening room under the Exhibition wall.
    Paste each film's YouTube link (any form: youtu.be/…, watch?v=…,
@@ -505,6 +509,10 @@ const hero=o=>`<header class="room-hero">
   </div>
 </header>`;
 
+/* line drawings for things on a shelf that have no photograph */
+const SHELF_MARKS={
+  plans:'<path d="M12 6h18l7 7v29H12z"/><path d="M30 6v7h7"/><path d="M17 20h14M17 26h14M17 32h9"/>'
+};
 /* one gathering or way in: a photo, what kind of thing it is, its name, what it was, one number */
 const gcard=e=>`<article class="gevent">
   <div class="fig__plate" data-img="${e.k}" data-slot="" style="--ratio:4/3"><div class="fig__ghost">${e.ghost}</div></div>
@@ -609,10 +617,42 @@ const B={
     <div class="gtheme__why"><p class="gtheme__num">${t.num}</p><h3>${t.h}</h3><p>${t.why}</p></div>
     <div class="gtheme__events">${t.events.map(gcard).join("")}</div>
   </section>`).join("")}</div>`,
-  /* the parts of a project as dots on one line: the line is what holds them together */
-  eco:a=>`<ol class="blk eco">${a.map(x=>`<li><span class="eco__dot" aria-hidden="true"></span><p class="eco__k">${x.k}</p><h4>${x.h}</h4><p class="eco__p">${x.p}</p></li>`).join("")}</ol>`,
-  /* the ways into Dream Strokes OPEN: the same cards, three to a row */
-  ways:a=>`<div class="blk ways">${a.map(gcard).join("")}</div>`,
+  /* ---- a long room told in chapters (Dream Strokes) ---- */
+  /* every chapter on one map, then a slim bar that stays and marks where you are */
+  chapters:o=>`<nav class="chmap" aria-label="The parts of this page"><ol>${o.items.map(c=>`<li><a href="#${o.route}/${c.id}" data-jump="room-${c.id}"><span class="chmap__n">${c.n}</span><b>${c.t}</b><span class="chmap__p">${c.p}</span></a></li>`).join("")}</ol></nav>
+  <nav class="chbar" aria-label="Chapters"><div class="chbar__in"><ol>${o.items.map(c=>`<li><a href="#${o.route}/${c.id}" data-jump="room-${c.id}" title="${c.t}"><i aria-hidden="true"></i><span class="chbar__n">${c.n}</span><span class="chbar__t">${c.s}</span></a></li>`).join("")}</ol><p class="chbar__now" aria-hidden="true"></p></div></nav>`,
+  /* a chapter's opening: its number large, its title, one line on what it holds */
+  chapter:o=>`<header class="chap" id="room-${o.id}"><p class="chap__n">${o.n}</p><h3 class="chap__t">${o.t}</h3>${o.p?`<p class="chap__p">${o.p}</p>`:""}</header>`,
+  /* what a project is for, in two lines worth stopping at */
+  statements:a=>`<div class="blk statements">${a.map(x=>`<div><p class="statements__k">${x.k}</p><p class="statements__t">${x.t}</p></div>`).join("")}</div>`,
+  /* two columns that each hold ordinary blocks: words on one side, pictures on the other */
+  split:o=>`<div class="blk split"><div class="split__a">${o.a.map(([t,x])=>B[t](x)).join("")}</div><div class="split__b">${o.b.map(([t,x])=>B[t](x)).join("")}</div></div>`,
+  /* one moment worth stopping at: a dark band, words beside artwork seen whole */
+  feature:o=>`<section class="blk feature" id="room-${o.id}"><div class="feature__text"><p class="feature__k">${o.k}</p><h4>${o.h}</h4>${o.p.map(x=>`<p class="feature__p">${x}</p>`).join("")}</div><div class="feature__art">${o.figs.map(fig).join("")}</div></section>`,
+  /* several things, one at a time: the list to choose from beside the one chosen */
+  switcher:o=>`<div class="blk switcher">
+    <div class="switcher__tabs" role="tablist" aria-label="${o.label}">${o.items.map((x,i)=>`<button type="button" role="tab" id="sw-${x.id}" aria-controls="swp-${x.id}" aria-selected="${i===0}"${i?' tabindex="-1"':""}><span class="switcher__meta">${x.meta}</span><span class="switcher__name">${x.name}</span><span class="switcher__fact">${x.fact}</span></button>`).join("")}</div>
+    ${o.items.map((x,i)=>`<div class="switcher__panel" role="tabpanel" id="swp-${x.id}" aria-labelledby="sw-${x.id}"${i?" hidden":""}>
+      ${fig({k:x.k,ratio:"3/2",ghost:x.ghost})}
+      <p class="switcher__p">${x.p}</p>
+      ${x.more?`<div class="switcher__more">${x.more.map(m=>fig({...m,ratio:"4/3"})).join("")}</div>`:""}
+    </div>`).join("")}
+  </div>`,
+  /* a cycle: each step hands on to the next, and a thin line carries the last back to the first */
+  loop:o=>`<div class="blk loop"><ol>${o.items.map((x,i)=>`<li><span class="loop__n">${String(i+1).padStart(2,"0")}</span><b>${x.h}</b><p>${x.p}</p></li>`).join("")}</ol><p class="loop__back"><span>↺ ${o.back}</span></p></div>`,
+  /* who we work with: what they are to us in mono, their name in serif */
+  partners:a=>`<div class="blk partners">${a.map(x=>`<div><p class="partners__k">${x.k}</p><h4>${x.h}</h4>${x.p?`<p class="partners__p">${x.p}</p>`:""}</div>`).join("")}</div>`,
+  /* one group in photographs: a large one, two beneath it */
+  mosaic:a=>`<div class="blk mosaic">${a.map(fig).join("")}</div>`,
+  /* the things we make: one held up large, the others listed beside it */
+  shelf:o=>`<div class="blk shelf">
+    <article class="shelf__main">${fig({k:o.main.k,ratio:o.main.ratio,ghost:o.main.ghost})}<div><p class="shelf__k">${o.main.meta}</p><h4>${o.main.name}</h4><p class="shelf__p">${o.main.p}</p><p class="shelf__badge">${o.main.badge}</p></div></article>
+    <ul class="shelf__rest">${o.rest.map(x=>`<li>${x.k?fig({k:x.k,ratio:"1/1",ghost:x.ghost}):`<div class="shelf__mark" aria-hidden="true"><svg viewBox="0 0 48 48">${SHELF_MARKS[x.mark]}</svg></div>`}<div><p class="shelf__k">${x.meta}</p><h4>${x.name}</h4><p class="shelf__p">${x.p}</p></div></li>`).join("")}</ul>
+  </div>`,
+  /* the whole project in numbers, on a dark band beside one photograph */
+  impact:o=>`<section class="blk impact"><div><p class="impact__k">${o.k}</p><div class="impact__nums">${o.items.map(n=>`<div><b>${n.b}</b><span>${n.s}</span></div>`).join("")}</div><p class="impact__p">${o.p}</p></div>${fig(o.fig)}</section>`,
+  /* where to keep following a project after this page */
+  follow:o=>`<section class="blk follow"><img class="follow__logo" src="${o.logo}" alt="" width="300" height="300"><div><h4>${o.h}</h4><p class="follow__p">${o.p}</p><p class="follow__links">${o.links.filter(l=>l.href).map(l=>`<a class="btn btn--ink" href="${l.href}" target="_blank" rel="noopener">${l.label} ↗</a>`).join("")}</p></div></section>`,
   /* each part of the work on one row: what I did, then what it taught me */
   tasks:a=>`<ol class="blk tasks">${a.map(x=>`<li><div class="tasks__did"><b>${x.h}</b><p>${x.did}</p></div><p class="tasks__learned"><span>What it taught me</span>${x.learned}</p></li>`).join("")}</ol>`,
   /* a way on to another room on this site */
@@ -757,71 +797,123 @@ const ROOMS={
 "/work/net-mo":{accent:"var(--coral)",where:"Work · Dream Strokes",blocks:[
   ["hero",{kicker:"Work · Apr 2025 to now · Founder and Project Director",title:"Dream Strokes",
     logo:"img/dream-strokes-logo.jpg",logoAlt:"The Dream Strokes logo: a hand-drawn child with star eyes and a paintbrush, under the project’s name in dripping paint.",
-    lede:"An arts-based emotional-learning programme for children in shelters and older adults in care homes, which I have grown into an ecosystem: public events, things to take home, and a team of 25. Professionally guided and legally sponsored by Bao Sang Art Therapy Center.",
+    lede:"An arts-based emotional-learning programme I founded for children in shelters and older adults in care homes. It started at one workshop table and grew into an ecosystem: planned sessions, public events, things we make, partners and a team of 25.",
     facts:[{b:"50",s:"workshops"},{b:"6",s:"shelters"},{b:"2",s:"care homes"}],
     k:"nm-lead",ghost:"a session in progress"}],
-  ["kicker","What I noticed first"],
-  ["para","A boy spent the first session drawing in the bottom right corner of his page. Not shyly. Efficiently, as if the rest of the paper belonged to somebody else. In the third session we ran out of small sheets and put one large one across four tables. He drew across the middle without asking."],
-  ["quote","The material was never the problem. The ownership of the surface was."],
-  ["kicker","What I changed"],
-  ["steps",[
-    {b:"Story worlds instead of free drawing",p:"Active participation rose from 60% to an average of 85%, and the quiet children changed most. A character gave them someone to speak through when speaking as themselves was too much."},
-    {b:"One shared piece at the end",p:"Sessions now end on something the whole table made together. Facilitators know an unfinished page is a good outcome."},
-    {b:"A journal the next team can pick up",p:"I built an activity journal app with roles, photos, a calendar and a task board, so each new season could start where the last one ended."}
+  ["kicker","The whole project · in eight parts"],
+  ["para","Here is everything it grew into. Jump to any part, or read straight through."],
+  ["chapters",{route:"/work/net-mo",items:[
+    {n:"01",id:"why",t:"Why it exists",s:"Why",p:"A boy in the corner of his page, and what we want for everyone."},
+    {n:"02",id:"sessions",t:"Sessions built with care",s:"Sessions",p:"Our lesson plans, the Magic Mirror, and a curriculum for Hanoi."},
+    {n:"03",id:"open",t:"Dream Strokes OPEN",s:"OPEN",p:"A concert, a football cup and an exhibition, open to anyone."},
+    {n:"04",id:"art",t:"Art that keeps going",s:"Their art",p:"A website, a virtual exhibition, and money back into sessions."},
+    {n:"05",id:"partners",t:"Partners",s:"Partners",p:"The art therapists and educators who guide the work."},
+    {n:"06",id:"team",t:"The team",s:"Team",p:"25 people in four departments, and how we stay connected."},
+    {n:"07",id:"make",t:"What we make",s:"What we make",p:"Emotion cards, lesson plans, a calendar and a comic."},
+    {n:"08",id:"impact",t:"Money and impact",s:"Impact",p:"What it raised, and who it reached."}
+  ]}],
+
+  ["chapter",{n:"01",id:"why",t:"Why it exists"}],
+  ["statements",[
+    {k:"Our purpose",t:"To give children in shelters and older adults in care homes a way to say how they feel through art, when words are hard."},
+    {k:"Our vision",t:"Creativity with no limit on who joins or where: a shelter, a care home, a classroom or a concert hall."}
   ]],
-  ["numbers",[
-    {b:"~200",s:"children in 6 shelters"},
-    {b:"22",s:"older adults in 2 care homes"},
-    {b:"~VND 75M",s:"net proceeds, reinvested in the project"}
-  ]],
-  ["figs",[
-    {k:"nm-1",slot:"Plate 02",ratio:"3/4",ghost:"child and facilitator",cap:"At the table with a child, mid-drawing."},
-    {k:"nm-2",slot:"Plate 03",ratio:"3/4",ghost:"older participant",cap:"A care home session with older adults."},
-    {k:"nm-3",slot:"Plate 04",ratio:"3/4",ghost:"drawings held up",cap:"Characters to speak through, held up for everyone to see."}
-  ]],
-  ["lead",{k:"nm-4",slot:"Plate 05",ratio:"3/2",ghost:"the end of a session",cap:"The end of a session: everyone holding up what they made."}],
-  ["kicker",{t:"Colors of Joy Workshop · Hanoi · with Bao Sang Art Therapy Center · Aug to Oct 2025",id:"colors-of-joy"}],
-  ["para","In Hanoi, I adapted Dream Strokes activities into a 4-session curriculum for 24 children aged 6 to 12, writing the session plans and facilitator guides and revising each session with licensed art therapists. By the final session, 23 of the 24 children could name their emotions through drawing."],
-  ["figs",[
-    {k:"nm-5",slot:"Plate 06",ratio:"1/1",ghost:"painting at the studio",cap:"Colors of Joy, Hanoi: painting together at the studio."},
-    {k:"nm-6",slot:"Plate 07",ratio:"1/1",ghost:"a facilitator with two children",cap:"A facilitator painting alongside two children."}
-  ]],
-  ["kicker",{t:"From one table to an ecosystem",id:"ecosystem"}],
-  ["para","A workshop reaches one table at a time. I wanted many more people to make something together and say more through it, so I started building Dream Strokes into an ecosystem: several ways in, and the people to hold them together."],
-  ["eco",[
-    {k:"The core",h:"Workshops",p:"Art sessions with children in 6 shelters and older adults in 2 care homes."},
-    {k:"Open to all",h:"OPEN",p:"Concerts, football and an exhibition, where anyone can join in and make something."},
-    {k:"To take home",h:"Things to keep",p:"Emotion cards, a calendar and a comic that carry the idea beyond our sessions."},
-    {k:"Behind it",h:"People",p:"A team of 25, the art therapists who guide our work, and the app that keeps us connected."}
-  ]],
-  ["para","Each part feeds the others. Tickets and calendar sales pay for the workshops, what we learn at the tables turns into the cards and the comic, and people who first meet us at a concert or a match find out what the workshops are for."],
-  ["kicker",{t:"Dream Strokes OPEN · for anyone, anywhere",id:"once-upon"}],
-  ["para","At the shelters I watched children say things through a drawing that they could not say out loud. I didn’t want that to stop at the shelter door, so OPEN is for everyone else. You don’t have to call yourself an artist: you can play, cheer, listen, paint, or take something home."],
-  ["ways",[
-    {k:"ss-band",ghost:"Sol Sound, the band",meta:"Music",name:"Sol Sound: A December to Remember",p:"A winter night of young bands, open to anyone with a ticket.",fact:"400+ tickets"},
-    {k:"ev-pitch",ghost:"Colors of the Pitch",meta:"Football",name:"Colors of the Pitch",p:"Two tournaments where you could join a team or just come and cheer.",fact:"10 teams · 1,000+ spectators"},
-    {k:"once-upon",ghost:"the exhibition",meta:"Painting",name:"Once Upon the Inside",p:"A youth painting exhibition I co-produced with The APRIL Collective at May Artspace.",fact:"300+ visitors"},
-    {k:"op-cards",ghost:"the Feel-it! box",meta:"Emotion cards · ages 5 to 10",name:"Feel-it!",p:"24 emotion characters and five games, so a child can name a feeling by pointing at it.",fact:"Second Prize · Ho Chi Minh City Youth Creativity Contest 2025"},
-    {k:"op-calendar",ghost:"the 2026 calendar",meta:"Calendar",name:"The 2026 calendar",p:"Drawn by our team and sold to pay for the next season of workshops."},
-    {k:"op-comic",ghost:"a page of the comic",meta:"Comic series",name:"Cloud’s Story",p:"Drawing Worries, Colouring Hope: the workshop idea told as a story anyone can read."}
-  ]],
-  ["figs",[
-    {k:"ss-logo",slot:"Plate 08",ratio:"4/3",ghost:"the Sol Sound poster",cap:"The Sol Sound Show poster art."},
-    {k:"ss-bandages",slot:"Plate 09",ratio:"4/3",ghost:"The Bandages on stage",cap:"The Bandages on stage at A December to Remember."}
-  ]],
-  ["lead",{k:"op-cardsheet",slot:"Plate 10",ratio:"3/2",ghost:"the Feel-it! card system",cap:"The Feel-it! card system: 24 emotions in families, five ways to play, and the box it comes in."}],
-  ["para","More than 1,700 people came to the three events, many of them hearing about Dream Strokes for the first time. Tickets and calendar sales went back into the shelter workshops, and the cards took what we do to children outside our sessions."],
+  ["split",{a:[["fig",{k:"nm-1",slot:"Plate 01",ratio:"4/5",ghost:"child and facilitator",cap:"At the table with a child, mid-drawing."}]],
+    b:[["kicker","What I noticed first"],
+      ["para","A boy spent the first session drawing in the bottom right corner of his page. Not shyly. Efficiently, as if the rest of the paper belonged to somebody else. In the third session we ran out of small sheets and put one large one across four tables. He drew across the middle without asking."],
+      ["para","Since then, everything we build starts from the same question: what would make this person feel the page is theirs?"]]}],
+
+  ["chapter",{n:"02",id:"sessions",t:"Sessions built with care",p:"Every activity is planned on paper, tested, and changed until it works."}],
+  ["split",{a:[["kicker","What our lesson plans changed"],
+      ["steps",[
+        {b:"Story worlds instead of free drawing",p:"Active participation rose from 60% to an average of 85%, and the quiet children changed most. A character gave them someone to speak through when speaking as themselves was too much."},
+        {b:"One shared piece at the end",p:"Sessions now end on something the whole table made together. Facilitators know an unfinished page is a good outcome."}
+      ]]],
+    b:[["figs",[
+      {k:"nm-3",slot:"Plate 02",ratio:"3/4",ghost:"drawings held up",cap:"Characters to speak through, held up for everyone to see."},
+      {k:"nm-2",slot:"Plate 03",ratio:"3/4",ghost:"older participant",cap:"A care home session with older adults."}
+    ]]]}],
+  ["feature",{id:"magic-mirror",k:"One lesson, up close",h:"The Magic Mirror",
+    p:["Each child gets a mirror frame on paper and draws the person they see in it.","One girl drew herself in a crown. One boy drew himself spinning a basketball on a court. It is a simple way to ask a child how they see themselves, without asking them to explain."],
+    figs:[
+      {k:"ds-mirror-1",ratio:"1088/1200",ghost:"a portrait in a pink mirror frame",cap:"In a crown."},
+      {k:"ds-mirror-2",ratio:"1200/968",ghost:"a portrait in a blue mirror frame",cap:"On the court."}
+    ]}],
+  ["split",{a:[["kicker",{t:"Colors of Joy · Hanoi · with Bao Sang Art Therapy Center · Aug to Oct 2025",id:"colors-of-joy"}],
+      ["para","In Hanoi I turned our activities into a curriculum, wrote the session plans and facilitator guides, and revised each session with licensed art therapists."],
+      ["numbers",[{b:"4",s:"sessions"},{b:"24",s:"children, ages 6–12"},{b:"23",s:"could name their emotions by the end"}]]],
+    b:[["figs",[
+      {k:"nm-5",slot:"Plate 04",ratio:"1/1",ghost:"painting at the studio",cap:"Painting together at the studio."},
+      {k:"nm-6",slot:"Plate 05",ratio:"1/1",ghost:"a facilitator with two children",cap:"A facilitator painting alongside two children."}
+    ]]]}],
+
+  ["chapter",{n:"03",id:"open",t:"Dream Strokes OPEN",p:"For anyone, anywhere."}],
+  ["para","At the shelters I watched children say things through a drawing that they could not say out loud. I didn’t want that to stop at the shelter door, so I started OPEN, our branch for everyone else. You don’t have to call yourself an artist: you can play, cheer, listen or paint. Choose one to see it."],
+  ["switcher",{label:"Dream Strokes OPEN programmes",items:[
+    {id:"sol-sound",k:"ss-band",ghost:"Sol Sound, the band",meta:"Music",name:"Sol Sound",fact:"400+ tickets",
+      p:"A December to Remember: a winter night of young bands, The Bandages among them. Anyone could buy a ticket, and the money went back into Dream Strokes.",
+      more:[{k:"ss-logo",ghost:"the poster",cap:"The poster art."},{k:"ss-bandages",ghost:"The Bandages",cap:"The Bandages on stage."}]},
+    {id:"pitch",k:"ev-pitch",ghost:"Colors of the Pitch",meta:"Football",name:"Colors of the Pitch",fact:"10 teams · 1,000+ spectators",
+      p:"Two football tournaments, where you could play on a team or come and cheer from the stands."},
+    {id:"once-upon",k:"once-upon",ghost:"the exhibition",meta:"Painting",name:"Once Upon the Inside",fact:"300+ visitors",
+      p:"A youth painting exhibition I co-produced with The APRIL Collective at May Artspace."}
+  ]}],
+  ["para","More than 1,700 people came to these three events, many of them meeting Dream Strokes for the first time. People come for the music or the match and find out what the workshops are for."],
   ["go",{href:"#/work/events",label:"See these events"}],
-  ["kicker","The people behind it · a team of 25 and our advisors"],
-  ["para","I couldn’t grow this alone, and I didn’t want to. Building the team became as much my work as designing the sessions: 25 people across R&D, Tech, Events and PR, each owning a part. Our advisors, licensed art therapists, review what we make before it reaches a child, and <a href=\"#/work/tech/together\">Together!</a>, the app I co-founded, keeps everyone connected across branches."],
-  ["figs",[
-    {k:"ds-team-1",slot:"Plate 11",ratio:"3/2",ghost:"the team on the pitch",cap:"Part of the team, on the pitch."},
-    {k:"ds-team-2",slot:"Plate 12",ratio:"3/2",ghost:"the team in an alley",cap:"Out together, November 2025."}
-  ]],
-  ["figs",[
-    {k:"ds-team-3",slot:"Plate 13",ratio:"3/2",ghost:"the team in a hall",cap:"Hearts for the camera."},
-    {k:"ds-advisor",slot:"Plate 14",ratio:"3/2",ghost:"a call with our advisor",cap:"A video call with our advisor."}
-  ]],
+
+  ["chapter",{n:"04",id:"art",t:"Art that keeps going",p:"What happens to a drawing after the session ends."}],
+  ["para","A drawing used to end its life in a folder. I wanted the work to be seen, and to help pay for the next session, so we gave it somewhere to go."],
+  ["loop",{items:[
+    {h:"They make it",p:"Children and older adults draw and paint in our sessions."},
+    {h:"We show it",p:"Their work goes on our website and into a virtual exhibition anyone can visit."},
+    {h:"It earns",p:"Their work raises money for the project."},
+    {h:"It pays for more",p:"That money funds sessions for children, care homes and our regular art classes."}
+  ],back:"and the next session begins"}],
+  ["visit",{href:"https://netmoproject.page",label:"Visit our website"}],
+
+  ["chapter",{n:"05",id:"partners",t:"Partners",p:"Professionals who guide what we do."}],
+  ["split",{a:[["fig",{k:"ds-advisor",ratio:"3/2",ghost:"a call with our advisor",cap:"A call with Phuong Thao Nguyen, our advisor."}]],
+    b:[["partners",[
+      {k:"Professional guidance and legal sponsor",h:"Bao Sang Art Therapy Center",p:"Licensed art therapists who guide how we work with children and stand behind the project legally."},
+      {k:"Our advisor",h:"Phuong Thao Nguyen",p:"Founder of Bao Sang Art Therapy Center, M.A. in Psychology and licensed art therapist. I talk new sessions through with her before we run them."},
+      {k:"Education partner",h:"Fing3rprint Education"}
+    ]]]}],
+
+  ["chapter",{n:"06",id:"team",t:"The team",p:"I couldn’t grow this alone, and I didn’t want to."}],
+  ["split",{a:[
+      ["para","To reach more places than I could run myself, I built a team of 25 in four departments. Building it became as much my work as designing the sessions."],
+      ["pairs",[
+        {h:"R&D",p:"Designs the sessions and writes the lesson plans."},
+        {h:"Tech",p:"Builds the website and the tools we run on."},
+        {h:"Events",p:"Runs OPEN: the concerts, matches and exhibitions."},
+        {h:"PR",p:"Tells people what we do and brings new people in."}
+      ]],
+      ["para","A team spread across places and roles drifts apart easily. I first built an activity journal with roles, photos, a calendar and a task board, so each season could start where the last one ended. Today we share one journal on <a href=\"#/work/tech/together\">Together!</a>, the app I co-founded."]],
+    b:[["mosaic",[
+      {k:"ds-team-3",ratio:"3/2",ghost:"the team in a hall",cap:"Hearts for the camera."},
+      {k:"ds-team-1",ratio:"3/2",ghost:"the team on the pitch",cap:"Part of the team, on the pitch."},
+      {k:"ds-team-2",ratio:"3/2",ghost:"the team in an alley",cap:"Out together, November 2025."}
+    ]]]}],
+
+  ["chapter",{n:"07",id:"make",t:"What we make",p:"Things that carry the idea beyond our sessions."}],
+  ["shelf",{main:{k:"op-cards",ratio:"1/1",ghost:"the Feel-it! box",meta:"Emotion cards · ages 5 to 10",name:"Feel-it!",
+      p:"24 emotion characters and five games, so a child can name a feeling by pointing at it.",badge:"Second Prize · Ho Chi Minh City Youth Creativity Contest 2025"},
+    rest:[
+      {mark:"plans",meta:"Lesson plans",name:"Our curriculum",p:"Session plans and facilitator guides for every activity, from the Magic Mirror to the Hanoi programme."},
+      {k:"op-calendar",ghost:"the 2026 calendar",meta:"Calendar",name:"The 2026 calendar",p:"Drawn by our team and sold to pay for the next season of workshops."},
+      {k:"op-comic",ghost:"a page of the comic",meta:"Comic series",name:"Cloud’s Story",p:"Drawing Worries, Colouring Hope: the workshop idea told as a story anyone can read."}
+    ]}],
+  ["lead",{k:"op-cardsheet",slot:"Plate 06",ratio:"3/2",ghost:"the Feel-it! card system",cap:"The Feel-it! card system: 24 emotions in families, five ways to play, and the box it comes in."}],
+
+  ["chapter",{n:"08",id:"impact",t:"Money and impact"}],
+  ["impact",{k:"Since April 2025",items:[
+      {b:"50",s:"workshops"},{b:"~200",s:"children in 6 shelters"},{b:"22",s:"older adults in 2 care homes"},
+      {b:"1,700+",s:"people at OPEN events"},{b:"~VND 75M",s:"net proceeds, reinvested"},{b:"25",s:"people on the team"}
+    ],p:"The money pays for materials, sessions and the next season.",
+    fig:{k:"nm-4",ratio:"4/5",ghost:"the end of a session",cap:"The end of a session: everyone holding up what they made."}}],
+  ["follow",{logo:"img/dream-strokes-logo.jpg",h:"Follow the journey",p:"Dream Strokes is still growing. New sessions, events and artwork go up on our website and our Facebook page.",
+    links:[{href:"https://netmoproject.page",label:"netmoproject.page"},{href:NETMO_FACEBOOK,label:"Follow on Facebook"}]}],
+
   ["kicker","Where it led"],
   ["para","If one change of format could shift participation that much, the crayons were never the point. What mattered was what the room allowed. That pushed me to read psychology properly, and then to run a real study instead of trusting my own notes."],
   ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/work/events",label:"Events"},{href:"#/exhibition",label:"Exhibition"}]]
@@ -1247,6 +1339,41 @@ function bindScreening(){
     $$(".award",inner).forEach(d=>{ d.open=open; });
     b.setAttribute("aria-pressed",String(open)); b.textContent=open?"Close every story":"Open every story";
   });
+  /* rooms told in chapters: links glide to their chapter instead of re-opening the room */
+  const chapGap=()=>$(".room__top").offsetHeight+(($(".chbar",inner)||{}).offsetHeight||0)+16;
+  inner.addEventListener("click",e=>{
+    const a=e.target.closest("[data-jump]"); if(!a) return;
+    const t=document.getElementById(a.dataset.jump); if(!t) return;
+    e.preventDefault();
+    room.scrollTo({top:t.offsetTop-chapGap(),behavior:REDUCED?"auto":"smooth"});
+  });
+  /* the chapter bar lights the chapter you are reading */
+  let chapRaf=0;
+  function markChapter(){
+    chapRaf=0;
+    const bar=$(".chbar",inner); if(!bar) return;
+    const y=room.scrollTop+chapGap()+room.clientHeight*.25;
+    let cur=null; $$(".chap",inner).forEach(c=>{ if(c.offsetTop<=y) cur=c.id; });
+    $$("a",bar).forEach(l=>{
+      const on=l.dataset.jump===cur; l.classList.toggle("is-on",on);
+      on?l.setAttribute("aria-current","location"):l.removeAttribute("aria-current");
+      if(on) $(".chbar__now",bar).textContent=l.title;
+    });
+    if(!cur) $(".chbar__now",bar).textContent="";
+  }
+  room.addEventListener("scroll",()=>{ if(!chapRaf) chapRaf=requestAnimationFrame(markChapter); },{passive:true});
+  /* switchers: one tab open at a time, arrow keys move between them */
+  function pickTab(tab){
+    const box=tab.closest(".switcher");
+    $$("[role=tab]",box).forEach(t=>{ const on=t===tab; t.setAttribute("aria-selected",String(on)); t.tabIndex=on?0:-1; document.getElementById(t.getAttribute("aria-controls")).hidden=!on; });
+  }
+  inner.addEventListener("click",e=>{ const t=e.target.closest(".switcher [role=tab]"); if(t) pickTab(t); });
+  inner.addEventListener("keydown",e=>{
+    const t=e.target.closest(".switcher [role=tab]"); if(!t||!/^Arrow(Left|Right|Up|Down)$/.test(e.key)) return;
+    e.preventDefault();
+    const tabs=$$("[role=tab]",t.parentElement), n=tabs[(tabs.indexOf(t)+(/Right|Down/.test(e.key)?1:tabs.length-1))%tabs.length];
+    pickTab(n); n.focus();
+  });
   function render(route){
     if(route==="/exhibition"||route==="/archive"||route==="/exhibition/films"){
       inner.innerHTML=exhibitionHTML();
@@ -1266,12 +1393,13 @@ function bindScreening(){
       room.dataset.room=route.split("/").pop();
       { const w=(r.where||"Deeper").split(" · "); where.innerHTML=(w.length>1?`<span class="room__where-pre">${w[0]} · </span>`:"")+w[w.length-1]; }
       inner.innerHTML=r.blocks.map(([type,arg])=>B[type](arg)).join("");
+      room.style.setProperty("--room-top",$(".room__top").offsetHeight+"px");
       tieLastWords(inner);
       paintMedia(inner); wireEvents(inner);
       $$("[data-uncover],[data-part],[data-mask]",inner).forEach(el=>io.observe(el));
-      room.scrollTop=0;
+      room.scrollTop=0; markChapter();
       const target=anchor&&document.getElementById("room-"+anchor);
-      if(target) requestAnimationFrame(()=>{ room.scrollTop=target.offsetTop-$(".room__top").offsetHeight-16; });
+      if(target) requestAnimationFrame(()=>{ room.scrollTop=target.offsetTop-chapGap(); });
       return;
     }
     paintMedia(inner);
