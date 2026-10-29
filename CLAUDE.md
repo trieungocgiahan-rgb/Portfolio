@@ -52,8 +52,8 @@ sharing a room, then tests it through community work, research and building.
   and painting notes stay word for word.
   Awards is told as a story: the years on one line with a small medal
   per honour, then one chapter per group (AWARD_GROUPS), each honour a
-  drawn medal (ribbon in the group colour, its mark engraved) beside her
-  own story in full, the sides taking turns.
+  drawn medal (ribbon in the group colour, its mark engraved) beside the
+  short facts, her own story one tap away, the sides taking turns.
   Events is one story about why she makes gatherings,
   told in four threads (Create together, Cheer for the same thing, Make room to belong,
   Start what isn't there): the threads first, then Beats of Hope as the
@@ -158,6 +158,28 @@ the accent appears only in numbers, rules, dots, nav state and small labels.
   (each idea is said once, where it belongs), no captions that claim more
   than the photograph shows. Her own texts (About, award stories, the
   Exhibition statement) stay word for word.
+- Editing rules for every page. Each paragraph must add something new about
+  her or the work; if it only repeats that she cares about people, likes
+  creating or wants to connect, cut it or replace it with a real detail.
+  Never force an anecdote into a page to make it sound "human".
+  1. One centre, different facets. Connecting people stays the core, but
+     each page shows its own side: Dream Strokes, creative opportunity
+     anyone can reach; TeenCare, inviting people to explore themselves;
+     Together!, letting members see each other's work.
+  2. Facts over meaning. Cut "I deeply believe", "What it taught me",
+     "That is why…" when the paragraph before already makes it clear. Spend
+     the space on what she noticed, what she chose and why.
+  3. No forced journey. Keep cause and effect only where it is true; work
+     that came from an interest, a need or a chance is told that way.
+  4. Her role is always clear: what she did, what the team did, who she
+     worked with. Not every sentence has to start with "I".
+  5. No claims wider than what was seen. Avoid "every", "nobody",
+     "students think…"; name the group, the setting and the result. Keep
+     apart what she hopes, what she observed and what was tested.
+  6. Each kind of content has its own way of telling: projects, decisions
+     and what happened; research, the question, the findings and their
+     limits; art, feeling or the choice made in the work; awards, short
+     facts, with her story one tap away.
 - English only. Every visible word on the site is English. The project is
   called Dream Strokes; other Vietnamese names are written without
   diacritics, as on her CV (Trung Vuong, Gia Han, Bao Sang Art Therapy
