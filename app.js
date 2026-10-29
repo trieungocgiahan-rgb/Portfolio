@@ -55,8 +55,8 @@ const MEDIA = {
   "ds-team-1":{src:"img/ds-team-1.jpg",alt:"Eight members of the Dream Strokes team on a football pitch, making heart shapes with their hands.",pos:"62% 55%"},
   "ds-team-2":{src:"img/ds-team-2.jpg",alt:"The Dream Strokes team together in a sunny alley under yellow flowers.",pos:"42% 60%"},
   "ds-team-3":{src:"img/ds-team-3.jpg",alt:"The Dream Strokes team in a school hall, everyone making a heart with their hands.",pos:"50% 55%"},
-  "ds-mirror-1":{src:"img/ds-mirror-1.jpg",alt:"A child’s self-portrait from The Magic Mirror: a girl with black hair and a gold crown, in a pink mirror frame.",fit:"contain"},
-  "ds-mirror-2":{src:"img/ds-mirror-2.jpg",alt:"A child’s self-portrait from The Magic Mirror: a boy spinning a basketball on one finger on a court, in a blue mirror frame.",fit:"contain"},
+  "ds-mirror-1":{src:"img/ds-mirror-1.webp",alt:"A child’s self-portrait from The Magic Mirror: a girl with black hair and a gold crown, in a pink mirror frame.",fit:"contain"},
+  "ds-mirror-2":{src:"img/ds-mirror-2.webp",alt:"A child’s self-portrait from The Magic Mirror: a boy spinning a basketball on one finger on a court, in a blue mirror frame.",fit:"contain"},
   "ds-advisor":{src:"img/ds-advisor.jpg",alt:"A video call with Phuong Thao Nguyen, our advisor; I am in the small window in the corner.",pos:"60% 45%"},
   /* research rooms: never participants; the work, the team, the tools */
   "rs-1":{src:"img/rs-1.jpg",alt:"Inkling’s home page: AI draws the first line. You decide the rest. Beside it, a drawing where a dotted AI line turns into the user’s own strokes, a hill and a sun.",pos:"30% 40%"},

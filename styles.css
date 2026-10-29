@@ -767,7 +767,7 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
   --lit:color-mix(in srgb,var(--accent) 82%,#141C33);--door-line:rgba(20,28,51,.22);--door-glass:rgba(255,255,255,.45)}
 /* Dream Strokes · the whole room sits in a soft ombre of pink, sky and butter, and the three
    colours drift to a new mix as each chapter comes up (data-chap, set by the chapter bar).
-   Surfaces on it are frosted glass; the two dark bands are a night gradient. */
+   Surfaces on it are frosted glass; the two full-width bands are a brighter ombre. */
 @property --om-a{syntax:"<color>";inherits:true;initial-value:#F8D5E3}
 @property --om-b{syntax:"<color>";inherits:true;initial-value:#D5E6F8}
 @property --om-c{syntax:"<color>";inherits:true;initial-value:#FBEBC3}
@@ -775,7 +775,7 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
   --om-a:#F8D5E3;--om-b:#D5E6F8;--om-c:#FBEBC3;
   --glass:rgba(255,255,255,.58);--glass-strong:rgba(255,255,255,.86);--glass-line:rgba(255,255,255,.92);
   --glass-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 30px 60px -42px rgba(58,40,96,.42);--glass-blur:blur(16px) saturate(140%);
-  --night:linear-gradient(135deg,#101A3D 0%,#24205A 55%,#47264F 100%);
+  --band:linear-gradient(115deg,#F9D3E3 0%,#E7E1FA 40%,#D5E8F9 68%,#FCEDC8 100%);
   background:
     radial-gradient(95% 70% at 0% 0%,var(--om-a),transparent 75%),
     radial-gradient(80% 85% at 100% 40%,var(--om-b),transparent 75%),
@@ -792,6 +792,8 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .room[data-room="net-mo"][data-chap="room-impact"]{--om-a:#DCD7F7;--om-b:#F6D3E2;--om-c:#CFE2F5}
 @media(prefers-reduced-motion:reduce){.room[data-room="net-mo"]{transition:opacity .45s,visibility .45s}}
 .room[data-room="net-mo"] .room__top{background:rgba(255,255,255,.5);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);border-bottom-color:rgba(255,255,255,.8)}
+/* its buttons: coral into pink instead of navy, dark enough for white text */
+.room[data-room="net-mo"] .btn--ink{background:linear-gradient(120deg,#D24E2B,#C92F6B);box-shadow:0 14px 26px -18px rgba(201,47,107,.8)}
 /* its hero: one wide ombre, pink through sky into butter, with a warm glow behind the door */
 .room[data-room="net-mo"] .room-hero{background:
   radial-gradient(45% 80% at 82% 40%,rgba(255,255,255,.55),transparent 70%),
@@ -1151,20 +1153,19 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .split .blk--figs{margin-top:0}
 @media(max-width:900px){.split{grid-template-columns:minmax(0,1fr);gap:var(--sp-3)}}
 
-/* one moment worth stopping at: a dark band, words beside artwork seen whole.
-   The drawings sit on black, so they blend into the band (lighten) */
+/* one moment worth stopping at: a bright band, words beside artwork seen whole
+   (the drawings are cut out of their ground, so they sit straight on the band) */
 .room__inner > .feature{grid-column:full}
 .feature{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:var(--sp-5);align-items:center;margin-top:var(--sp-5);
-  padding:var(--sp-5) max(var(--gutter),calc((100% - var(--wide)) / 2));background:var(--night);color:var(--cream)}
+  padding:var(--sp-5) max(var(--gutter),calc((100% - var(--wide)) / 2));background:var(--band);color:var(--ink)}
 .feature__k{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
 .feature h4{margin:.5rem 0 var(--sp-2);font-size:var(--t-title)}
-.feature__p{color:rgba(247,239,226,.8);line-height:1.7;max-width:min(100%,46ch)}
+.feature__p{color:var(--ink-70);line-height:1.7;max-width:min(100%,46ch)}
 .feature__p + .feature__p{margin-top:var(--sp-2)}
 .feature__art{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3);align-items:center}
 .feature .fig__plate{--plate-bg:transparent}
-.feature .fig__plate img{mix-blend-mode:lighten}
-.feature [data-uncover]::after{background:#1B1D4B}
-.feature figcaption{color:rgba(247,239,226,.6)}
+.feature [data-uncover]::after{background:#EAE4F8}
+.feature figcaption{color:var(--ink-45)}
 .feature + *{margin-top:var(--sp-5)}
 @media(max-width:900px){.feature{grid-template-columns:minmax(0,1fr);gap:var(--sp-4)}}
 
@@ -1241,21 +1242,21 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 @media(max-width:900px){.shelf{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:560px){.shelf__rest li{grid-template-columns:84px minmax(0,1fr);align-items:start}}
 
-/* the whole project as a chain on a dark band: four columns joined by arrows (thin line = transition),
+/* the whole project as a chain on a bright band: four columns joined by arrows (thin line = transition),
    then one photograph and what the numbers are for */
 .room__inner > .impact{grid-column:full}
-.impact{padding:var(--sp-5) max(var(--gutter),calc((100% - var(--wide)) / 2));background:var(--night);color:var(--cream)}
-.impact__k{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:rgba(247,239,226,.7)}
+.impact{padding:var(--sp-5) max(var(--gutter),calc((100% - var(--wide)) / 2));background:var(--band);color:var(--ink)}
+.impact__k{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-45)}
 .impact__model{list-style:none;margin:var(--sp-3) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-4)}
 .impact__model > li{position:relative;display:grid;align-content:start;gap:var(--sp-2)}
 .impact__model > li:not(:last-child)::after{content:"→";position:absolute;top:-.1rem;right:calc(var(--sp-4) / -2);transform:translateX(50%);font-family:var(--mono);color:var(--accent)}
-.impact__h{padding-bottom:.6rem;border-bottom:1px solid rgba(247,239,226,.25);font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--cream)}
+.impact__h{padding-bottom:.6rem;border-bottom:1px solid var(--ink-20);font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
 .impact__model b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(1.6rem,2.8vw,2.3rem);line-height:1;letter-spacing:-.03em;color:var(--accent);white-space:nowrap}
-.impact__model span{display:block;margin-top:.35rem;font-size:.9rem;line-height:1.5;color:rgba(247,239,226,.75)}
+.impact__model span{display:block;margin-top:.35rem;font-size:.9rem;line-height:1.5;color:var(--ink-70)}
 .impact__end{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:var(--sp-4);align-items:center;margin-top:var(--sp-5)}
-.impact__p{font-family:var(--display);font-size:var(--t-idea);line-height:1.35;color:var(--cream);max-width:min(100%,34ch)}
-.impact [data-uncover]::after{background:#1B1D4B}
-.impact figcaption{color:rgba(247,239,226,.6)}
+.impact__p{font-family:var(--display);font-size:var(--t-idea);line-height:1.35;color:var(--ink);max-width:min(100%,34ch)}
+.impact [data-uncover]::after{background:#EAE4F8}
+.impact figcaption{color:var(--ink-45)}
 @media(max-width:1024px){.impact__model{grid-template-columns:repeat(2,minmax(0,1fr))}.impact__model > li:nth-child(2)::after{display:none}}
 @media(max-width:900px){.impact__end{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:560px){.impact__model{grid-template-columns:minmax(0,1fr);gap:var(--sp-3)}.impact__model > li::after{display:none}}
