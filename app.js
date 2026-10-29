@@ -888,7 +888,6 @@ const ROOMS={
   ["hero",{kicker:"Work · Apr 2025 to now · Founder and Project Director",title:"Dream Strokes",
     logo:"img/dream-strokes-logo.jpg",logoAlt:"The Dream Strokes logo: a hand-drawn child with star eyes and a paintbrush, under the project’s name in dripping paint.",
     lede:"An arts-based emotional-learning programme I founded for children in shelters and older adults in care homes. It started at one workshop table and grew into an ecosystem: planned sessions, public events, things we make, partners and sponsors, and a team of 25 across Vietnam.",
-    facts:[{b:"50",s:"workshops"},{b:"6",s:"shelters"},{b:"2",s:"care homes"}],
     k:"nm-lead",ghost:"a session in progress"}],
   ["glance",{role:"Founder and Project Director",team:"25 members in 4 departments, across 6 cities and provinces",when:"Apr 2025 to now",
     results:["50 workshops for ~200 children in 6 shelters and 22 older adults in 2 care homes","1,700+ people at three OPEN events","~VND 75M in net proceeds, reinvested in the project","Second Prize, Ho Chi Minh City Youth Creativity Contest, for the Feel-it! cards"],
@@ -910,11 +909,11 @@ const ROOMS={
   ["split",{mid:true,a:[
       ["para","At my public school, most questions had one right answer, and we were expected to reach it the same way. We practised solving problems, memorising answers and getting things right. An answer that looked different was usually marked wrong."],
       ["para","In my experience, at school and among friends, people who expressed themselves differently were more often criticised than encouraged. And there were few places where anyone could simply come and make something with others, especially without paying for a class."]],
-    b:[["contrast",{a:{k:"At school",t:"One right answer, reached the same way."},b:{k:"At a Dream Strokes table",t:"As many answers as there are people."}}]]}],
+    b:[["contrast",{a:{k:"At school",t:"One right answer, reached the same way."},b:{k:"At a Dream Strokes table",t:"Children answer the same prompt with very different drawings."}}]]}],
   ["para","I think making art belongs in everyday life, whether or not you can pay for it. So in April 2025 I started Dream Strokes with art sessions for children in shelters in Ho Chi Minh City, and later added care homes for older adults. Each session brings the materials, a story to draw into and facilitators, so taking part needs no skill and no equipment of your own."],
   ["statements",[
     {k:"Our hope",t:"To make self-expression and emotional learning accessible to everyone, one creative experience at a time."},
-    {k:"Where it happens",t:"Anywhere people can make something together: a shelter, a care home, a classroom or a concert hall."}
+    {k:"Who it is for",t:"Children in shelters, older adults in care homes, and anyone who comes to an OPEN event."}
   ]],
   ["split",{mid:true,a:[["fig",{k:"nm-1",slot:"Plate 01",ratio:"4/5",ghost:"child and facilitator",cap:"At the table with a child, mid-drawing."}]],
     b:[["kicker","What I noticed first"],
@@ -1040,14 +1039,13 @@ const ROOMS={
     links:[{href:"https://netmoproject.page",label:"netmoproject.page"},{href:NETMO_FACEBOOK,label:"Follow on Facebook"}]}],
 
   ["kicker","Where it led"],
-  ["para","The jump in participation after one change of format is what I later tested properly, in a study of my own."],
+  ["para","Dream Strokes also made me curious about how the form of an activity changes what people express. I later studied a related question, with young adults: art-making against an AI dialogue."],
   ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/work/events",label:"Events"},{href:"#/exhibition",label:"Exhibition"}]]
 ]},
 
 "/work/events":{accent:"#C9561A",where:"Work · Events",blocks:[
   ["hero",{kicker:"Gatherings and events · 2024 to 2026",title:"Rooms with the lights turned up",
     lede:"Concerts, football tournaments, a science festival, a rocket contest and sketch walks I organised between 2024 and 2026. Three of them were firsts at my school.",
-    facts:[{b:"9",s:"gatherings"},{b:"2,400+",s:"at the largest"},{b:"3",s:"firsts at my school"}],
     k:"gather-2",ghost:"Beats of Hope, from the stage"}],
   ["glance",{role:"Producer, organiser or operations lead, depending on the event",team:"From a 7-member crew to a 36-student committee",when:"2024 to 2026",
     results:["Beats of Hope: 10+ student bands, 310+ tickets, ~VND 25M raised","Hey Tet!: 2,400+ attendees, my school’s first fully student-run music event","3 events that were firsts at my school"]}],
@@ -1082,16 +1080,16 @@ const ROOMS={
     {b:"~VND 25M",s:"raised, donated to two hospitals in France"}
   ]],
 
-  ["chapter",{n:"03",id:"more",t:"Eight more gatherings",p:"Each one follows one of the four ideas a little further.",skills:["Leadership","Operations","Starting new things"]}],
+  ["chapter",{n:"03",id:"more",t:"Eight more gatherings",p:"Grouped by what each one asked of the people who came.",skills:["Leadership","Operations","Starting new things"]}],
   ["gatherings",[
     {num:"01",c:"var(--pink)",h:"Create together",why:"Music and sketching give everyone the same task at the same time, so no one has to speak first.",
       events:[
-        {k:"ev-solsound",ghost:"Sol Sound, the stage",meta:"Dream Strokes · music concert",name:"Sol Sound",p:"A Dream Strokes OPEN concert, our first night for the wider community beyond the shelters.",fact:"400+ tickets",event:"sol-sound"},
+        {k:"ev-solsound",ghost:"Sol Sound, the stage",meta:"Dream Strokes · music concert",name:"Sol Sound",p:"Part of Dream Strokes OPEN, which I lead as project director. The full story of the night is in the Dream Strokes room.",fact:"400+ tickets",event:"sol-sound"},
         {k:"ev-tours",ghost:"a sketch tour in the city",meta:"Founder and Program Organizer · summers 2025 and 2026",name:"Photography & Sketch Tours",p:"Walks through Ho Chi Minh City where locals and international visitors photograph and sketch the same streets side by side, from landmarks to hidden spots our members love.",fact:"70+ participants"}
       ]},
     {num:"02",c:"var(--orange)",h:"Cheer for the same thing",why:"Football is a way to express yourself too, on the pitch and in the stands. Cheering for the same team gives strangers something in common.",
       events:[
-        {k:"ev-pitch",ghost:"Colors of the Pitch, a team huddle",meta:"Dream Strokes · football tournaments",name:"Colors of the Pitch",p:"Two Dream Strokes OPEN tournaments, open to players and spectators from outside the project.",fact:"10 teams · 1,000+ spectators",event:"colors-of-the-pitch"},
+        {k:"ev-pitch",ghost:"Colors of the Pitch, a team huddle",meta:"Dream Strokes · football tournaments",name:"Colors of the Pitch",p:"Part of Dream Strokes OPEN, open to players and spectators from outside the project. The tournaments are told in full in the Dream Strokes room.",fact:"10 teams · 1,000+ spectators",event:"colors-of-the-pitch"},
         {k:"ev-league",ghost:"Trung Vuong Football League",meta:"Operations Lead · Aug 2024 to Feb 2025",name:"Trung Vuong Football League",p:"I co-led a 7-member team through two seasons that brought players from eight schools onto one pitch, and managed budgeting, equipment and match operations.",fact:"15 teams · 8 schools",event:"cerberus-league"}
       ]},
     {num:"03",c:"var(--teal)",h:"Make room to belong",why:"A station, a prompt or a job on the crew lets someone take part without standing on a stage.",
@@ -1118,17 +1116,17 @@ const ROOMS={
       q:"Does art-making or an AI-guided dialogue make it easier to express what you feel, and for whom?",
       facts:[{b:"68",s:"young adults"},{b:"136",s:"sessions"},{b:"p < .001",s:"crossover"}],go:"Open the study"},
     {num:"02",c:"#C2610A",href:"#/work/research/teencare",kind:"Experience · Research Associate, R&D",name:"TeenCare",logo:"img/teencare-wordmark.png",role:"May to Dec 2025 · Jun 2026 to now",
-      q:"What do teenagers actually say when someone asks properly?",
+      q:"How do you help a teenager step into psychology and connect it to their own life?",
       facts:[{b:"100+",s:"interviews"},{b:"5",s:"narrative survey formats"}],go:"Open TeenCare"},
     {num:"03",c:"#0041E7",href:"#/work/research/brain-life",kind:"Experience · R&D Intern",name:"Brain-Life",logo:"img/brainlife-wordmark.png",role:"Aug 2026 to now",
       q:"Where do global research on attention and local behaviour part ways?",
       facts:[{b:"40+",s:"papers"},{b:"20",s:"products"},{b:"25",s:"interviews"}],go:"Open Brain-Life"}
   ]],
   ["kicker","Three questions"],
-  ["para","They began in different places: a study I designed myself, and two roles at startups. Each one compares what people say with a second source: another format, a gentler question, a brain signal."],
+  ["para","They began in different places: a study I designed myself, and two roles at startups. Each one sets what people report about themselves beside something else: a second format, a story to step into, or a brain signal."],
   ["converge",{items:[
     {k:"AI & Art",c:"var(--violet)",t:"Which way into a feeling works, and for whom?"},
-    {k:"TeenCare",c:"#C2610A",t:"What do teenagers say when the question is gentle enough?"},
+    {k:"TeenCare",c:"#C2610A",t:"Would a story or a scenario help teenagers connect psychology to their own lives?"},
     {k:"Brain-Life",c:"#0041E7",t:"What do you do when the brain’s signal and a student’s own words disagree?"}
   ]}],
   ["links",[{href:"#/work/net-mo",label:"Where the question came from"},{href:"#/work/tech",label:"Tech Projects"}]]
@@ -1137,13 +1135,11 @@ const ROOMS={
 "/work/research/ai-art":{accent:"var(--violet)",where:"Research · AI & Art",blocks:[
   ["hero",{kicker:"Study · First author · Oct 2025 to now",title:"AI &amp; Art",
     lede:"Does hands-on art-making or an AI-guided reflective dialogue make it easier to express what you feel, and does the answer depend on who is walking in?",
-    facts:[{b:"68",s:"young adults"},{b:"136",s:"sessions, two each"},{b:"8",s:"post-session measures"}],
-    meta:"Under review at the National High School Journal of Science · advised by Phuong Thao Nguyen, M.A. in Psychology and licensed art therapist",
     art:'<path d="M14 132h94" opacity=".45"/><path d="M26 132V58M40 132V84" stroke-width="9" stroke-linecap="butt"/><path d="M26 132V58" stroke="#2B4DE0" stroke-width="9" stroke-linecap="butt"/><path d="M40 132V84" stroke="#EE4187" stroke-width="9" stroke-linecap="butt"/><path d="M78 132V85" stroke="#2B4DE0" stroke-width="9" stroke-linecap="butt"/><path d="M92 132V60" stroke="#EE4187" stroke-width="9" stroke-linecap="butt"/>'}],
   ["glance",{role:"First author: I designed, ran and analysed the study",team:"Advised by Phuong Thao Nguyen, M.A. in Psychology",when:"Oct 2025 to now",
     results:["68 young adults, 136 sessions, 8 post-session measures","Which format lifted mood more flipped with prior art experience (p < .001)","Under review at the National High School Journal of Science"]}],
   ["kicker","The question"],
-  ["para","In Dream Strokes I had seen one change of format shift how much children said. I wanted to test that properly, beyond my own notes. AI chat tools had just offered a new way in, a conversation available at any hour, so I put it next to the oldest way I knew: making something with your hands."],
+  ["para","Dream Strokes made me curious about how the form of an activity changes what people are able to express. The study does not test the workshops themselves; it asks a related question with young adults. AI chat tools had just offered a new way in, a conversation available at any hour, so I put it next to the oldest way I knew: making something with your hands."],
   ["kicker","The design"],
   ["pairs",[
     {h:"Door A · Art",p:"An expressive art-making session with materials and no requirement to explain the result out loud."},
@@ -1188,16 +1184,15 @@ const ROOMS={
   ["hero",{kicker:"Experience · Part-time Research Associate, R&D · remote · May to Dec 2025, Jun 2026 to now",title:"TeenCare",
     wordmark:"img/teencare-wordmark.png",
     lede:"A youth mental-fitness startup building story-based tools that help teenagers notice and express what they feel. I came in as a tester, then joined its R&D team, where I work remotely. Its first product, un-wrap, launches in December 2026.",
-    facts:[{b:"100+",s:"semi-structured interviews"},{b:"5",s:"narrative survey formats"},{b:"1",s:"core product built on one of them"}],
     marks:["img/teencare-mark.png"]}],
   ["glance",{role:"Part-time Research Associate, R&D, working remotely",team:"TeenCare’s R&D and design team",when:"May to Dec 2025, Jun 2026 to now",
-    results:["100+ semi-structured interviews with teenagers","5 narrative survey formats co-designed, after I proposed telling surveys as stories","un-wrap, built on one of them, launches in December 2026"],
+    results:["100+ semi-structured interviews with teenagers","5 narrative survey formats co-designed, after I proposed using stories and scenarios","un-wrap, built on one of them, launches in December 2026"],
     links:[{href:"https://teencare.co/vn",label:"teencare.co"}]}],
   ["kicker","How I came in · as a tester"],
-  ["para","At my public school, psychological support was hard to find, and mental health rarely came up in class, so TeenCare’s vision caught my attention. I first took part as a tester. The interview I sat through felt like it was there to collect information and move on. It asked about my inner life head-on, and I found those questions hard to answer with nothing to hold on to."],
-  ["para","Afterwards I kept thinking about the fairy tales I was told as a child. Inside a story you become someone else, and feelings you can’t name about yourself come out through the character. When I joined the R&D team, I proposed turning the survey into a complete story to step into."],
-  ["flow",{before:{label:"The interview I took part in",steps:["Questions there to collect information","Direct questions about my inner life","Nothing real to answer from"]},
-    after:{label:"What I proposed",steps:["A complete story to step into, like a fairy tale","Gradual prompts and branching choices","Feelings told through a character first"]}}],
+  ["para","At my public school, psychological support was hard to find, and mental health rarely came up in class, so TeenCare’s vision caught my attention. I first took part as a tester. At that point the material focused on explaining psychological theory, and there was little to help me step in and connect it to my own life. The interview felt like it was there to collect information and move on, and its questions about my inner life were hard to answer with nothing to hold on to."],
+  ["para","Afterwards I kept thinking about the fairy tales I was told as a child. Inside a story you become someone else, and feelings you can’t name about yourself come out through the character. When I joined the R&D team, I proposed using stories and scenarios, so a teenager could step into a complete story and meet the psychology from inside it."],
+  ["flow",{before:{label:"When I took part as a tester",steps:["Psychological theory, explained","Direct questions about my inner life","Little to connect it to my own experience"]},
+    after:{label:"What I proposed",steps:["Stories and scenarios to step into, like a fairy tale","Gradual prompts and branching choices","The psychology met through a character first"]}}],
 
   ["kicker","How I worked · remote, every week"],
   ["para","I work with the R&D team from home. Every week runs the same loop, and every loop has to end in something the designers can use."],
@@ -1274,7 +1269,6 @@ const ROOMS={
   ["hero",{kicker:"Experience · Research & Development Intern · Aug 2026 to now",title:"Brain-Life",
     wordmark:"img/brainlife-wordmark.png",
     lede:"A neurotechnology startup developing evidence-based tools to improve attention, learning and cognitive well-being.",
-    facts:[{b:"3",s:"patterns where research and local behaviour diverged"},{b:"EEG",s:"recordings processed in Python"}],
     marks:["img/brainlife-mark.png"]}],
   ["glance",{role:"Research and Development Intern",team:"Brain-Life’s R&D team",when:"Aug 2026 to now",
     results:["40+ papers reviewed and 20 products benchmarked","25 contextual interviews, 3 patterns where research and local behaviour diverged","EEG recordings and student surveys analysed in Python"],
@@ -1321,14 +1315,14 @@ const ROOMS={
     kicker:"Founder and Product Designer · Jan 2025 to now · team of 4",name:"Contextuary",
     href:"https://contextuary.app",label:"Visit Contextuary",
     lede:"While I was studying vocabulary, I noticed how much work it took just to keep one new word, and how little of that work helped anyone remember it. It was easy to give up at that point.",
-    facts:[{b:"~2,200",s:"visitors"},{b:"500+",s:"registered users"}]}],
+}],
   ["kicker","The pain point"],
   ["para","Saving one word meant a chain of small jobs. Each one added cognitive load, and none of them taught anything about the word itself."],
   ["flow",{before:{label:"Before · to keep one word",steps:["Look the word up","Translate it into Vietnamese","Find a real example sentence","Copy it all into a notebook","Make your own flashcards","Remember to come back and test yourself"]},
     after:{label:"With Contextuary",steps:["Add the word once","Get its Vietnamese meaning, SAT-style examples and a memory hint","Practise with quizzes, flashcards and AI challenges built from your own list"]}}],
   ["shot",{kicker:"The product",k:"cx-home",ratio:"1600/989",url:"contextuary.app",ghost:"the home page"}],
   ["kicker","The idea"],
-  ["para","Memorising a definition gives you a word with no room around it. Recognition in a test passage needs the opposite: the word inside a sentence that gave it a job. So Contextuary never shows a word alone. It explains each word as it behaves in a real SAT-style sentence, in English and in Vietnamese, then keeps the sentence."],
+  ["para","A definition on its own rarely helped me recognise a word in a test passage. What helped was seeing it inside a sentence that gave it a job. So Contextuary never shows a word alone. It explains each word as it behaves in a real SAT-style sentence, in English and in Vietnamese, then keeps the sentence."],
   ["screens",[
     {k:"cx-1",ratio:"1290/907",url:"contextuary.app/words",ghost:"My Words",cap:"My Words: every saved word with its Vietnamese meaning, an SAT-style example, its status and a topic tag."},
     {k:"cx-2",ratio:"1600/920",url:"contextuary.app/practice",ghost:"a quiz question",cap:"Practice: a fill-in-the-blank question built from the words you saved."}
@@ -1351,7 +1345,7 @@ const ROOMS={
     kicker:"Co-Founder and UI/UX Designer · Dec 2025 to now",name:"Together!",
     href:"https://toghether.contextuary.app",label:"Visit Together!",
     lede:"Dream Strokes runs on many people, in many places, each doing a different job. I watched how easily that kind of team drifts apart.",
-    facts:[{b:"20+",s:"projects using it besides Dream Strokes"},{b:"1,550+",s:"visitors"},{b:"450+",s:"returning to the platform"}]}],
+}],
   ["kicker","The pain points"],
   ["pains",[
     {h:"Out of sight",p:"Members worked in different places and on different jobs, so most of them never saw what the others did."},
@@ -1368,9 +1362,7 @@ const ROOMS={
     ]]],
     shot:{k:"cj-1",ratio:"1600/997",url:"together · sample project",ghost:"a sample project",cap:"A sample project: every activity has a type, a colour and a day, and opens into its photos, voice notes and reactions."}}],
   ["voices",{kicker:"What the team wrote",note:"Messages from Dream Strokes members, translated from Vietnamese.",items:[
-    {q:"The activities are so adorable.",who:"A Dream Strokes member"},
     {q:"I had no idea the design team worked this hard.",who:"A Dream Strokes member"},
-    {q:"Today’s football match was a great one.",who:"A Dream Strokes member"},
     {q:"The class was so sweet. Reading everyone’s journal feels like being there.",who:"A Dream Strokes member"}
   ]}],
   ["links",[{href:"#/work/research",label:"Research & Experience"},{href:"#/work/net-mo",label:"Dream Strokes"}]]
@@ -1406,7 +1398,7 @@ const ROOMS={
 
 "/awards":{accent:"#A9760B",where:"Awards",blocks:[
   ["hero",{kicker:"Awards · 2023 to 2026",title:"Awards",
-    lede:"I like that these awards do not fit neatly into one category. They came from psychology, writing, design, science, engineering and sport.",
+    lede:"I like that these awards do not fit neatly into one category. They came from psychology, writing, maths, design, science, engineering and sport.",
     facts:[{b:String(AWARDS.length),s:"selected honours"},{b:"3",s:"fields"},{b:"1st",s:"in Asia, Psychology Olympiad"}],
     /* a medal drawn in the door, where other rooms show a photograph */
     art:'<path d="M42 4l14 58M78 4L64 62" stroke-width="9" opacity=".55"/><path d="M42 4l14 58M78 4L64 62"/><circle cx="60" cy="98" r="34"/><circle cx="60" cy="98" r="25" opacity=".6"/><path d="M60 82l4.7 9.6 10.6 1.5-7.7 7.5 1.8 10.5-9.4-5-9.4 5 1.8-10.5-7.7-7.5 10.6-1.5z"/>'}],

@@ -94,7 +94,8 @@ sharing a room, then tests it through community work, research and building.
   screening room under the wall (FILMS in app.js, click-to-play embeds),
   chapter-coloured navigation.
 - Two navigations, two jobs, never mixed. The top bar is "The story":
-  only the six numbered parts of the homepage (01 Notice … 06 Question),
+  only the six numbered parts of the homepage, named for what each holds
+  (01 Dream Strokes, 02 Research, 03 Together!, 04 Events, 05 Art, 06 Still curious),
   each lit in its own colour; it never links to a room. The Rooms button
   (solid, with a door icon) opens the Doors panel, the only place that
   lists the pages behind the story.
@@ -107,6 +108,10 @@ sharing a room, then tests it through community work, research and building.
   never claims an order or a cause that is not true (she approved the current
   copy in October 2026). Numbers live in the prose; do not add stat rows. Do
   not add sections; detail belongs in the rooms (ROOMS in app.js).
+- Small text (mono labels, captions) must reach 4.5:1 against what is painted
+  behind it: labels in a room's colour use color-mix(accent 76%, ink), grey
+  text uses --ink-45 at .66 or darker; on phones --t-meta and --t-caption grow
+  a step. Check with a contrast pass before publishing.
 - Respect prefers-reduced-motion everywhere.
 - No horizontal scrolling at any width. Tablet (768–1024px) is a first-class
   composition, not a squeezed desktop.
