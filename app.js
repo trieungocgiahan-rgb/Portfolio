@@ -808,7 +808,7 @@ const ROOMS={
     {n:"03",id:"open",t:"Dream Strokes OPEN",s:"OPEN",p:"A concert, a football cup and an exhibition, open to anyone."},
     {n:"04",id:"art",t:"Art that keeps going",s:"Their art",p:"A website, a virtual exhibition, and money back into sessions."},
     {n:"05",id:"partners",t:"Partners",s:"Partners",p:"The art therapists and educators who guide the work."},
-    {n:"06",id:"team",t:"The team",s:"Team",p:"25 people in four departments, and how we stay connected."},
+    {n:"06",id:"team",t:"The team",s:"Team",p:"25 people across Vietnam, and how we stay connected."},
     {n:"07",id:"make",t:"What we make",s:"What we make",p:"Emotion cards, lesson plans, a calendar and a comic."},
     {n:"08",id:"impact",t:"Money and impact",s:"Impact",p:"What it raised, and who it reached."}
   ]}],
@@ -881,14 +881,14 @@ const ROOMS={
 
   ["chapter",{n:"06",id:"team",t:"The team",p:"I couldn’t grow this alone, and I didn’t want to."}],
   ["split",{a:[
-      ["para","To reach more places than I could run myself, I built a team of 25 in four departments. Building it became as much my work as designing the sessions."],
+      ["para","To reach more places than I could run myself, I built a team of 25 in four departments, and it has grown beyond Ho Chi Minh City to members across Vietnam. Building it became as much my work as designing the sessions."],
       ["pairs",[
         {h:"R&D",p:"Designs the sessions and writes the lesson plans."},
         {h:"Tech",p:"Builds the website and the tools we run on."},
         {h:"Events",p:"Runs OPEN: the concerts, matches and exhibitions."},
         {h:"PR",p:"Tells people what we do and brings new people in."}
       ]],
-      ["para","A team spread across places and roles drifts apart easily. I first built an activity journal with roles, photos, a calendar and a task board, so each season could start where the last one ended. Today we share one journal on <a href=\"#/work/tech/together\">Together!</a>, the app I co-founded."]],
+      ["para","A team spread across cities and roles drifts apart easily. I first built an activity journal with roles, photos, a calendar and a task board, so each season could start where the last one ended. Today we share one journal on <a href=\"#/work/tech/together\">Together!</a>, the app I co-founded."]],
     b:[["mosaic",[
       {k:"ds-team-3",ratio:"3/2",ghost:"the team in a hall",cap:"Hearts for the camera."},
       {k:"ds-team-1",ratio:"3/2",ghost:"the team on the pitch",cap:"Part of the team, on the pitch."},
