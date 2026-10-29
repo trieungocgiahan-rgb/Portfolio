@@ -522,8 +522,6 @@ const B={
   kicker:t=>{ const o=typeof t==="string"?{t}:t, [h,...m]=o.t.split(" · ");
     return `<h3 class="room__head"${o.id?` id="room-${o.id}"`:""}><span class="room__head-t">${h}</span>${m.length?`<span class="room__head-meta">${m.join(" · ")}</span>`:""}</h3>`; },
   title:t=>`<h2 id="roomTitle">${t}</h2>`,
-  /* a second project inside the same room */
-  subtitle:t=>`<h2 class="room__sub">${t}</h2>`,
   lede:t=>`<p class="blk blk--lede">${t}</p>`,
   para:t=>`<p class="blk blk--para">${t}</p>`,
   quote:t=>`<p class="blk blk--quote">${t}</p>`,
@@ -611,6 +609,8 @@ const B={
     <div class="gtheme__why"><p class="gtheme__num">${t.num}</p><h3>${t.h}</h3><p>${t.why}</p></div>
     <div class="gtheme__events">${t.events.map(gcard).join("")}</div>
   </section>`).join("")}</div>`,
+  /* the parts of a project as dots on one line: the line is what holds them together */
+  eco:a=>`<ol class="blk eco">${a.map(x=>`<li><span class="eco__dot" aria-hidden="true"></span><p class="eco__k">${x.k}</p><h4>${x.h}</h4><p class="eco__p">${x.p}</p></li>`).join("")}</ol>`,
   /* the ways into Dream Strokes OPEN: the same cards, three to a row */
   ways:a=>`<div class="blk ways">${a.map(gcard).join("")}</div>`,
   /* each part of the work on one row: what I did, then what it taught me */
@@ -757,7 +757,7 @@ const ROOMS={
 "/work/net-mo":{accent:"var(--coral)",where:"Work · Dream Strokes",blocks:[
   ["hero",{kicker:"Work · Apr 2025 to now · Founder and Project Director",title:"Dream Strokes",
     logo:"img/dream-strokes-logo.jpg",logoAlt:"The Dream Strokes logo: a hand-drawn child with star eyes and a paintbrush, under the project’s name in dripping paint.",
-    lede:"An arts-based emotional-learning programme for children in shelters and older adults in care homes, professionally guided and legally sponsored by Bao Sang Art Therapy Center.",
+    lede:"An arts-based emotional-learning programme for children in shelters and older adults in care homes, which I have grown into an ecosystem: public events, things to take home, and a team of 25. Professionally guided and legally sponsored by Bao Sang Art Therapy Center.",
     facts:[{b:"50",s:"workshops"},{b:"6",s:"shelters"},{b:"2",s:"care homes"}],
     k:"nm-lead",ghost:"a session in progress"}],
   ["kicker","What I noticed first"],
@@ -786,8 +786,17 @@ const ROOMS={
     {k:"nm-5",slot:"Plate 06",ratio:"1/1",ghost:"painting at the studio",cap:"Colors of Joy, Hanoi: painting together at the studio."},
     {k:"nm-6",slot:"Plate 07",ratio:"1/1",ghost:"a facilitator with two children",cap:"A facilitator painting alongside two children."}
   ]],
+  ["kicker",{t:"From one table to an ecosystem",id:"ecosystem"}],
+  ["para","A workshop reaches one table at a time. I wanted many more people to make something together and say more through it, so I started building Dream Strokes into an ecosystem: several ways in, and the people to hold them together."],
+  ["eco",[
+    {k:"The core",h:"Workshops",p:"Art sessions with children in 6 shelters and older adults in 2 care homes."},
+    {k:"Open to all",h:"OPEN",p:"Concerts, football and an exhibition, where anyone can join in and make something."},
+    {k:"To take home",h:"Things to keep",p:"Emotion cards, a calendar and a comic that carry the idea beyond our sessions."},
+    {k:"Behind it",h:"People",p:"A team of 25, the art therapists who guide our work, and the app that keeps us connected."}
+  ]],
+  ["para","Each part feeds the others. Tickets and calendar sales pay for the workshops, what we learn at the tables turns into the cards and the comic, and people who first meet us at a concert or a match find out what the workshops are for."],
   ["kicker",{t:"Dream Strokes OPEN · for anyone, anywhere",id:"once-upon"}],
-  ["para","At the shelters I watched children say things through a drawing that they could not say out loud. I didn’t want that to stop at the shelter door. So we started OPEN, a second branch for everyone else, and gave it as many ways in as we could think of. You don’t have to call yourself an artist. You can play, cheer, listen, paint, or take something home."],
+  ["para","At the shelters I watched children say things through a drawing that they could not say out loud. I didn’t want that to stop at the shelter door, so OPEN is for everyone else. You don’t have to call yourself an artist: you can play, cheer, listen, paint, or take something home."],
   ["ways",[
     {k:"ss-band",ghost:"Sol Sound, the band",meta:"Music",name:"Sol Sound: A December to Remember",p:"A winter night of young bands, open to anyone with a ticket.",fact:"400+ tickets"},
     {k:"ev-pitch",ghost:"Colors of the Pitch",meta:"Football",name:"Colors of the Pitch",p:"Two tournaments where you could join a team or just come and cheer.",fact:"10 teams · 1,000+ spectators"},
@@ -803,8 +812,8 @@ const ROOMS={
   ["lead",{k:"op-cardsheet",slot:"Plate 10",ratio:"3/2",ghost:"the Feel-it! card system",cap:"The Feel-it! card system: 24 emotions in families, five ways to play, and the box it comes in."}],
   ["para","More than 1,700 people came to the three events, many of them hearing about Dream Strokes for the first time. Tickets and calendar sales went back into the shelter workshops, and the cards took what we do to children outside our sessions."],
   ["go",{href:"#/work/events",label:"See these events"}],
-  ["kicker","The team · 25 members"],
-  ["para","Dream Strokes is a team of 25, split across R&D, Tech, Events and PR. Most of what you see on this page is their work as much as mine."],
+  ["kicker","The people behind it · a team of 25 and our advisors"],
+  ["para","I couldn’t grow this alone, and I didn’t want to. Building the team became as much my work as designing the sessions: 25 people across R&D, Tech, Events and PR, each owning a part. Our advisors, licensed art therapists, review what we make before it reaches a child, and <a href=\"#/work/tech/together\">Together!</a>, the app I co-founded, keeps everyone connected across branches."],
   ["figs",[
     {k:"ds-team-1",slot:"Plate 11",ratio:"3/2",ghost:"the team on the pitch",cap:"Part of the team, on the pitch."},
     {k:"ds-team-2",slot:"Plate 12",ratio:"3/2",ghost:"the team in an alley",cap:"Out together, November 2025."}
@@ -833,8 +842,7 @@ const ROOMS={
     {h:"Start what isn’t there",p:"If the room does not exist yet, start it."}
   ]],
 
-  ["kicker",{t:"The flagship · benefit concert · 2025",id:"little-smile"}],
-  ["subtitle","Beats of Hope"],
+  ["kicker",{t:"Beats of Hope · the flagship · benefit concert · 2025",id:"little-smile"}],
   ["lede","Ten bands from different schools, one stage, and one reason to be in the same room."],
   ["para","At the Little Smiles Project I was Creative Director, designing play and storytelling sessions for children in hospitals with a team spread across South Korea, France, Taiwan and Vietnam. I wanted students in my own city to be part of that work, not just hear about it."],
   ["para","So I produced Beats of Hope. More than ten student bands from different schools played one shared show, and we spread 310+ tickets across the city’s schools. I ran the stage and the artists and negotiated the venue sponsorship in person. People came for a friend’s band and stayed for everyone else’s. The night raised about VND 25 million for play and storytelling sessions, donated to two hospitals in France."],
