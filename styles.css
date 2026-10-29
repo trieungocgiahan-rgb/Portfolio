@@ -752,8 +752,8 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .room__head + *{margin-top:var(--sp-2)}
 
 /* the hero at the top of every room. Every room has its own light:
-   light heroes (Dream Strokes, Tech, Research, Exhibition, About, CV) and dark
-   ones (Events' night stage, Awards), so each door opens somewhere different.
+   light heroes (Dream Strokes, Tech, Research, Exhibition, Awards, About, CV) and
+   one dark one (Events' night stage), so each door opens somewhere different.
    The photograph is always seen through the same arched door. */
 .room-hero{grid-column:full;position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:var(--sp-5);align-items:center;
   padding:var(--sp-5) max(var(--gutter),(100% - var(--wide)) / 2);color:var(--cream);
@@ -762,7 +762,7 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
   --ink:#F7EFE2;--ink-70:rgba(247,239,226,.8);--ink-45:rgba(247,239,226,.6);--ink-20:rgba(247,239,226,.26);--rule:rgba(247,239,226,.2);
   --lit:color-mix(in srgb,var(--accent) 65%,var(--cream));--door-line:rgba(247,239,226,.3);--door-glass:rgba(247,239,226,.1)}
 /* paper heroes: dark ink on a light room */
-.room:is([data-room="net-mo"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="teencare"],[data-room="brain-life"],[data-room="exhibition"],[data-room="cv"]) .room-hero{
+.room:is([data-room="net-mo"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="teencare"],[data-room="brain-life"],[data-room="exhibition"],[data-room="awards"],[data-room="cv"]) .room-hero{
   color:var(--ink);--ink:#141C33;--ink-70:rgba(20,28,51,.74);--ink-45:rgba(20,28,51,.56);--ink-20:rgba(20,28,51,.22);--rule:rgba(20,28,51,.16);
   --lit:color-mix(in srgb,var(--accent) 82%,#141C33);--door-line:rgba(20,28,51,.22);--door-glass:rgba(255,255,255,.45)}
 /* light rooms (Dream Strokes, Events, Tech, Research, Exhibition) · each sits in a soft ombre of
@@ -772,7 +772,7 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 @property --om-a{syntax:"<color>";inherits:true;initial-value:#F8D5E3}
 @property --om-b{syntax:"<color>";inherits:true;initial-value:#D5E6F8}
 @property --om-c{syntax:"<color>";inherits:true;initial-value:#FBEBC3}
-.room:is([data-room="net-mo"],[data-room="events"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="exhibition"]){
+.room:is([data-room="net-mo"],[data-room="events"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="exhibition"],[data-room="awards"]){
   --glass:rgba(255,255,255,.58);--glass-strong:rgba(255,255,255,.86);--glass-line:rgba(255,255,255,.92);
   --glass-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 30px 60px -42px rgba(58,40,96,.42);--glass-blur:blur(16px) saturate(140%);
   --om-base:#FAF5F6;
@@ -782,9 +782,9 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
     radial-gradient(100% 70% at 30% 100%,var(--om-c),transparent 75%),
     var(--om-base);
   transition:opacity .45s var(--ease-soft),visibility .45s,clip-path .7s var(--ease),--om-a 1.4s var(--ease-soft),--om-b 1.4s var(--ease-soft),--om-c 1.4s var(--ease-soft)}
-@media(prefers-reduced-motion:reduce){.room:is([data-room="net-mo"],[data-room="events"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="exhibition"]){transition:opacity .45s,visibility .45s}}
-.room:is([data-room="net-mo"],[data-room="events"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="exhibition"]) .room__top{background:rgba(255,255,255,.5);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);border-bottom-color:rgba(255,255,255,.8)}
-.room:is([data-room="net-mo"],[data-room="events"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="exhibition"]) .btn--ink{background:var(--btn);box-shadow:0 14px 26px -18px var(--btn-glow)}
+@media(prefers-reduced-motion:reduce){.room:is([data-room="net-mo"],[data-room="events"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="exhibition"],[data-room="awards"]){transition:opacity .45s,visibility .45s}}
+.room:is([data-room="net-mo"],[data-room="events"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="exhibition"],[data-room="awards"]) .room__top{background:rgba(255,255,255,.5);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);border-bottom-color:rgba(255,255,255,.8)}
+.room:is([data-room="net-mo"],[data-room="events"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="exhibition"],[data-room="awards"]) .btn--ink{background:var(--btn);box-shadow:0 14px 26px -18px var(--btn-glow)}
 /* Dream Strokes · pink, sky and butter */
 .room[data-room="net-mo"]{--om-a:#F8D5E3;--om-b:#D5E6F8;--om-c:#FBEBC3;
   --band:linear-gradient(115deg,#F9D3E3 0%,#E7E1FA 40%,#D5E8F9 68%,#FCEDC8 100%);
@@ -812,6 +812,12 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 /* Research · one violet */
 .room:is([data-room="research"],[data-room="ai-art"]){--om-a:#E3DBFA;--om-b:#EFEAFC;--om-c:#D9CEF8;--om-base:#FAF8FE;
   --btn:linear-gradient(120deg,#6A4BD6,#4E33B5);--btn-glow:rgba(106,75,214,.8)}
+/* Awards · one gold, from champagne to old brass */
+.room[data-room="awards"]{--om-a:#F8E8C2;--om-b:#FBF1DA;--om-c:#F1DDB0;--om-base:#FFFBF2;
+  --btn:linear-gradient(120deg,#A9760B,#7E5606);--btn-glow:rgba(169,118,11,.8)}
+.room[data-room="awards"][data-chap="room-ideas"]{--om-a:#F5E4C4;--om-b:#EEE7F8;--om-c:#F3DEB4}
+.room[data-room="awards"][data-chap="room-making"]{--om-a:#F7E8C6;--om-b:#E6EDFB;--om-c:#F1DDB0}
+.room[data-room="awards"][data-chap="room-team"]{--om-a:#FBE3C4;--om-b:#FBF0DA;--om-c:#F4D9AE}
 /* Exhibition · a gallery's warm white walls and oak */
 .room[data-room="exhibition"]{--om-a:#F1E8DC;--om-b:#F7F1E8;--om-c:#EADCC9;--om-base:#FBF8F3;
   --btn:linear-gradient(120deg,#3A2E26,#5A4636);--btn-glow:rgba(58,46,38,.7)}
@@ -864,11 +870,10 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
   radial-gradient(30% 50% at 70% 4%,rgba(106,75,214,.2),transparent 68%),
   radial-gradient(40% 60% at 104% 90%,rgba(43,77,224,.22),transparent 66%),
   #F8F0E4}
-/* Awards · deep teal with a little gold */
-.room[data-room="awards"] .room-hero{--lit:#F6C979;background:
-  radial-gradient(45% 80% at 85% 0%,rgba(246,201,121,.3),transparent 64%),
-  radial-gradient(55% 80% at 0% 100%,rgba(15,145,139,.55),transparent 66%),
-  linear-gradient(160deg,#06302E,#0B4B47)}
+/* Awards · champagne into brass, light catching the medal in the door */
+.room[data-room="awards"] .room-hero{background:
+  radial-gradient(45% 80% at 82% 40%,rgba(255,255,255,.6),transparent 70%),
+  linear-gradient(115deg,#F2D79B 0%,#F8E7C0 50%,#FFF6E2 100%)}
 /* CV · ruled paper */
 .room[data-room="cv"] .room-hero{background:
   linear-gradient(transparent 31px,rgba(43,77,224,.14) 32px) 0 0/100% 32px,
@@ -951,42 +956,54 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .cv-row .mono{padding-top:.25rem}
 .cv-row h4{font-size:1.1rem;margin:0 0 .15rem}
 .cv-row p{font-size:.94rem;color:var(--ink-70);max-width:min(100%,62ch)}
-/* awards · three groups, one line per honour; the story behind it opens in place */
-.awards{margin-top:var(--sp-4)}
-.awards__bar{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.3rem var(--sp-3);margin-bottom:var(--sp-4)}
-.awards__all{font:inherit;font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;background:none;border:0;padding:.6rem 0;cursor:pointer;color:var(--accent);
-  text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--accent) 40%,transparent);text-underline-offset:.45em}
-.awards__group + .awards__group{margin-top:var(--sp-5)}
-.awards__label{display:flex;align-items:center;gap:var(--sp-2);margin:0;font-family:var(--mono);font-size:var(--t-meta);font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--dc)}
-.awards__label i{flex:1;height:1.5px;background:var(--dc);opacity:.75}
-.awards__label span:last-child{color:var(--ink-45)}
-.award{border-bottom:1px solid var(--rule)}
-.award summary{display:grid;grid-template-columns:3.6rem 2.2rem minmax(0,1fr) auto;align-items:center;gap:var(--sp-2);padding:1.05rem 0;cursor:pointer;list-style:none}
-.award summary::-webkit-details-marker{display:none}
-.award__year{font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;color:var(--ink-45)}
-.award__mark{width:30px;height:30px;color:var(--dc);fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
-.award__head{display:flex;flex-direction:column;gap:.2rem;min-width:0}
-.award__head b{font-family:var(--display);font-weight:400;font-size:clamp(1.12rem,1.8vw,1.35rem);letter-spacing:-.01em;line-height:1.2;transition:color .3s}
-.award__head span{font-size:.93rem;color:var(--ink-70)}
-.award__toggle{display:inline-flex;align-items:center;gap:.7rem;font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-45);white-space:nowrap;transition:color .3s}
-.award__toggle::after{content:"+";width:1.6rem;height:1.6rem;display:grid;place-items:center;border:1px solid var(--ink-20);border-radius:50%;font-size:1rem;letter-spacing:0;color:var(--dc)}
-.award[open] .award__toggle::after{content:"–";background:var(--dc);border-color:var(--dc);color:#fff}
-.award summary:hover .award__head b,.award summary:focus-visible .award__head b{color:var(--dc)}
-.award summary:hover .award__toggle,.award[open] .award__toggle{color:var(--ink)}
-.award__story{margin:0 0 var(--sp-3) calc(5.8rem + 2 * var(--sp-2));padding-left:var(--sp-2);border-left:2px solid var(--dc);max-width:min(100% - 5.8rem - 2 * var(--sp-2),64ch);color:var(--ink-70);line-height:1.75}
-@media(prefers-reduced-motion:no-preference){
-  .award[open] .award__story{animation:award-in .5s var(--ease)}
-  @keyframes award-in{from{opacity:0;translate:0 -6px}}
-}
+/* awards · told as a story: the years on one line, then a chapter per group,
+   each honour a drawn medal beside her own words, the sides taking turns */
+/* a medal: a ribbon in the group's colour, a gold disc, the honour's mark engraved on it */
+.medal{display:block;width:44px;height:auto;overflow:visible}
+.medal__ribbon{fill:var(--dc);opacity:.85}
+.medal__disc{fill:#E9C46A;stroke:#B8892A;stroke-width:2}
+.medal__ring{fill:none;stroke:rgba(255,255,255,.7);stroke-width:2}
+.medal__mark{fill:none;stroke:#7A5512;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.medal--big{width:clamp(110px,12vw,150px);filter:drop-shadow(0 18px 18px rgba(122,85,18,.25))}
+/* the years on one line: a dot per year, its medals hanging below (dot = place in time) */
+.room__inner > .ayears{grid-column:wide}
+.ayears{padding:var(--sp-3);border-radius:24px;background:var(--glass,#fff);border:1px solid var(--glass-line,var(--rule));box-shadow:var(--glass-shadow,none);-webkit-backdrop-filter:var(--glass-blur,none);backdrop-filter:var(--glass-blur,none)}
+.ayears__k{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.ayears > ol{list-style:none;margin:var(--sp-3) 0 0;padding:0;display:flex;gap:var(--sp-5);position:relative}
+.ayears > ol > li{flex:0 1 auto;min-width:0}
+.ayears > ol::before{content:"";position:absolute;left:0;right:0;top:.62rem;height:1px;background:color-mix(in srgb,var(--accent) 45%,transparent)}
+.ayears__y{position:relative;padding-left:1.3rem;font-family:var(--display);font-size:1.3rem;line-height:1.2}
+.ayears__y::before{content:"";position:absolute;left:0;top:.35rem;width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 20%,transparent)}
+.ayears ul{list-style:none;margin:var(--sp-2) 0 0;padding:0 var(--sp-2) 0 0;display:flex;flex-wrap:wrap;gap:var(--sp-2)}
+.ayears ul a{display:grid;justify-items:center;gap:.3rem;width:74px;text-decoration:none;color:var(--ink);text-align:center;font-family:var(--mono);font-size:var(--t-caption);letter-spacing:.02em;line-height:1.35;transition:transform .3s var(--ease-soft)}
+.ayears ul a:hover,.ayears ul a:focus-visible{transform:translateY(-4px)}
 @media(max-width:699px){
-  .award summary{grid-template-columns:1.8rem minmax(0,1fr) auto;grid-template-areas:"mark year toggle" "mark head toggle";gap:.2rem var(--sp-2);align-items:start}
-  .award__year{grid-area:year}
-  .award__mark{grid-area:mark;width:26px;height:26px;margin-top:.1rem}
-  .award__head{grid-area:head}
-  .award__toggle{grid-area:toggle;align-self:center}
-  .award__toggle > span{display:none}
-  .award__story{margin-left:0;max-width:none}
+  .ayears > ol{flex-direction:column;gap:var(--sp-2)}
+  .ayears > ol::before{left:5px;right:auto;top:.6rem;bottom:.6rem;width:1px;height:auto}
 }
+/* one honour: the medal and its year on one side, the story on the other; every second row turns */
+.room__inner > .alist{grid-column:wide}
+.alist{display:grid;gap:var(--sp-3)}
+.aitem{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1.45fr);gap:var(--sp-4);align-items:center;padding:var(--sp-4);border-radius:24px;background:var(--glass,#fff);border:1px solid var(--glass-line,var(--rule));box-shadow:var(--glass-shadow,none);-webkit-backdrop-filter:var(--glass-blur,none);backdrop-filter:var(--glass-blur,none)}
+.aitem:nth-child(even){grid-template-columns:minmax(0,1.45fr) minmax(0,.55fr)}
+.aitem:nth-child(even) .aitem__medal{order:2}
+.aitem__medal{display:grid;justify-items:center;gap:var(--sp-2);position:relative}
+.aitem__photo{width:min(100%,200px);margin-bottom:calc(var(--sp-4) * -1);position:relative;z-index:0;rotate:-4deg}
+.aitem__photo .fig__plate{border-radius:14px;box-shadow:0 20px 30px -22px rgba(60,40,10,.6)}
+.aitem__photo + .medal{position:relative;z-index:1;width:clamp(84px,9vw,110px)}
+.aitem__year{font-family:var(--display);font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1;color:var(--accent)}
+.aitem__p{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.12em;text-transform:uppercase;color:var(--dc)}
+.aitem h4{margin:.45rem 0 var(--sp-2);font-size:var(--t-title);line-height:1.1;letter-spacing:-.015em}
+.aitem__s{color:var(--ink-70);line-height:1.75;max-width:min(100%,62ch)}
+.aitem__cap{margin-top:var(--sp-2);font-family:var(--mono);font-size:var(--t-caption);color:var(--ink-45)}
+@media(max-width:900px){
+  .aitem,.aitem:nth-child(even){grid-template-columns:minmax(0,1fr);gap:var(--sp-3);padding:var(--sp-3)}
+  .aitem:nth-child(even) .aitem__medal{order:0}
+  .aitem__medal{grid-template-columns:auto auto;justify-content:start;align-items:center;justify-items:start}
+  .aitem__photo{grid-column:1 / -1;margin-bottom:0;width:min(100%,180px)}
+  .medal--big{width:96px}
+}
+@media(max-width:560px){.aitem,.aitem:nth-child(even){padding:var(--sp-3) var(--sp-2)}.room__inner > .alist{grid-column:full;padding-inline:12px}}
 
 /* ---- About · her words, with a little art drawn around them ----
    A sketch hero on warm paper, the story beside her portrait, a pink band

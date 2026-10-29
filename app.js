@@ -565,17 +565,25 @@ const B={
   pairs:a=>`<div class="blk blk--pairs" data-n="${a.length}">${a.map(p=>`<div><h4>${p.h}</h4><p>${p.p}</p></div>`).join("")}</div>`,
   rows:a=>`<div class="blk">${a.map(r=>`<div class="cv-row"><p class="mono">${r.t}</p><div><h4>${r.h}</h4><p>${r.p}</p></div></div>`).join("")}</div>`,
   contact:a=>`<div class="blk">${a.map(c=>`<a class="contact-line" href="${c.href}"${c.replace?` data-replace="${c.replace}"`:""}><span>${c.label}</span><span>${c.value}</span></a>`).join("")}</div>`,
-  /* the honours in their three groups; each story opens in place */
-  awards:()=>`<div class="blk awards">
-    <div class="awards__bar"><p class="mono mono--sentence">Each honour has a short story behind it.</p><button class="awards__all" type="button" aria-pressed="false">Open every story</button></div>
-    ${AWARD_GROUPS.map(g=>{ const list=AWARDS.filter(a=>a.g===g.id); return `<section class="awards__group" style="--dc:${g.dc}">
-      <h3 class="awards__label"><span>${g.label}</span><i aria-hidden="true"></i><span>${list.length}</span></h3>
-      ${list.map(a=>`<details class="award">
-        <summary><span class="award__year">${a.t}</span><svg class="award__mark" viewBox="0 0 24 24" aria-hidden="true">${AWARD_MARKS[a.m]}</svg><span class="award__head"><b>${a.h}</b><span>${a.p}</span></span><span class="award__toggle"><span>Behind the award</span></span></summary>
-        <p class="award__story">${a.s}</p>
-      </details>`).join("")}
-    </section>`; }).join("")}
-  </div>`,
+  /* the honours as a story: the years on one line, then one chapter per group, and in each
+     a drawn medal beside her own words about it, the sides taking turns */
+  awards:()=>{
+    const years=[...new Set(AWARDS.map(a=>a.t))].sort(), gc=id=>AWARD_GROUPS.find(g=>g.id===id).dc;
+    const medal=(a,big)=>`<svg class="medal${big?" medal--big":""}" viewBox="0 0 120 150" aria-hidden="true" style="--dc:${gc(a.g)}">
+      <path class="medal__ribbon" d="M38 4h18l12 58H50zM82 4H64L52 62h18z"/>
+      <circle class="medal__disc" cx="60" cy="100" r="40"/><circle class="medal__ring" cx="60" cy="100" r="31"/>
+      <g class="medal__mark" transform="translate(42 82) scale(1.5)">${AWARD_MARKS[a.m]}</g></svg>`;
+    return `<section class="blk ayears" aria-label="The honours by year">
+      <p class="ayears__k">The road here · ${years[0]} to ${years[years.length-1]}</p>
+      <ol>${years.map(y=>`<li style="--n:${AWARDS.filter(a=>a.t===y).length}"><p class="ayears__y">${y}</p><ul>${AWARDS.filter(a=>a.t===y).map(a=>`<li style="--dc:${gc(a.g)}"><a href="#/awards/${a.g}" data-jump="room-${a.g}">${medal(a)}<span>${a.short}</span></a></li>`).join("")}</ul></li>`).join("")}</ol>
+    </section>
+    ${B.chapters({route:"/awards",items:AWARD_GROUPS.map((g,i)=>({n:String(i+1).padStart(2,"0"),id:g.id,t:g.label,s:g.label.split(" & ")[0],p:g.p}))})}
+    ${AWARD_GROUPS.map((g,i)=>{ const list=AWARDS.filter(a=>a.g===g.id); return `${B.chapter({n:String(i+1).padStart(2,"0"),id:g.id,t:g.label,p:g.p})}
+      <div class="blk alist" style="--dc:${g.dc}">${list.map(a=>`<article class="aitem">
+        <div class="aitem__medal">${a.k?`<div class="aitem__photo">${fig({k:a.k,ratio:"1/1",ghost:a.short})}</div>`:""}${medal(a,true)}<p class="aitem__year">${a.t}</p></div>
+        <div class="aitem__text"><p class="aitem__p">${a.p}</p><h4>${a.h}</h4><p class="aitem__s">${a.s}</p>${a.cap?`<p class="aitem__cap">${a.cap}</p>`:""}</div>
+      </article>`).join("")}</div>`; }).join("")}`;
+  },
   about:()=>aboutHTML(),
   /* a product, introduced on one line: its mark, its name, my role, and the way to the real thing */
   product:o=>`<section class="product"${o.id?` id="room-${o.id}"`:""}>
@@ -828,26 +836,24 @@ function aboutHTML(){
 /* the verified honours, stated once, shown in Awards and in the CV.
    t year · h name · p the result · g group · m its mark · s the story behind it, in Gia Han's words */
 const AWARD_GROUPS=[
-  {id:"ideas",label:"Ideas & research",dc:"var(--violet)"},
-  {id:"making",label:"Science & making",dc:"var(--blue)"},
-  {id:"team",label:"Team & school",dc:"var(--orange)"}
+  {id:"ideas",label:"Ideas & research",dc:"var(--violet)",p:"Psychology, and an essay about how we think."},
+  {id:"making",label:"Science & making",dc:"var(--blue)",p:"A card deck, a biology contest and a water rocket."},
+  {id:"team",label:"Team & school",dc:"#D2601C",p:"A basketball court, and a year at my school."}
 ];
 const AWARDS=[
-  {t:"2026",g:"ideas",m:"mind",h:"International Psychology Olympiad",p:"Silver Award · 1st in Asia · Top 15 Global",
+  {t:"2026",g:"ideas",m:"mind",h:"International Psychology Olympiad",short:"Psychology Olympiad",p:"Silver Award · 1st in Asia · Top 15 Global",
     s:"Psychology interested me before I knew it could become a competition. Preparing for the Olympiad made me move beyond explanations that merely sounded reasonable. I had to compare possibilities, return to evidence and notice where my first interpretation was incomplete. The award mattered because it showed me how much more there was to learn about a subject I already wanted to pursue."},
-  {t:"2026",g:"ideas",m:"pen",h:"RAIS Essay Competition",p:"Top 2 of about 450",
+  {t:"2026",g:"ideas",m:"pen",h:"RAIS Essay Competition",short:"RAIS Essay",p:"Top 2 of about 450",
     s:"I entered with an essay about AI and the future of human thinking in education. The difficult part was resisting an easy argument for or against technology. I kept revising whenever a paragraph made either humans or AI sound too simple. The final essay asked a question I am still carrying into my work. When does a tool extend our thinking, and when does it begin thinking in our place?"},
-  {t:"2026",g:"ideas",m:"bulb",h:"HCMC Youth Innovation",p:"Top 10 of 200",
-    s:"I entered because I wanted to know whether an idea that made sense to our own team would still make sense to people meeting it for the first time. Preparing for the competition forced me to explain the problem clearly, show who the product was for and separate the features we liked from the ones users actually needed. Reaching the Top 10 felt less like approval of a finished product and more like evidence that the problem was worth continuing to work on."},
-  {t:"2025",g:"making",m:"cards",h:"Ho Chi Minh City Youth Creativity Contest",p:"Second Prize · Emotion Card Deck",
+  {t:"2025",g:"making",m:"cards",k:"op-cards",cap:"The Feel-it! emotion cards.",h:"Ho Chi Minh City Youth Creativity Contest",short:"Creativity Contest",p:"Second Prize · Emotion Card Deck",
     s:"I wanted to make something children could hold when talking about feelings became difficult. A lesson or long explanation would have asked them to find the right words first, which was often the hardest part. The card deck used colours, images and situations to give children somewhere simpler to begin. Turning that idea into a real product meant thinking about every choice from the child’s side, not only whether the psychology behind it was correct."},
-  {t:"2025",g:"making",m:"cell",h:"Ho Chi Minh City Regional Academic Excellence Contest",p:"Third Prize, Biology · one of 3 students selected from 45",
+  {t:"2025",g:"making",m:"cell",h:"Ho Chi Minh City Regional Academic Excellence Contest",short:"Biology",p:"Third Prize, Biology · one of 3 students selected from 45",
     s:"I was one of three students selected from 45 to represent my school in the city competition. Preparing meant learning beyond what appeared in our regular lessons and becoming more precise about processes I had previously understood only in broad outlines. Biology was one of the first subjects that made me want to look beneath what I could see and ask what had to be happening underneath."},
-  {t:"2023",g:"making",m:"rocket",h:"Vietnam Water Rocket Competition",p:"National Silver Medal · Team Lead",
+  {t:"2023",g:"making",m:"rocket",h:"Vietnam Water Rocket Competition",short:"Water Rocket",p:"National Silver Medal · Team Lead",
     s:"I joined because I loved Physics and wanted to find out what I could do with it outside a classroom. The competition asked for more than launching a rocket. Our team moved between calculations, construction, coding and problems that only appeared once we began testing. I did not know all of those things when we started. That was part of why I wanted to go. Winning National Silver gave me the confidence to keep entering unfamiliar kinds of work before I felt completely ready."},
-  {t:"2025",g:"team",m:"ball",h:"Ho Chi Minh City Youth Basketball Tournament",p:"Bronze Medal",
+  {t:"2025",g:"team",m:"ball",h:"Ho Chi Minh City Youth Basketball Tournament",short:"Basketball",p:"Bronze Medal",
     s:"Basketball tested a part of me that no written competition could. I could prepare on my own, but I could not control how a match unfolded or do another player’s job for her. I had to read what was happening, recover quickly from mistakes and remain useful to the team even when I was not the person scoring. That is why this medal belongs beside the academic ones."},
-  {t:"2025",g:"team",m:"star",h:"Most Well-Rounded Student",p:"Grade 11 · Trung Vuong High School",
+  {t:"2025",g:"team",m:"star",h:"Most Well-Rounded Student",short:"Well-Rounded",p:"Grade 11 · Trung Vuong High School",
     s:"This award meant more to me because it did not recognise one exam or one project. That year, I ranked first among 844 students while serving as class president and working on projects outside school. I often worried that exploring too many things would make me look unfocused. The award made me see that those parts of my life did not have to compete with one another."}
 ];
 /* a small line drawing for each honour, in its group's colour */
@@ -1377,10 +1383,10 @@ const ROOMS={
   ["links",[{href:"#/about",label:"About"},{href:"#/awards",label:"Awards"},{href:"#/work/research",label:"Research & Experience"}]]
 ]},
 
-"/awards":{accent:"var(--teal)",where:"Awards",blocks:[
+"/awards":{accent:"#A9760B",where:"Awards",blocks:[
   ["hero",{kicker:"Awards · 2023 to 2026",title:"Awards",
     lede:"I like that these awards do not fit neatly into one category. They came from psychology, writing, design, science, engineering and sport.",
-    facts:[{b:"8",s:"selected honours"}],
+    facts:[{b:String(AWARDS.length),s:"selected honours"},{b:"3",s:"fields"},{b:"1st",s:"in Asia, Psychology Olympiad"}],
     /* a medal drawn in the door, where other rooms show a photograph */
     art:'<path d="M42 4l14 58M78 4L64 62" stroke-width="9" opacity=".55"/><path d="M42 4l14 58M78 4L64 62"/><circle cx="60" cy="98" r="34"/><circle cx="60" cy="98" r="25" opacity=".6"/><path d="M60 82l4.7 9.6 10.6 1.5-7.7 7.5 1.8 10.5-9.4-5-9.4 5 1.8-10.5-7.7-7.5 10.6-1.5z"/>'}],
   ["awards"],
@@ -1528,13 +1534,6 @@ function bindScreening(){
   const room=$("#room"), inner=$("#roomInner"), closeBtn=$("#roomClose");
   let lastY=0, lastFocus=null;
   const where=$("#roomWhere");
-  /* Awards: one button opens or closes every story at once */
-  inner.addEventListener("click",e=>{
-    const b=e.target.closest(".awards__all"); if(!b) return;
-    const open=b.getAttribute("aria-pressed")!=="true";
-    $$(".award",inner).forEach(d=>{ d.open=open; });
-    b.setAttribute("aria-pressed",String(open)); b.textContent=open?"Close every story":"Open every story";
-  });
   /* rooms told in chapters: links glide to their chapter instead of re-opening the room */
   const chapGap=()=>$(".room__top").offsetHeight+(($(".chbar",inner)||{}).offsetHeight||0)+16;
   inner.addEventListener("click",e=>{

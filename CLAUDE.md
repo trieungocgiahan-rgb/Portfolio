@@ -50,6 +50,10 @@ sharing a room, then tests it through community work, research and building.
   Chemistry, What grows inside, My city), each opening with a wall text
   in her voice, picture lights, museum labels, an oak floor; her statement
   and painting notes stay word for word.
+  Awards is told as a story: the years on one line with a small medal
+  per honour, then one chapter per group (AWARD_GROUPS), each honour a
+  drawn medal (ribbon in the group colour, its mark engraved) beside her
+  own story in full, the sides taking turns.
   Events is one story about why she makes gatherings,
   told in four threads (Create together, Cheer for the same thing, Make room to belong,
   Start what isn't there): the threads first, then Beats of Hope as the
@@ -58,15 +62,15 @@ sharing a room, then tests it through community work, research and building.
   it was a first at her school. Old routes resolve through ROOM_ALIASES;
   /room/anchor scrolls to a kicker with that id. Rooms open in place.
 - Every room starts with a hero block with its own light, set by
-  data-room on #room: dark heroes (Events night stage, Awards teal) and
-  light ones (Dream Strokes a pink-sky-butter ombre, Tech shades of blue
+  data-room on #room: one dark hero (Events night stage) and light ones
+  (Dream Strokes a pink-sky-butter ombre, Awards champagne gold, Tech shades of blue
   with a dot grid, Research shades of violet on graph paper, Exhibition
   paint washes, About blush, CV ruled paper). Light rooms (Dream Strokes,
-  Events, Tech, Research, Exhibition) carry their colour through the whole
+  Events, Tech, Research, Exhibition, Awards) carry their colour through the whole
   page as an ombre that shifts per chapter, with frosted-glass cards. Only
   Dream Strokes mixes several pastels; every other room's ombre stays in
   shades of its own one colour (Events amber, Tech blue, Research violet,
-  Exhibition warm gallery white), so the rooms never look alike; the lead
+  Exhibition warm gallery white, Awards gold), so the rooms never look alike; the lead
   photograph is always seen through an arched door and then tells one short story: what
   was noticed, what changed, what it led to. About is the one exception,
   built from her mockup (aboutHTML in app.js): a sketch hero with line-only
