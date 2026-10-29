@@ -390,9 +390,10 @@ function dragScroll(el){
   el.addEventListener("click",e=>{ if(moved){ e.preventDefault(); e.stopPropagation(); moved=false; } },true);
   el.addEventListener("dragstart",e=>e.preventDefault());
   const nudge=new IntersectionObserver(es=>{
-    es.forEach(e=>{ if(e.isIntersecting && !REDUCED){
+    /* only a wall nobody has moved yet gets the hint, so a chosen room is never undone */
+    es.forEach(e=>{ if(e.isIntersecting && !REDUCED && el.scrollLeft<4){
       el.scrollTo({left:40,behavior:"smooth"});
-      setTimeout(()=>el.scrollTo({left:0,behavior:"smooth"}),600);
+      setTimeout(()=>{ if(Math.abs(el.scrollLeft-40)<8) el.scrollTo({left:0,behavior:"smooth"}); },600);
       nudge.unobserve(e.target);
     }});
   },{threshold:.4});
@@ -577,7 +578,7 @@ const B={
   </div>`,
   about:()=>aboutHTML(),
   /* a product, introduced on one line: its mark, its name, my role, and the way to the real thing */
-  product:o=>`<section class="product" id="room-${o.id}">
+  product:o=>`<section class="product"${o.id?` id="room-${o.id}"`:""}>
     <header class="product__head">
       <img class="product__logo" src="${o.logo}" alt="${o.logoAlt||""}" width="300" height="300">
       <div class="product__id"><p class="room__kicker">${o.kicker}</p><h3 class="product__name">${o.name}</h3></div>
@@ -640,7 +641,7 @@ const B={
   </section>`).join("")}</div>`,
   /* ---- a long room told in chapters (Dream Strokes) ---- */
   /* every chapter on one map, then a slim bar that stays and marks where you are */
-  chapters:o=>`<nav class="chmap" aria-label="The parts of this page"><ol>${o.items.map(c=>`<li><a href="#${o.route}/${c.id}" data-jump="room-${c.id}"><span class="chmap__n">${c.n}</span><b>${c.t}</b><span class="chmap__p">${c.p}</span></a></li>`).join("")}</ol></nav>
+  chapters:o=>`<nav class="chmap" aria-label="The parts of this page"><ol data-n="${o.items.length}">${o.items.map(c=>`<li><a href="#${o.route}/${c.id}" data-jump="room-${c.id}"><span class="chmap__n">${c.n}</span><b>${c.t}</b><span class="chmap__p">${c.p}</span></a></li>`).join("")}</ol></nav>
   <nav class="chbar" aria-label="Chapters"><div class="chbar__in"><ol>${o.items.map(c=>`<li><a href="#${o.route}/${c.id}" data-jump="room-${c.id}" title="${c.t}"><i aria-hidden="true"></i><span class="chbar__n">${c.n}</span><span class="chbar__t">${c.s}</span></a></li>`).join("")}</ol><p class="chbar__now" aria-hidden="true"></p></div></nav>`,
   /* a chapter's opening: its number large, its title, one line on what it holds */
   chapter:o=>`<header class="chap" id="room-${o.id}"><p class="chap__n">${o.n}</p><h3 class="chap__t">${o.t}</h3>${o.p?`<p class="chap__p">${o.p}</p>`:""}${o.skills?`<ul class="chap__skills" aria-label="Skills in this part">${o.skills.map(x=>`<li>${x}</li>`).join("")}</ul>`:""}</header>`,
@@ -688,6 +689,10 @@ const B={
     <figcaption>${o.cap}</figcaption></figure>`,
   /* an interface's colours and type, as swatches */
   palette:o=>`<div class="blk palette"><p class="palette__k">${o.k}</p><ul>${o.colors.map(c=>`<li><i style="--dc:${c}"></i><span>${c}</span></li>`).join("")}</ul><p class="palette__type"><span>${o.typeK}</span>${o.font}</p></div>`,
+  /* several questions whose lines meet in one answer (line = connection, dot = where they meet) */
+  converge:o=>`<div class="blk converge"><ul>${o.items.map(x=>`<li style="--dc:${x.c}"><p class="converge__k">${x.k}</p><p class="converge__t">${x.t}</p></li>`).join("")}</ul>
+    <svg class="converge__lines" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0C50 34 150 26 150 60M150 0V60M250 0C250 34 150 26 150 60"/></svg>
+    <p class="converge__a"><i aria-hidden="true"></i>${o.answer}</p></div>`,
   /* who we work with: what they are to us in mono, their name in serif */
   partners:a=>`<div class="blk partners">${a.map(x=>`<div><p class="partners__k">${x.k}</p><h4>${x.h}</h4>${x.p?`<p class="partners__p">${x.p}</p>`:""}</div>`).join("")}</div>`,
   /* one group in photographs: a large one, two beneath it */
@@ -1019,13 +1024,19 @@ const ROOMS={
   ["links",[{href:"#/work/research",label:"The study it led to"},{href:"#/work/events",label:"Events"},{href:"#/exhibition",label:"Exhibition"}]]
 ]},
 
-"/work/events":{accent:"var(--orange)",where:"Work · Events",blocks:[
+"/work/events":{accent:"#C9561A",where:"Work · Events",blocks:[
   ["hero",{kicker:"Gatherings and events · 2024 to 2026",title:"Rooms with the lights turned up",
     lede:"When people make something together, they stop being strangers. That is why I run workshops, and why I make gatherings. Some of them did not exist at my school yet, so I started them.",
     facts:[{b:"9",s:"gatherings"},{b:"2,400+",s:"at the largest"},{b:"3",s:"firsts at my school"}],
     k:"gather-2",ghost:"Beats of Hope, from the stage"}],
+  ["kicker","The story · in three parts"],
+  ["chapters",{route:"/work/events",items:[
+    {n:"01",id:"why",t:"Why I make gatherings",s:"Why",p:"Four ideas that run through every one of them."},
+    {n:"02",id:"little-smile",t:"Beats of Hope",s:"The flagship",p:"Ten bands, one stage, and a night for children in hospital."},
+    {n:"03",id:"more",t:"Eight more gatherings",s:"More",p:"Music, football, a fair, a festival and a rocket launch."}
+  ]}],
 
-  ["kicker","Why I make gatherings"],
+  ["chapter",{n:"01",id:"why",t:"Why I make gatherings",skills:["Community building","Problem framing"]}],
   ["para","It started at a Dream Strokes table, where the room changed the moment children stopped watching and started making. A concert, a match, a science fair or a sketch walk can do the same for hundreds of people. Four ideas run through all of them."],
   ["pains",[
     {h:"Create together",p:"Something to make, not only something to watch."},
@@ -1034,22 +1045,22 @@ const ROOMS={
     {h:"Start what isn’t there",p:"If the room does not exist yet, start it."}
   ]],
 
-  ["kicker",{t:"Beats of Hope · the flagship · benefit concert · 2025",id:"little-smile"}],
+  ["chapter",{n:"02",id:"little-smile",t:"Beats of Hope",p:"The flagship · a benefit concert · 2025",skills:["Event production","Sponsorship","Fundraising"]}],
+  ["split",{mid:true,a:[
   ["lede","Ten bands from different schools, one stage, and one reason to be in the same room."],
   ["para","At the Little Smiles Project I was Creative Director, designing play and storytelling sessions for children in hospitals with a team spread across South Korea, France, Taiwan and Vietnam. I wanted students in my own city to be part of that work, not just hear about it."],
-  ["para","So I produced Beats of Hope. More than ten student bands from different schools played one shared show, and we spread 310+ tickets across the city’s schools. I ran the stage and the artists and negotiated the venue sponsorship in person. People came for a friend’s band and stayed for everyone else’s. The night raised about VND 25 million for play and storytelling sessions, donated to two hospitals in France."],
-  ["figs",[
+  ["para","So I produced Beats of Hope. More than ten student bands from different schools played one shared show, and we spread 310+ tickets across the city’s schools. I ran the stage and the artists and negotiated the venue sponsorship in person. People came for a friend’s band and stayed for everyone else’s. The night raised about VND 25 million for play and storytelling sessions, donated to two hospitals in France."]],
+  b:[["figs",[
     {k:"gt-4",slot:"Poster",ratio:"1/1",ghost:"the Beats of Hope poster",cap:"The poster, made with the Little Smiles team."},
     {k:"gt-5",slot:"Plate 02",ratio:"1/1",ghost:"a band after its set",cap:"One of the bands, after its set."}
-  ]],
+  ]]]}],
   ["numbers",[
     {b:"10+",s:"student bands from different schools"},
     {b:"310+",s:"tickets across city schools"},
     {b:"~VND 25M",s:"raised, donated to two hospitals in France"}
   ]],
 
-  ["kicker","Eight more gatherings"],
-  ["para","Each of these follows one of the four ideas a little further."],
+  ["chapter",{n:"03",id:"more",t:"Eight more gatherings",p:"Each one follows one of the four ideas a little further.",skills:["Leadership","Operations","Starting new things"]}],
   ["gatherings",[
     {num:"01",c:"var(--pink)",h:"Create together",why:"A song or a sketchbook hands everyone the same task at the same moment. Nobody has to speak first.",
       events:[
@@ -1072,27 +1083,32 @@ const ROOMS={
         {k:"ev-sciphony",ghost:"a SciPhony booth",meta:"Academic Design Lead · Physics Club",name:"SciPhony Science Festival",p:"I led the academic design: a human-body investigation that needed physics, chemistry and biology at every booth.",fact:"5 booths"}
       ]}
   ]],
-  ["links",[{href:"#/work/net-mo",label:"Dream Strokes"},{href:"#/work/research",label:"Research & Internships"}]]
+  ["links",[{href:"#/work/net-mo",label:"Dream Strokes"},{href:"#/work/research",label:"Research & Experience"}]]
 ]},
 
-"/work/research":{accent:"var(--violet)",where:"Work · Research & Internships",blocks:[
-  ["hero",{kicker:"Work · Research & Internships · 2025 to now",title:"Research &amp; Internships",
-    lede:"One study I designed and ran, and two internships at startups building tools for how young people feel, learn and pay attention.",
+"/work/research":{accent:"var(--violet)",where:"Work · Research & Experience",blocks:[
+  ["hero",{kicker:"Work · Research & Experience · 2025 to now",title:"Research &amp; Experience",
+    lede:"One study I designed and ran, and two hands-on roles at startups building tools for how young people feel, learn and pay attention.",
     facts:[{b:"68",s:"study participants"},{b:"100+",s:"interviews with teenagers"},{b:"40+",s:"papers reviewed"}],
     art:'<path d="M14 132h94M14 132V20" opacity=".45"/><path d="M24 46l80 70" stroke="#2B4DE0" stroke-width="3"/><path d="M24 116l80-74" stroke="#EE4187" stroke-width="3"/><circle cx="64" cy="81" r="4.5" fill="currentColor" stroke="none"/>'}],
   ["studies",[
     {num:"01",c:"var(--violet)",href:"#/work/research/ai-art",kind:"Study · First author",name:"AI &amp; Art",role:"Oct 2025 to now · under review at NHSJS",
       q:"Does art-making or an AI-guided dialogue make it easier to express what you feel, and for whom?",
       facts:[{b:"68",s:"young adults"},{b:"136",s:"sessions"},{b:"p < .001",s:"crossover"}],go:"Open the study"},
-    {num:"02",c:"#C2610A",href:"#/work/research/teencare",kind:"Internship · Research Associate, R&D",name:"TeenCare",logo:"img/teencare-wordmark.png",role:"May to Dec 2025 · Jun 2026 to now",
+    {num:"02",c:"#C2610A",href:"#/work/research/teencare",kind:"Experience · Research Associate, R&D",name:"TeenCare",logo:"img/teencare-wordmark.png",role:"May to Dec 2025 · Jun 2026 to now",
       q:"What do teenagers actually say when someone asks properly?",
       facts:[{b:"100+",s:"interviews"},{b:"5",s:"narrative survey formats"}],go:"Open TeenCare"},
-    {num:"03",c:"#0041E7",href:"#/work/research/brain-life",kind:"Internship · R&D Intern",name:"Brain-Life",logo:"img/brainlife-wordmark.png",role:"Aug 2026 to now",
+    {num:"03",c:"#0041E7",href:"#/work/research/brain-life",kind:"Experience · R&D Intern",name:"Brain-Life",logo:"img/brainlife-wordmark.png",role:"Aug 2026 to now",
       q:"Where do global research on attention and local behaviour part ways?",
       facts:[{b:"40+",s:"papers"},{b:"20",s:"products"},{b:"25",s:"interviews"}],go:"Open Brain-Life"}
   ]],
   ["kicker","How they connect"],
-  ["para","The study asked which way into a feeling works, and for whom. TeenCare asked what teenagers say when the question is gentle enough. Brain-Life asks what to do when the brain’s signal and a student’s own report disagree. All three kept giving me the same answer: it depends on the person."],
+  ["para","Each piece of work asked its own question. All three kept giving me the same answer."],
+  ["converge",{items:[
+    {k:"AI & Art",c:"var(--violet)",t:"Which way into a feeling works, and for whom?"},
+    {k:"TeenCare",c:"#C2610A",t:"What do teenagers say when the question is gentle enough?"},
+    {k:"Brain-Life",c:"#0041E7",t:"What do you do when the brain’s signal and a student’s own words disagree?"}
+  ],answer:"It depends on the person."}],
   ["links",[{href:"#/work/net-mo",label:"Where the question came from"},{href:"#/work/tech",label:"Tech Projects"}]]
 ]},
 
@@ -1145,7 +1161,7 @@ const ROOMS={
 ]},
 
 "/work/research/teencare":{accent:"#C2610A",where:"Research · TeenCare",blocks:[
-  ["hero",{kicker:"Internship · Part-time Research Associate, R&D · remote · May to Dec 2025, Jun 2026 to now",title:"TeenCare",
+  ["hero",{kicker:"Experience · Part-time Research Associate, R&D · remote · May to Dec 2025, Jun 2026 to now",title:"TeenCare",
     wordmark:"img/teencare-wordmark.png",
     lede:"A youth mental-fitness startup building story-based tools that help teenagers notice and express what they feel. I work remotely in its R&D team.",
     facts:[{b:"100+",s:"semi-structured interviews"},{b:"5",s:"narrative survey formats"},{b:"1",s:"core product built on one of them"}],
@@ -1231,7 +1247,7 @@ const ROOMS={
 ]},
 
 "/work/research/brain-life":{accent:"#0041E7",where:"Research · Brain-Life",blocks:[
-  ["hero",{kicker:"Internship · Research & Development Intern · Aug 2026 to now",title:"Brain-Life",
+  ["hero",{kicker:"Experience · Research & Development Intern · Aug 2026 to now",title:"Brain-Life",
     wordmark:"img/brainlife-wordmark.png",
     lede:"A neurotechnology startup developing evidence-based tools to improve attention, learning and cognitive well-being.",
     facts:[{b:"3",s:"patterns where research and local behaviour diverged"},{b:"EEG",s:"recordings processed in Python"}],
@@ -1267,8 +1283,14 @@ const ROOMS={
   ["hero",{kicker:"Work · Tech Projects · 2025 to now",title:"Contextuary and Together!",
     lede:"Two products I designed in Figma and built with a front end in React. One helps a student meet a hard word inside its sentence. The other gives a scattered team one place to keep its days.",
     marks:["img/contextuary-logo.png","img/together-logo.png"]}],
+  ["kicker","Two products · two problems I lived with"],
+  ["chapters",{route:"/work/tech",items:[
+    {n:"01",id:"contextuary",t:"Contextuary",s:"Contextuary",p:"Keeping a new word took six jobs. Now it takes one."},
+    {n:"02",id:"together",t:"Together!",s:"Together!",p:"One shared journal for a team spread across Vietnam."}
+  ]}],
 
-  ["product",{id:"contextuary",logo:"img/contextuary-logo.png",logoAlt:"The Contextuary logo",
+  ["chapter",{n:"01",id:"contextuary",t:"Contextuary",p:"Vocabulary in context, for students preparing for the SAT",skills:["Product design","User research","React"]}],
+  ["product",{logo:"img/contextuary-logo.png",logoAlt:"The Contextuary logo",
     kicker:"Founder and Product Designer · Jan 2025 to now · team of 4",name:"Contextuary",
     href:"https://contextuary.app",label:"Visit Contextuary",
     lede:"While I was studying vocabulary, I noticed how much work it took just to keep one new word, and how little of that work helped anyone remember it. That was where students gave up.",
@@ -1297,7 +1319,8 @@ const ROOMS={
     {q:"The founder keeps listening and improving it. I love it.",who:"A Contextuary user"}
   ]}],
 
-  ["product",{id:"together",logo:"img/together-logo.png",logoAlt:"The Together! logo",
+  ["chapter",{n:"02",id:"together",t:"Together!",p:"A shared journal for teams who work apart",skills:["Information architecture","UI/UX design","Figma"]}],
+  ["product",{logo:"img/together-logo.png",logoAlt:"The Together! logo",
     kicker:"Co-Founder and UI/UX Designer · Dec 2025 to now",name:"Together!",
     href:"https://toghether.contextuary.app",label:"Visit Together!",
     lede:"Dream Strokes runs on many people, in many places, each doing a different job. I watched how easily that kind of team drifts apart.",
@@ -1323,7 +1346,7 @@ const ROOMS={
     {q:"Today’s football match was a great one.",who:"A Dream Strokes member"},
     {q:"The class was so sweet. Reading everyone’s journal feels like being there.",who:"A Dream Strokes member"}
   ]}],
-  ["links",[{href:"#/work/research",label:"Research & Internships"},{href:"#/work/net-mo",label:"Dream Strokes"}]]
+  ["links",[{href:"#/work/research",label:"Research & Experience"},{href:"#/work/net-mo",label:"Dream Strokes"}]]
 ]},
 
 "/about":{accent:"var(--pink)",where:"About",blocks:[["about"]]},
@@ -1351,7 +1374,7 @@ const ROOMS={
   ]],
   ["kicker","Selected honours"],
   ["rows",[...AWARDS].sort((a,b)=>b.t-a.t)],
-  ["links",[{href:"#/about",label:"About"},{href:"#/awards",label:"Awards"},{href:"#/work/research",label:"Research & Internships"}]]
+  ["links",[{href:"#/about",label:"About"},{href:"#/awards",label:"Awards"},{href:"#/work/research",label:"Research & Experience"}]]
 ]},
 
 "/awards":{accent:"var(--teal)",where:"Awards",blocks:[
@@ -1408,6 +1431,13 @@ const ARCHIVE=[
    n:"Redrawing the building I passed unnoticed every single day opened my eyes to its timeless beauty.",
    alt:"Black ink sketch of the Saigon Central Post Office facade with its clock and arched windows, lettered with its Vietnamese name."}
 ];
+/* the exhibition hangs in three rooms; each opens with a short wall text */
+const GALLERY_ROOMS=[
+  {n:"01",t:"Chemistry",p:"Three works about what happens between people: a small signal, then a dance, then a whole room lit up.",ids:["chemistry","restless-light","kaleidoscope"]},
+  {n:"02",t:"What grows inside",p:"What I carry where no one sees it: light from a star, strength out of deep red, something quiet still growing.",ids:["stardust","red-season","bloom-anyway"]},
+  {n:"03",t:"My city",p:"Ink sketches of Ho Chi Minh City, drawn standing still in places I usually rush past.",ids:["ba-son-view","post-office"]}
+];
+const roomOf=id=>GALLERY_ROOMS.find(r=>r.ids.includes(id));
 /* every work is shown whole: contain, never cropped */
 ARCHIVE.forEach(a=>{ MEDIA["art-"+a.id]={src:`img/art-${a.id}.jpg`,alt:a.alt,fit:"contain"}; });
 /* the room's door shows the first work as a photograph through a doorway (cropped, not squashed) */
@@ -1419,22 +1449,33 @@ function exhibitionHTML(){
     lede:"Some of these pieces started with something tangible. Others started with something invisible. As I paint, the outside world and my internal world bleed together onto the same canvas.",
     meta:"Swipe along the wall to explore, or tap any painting to take a closer look.",
     k:"exhibition-door",ghost:"Chemistry"})}
+  <nav class="gallery__plan" aria-label="Rooms of the exhibition">
+    <p class="gallery__plan-k">The exhibition · ${ARCHIVE.length} works in ${GALLERY_ROOMS.length} rooms</p>
+    <ol>${GALLERY_ROOMS.map(r=>`<li><button type="button" data-gallery-room="${r.n}"><span>Room ${r.n}</span>${r.t}<i>${r.ids.length} works</i></button></li>`).join("")}</ol>
+  </nav>
   <div class="gallery" id="gallery">
-    <span class="gallery__rail" aria-hidden="true"></span>
     <span class="gallery__spot" id="gallerySpot" aria-hidden="true"></span>
-    <span class="gallery__floor" aria-hidden="true"></span>
-    <div class="gallery__wall">${ARCHIVE.map((a,i)=>`
+    <div class="gallery__wall">${GALLERY_ROOMS.map(r=>`
+      <section class="walltext" id="gallery-room-${r.n}" aria-label="Room ${r.n}, ${r.t}">
+        <p class="walltext__n">Room ${r.n}</p>
+        <h3 class="walltext__t">${r.t}</h3>
+        <p class="walltext__p">${r.p}</p>
+      </section>${r.ids.map(id=>{ const i=ARCHIVE.findIndex(x=>x.id===id), a=ARCHIVE[i]; return `
       <button class="work${a.support==="paper"?" work--paper":""}" data-obj="${i}" type="button" style="--ratio:${a.ratio};--ar:${a.ratio.split("/")[0]/a.ratio.split("/")[1]};--size:${a.size}"
         aria-label="${a.t}, ${label(a)}. Open to inspect.">
+        <span class="work__lamp" aria-hidden="true"></span>
         <span class="work__frame">
           <span class="work__plate" data-img="art-${a.id}" style="--ratio:${a.ratio}"><span class="fig__ghost">${a.t}</span></span>
         </span>
         <span class="work__label">
           <b>${a.t}</b>
-          <span>${label(a)}</span>
+          <span>${label(a).replace(/ × /g,"\u00a0×\u00a0")}</span>
           <span class="work__peek">Inspect</span>
         </span>
-      </button>`).join("")}</div>
+      </button>`; }).join("")}`).join("")}</div>
+    <span class="gallery__floor" aria-hidden="true"></span>
+  </div>
+  <div class="gallery__after">
     <p class="mono gallery__hint">Drag along the wall →</p>
     <div class="gallery__cta">
       <p class="mono mono--sentence">Eight of them. The rest of the collection hangs in the full portfolio.</p>
@@ -1622,7 +1663,7 @@ function bindArchive(){
     $("#objTitle").textContent=a.t;
     $("#objNote").textContent=a.n; delete $("#objNote").dataset.tied; tieLastWords($("#objNote"));
     $("#objMeta").textContent=label(a);
-    $("#objCount").textContent=`${String(idx+1).padStart(2,"0")} of ${ARCHIVE.length}`;
+    { const r=roomOf(a.id); $("#objCount").textContent=`${r?`Room ${r.n} · ${r.t} · `:""}${String(idx+1).padStart(2,"0")} of ${ARCHIVE.length}`; }
   }
   function open(i){ show(i); ov.classList.add("is-open"); }
   function close(){ ov.classList.remove("is-open"); }
@@ -1642,7 +1683,22 @@ function bindArchive(){
       spot.style.top=(e.clientY-r.top)+"px";
     });
   }
-  dragScroll($(".gallery__wall"));
+  const wall=$(".gallery__wall");
+  dragScroll(wall);
+  /* the floor plan: each room's button walks the wall to its wall text, and lights the room you are in */
+  const plan=$$("[data-gallery-room]");
+  plan.forEach(btn=>btn.addEventListener("click",()=>{
+    const t=document.getElementById("gallery-room-"+btn.dataset.galleryRoom); if(!t||!wall) return;
+    wall.scrollTo({left:t.offsetLeft-parseFloat(getComputedStyle(wall).paddingLeft),behavior:REDUCED?"auto":"smooth"});
+  }));
+  function markRoom(){
+    if(!wall) return;
+    const x=wall.scrollLeft+wall.clientWidth*.35; let cur=plan[0]&&plan[0].dataset.galleryRoom;
+    $$(".walltext",wall).forEach(w=>{ if(w.offsetLeft<=x) cur=w.id.replace("gallery-room-",""); });
+    plan.forEach(b=>{ const on=b.dataset.galleryRoom===cur; b.classList.toggle("is-on",on); on?b.setAttribute("aria-current","location"):b.removeAttribute("aria-current"); });
+  }
+  let roomRaf=0;
+  if(wall){ wall.addEventListener("scroll",()=>{ if(!roomRaf) roomRaf=requestAnimationFrame(()=>{ roomRaf=0; markRoom(); }); },{passive:true}); markRoom(); }
   $("#objPrev").onclick=()=>show(idx-1);
   $("#objNext").onclick=()=>show(idx+1);
   $("#objClose").onclick=close;

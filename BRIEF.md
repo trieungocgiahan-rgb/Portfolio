@@ -75,7 +75,7 @@ lists the pages behind the story.
 
 Doors has four destinations:
 - Work, which opens into four rooms: Dream Strokes, Events (Beats of Hope and
-  the others), Research & Internships (Two Doors, Brainlife, TeenCare,
+  the others), Research & Experience (Two Doors, Brainlife, TeenCare,
   Eunoia), Tech Projects (Contextuary, Together!)
 - Exhibition, kept separate and special
 - Awards, the verified honours only

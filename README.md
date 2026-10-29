@@ -40,7 +40,7 @@ cx-lead + cx-1…3, cj-lead, ab-2.
 
 Everything behind a "Read the … story" link or the Doors menu is data, not
 markup. In `app.js`, the `ROOMS` object holds one entry per room: Dream Strokes,
-Events, Research & Internships, Tech Projects, About, CV, Awards (the
+Events, Research & Experience, Tech Projects, About, CV, Awards (the
 Exhibition is built from `ARCHIVE`; the honours live once in `AWARDS`).
 Each room starts with a `hero` block (kicker, title, lede, facts, and `k`,
 the photograph shown in its door), then a list of blocks: kicker,

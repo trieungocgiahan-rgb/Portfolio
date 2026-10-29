@@ -12,14 +12,14 @@ sharing a room, then tests it through community work, research and building.
 - Keep the door motif: the entrance (Knock, knock. and one "Come in"
   button), Doors panel, deep spaces as rooms.
 - Doors has four destinations: Work (Dream Strokes, Events, Research &
-  Internships, Tech Projects), Exhibition, Awards, About. The CV is not in
+  Experience, Tech Projects), Exhibition, Awards, About. The CV is not in
   Doors; About tells the longer story and ends on a CTA to it. Routes are
   /work/net-mo, /work/events, /work/research, /work/tech, /exhibition,
   /awards, /about, /cv. Research is a hub with three sub-rooms, one per
   piece of work, so none is skimmed past: /work/research/ai-art,
   /work/research/teencare, /work/research/brain-life. Research rooms never
   show participants; their doors hold line drawings and their evidence is
-  charts (bars, crossover). The two internship rooms wear their company's
+  charts (bars, crossover). The two experience rooms (startup roles) wear their company's
   own look: TeenCare a soft sunrise in its yellow and orange with slate
   ink, Brain-Life white with its electric blue (#0041E7) and a dot grid;
   each company's wordmark stands in for the room title and its icon sits
@@ -44,6 +44,12 @@ sharing a room, then tests it through community work, research and building.
   it reaches, what changes), then Follow the journey
   (netmoproject.page and the Facebook page, NETMO_FACEBOOK). Each
   chapter opens with skill tags (pills) for the skills it shows.
+  Events (three chapters: Why, Beats of Hope, Eight more) and Tech (two
+  chapters: Contextuary, Together!) use the same chapter map and bar.
+  Exhibition is a real gallery: a floor plan of three rooms (GALLERY_ROOMS:
+  Chemistry, What grows inside, My city), each opening with a wall text
+  in her voice, picture lights, museum labels, an oak floor; her statement
+  and painting notes stay word for word.
   Events is one story about why she makes gatherings,
   told in four threads (Create together, Cheer for the same thing, Make room to belong,
   Start what isn't there): the threads first, then Beats of Hope as the
@@ -52,10 +58,15 @@ sharing a room, then tests it through community work, research and building.
   it was a first at her school. Old routes resolve through ROOM_ALIASES;
   /room/anchor scrolls to a kicker with that id. Rooms open in place.
 - Every room starts with a hero block with its own light, set by
-  data-room on #room: dark heroes (Events night stage, Tech electric blue,
-  Awards teal) and paper heroes (Dream Strokes a pink-sky-butter ombre that carries
-  through the whole room and shifts per chapter, with frosted-glass cards, Research lavender graph
-  paper, Exhibition paint washes, About blush, CV ruled paper); the lead
+  data-room on #room: dark heroes (Events night stage, Awards teal) and
+  light ones (Dream Strokes a pink-sky-butter ombre, Tech shades of blue
+  with a dot grid, Research shades of violet on graph paper, Exhibition
+  paint washes, About blush, CV ruled paper). Light rooms (Dream Strokes,
+  Events, Tech, Research, Exhibition) carry their colour through the whole
+  page as an ombre that shifts per chapter, with frosted-glass cards. Only
+  Dream Strokes mixes several pastels; every other room's ombre stays in
+  shades of its own one colour (Events amber, Tech blue, Research violet,
+  Exhibition warm gallery white), so the rooms never look alike; the lead
   photograph is always seen through an arched door and then tells one short story: what
   was noticed, what changed, what it led to. About is the one exception,
   built from her mockup (aboutHTML in app.js): a sketch hero with line-only
