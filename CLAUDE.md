@@ -32,8 +32,9 @@ sharing a room, then tests it through community work, research and building.
   teenagers and raise awareness), the interface she designed (a survey
   screen rebuilt in HTML, formmock, and the palette), testing. Dream Strokes is the flagship and tells the
   whole ecosystem in eight numbered chapters, each with its own layout so
-  the page never reads as one long scroll: 01 Why (purpose, vision, the
-  boy in the corner), 02 Sessions (lesson plans, the Magic Mirror, Colors
+  the page never reads as one long scroll: 01 Why Dream Strokes exists (one right
+  answer at her public school, the contrast of identical and free dots,
+  why she started it, our hope, the boy in the corner), 02 Sessions (lesson plans, the Magic Mirror, Colors
   of Joy), 03 OPEN (a switcher: Sol Sound, Colors of the Pitch, Once Upon
   the Inside), 04 Art that keeps going (website, virtual exhibition, the
   money loop), 05 Partners and sponsors (Bao Sang and Phuong Thao

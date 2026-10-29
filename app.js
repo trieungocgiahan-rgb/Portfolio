@@ -644,6 +644,11 @@ const B={
   <nav class="chbar" aria-label="Chapters"><div class="chbar__in"><ol>${o.items.map(c=>`<li><a href="#${o.route}/${c.id}" data-jump="room-${c.id}" title="${c.t}"><i aria-hidden="true"></i><span class="chbar__n">${c.n}</span><span class="chbar__t">${c.s}</span></a></li>`).join("")}</ol><p class="chbar__now" aria-hidden="true"></p></div></nav>`,
   /* a chapter's opening: its number large, its title, one line on what it holds */
   chapter:o=>`<header class="chap" id="room-${o.id}"><p class="chap__n">${o.n}</p><h3 class="chap__t">${o.t}</h3>${o.p?`<p class="chap__p">${o.p}</p>`:""}${o.skills?`<ul class="chap__skills" aria-label="Skills in this part">${o.skills.map(x=>`<li>${x}</li>`).join("")}</ul>`:""}</header>`,
+  /* two ways of being in a room, side by side: the same dot in rows, then dots each their own (dot = state) */
+  contrast:o=>{ const same=[...Array(20)].map((_,i)=>`<circle cx="${18+(i%5)*24}" cy="${21+Math.floor(i/5)*24}" r="7"/>`).join(""),
+    hues=["#EF6A45","#EE4187","#2B4DE0","#0F918B","#F2B33D","#6A4BD6"],
+    free=[...Array(20)].map((_,i)=>{ const a=i*2.399, r=8+((i*37)%46); return `<circle cx="${(66+Math.cos(a)*r).toFixed(1)}" cy="${(57+Math.sin(a)*r*.88).toFixed(1)}" r="${3.5+((i*5)%9)}" fill="${hues[i%6]}"/>`; }).join("");
+    return `<div class="blk contrast">${[[o.a,same,"is-same"],[o.b,free,"is-free"]].map(([x,dots,c])=>`<figure class="contrast__side ${c}"><svg viewBox="0 0 132 114" aria-hidden="true">${dots}</svg><figcaption><span>${x.k}</span>${x.t}</figcaption></figure>`).join("")}</div>`; },
   /* what a project is for, in two lines worth stopping at */
   statements:a=>`<div class="blk statements">${a.map(x=>`<div><p class="statements__k">${x.k}</p><p class="statements__t">${x.t}</p></div>`).join("")}</div>`,
   /* two columns that each hold ordinary blocks: words on one side, pictures on the other */
@@ -863,7 +868,7 @@ const ROOMS={
   ["kicker","The whole project · in eight parts"],
   ["para","Here is everything it grew into. Jump to any part, or read straight through."],
   ["chapters",{route:"/work/net-mo",items:[
-    {n:"01",id:"why",t:"Why it exists",s:"Why",p:"A boy in the corner of his page, and what we want for everyone."},
+    {n:"01",id:"why",t:"Why Dream Strokes exists",s:"Why",p:"One right answer at school, and why I wanted room for more."},
     {n:"02",id:"sessions",t:"Sessions built with care",s:"Sessions",p:"Our lesson plans, the Magic Mirror, and a curriculum for Hanoi."},
     {n:"03",id:"open",t:"Dream Strokes OPEN",s:"OPEN",p:"A concert, a football cup and an exhibition, open to anyone."},
     {n:"04",id:"art",t:"Art that keeps going",s:"Their art",p:"A website, a virtual exhibition, and money back into sessions."},
@@ -873,10 +878,15 @@ const ROOMS={
     {n:"08",id:"impact",t:"How it adds up",s:"Impact",p:"What goes in, what we do, who it reaches, and what changes."}
   ]}],
 
-  ["chapter",{n:"01",id:"why",t:"Why it exists",skills:["Observation","Problem framing"]}],
+  ["chapter",{n:"01",id:"why",t:"Why Dream Strokes exists",skills:["Observation","Problem framing"]}],
+  ["split",{mid:true,a:[
+      ["para","At my public school, every question had one right answer, and we were all expected to reach it the same way. We learned to solve problems, memorise answers and get things right. If your answer looked different, it was marked wrong, so most of us learned to look the same."],
+      ["para","Nobody asked what we felt, what we thought, or who we were becoming. There was no time for it in the day, and no place for it in the room."]],
+    b:[["contrast",{a:{k:"At school",t:"One right answer, reached the same way."},b:{k:"At a Dream Strokes table",t:"As many answers as there are people."}}]]}],
+  ["para","I started Dream Strokes because I believe creativity deserves a place in everyone’s life. Through art, play and shared experiences, we make spaces where people can explore what is inside them, connect with others, and feel free to be themselves."],
   ["statements",[
-    {k:"Our purpose",t:"To give children in shelters and older adults in care homes a way to say how they feel through art, when words are hard."},
-    {k:"Our vision",t:"Creativity with no limit on who joins or where: a shelter, a care home, a classroom or a concert hall."}
+    {k:"Our hope",t:"To make self-expression and emotional learning accessible to everyone, one creative experience at a time."},
+    {k:"Where it happens",t:"Anywhere people can make something together: a shelter, a care home, a classroom or a concert hall."}
   ]],
   ["split",{mid:true,a:[["fig",{k:"nm-1",slot:"Plate 01",ratio:"4/5",ghost:"child and facilitator",cap:"At the table with a child, mid-drawing."}]],
     b:[["kicker","What I noticed first"],
