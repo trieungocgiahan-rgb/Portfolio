@@ -61,7 +61,6 @@ const MEDIA = {
   /* research rooms: never participants; the work, the team, the tools */
   "rs-1":{src:"img/rs-1.jpg",alt:"Inkling’s home page: AI draws the first line. You decide the rest. Beside it, a drawing where a dotted AI line turns into the user’s own strokes, a hill and a sun.",pos:"30% 40%"},
   "rs-2":{src:"img/rs-2.jpg",alt:"Gia Han, holding a microphone, presents in front of a screen showing a warning sign.",pos:"55% 40%"},
-  "tc-book":{src:"img/tc-book.jpg",alt:"The cover of un-wrap, the self-discovery restaurant: a plate of food on a checked tablecloth and a note reading A little recipe for the person you’re becoming."},
   "tc-mockup":{src:"img/tc-mockup.jpg",alt:"The un-wrap mockup sheet: the book, the five-course journey from The Reservation to Your Signature Dish, four spreads from inside the book, and what is included: a question envelope, ingredient stickers and recipe cards."},
   "tc-cloud":{src:"img/tc-cloud.jpg",alt:"Fluffy Cloud: a soft blue cloud with one eye open, one winking, and orange swirls on its cheeks, in a sunny sky.",pos:"40% 50%"},
   "tc-arch-1":{src:"img/tc-arch-1.jpg",alt:"A parcel tied with string on a table, with a brain, a heart and a cloud rising from it."},
@@ -678,6 +677,8 @@ const B={
   journey:a=>`<ol class="blk journey">${a.map(x=>`<li><p class="journey__k">${x.k}</p><b>${x.h}</b><p class="journey__p">${x.p}</p></li>`).join("")}</ol>`,
   /* a method told as steps of a recipe: the picture, the kitchen word, what it stands for */
   recipe:a=>`<ol class="blk recipe">${a.map((x,i)=>`<li>${fig({k:x.k,ratio:"358/452",ghost:x.ghost})}<div><p class="recipe__n">${String(i+1).padStart(2,"0")}</p><h4>${x.h}</h4><p class="recipe__eq">= ${x.eq}</p><p class="recipe__p">${x.p}</p></div></li>`).join("")}</ol>`,
+  /* an object cut out of its ground, standing in space: it tilts toward the pointer and casts a soft shadow */
+  object3d:o=>`<figure class="blk object3d"><div class="object3d__stage"><img class="object3d__img" src="${o.src}" width="${o.w}" height="${o.h}" alt="${o.alt}" loading="lazy" decoding="async"></div><figcaption>${o.cap}</figcaption></figure>`,
   /* one screen of an interface, rebuilt in HTML from its design (its words in English) */
   formmock:o=>`<figure class="blk formmock"><div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span>${o.url}</span></div>
     <div class="formmock__screen"><svg class="formmock__art" viewBox="0 0 200 170" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="fmSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#66B1DB"/><stop offset="1" stop-color="#ABEDFF"/></linearGradient></defs>
@@ -1192,7 +1193,7 @@ const ROOMS={
   ["para","When someone stops talking, I now look at the question before I look at the person."],
 
   ["kicker","From a story to a product · un-wrap, the self-discovery restaurant"],
-  ["split",{mid:true,a:[["fig",{k:"tc-book",ratio:"404/582",ghost:"the un-wrap book",cap:"The cover of un-wrap, from my mockup."}]],
+  ["split",{mid:true,a:[["object3d",{src:"img/tc-book.webp",w:774,h:1164,alt:"The un-wrap book standing at an angle: on its cover, a plate of food on a checked tablecloth and a note reading A little recipe for the person you’re becoming.",cap:"un-wrap, from my mockup."}]],
     b:[["para","The chef narrative became the base of TeenCare’s core product, un-wrap, a “self-discovery restaurant”. I helped carry the interview insights into it: the flows, wireframes, interface design and automated pattern summaries."],
       ["journey",[
         {k:"Way in",h:"The Spring Roll Survey Maker",p:"A web tool for building surveys as stories, like the time train."},
@@ -1517,6 +1518,15 @@ function bindScreening(){
     if(room.dataset.chap!==(cur||"")) room.dataset.chap=cur||"";
   }
   room.addEventListener("scroll",()=>{ if(!chapRaf) chapRaf=requestAnimationFrame(markChapter); },{passive:true});
+  /* objects in space lean toward the pointer (not under reduced motion, not on touch) */
+  if(!REDUCED && window.matchMedia("(hover:hover)").matches){
+    inner.addEventListener("pointermove",e=>{
+      const st=e.target.closest(".object3d__stage"); if(!st) return;
+      const r=st.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
+      st.style.setProperty("--rx",(-y*10).toFixed(2)+"deg"); st.style.setProperty("--ry",(x*18-14).toFixed(2)+"deg");
+    });
+    inner.addEventListener("pointerout",e=>{ const st=e.target.closest(".object3d__stage"); if(st&&!st.contains(e.relatedTarget)){ st.style.removeProperty("--rx"); st.style.removeProperty("--ry"); } });
+  }
   /* switchers: one tab open at a time, arrow keys move between them */
   function pickTab(tab){
     const box=tab.closest(".switcher");

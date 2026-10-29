@@ -5,7 +5,7 @@ Filled: hero-door, rooms-hall, gather-2, ab-2 (portrait), nm-lead, nm-1…6, dre
 once-upon, bl-1…4,
 op-cards, op-cardsheet, op-calendar, op-comic, ss-band, ss-bandages, ss-logo (Dream Strokes OPEN),
 ds-team-1…3, ds-advisor (the team), ds-mirror-1, ds-mirror-2 (The Magic Mirror, .webp cut out of their black ground),
-tc-book, tc-mockup, tc-cloud, tc-arch-1…5 (TeenCare),
+tc-book.webp (cut out, 2x, sharpened), tc-mockup, tc-cloud, tc-arch-1…5 (TeenCare),
 contextuary-logo, together-logo
 (Dream Strokes), gt-lead, gt-1, gt-2 (Sol Sound), gt-4, gt-5 (Beats of Hope),
 
