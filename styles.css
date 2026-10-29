@@ -1288,6 +1288,18 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 }
 @media(max-width:560px){.recipe > li{grid-template-columns:minmax(0,1fr);padding-bottom:var(--sp-2)}.recipe > li > .fig{width:min(100%,160px)}}
 
+/* one screen of an interface, rebuilt from its design: a picture on the left, the welcome on the right */
+.formmock{margin:0;min-width:0}
+.formmock__screen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid var(--rule);border-radius:0 0 12px 12px;overflow:hidden;background:#F6F9FF;box-shadow:0 30px 50px -40px rgba(48,81,101,.6)}
+.formmock__art{display:block;width:100%;height:100%;min-height:200px}
+.formmock__body{display:flex;flex-direction:column;justify-content:center;gap:.6rem;padding:var(--sp-3) var(--sp-2)}
+.formmock__t{font-size:1.25rem;line-height:1.25;color:#305165;font-weight:500}
+.formmock__s{font-size:.9rem;line-height:1.5;color:#4C6A7D}
+.formmock__btn{align-self:flex-start;margin-top:.3rem;padding:.55rem 1rem;border-radius:8px;background:#3C86B5;color:#FFFCDF;font-size:.9rem;font-weight:500}
+.formmock__m{font-family:var(--mono);font-size:var(--t-caption);letter-spacing:.04em;color:#4C6A7D}
+.formmock figcaption{margin-top:.7rem;max-width:min(100%,46ch);font-family:var(--mono);font-size:var(--t-caption);letter-spacing:.02em;line-height:1.7;color:var(--ink-45)}
+@media(max-width:560px){.formmock__screen{grid-template-columns:minmax(0,1fr)}.formmock__art{min-height:0;height:auto;aspect-ratio:200/120}}
+
 /* an interface's colours and type, as swatches with their codes */
 .palette{padding:var(--sp-3);border-radius:20px;background:var(--glass,#fff);border:1px solid var(--glass-line,var(--rule));box-shadow:var(--glass-shadow,none)}
 .palette__k{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}

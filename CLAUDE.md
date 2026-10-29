@@ -28,7 +28,9 @@ sharing a room, then tests it through community work, research and building.
   design and test, with line drawings), the persona Meo, the pain points,
   where people went quiet and two of the five narrative formats, the
   product un-wrap (user journey, the five-step recipe mapped to schema
-  therapy), the interface (Floating Cloud and the palette), testing. Dream Strokes is the flagship and tells the
+  therapy), Fluffy Cloud (the Facebook page she started to reach
+  teenagers and raise awareness), the interface she designed (a survey
+  screen rebuilt in HTML, formmock, and the palette), testing. Dream Strokes is the flagship and tells the
   whole ecosystem in eight numbered chapters, each with its own layout so
   the page never reads as one long scroll: 01 Why (purpose, vision, the
   boy in the corner), 02 Sessions (lesson plans, the Magic Mirror, Colors

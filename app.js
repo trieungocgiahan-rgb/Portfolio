@@ -62,7 +62,7 @@ const MEDIA = {
   "rs-1":{src:"img/rs-1.jpg",alt:"Inkling’s home page: AI draws the first line. You decide the rest. Beside it, a drawing where a dotted AI line turns into the user’s own strokes, a hill and a sun.",pos:"30% 40%"},
   "rs-2":{src:"img/rs-2.jpg",alt:"Gia Han, holding a microphone, presents in front of a screen showing a warning sign.",pos:"55% 40%"},
   "tc-unwrap":{src:"img/tc-unwrap.jpg",alt:"Two hands unwrap a burger from brown paper on a wooden table.",pos:"55% 50%"},
-  "tc-cloud":{src:"img/tc-cloud.jpg",alt:"Floating Cloud: a soft blue cloud with one eye open, one winking, and orange swirls on its cheeks, in a sunny sky.",pos:"40% 50%"},
+  "tc-cloud":{src:"img/tc-cloud.jpg",alt:"Fluffy Cloud: a soft blue cloud with one eye open, one winking, and orange swirls on its cheeks, in a sunny sky.",pos:"40% 50%"},
   "tc-arch-1":{src:"img/tc-arch-1.jpg",alt:"A parcel tied with string on a table, with a brain, a heart and a cloud rising from it."},
   "tc-arch-2":{src:"img/tc-arch-2.jpg",alt:"Hands open the parcel; a small child, two adult figures and a shield glow above it."},
   "tc-arch-3":{src:"img/tc-arch-3.jpg",alt:"A hand picks from shelves of labelled jars of ingredients."},
@@ -672,6 +672,13 @@ const B={
   journey:a=>`<ol class="blk journey">${a.map(x=>`<li><p class="journey__k">${x.k}</p><b>${x.h}</b><p class="journey__p">${x.p}</p></li>`).join("")}</ol>`,
   /* a method told as steps of a recipe: the picture, the kitchen word, what it stands for */
   recipe:a=>`<ol class="blk recipe">${a.map((x,i)=>`<li>${fig({k:x.k,ratio:"358/452",ghost:x.ghost})}<div><p class="recipe__n">${String(i+1).padStart(2,"0")}</p><h4>${x.h}</h4><p class="recipe__eq">= ${x.eq}</p><p class="recipe__p">${x.p}</p></div></li>`).join("")}</ol>`,
+  /* one screen of an interface, rebuilt in HTML from its design (its words in English) */
+  formmock:o=>`<figure class="blk formmock"><div class="browser__bar" aria-hidden="true"><i></i><i></i><i></i><span>${o.url}</span></div>
+    <div class="formmock__screen"><svg class="formmock__art" viewBox="0 0 200 170" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="fmSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#66B1DB"/><stop offset="1" stop-color="#ABEDFF"/></linearGradient></defs>
+      <rect width="200" height="170" fill="url(#fmSky)"/><circle cx="160" cy="34" r="16" fill="#FFFCDF"/><path d="M0 120c40-18 80-22 120-12s60 4 80-4v66H0z" fill="#E1FFE3"/><path d="M0 132c50-10 110-6 200-22v60H0z" fill="#3EAE94" opacity=".55"/>
+      <path d="M10 150 190 112" stroke="#305165" stroke-width="2"/><g transform="rotate(-12 100 120)"><rect x="40" y="96" width="120" height="30" rx="6" fill="#E8FCFF" stroke="#305165" stroke-width="2"/><path d="M40 112h120" stroke="#3EAE94" stroke-width="5"/>${[52,72,92,112,132].map(x=>`<rect x="${x}" y="100" width="12" height="9" rx="1.5" fill="#66B1DB"/>`).join("")}<path d="M88 96l8-14h10l8 14" fill="none" stroke="#305165" stroke-width="2"/></g></svg>
+      <div class="formmock__body"><p class="formmock__t">${o.title}</p><p class="formmock__s">${o.sub}</p><span class="formmock__btn">${o.button}</span><p class="formmock__m">${o.meta}</p></div></div>
+    <figcaption>${o.cap}</figcaption></figure>`,
   /* an interface's colours and type, as swatches */
   palette:o=>`<div class="blk palette"><p class="palette__k">${o.k}</p><ul>${o.colors.map(c=>`<li><i style="--dc:${c}"></i><span>${c}</span></li>`).join("")}</ul><p class="palette__type"><span>${o.typeK}</span>${o.font}</p></div>`,
   /* who we work with: what they are to us in mono, their name in serif */
@@ -1178,7 +1185,7 @@ const ROOMS={
     b:[["para","The chef narrative became the base of TeenCare’s core product, un-wrap, a “soul restaurant”. I helped carry the interview insights into it: the flows, wireframes, interface design and automated pattern summaries."],
       ["journey",[
         {k:"Way in",h:"The Spring Roll Survey Maker",p:"A web tool for building surveys as stories, like the time train."},
-        {k:"Where they gather",h:"Floating Cloud’s page",p:"A Facebook page narrated by a cloud: “full-time cloud, part-time shapeshifter”, looking for itself on a strange train."},
+        {k:"Where they gather",h:"Fluffy Cloud",p:"The Facebook page I started to reach teenagers and talk about mental health."},
         {k:"Where they work through it",h:"The Soul Recipe Book",p:"An interactive e-book that walks through a feeling like a recipe."}
       ]]]}],
   ["kicker","How a recipe works"],
@@ -1191,9 +1198,14 @@ const ROOMS={
     {k:"tc-arch-5",ghost:"the finished dish",h:"The dish",eq:"a balanced self",p:"Steadier feelings, clear boundaries, and needs met in the right way."}
   ]],
 
+  ["kicker","Reaching teenagers where they are · Fluffy Cloud"],
+  ["split",{mid:true,a:[["fig",{k:"tc-cloud",ratio:"2/1",ghost:"Fluffy Cloud",cap:"Fluffy Cloud, the page’s narrator."}]],
+    b:[["para","A survey is only as good as the people who answer it, and teenagers don’t answer strangers. So I started a Facebook page of my own, Fluffy Cloud. Its narrator is a cloud, “full-time cloud, part-time shapeshifter”, looking for itself on a strange train."],
+      ["para","I wrote posts there to raise awareness of mental health and shared them in many groups and pages. That put our surveys in front of many more of the teenagers we were designing for."]]}],
+
   ["kicker","Designing the interface"],
-  ["split",{mid:true,a:[["fig",{k:"tc-cloud",ratio:"2/1",ghost:"Floating Cloud",cap:"Floating Cloud, the narrator of our Facebook page."}]],
-    b:[["para","For the Spring Roll Survey Maker I worked on the interface: a soft palette chosen to feel safe, one friendly typeface, and a narrator who makes a survey feel like a conversation."],
+  ["split",{mid:true,a:[["formmock",{url:"spring roll survey maker",title:"Get your ticket for the time train",sub:"Come and find the place you might work one day.",button:"Enter the waiting room",meta:"Takes 7+ minutes",cap:"The first screen of a survey, rebuilt here in English."}]],
+    b:[["para","I designed the interface of the project’s web form, the Spring Roll Survey Maker: a soft palette chosen to feel safe, one friendly typeface, and a picture on every first screen, so a survey feels like the start of a story."],
       ["palette",{k:"Its palette",colors:["#305165","#3EAE94","#66B1DB","#ABEDFF","#E8FCFF","#E1FFE3","#F6F9FF","#E5EDFF","#FFFCDF","#FFF2F8","#FFBDDC","#FF97B1"],typeK:"Typeface",font:"Cabin"}]]}],
 
   ["kicker","Testing with real users"],
