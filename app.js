@@ -61,7 +61,8 @@ const MEDIA = {
   /* research rooms: never participants; the work, the team, the tools */
   "rs-1":{src:"img/rs-1.jpg",alt:"Inkling’s home page: AI draws the first line. You decide the rest. Beside it, a drawing where a dotted AI line turns into the user’s own strokes, a hill and a sun.",pos:"30% 40%"},
   "rs-2":{src:"img/rs-2.jpg",alt:"Gia Han, holding a microphone, presents in front of a screen showing a warning sign.",pos:"55% 40%"},
-  "tc-unwrap":{src:"img/tc-unwrap.jpg",alt:"Two hands unwrap a burger from brown paper on a wooden table.",pos:"55% 50%"},
+  "tc-book":{src:"img/tc-book.jpg",alt:"The cover of un-wrap, the self-discovery restaurant: a plate of food on a checked tablecloth and a note reading A little recipe for the person you’re becoming."},
+  "tc-mockup":{src:"img/tc-mockup.jpg",alt:"The un-wrap mockup sheet: the book, the five-course journey from The Reservation to Your Signature Dish, four spreads from inside the book, and what is included: a question envelope, ingredient stickers and recipe cards."},
   "tc-cloud":{src:"img/tc-cloud.jpg",alt:"Fluffy Cloud: a soft blue cloud with one eye open, one winking, and orange swirls on its cheeks, in a sunny sky.",pos:"40% 50%"},
   "tc-arch-1":{src:"img/tc-arch-1.jpg",alt:"A parcel tied with string on a table, with a brain, a heart and a cloud rising from it."},
   "tc-arch-2":{src:"img/tc-arch-2.jpg",alt:"Hands open the parcel; a small child, two adult figures and a shield glow above it."},
@@ -1190,16 +1191,19 @@ const ROOMS={
   ]],
   ["para","When someone stops talking, I now look at the question before I look at the person."],
 
-  ["kicker","From a story to a product · un-wrap, the soul restaurant"],
-  ["split",{mid:true,a:[["fig",{k:"tc-unwrap",ratio:"1/1",ghost:"unwrapping",cap:"The product’s key image: unwrapping."}]],
-    b:[["para","The chef narrative became the base of TeenCare’s core product, un-wrap, a “soul restaurant”. I helped carry the interview insights into it: the flows, wireframes, interface design and automated pattern summaries."],
+  ["kicker","From a story to a product · un-wrap, the self-discovery restaurant"],
+  ["split",{mid:true,a:[["fig",{k:"tc-book",ratio:"404/582",ghost:"the un-wrap book",cap:"The cover of un-wrap, from my mockup."}]],
+    b:[["para","The chef narrative became the base of TeenCare’s core product, un-wrap, a “self-discovery restaurant”. I helped carry the interview insights into it: the flows, wireframes, interface design and automated pattern summaries."],
       ["journey",[
         {k:"Way in",h:"The Spring Roll Survey Maker",p:"A web tool for building surveys as stories, like the time train."},
         {k:"Where they gather",h:"Fluffy Cloud",p:"The Facebook page I started to reach teenagers and talk about mental health."},
         {k:"Where they work through it",h:"The Soul Recipe Book",p:"An interactive e-book that walks through a feeling like a recipe."}
       ]]]}],
+  ["kicker","The book · my mockup"],
+  ["para","I made the mockup of the book itself. It is a hands-on experience set in a restaurant where you are both the guest and the chef. Over five courses you check in with yourself, open up past experiences, sort your inner ingredients, try new ways of responding, and finish with a dish that feels like you. There are stickers, cut-outs and space to write, and you take your own recipe home."],
+  ["lead",{k:"tc-mockup",slot:"Plate 01",ratio:"3/2",ghost:"the un-wrap mockup",cap:"The un-wrap mockup: the book, the five-course journey, spreads from inside, and what comes with it. <a href=\"img/tc-mockup.jpg\" target=\"_blank\" rel=\"noopener\">Open it full size ↗</a>"}],
   ["kicker","How a recipe works"],
-  ["para","Each step of cooking maps onto a step of schema therapy, so a teenager can follow a feeling the way they would follow a recipe."],
+  ["para","Behind the five courses sits schema therapy. Each step of cooking maps onto one of its steps, so a teenager can follow a feeling the way they would follow a recipe."],
   ["recipe",[
     {k:"tc-arch-1",ghost:"a wrapped parcel",h:"The soul package",eq:"early schemas",p:"Core beliefs from needs that weren’t met, early experiences and self-protective parts: the raw ingredients."},
     {k:"tc-arch-2",ghost:"unwrapping the parcel",h:"Unwrapping",eq:"awareness",p:"Name the schema, notice the triggers, and tell the hurt child from the harsh parent and the protector."},

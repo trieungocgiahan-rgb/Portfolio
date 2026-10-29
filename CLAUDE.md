@@ -27,8 +27,8 @@ sharing a room, then tests it through community work, research and building.
   joined, the weekly loop (interview, clean, analyse, name pain points,
   design and test, with line drawings), the persona Meo, the pain points,
   where people went quiet and two of the five narrative formats, the
-  product un-wrap (user journey, the five-step recipe mapped to schema
-  therapy), Fluffy Cloud (the Facebook page she started to reach
+  product un-wrap (its cover beside the user journey, her mockup of the
+  book, the five-step recipe mapped to schema therapy), Fluffy Cloud (the Facebook page she started to reach
   teenagers and raise awareness), the interface she designed (a survey
   screen rebuilt in HTML, formmock, and the palette), testing. Dream Strokes is the flagship and tells the
   whole ecosystem in eight numbered chapters, each with its own layout so
