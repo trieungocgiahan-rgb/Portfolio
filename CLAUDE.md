@@ -23,8 +23,8 @@ sharing a room, then tests it through community work, research and building.
   own look: TeenCare a soft sunrise in its yellow and orange with slate
   ink, Brain-Life white with its electric blue (#0041E7) and a dot grid;
   each company's wordmark stands in for the room title and its icon sits
-  in the door. TeenCare tells her remote R&D work as a story: why she
-  joined, the weekly loop (interview, clean, analyse, name pain points,
+  in the door. TeenCare tells her remote R&D work as a story: how she
+  came in as a tester and proposed telling surveys as stories (fairy tales), the weekly loop (interview, clean, analyse, name pain points,
   design and test, with line drawings), the persona Meo, the pain points,
   where people went quiet and two of the five narrative formats, the
   product un-wrap (its cover beside the user journey, her mockup of the
@@ -61,6 +61,10 @@ sharing a room, then tests it through community work, research and building.
   per thread, each card with a photo slot (ev-* in MEDIA) and a tag where
   it was a first at her school. Old routes resolve through ROOM_ALIASES;
   /room/anchor scrolls to a kicker with that id. Rooms open in place.
+  Every work room (Dream Strokes, Events, AI & Art, TeenCare, Brain-Life,
+  Tech) opens with an At a glance box (glance: role, team, when, results,
+  links) for a quick reader. Dream Strokes shows its eight parts as a ring
+  around the project (chapters with ring).
 - Every room starts with a hero block with its own light, set by
   data-room on #room: one dark hero (Events night stage) and light ones
   (Dream Strokes a pink-sky-butter ombre, Awards champagne gold, Tech shades of blue
@@ -98,9 +102,10 @@ sharing a room, then tests it through community work, research and building.
   About, then on to Dream Strokes), 01 Notice, 02 Study, 03 Make, 04 Gather, 05 Draw,
   06 The question, More work, footer. Each part: title, story, one visual,
   one "Inside ·" line saying what the detail page holds, one way in, then a
-  bridge (a.bridge): one serif sentence that hands on to the next part. Numbers
-  live in the prose; do not add stat rows. Do not rewrite the story copy or
-  add sections; detail belongs in the rooms (ROOMS in app.js).
+  bridge (a.bridge): one serif sentence that hands on to the next part, and
+  never claims an order or a cause that is not true (she approved the current
+  copy in October 2026). Numbers live in the prose; do not add stat rows. Do
+  not add sections; detail belongs in the rooms (ROOMS in app.js).
 - Respect prefers-reduced-motion everywhere.
 - No horizontal scrolling at any width. Tablet (768–1024px) is a first-class
   composition, not a squeezed desktop.
@@ -180,6 +185,8 @@ the accent appears only in numbers, rules, dots, nav state and small labels.
      and what happened; research, the question, the findings and their
      limits; art, feeling or the choice made in the work; awards, short
      facts, with her story one tap away.
+- Her name on the site is Gia Han (Trieu Ngoc Gia Han in full). The site
+  never says how it was built.
 - English only. Every visible word on the site is English. The project is
   called Dream Strokes; other Vietnamese names are written without
   diacritics, as on her CV (Trung Vuong, Gia Han, Bao Sang Art Therapy
