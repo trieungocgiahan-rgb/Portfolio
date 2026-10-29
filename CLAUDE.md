@@ -29,10 +29,13 @@ sharing a room, then tests it through community work, research and building.
   boy in the corner), 02 Sessions (lesson plans, the Magic Mirror, Colors
   of Joy), 03 OPEN (a switcher: Sol Sound, Colors of the Pitch, Once Upon
   the Inside), 04 Art that keeps going (website, virtual exhibition, the
-  money loop), 05 Partners (Bao Sang, Phuong Thao Nguyen, Fing3rprint
-  Education), 06 The team, 07 What we make (Feel-it!, curriculum,
-  calendar, comic), 08 Money and impact, then Follow the journey
-  (netmoproject.page and the Facebook page, NETMO_FACEBOOK).
+  money loop), 05 Partners and sponsors (Bao Sang and Phuong Thao
+  Nguyen, then a table of who backs us and how), 06 The team (the Vietnam map: where it started and where
+  members are), 07 What we make (Feel-it!, curriculum,
+  calendar, comic), 08 How it adds up (a logic model: what goes in, what we do, who
+  it reaches, what changes), then Follow the journey
+  (netmoproject.page and the Facebook page, NETMO_FACEBOOK). Each
+  chapter opens with skill tags (pills) for the skills it shows.
   Events is one story about why she makes gatherings,
   told in four threads (Create together, Cheer for the same thing, Make room to belong,
   Start what isn't there): the threads first, then Beats of Hope as the

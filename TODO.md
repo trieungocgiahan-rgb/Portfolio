@@ -18,8 +18,7 @@ Faces of shelter children need permission from the shelter before going
 public. Blur or crop if in doubt.
 
 ## 2. Links to replace
-- Dream Strokes on Facebook (Net Mo Project): NETMO_FACEBOOK at the top of app.js
-- Fing3rprint Education: one line on what they do with Dream Strokes (chapter 05)
+- Dream Strokes chapter 05: the name of the football venue that sponsored the pitch ("Our football venue" in the backers table)
 - films: title, year, one line and YouTube link for each, in FILMS at the top of app.js
 - event pages, in EVENT_LINKS at the top of app.js (five events)
 - hello@example.com, search for data-replace="email"

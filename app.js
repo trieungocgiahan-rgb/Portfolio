@@ -79,7 +79,7 @@ const EVENT_LINKS = {
   "colors-of-the-pitch":""
 };
 /* Dream Strokes on Facebook (the page is called Net Mo Project). Empty hides the button. */
-const NETMO_FACEBOOK = "";
+const NETMO_FACEBOOK = "https://www.facebook.com/netmowprj";
 /* ============================================================
    FILMS · the screening room under the Exhibition wall.
    Paste each film's YouTube link (any form: youtu.be/…, watch?v=…,
@@ -513,6 +513,9 @@ const hero=o=>`<header class="room-hero">
 const SHELF_MARKS={
   plans:'<path d="M12 6h18l7 7v29H12z"/><path d="M30 6v7h7"/><path d="M17 20h14M17 26h14M17 32h9"/>'
 };
+/* Vietnam's outline (Natural Earth, 1:50m), projected for the team map: x = (lon − 102) × 40 × cos 16°, y = (23.6 − lat) × 40 */
+const VN_OUTLINE="M79.4,528.4L80.1,530.4L79.8,535.0L78.3,539.6L78.8,541.6L77.6,542.8L75.1,534.3L71.8,530.6L71.1,529.2L73.0,529.3L76.4,526.9L78.0,526.9L79.4,528.4ZM229.7,83.7L227.8,84.0L223.4,84.1L219.4,87.8L216.7,89.3L212.5,90.6L208.0,92.6L206.7,96.2L206.6,98.9L205.9,101.8L198.6,106.1L196.5,105.6L195.1,104.0L193.0,104.4L191.5,105.1L189.8,105.0L187.9,106.0L185.4,105.7L183.0,104.4L181.7,104.0L180.1,104.0L179.8,105.6L182.2,111.8L182.8,114.6L175.0,122.9L175.8,128.3L173.7,132.4L169.0,135.8L160.2,144.3L156.2,144.5L153.2,146.4L146.6,160.5L146.6,165.3L145.5,168.8L145.8,172.2L142.9,178.9L139.9,181.7L139.3,185.3L143.5,192.8L144.0,194.1L146.4,198.2L147.6,201.0L149.5,203.9L156.3,211.3L159.4,213.6L163.0,215.2L169.6,221.9L173.0,226.1L171.5,229.1L172.2,235.2L167.5,233.4L168.0,234.1L173.7,237.5L182.1,249.3L189.4,255.1L196.9,261.8L199.2,268.1L205.9,272.3L213.4,278.3L213.0,279.7L215.1,281.3L220.1,284.5L223.1,287.9L224.3,291.1L226.2,291.6L228.3,290.8L230.3,290.5L231.8,290.8L234.1,294.3L237.2,297.5L238.7,300.4L240.0,300.0L241.0,300.4L241.2,302.8L241.7,304.4L245.9,309.1L247.9,313.5L252.9,320.6L256.6,324.7L259.3,326.9L262.3,328.9L265.2,336.8L266.8,343.9L270.0,351.9L272.4,355.4L272.5,361.9L274.4,368.6L276.5,373.2L277.1,377.8L277.8,380.1L278.6,381.9L280.8,389.7L280.2,393.4L278.7,389.8L278.8,400.4L280.2,406.0L279.6,412.8L281.1,415.2L283.6,423.0L285.5,425.8L285.3,435.2L286.3,440.0L283.8,437.2L282.1,433.9L279.7,435.6L277.6,438.2L280.9,448.4L277.1,447.4L277.4,461.1L279.0,464.3L279.1,465.8L278.7,467.7L277.6,465.6L277.4,463.6L276.8,464.0L276.8,465.1L275.6,467.5L275.2,470.5L276.6,473.1L276.8,475.0L275.8,477.4L274.2,480.0L270.7,480.3L269.9,485.3L268.6,490.5L262.3,491.4L257.6,496.0L251.9,497.8L246.8,502.4L241.1,506.6L237.5,507.2L234.4,508.1L230.8,515.2L224.7,516.0L214.0,521.8L210.3,524.6L207.0,525.7L202.3,528.1L201.3,527.2L199.7,525.1L195.6,524.1L193.6,521.7L193.0,518.8L192.5,517.6L191.6,519.3L190.9,526.4L190.2,528.0L188.5,528.7L185.1,526.7L181.8,522.6L177.1,525.4L178.5,525.8L180.7,525.5L182.3,526.2L183.7,529.0L183.6,530.4L182.9,532.2L178.5,532.4L172.7,531.8L171.6,532.1L177.0,534.7L181.8,536.3L184.0,538.0L184.0,539.3L181.3,541.6L179.1,544.3L179.1,546.1L179.1,548.0L176.7,549.6L175.2,549.3L171.1,546.4L159.0,535.1L160.9,538.3L173.3,551.2L175.5,555.4L175.8,558.4L174.5,559.9L172.4,561.6L168.3,561.8L161.6,557.0L150.9,545.5L147.3,544.0L158.1,557.1L159.9,560.2L161.7,563.9L161.2,566.1L160.3,568.1L134.6,580.3L130.8,585.5L127.7,592.0L122.7,595.5L119.7,598.8L111.2,600.7L106.5,600.1L111.4,594.1L108.4,591.9L108.2,576.6L109.4,559.8L111.6,551.3L114.9,549.3L118.9,548.0L119.0,546.2L118.6,544.2L116.4,541.3L114.0,540.0L110.5,539.4L107.7,535.9L105.6,536.0L102.4,537.2L100.5,535.7L99.7,533.3L96.7,530.4L93.3,527.6L94.9,527.1L96.7,525.5L98.6,523.4L103.4,523.1L108.3,523.2L109.6,522.6L111.6,520.4L114.7,517.5L117.1,515.9L117.7,514.6L116.7,511.6L116.2,508.5L117.1,507.5L121.5,508.1L126.3,509.5L127.4,510.2L130.2,506.4L131.0,505.9L132.8,505.9L137.5,505.2L142.2,504.2L144.4,504.4L146.5,507.0L148.2,509.5L149.0,509.7L151.4,508.6L153.4,509.9L157.6,512.1L160.1,512.2L158.9,507.1L160.3,503.5L160.0,502.5L157.6,500.9L149.6,494.2L148.3,492.2L148.5,489.1L148.2,484.5L147.5,481.6L147.6,479.9L148.1,478.6L149.6,478.1L151.0,477.9L152.1,476.7L154.0,473.7L157.8,473.9L163.0,475.7L166.9,476.7L169.2,476.5L169.7,476.1L169.6,474.5L169.9,467.5L169.7,466.1L173.0,465.4L178.1,465.2L180.7,464.8L183.2,461.9L189.6,460.9L194.2,457.0L198.4,452.9L200.4,451.8L203.0,451.1L204.9,451.2L207.4,453.6L209.4,452.2L211.7,449.4L212.9,446.7L213.6,442.4L213.2,435.8L211.9,430.6L210.8,426.7L210.5,422.8L213.2,415.0L215.5,406.5L215.1,403.1L212.6,397.8L210.0,391.4L207.2,384.3L206.2,383.2L205.4,381.2L205.0,378.9L206.1,371.7L206.3,369.3L209.5,366.0L211.2,362.2L212.8,358.0L212.2,355.8L212.0,351.3L212.4,349.1L211.7,347.4L210.7,344.8L211.3,343.1L213.6,341.7L214.9,339.3L216.6,336.4L217.4,333.8L216.2,331.6L213.9,328.3L209.9,325.4L205.3,321.6L203.0,319.3L201.2,316.9L199.5,314.1L198.6,311.9L199.5,310.5L206.1,307.1L207.3,305.9L208.0,304.1L207.5,302.3L205.7,301.3L203.7,300.6L200.6,298.5L194.9,292.8L192.3,291.5L189.6,289.9L188.1,288.1L186.5,283.4L185.8,282.9L184.2,284.4L182.2,285.9L180.6,285.6L179.0,284.3L178.3,282.5L176.6,280.0L174.8,278.0L174.3,271.2L174.0,268.9L173.1,265.8L171.7,264.7L170.2,263.9L166.6,258.3L164.2,255.3L154.0,247.4L152.8,246.1L150.1,242.9L145.3,238.2L141.9,234.5L139.5,230.6L138.3,227.3L138.0,224.7L135.3,220.9L133.0,217.8L130.7,216.8L128.2,216.4L125.9,214.6L121.6,210.5L119.8,207.8L118.7,206.0L118.7,204.2L119.7,201.1L120.9,199.3L121.0,198.0L119.8,196.8L115.1,194.9L104.5,191.9L100.5,189.6L96.8,186.6L94.0,184.6L81.1,176.2L77.1,174.8L73.8,173.3L72.7,171.8L72.9,170.4L74.3,169.4L78.0,167.2L79.3,164.7L78.9,161.4L77.4,158.1L78.1,157.0L79.3,156.9L81.8,156.8L86.9,156.6L97.9,159.6L99.5,159.3L105.5,153.8L107.7,150.6L108.2,147.8L109.4,146.1L112.6,143.3L112.6,140.7L111.1,137.2L109.5,135.9L108.1,135.3L103.8,135.8L102.9,135.0L102.4,132.4L102.1,130.9L100.7,129.0L96.0,127.5L92.0,127.0L91.0,126.3L92.6,124.6L95.3,122.8L97.4,121.8L99.0,120.0L99.3,118.1L97.3,116.5L94.6,114.7L90.3,111.2L84.4,107.4L80.8,106.2L78.9,106.4L72.4,109.5L68.8,111.6L65.9,115.3L62.9,116.1L59.8,114.5L56.3,112.8L46.6,110.4L42.5,108.3L34.0,95.9L32.7,93.4L33.5,90.5L34.1,86.4L35.0,83.7L36.5,81.2L36.9,79.0L36.5,76.7L35.3,75.5L33.7,75.1L32.5,74.6L31.4,71.7L30.7,72.1L29.6,75.6L28.4,76.9L26.7,77.5L25.5,77.0L24.6,75.5L24.3,73.1L23.4,69.9L22.4,67.8L18.7,65.7L17.0,62.9L11.6,56.9L7.0,52.6L4.9,48.8L6.8,47.4L9.1,45.4L11.6,42.2L14.4,38.1L15.6,35.7L16.5,34.7L18.1,34.0L19.9,34.4L23.0,36.0L27.7,38.1L31.9,40.5L33.6,43.0L36.0,45.4L37.8,46.1L38.7,45.9L41.4,44.1L43.7,42.3L43.7,40.3L45.9,38.5L48.7,35.5L50.0,33.4L51.0,33.2L52.1,33.8L56.6,40.1L57.4,40.5L58.7,39.5L60.4,34.6L62.3,32.7L63.0,33.2L73.6,42.5L74.7,42.4L75.8,42.0L76.5,40.6L77.4,37.3L79.0,33.9L82.4,32.0L85.1,31.6L86.1,33.3L88.4,35.5L91.2,35.8L97.2,31.8L99.1,31.2L101.2,31.3L103.3,31.1L105.4,29.6L107.5,27.6L108.2,23.6L108.7,20.0L110.2,18.5L111.9,17.6L115.2,16.2L122.6,12.8L124.5,11.1L125.9,10.2L128.8,11.7L132.3,14.6L134.4,16.8L135.8,19.1L136.4,21.1L141.9,22.8L145.4,25.2L147.8,27.1L150.1,27.0L152.4,26.5L153.8,25.0L156.4,25.0L159.5,25.2L160.9,25.8L163.4,29.2L164.5,29.7L166.8,29.5L171.1,28.2L174.6,27.7L177.8,29.0L183.8,32.8L182.1,35.6L180.8,38.5L178.1,40.6L176.2,41.1L175.0,43.9L174.4,48.2L175.1,50.3L176.6,51.0L178.3,52.5L179.0,54.3L179.2,58.5L179.1,63.3L179.3,64.8L180.6,64.6L181.9,64.0L184.3,64.7L187.4,65.9L189.4,67.2L191.1,67.0L192.5,68.3L193.0,70.6L194.6,72.2L199.1,75.3L202.7,75.6L205.8,79.6L208.9,78.3L210.4,80.1L216.9,79.4L221.4,77.8L223.1,78.2L227.2,81.6L229.7,83.7ZM177.5,596.7L176.5,596.8L175.6,596.0L179.1,593.3L178.8,595.1L178.9,596.0L177.5,596.7ZM198.7,528.1L195.5,530.5L195.2,528.5L198.1,527.2L199.0,526.2L199.7,526.2L198.7,528.1ZM187.1,111.4L186.6,112.1L184.7,110.3L183.4,109.4L184.4,106.9L186.7,109.7L187.1,111.4ZM215.4,95.3L209.9,100.3L207.8,100.3L209.7,94.6L210.6,93.2L213.9,95.2L215.4,95.3ZM212.3,106.9L210.2,108.0L207.6,107.9L210.7,105.9L212.2,103.5L213.4,102.6L213.4,104.8L212.3,106.9ZM193.5,114.1L191.9,114.3L188.8,111.0L190.5,109.3L193.9,110.5L194.7,111.3L194.7,112.0L193.9,113.6L193.5,114.1Z";
+const vnXY=(lon,lat)=>[+((lon-102)*40*Math.cos(16*Math.PI/180)).toFixed(1),+((23.6-lat)*40).toFixed(1)];
 /* one gathering or way in: a photo, what kind of thing it is, its name, what it was, one number */
 const gcard=e=>`<article class="gevent">
   <div class="fig__plate" data-img="${e.k}" data-slot="" style="--ratio:4/3"><div class="fig__ghost">${e.ghost}</div></div>
@@ -622,11 +625,11 @@ const B={
   chapters:o=>`<nav class="chmap" aria-label="The parts of this page"><ol>${o.items.map(c=>`<li><a href="#${o.route}/${c.id}" data-jump="room-${c.id}"><span class="chmap__n">${c.n}</span><b>${c.t}</b><span class="chmap__p">${c.p}</span></a></li>`).join("")}</ol></nav>
   <nav class="chbar" aria-label="Chapters"><div class="chbar__in"><ol>${o.items.map(c=>`<li><a href="#${o.route}/${c.id}" data-jump="room-${c.id}" title="${c.t}"><i aria-hidden="true"></i><span class="chbar__n">${c.n}</span><span class="chbar__t">${c.s}</span></a></li>`).join("")}</ol><p class="chbar__now" aria-hidden="true"></p></div></nav>`,
   /* a chapter's opening: its number large, its title, one line on what it holds */
-  chapter:o=>`<header class="chap" id="room-${o.id}"><p class="chap__n">${o.n}</p><h3 class="chap__t">${o.t}</h3>${o.p?`<p class="chap__p">${o.p}</p>`:""}</header>`,
+  chapter:o=>`<header class="chap" id="room-${o.id}"><p class="chap__n">${o.n}</p><h3 class="chap__t">${o.t}</h3>${o.p?`<p class="chap__p">${o.p}</p>`:""}${o.skills?`<ul class="chap__skills" aria-label="Skills in this part">${o.skills.map(x=>`<li>${x}</li>`).join("")}</ul>`:""}</header>`,
   /* what a project is for, in two lines worth stopping at */
   statements:a=>`<div class="blk statements">${a.map(x=>`<div><p class="statements__k">${x.k}</p><p class="statements__t">${x.t}</p></div>`).join("")}</div>`,
   /* two columns that each hold ordinary blocks: words on one side, pictures on the other */
-  split:o=>`<div class="blk split"><div class="split__a">${o.a.map(([t,x])=>B[t](x)).join("")}</div><div class="split__b">${o.b.map(([t,x])=>B[t](x)).join("")}</div></div>`,
+  split:o=>`<div class="blk split${o.mid?" split--mid":""}"><div class="split__a">${o.a.map(([t,x])=>B[t](x)).join("")}</div><div class="split__b">${o.b.map(([t,x])=>B[t](x)).join("")}</div></div>`,
   /* one moment worth stopping at: a dark band, words beside artwork seen whole */
   feature:o=>`<section class="blk feature" id="room-${o.id}"><div class="feature__text"><p class="feature__k">${o.k}</p><h4>${o.h}</h4>${o.p.map(x=>`<p class="feature__p">${x}</p>`).join("")}</div><div class="feature__art">${o.figs.map(fig).join("")}</div></section>`,
   /* several things, one at a time: the list to choose from beside the one chosen */
@@ -649,8 +652,26 @@ const B={
     <article class="shelf__main">${fig({k:o.main.k,ratio:o.main.ratio,ghost:o.main.ghost})}<div><p class="shelf__k">${o.main.meta}</p><h4>${o.main.name}</h4><p class="shelf__p">${o.main.p}</p><p class="shelf__badge">${o.main.badge}</p></div></article>
     <ul class="shelf__rest">${o.rest.map(x=>`<li>${x.k?fig({k:x.k,ratio:"1/1",ghost:x.ghost}):`<div class="shelf__mark" aria-hidden="true"><svg viewBox="0 0 48 48">${SHELF_MARKS[x.mark]}</svg></div>`}<div><p class="shelf__k">${x.meta}</p><h4>${x.name}</h4><p class="shelf__p">${x.p}</p></div></li>`).join("")}</ul>
   </div>`,
-  /* the whole project in numbers, on a dark band beside one photograph */
-  impact:o=>`<section class="blk impact"><div><p class="impact__k">${o.k}</p><div class="impact__nums">${o.items.map(n=>`<div><b>${n.b}</b><span>${n.s}</span></div>`).join("")}</div><p class="impact__p">${o.p}</p></div>${fig(o.fig)}</section>`,
+  /* the whole project as a chain, on a dark band: what goes in, what we do, who it reaches, what changes */
+  impact:o=>`<section class="blk impact"><p class="impact__k">${o.k}</p>
+    <ol class="impact__model">${o.cols.map(c=>`<li><p class="impact__h">${c.h}</p>${c.items.map(n=>`<div><b>${n.b}</b><span>${n.s}</span></div>`).join("")}</li>`).join("")}</ol>
+    <div class="impact__end">${fig(o.fig)}<p class="impact__p">${o.p}</p></div></section>`,
+  /* who backs the project and how: one row each, a dot under every kind of help */
+  backers:o=>`<div class="blk backers"><table><caption class="vh">${o.caption}</caption>
+    <thead><tr><th scope="col">${o.first}</th>${o.cols.map(c=>`<th scope="col">${c}</th>`).join("")}</tr></thead>
+    <tbody>${o.rows.map(r=>`<tr><th scope="row"><b>${r.h}</b><span>${r.p}</span></th>${o.cols.map(c=>`<td>${r.on.includes(c)?`<i aria-hidden="true"></i><span class="vh">Yes</span>`:""}</td>`).join("")}</tr>`).join("")}</tbody>
+  </table></div>`,
+  /* where the team is: Vietnam from its outline, a dot per place, a line from where it started to each */
+  vnmap:o=>{ const pl=o.places.map(p=>({...p,xy:vnXY(p.lon,p.lat)})), st=pl.find(p=>p.start).xy;
+    return `<figure class="blk vnmap" data-draw>
+    <svg class="vnmap__svg" viewBox="0 0 500 615" role="img" aria-labelledby="vnmapT"><title id="vnmapT">${o.title}</title>
+      <path class="vnmap__land" d="${VN_OUTLINE}"/>
+      ${o.isles.map(i=>{ const [x,y]=vnXY(i.lon,i.lat); return `<g class="vnmap__isles">${[[0,0],[9,-5],[-8,6],[5,9],[-11,-4],[14,4]].map(([dx,dy])=>`<circle cx="${x+dx}" cy="${y+dy}" r="1.7"/>`).join("")}<text x="${x}" y="${y+28}" text-anchor="middle">${i.name}</text></g>`; }).join("")}
+      ${pl.filter(p=>!p.start).map((p,i)=>`<path class="vnmap__arc" style="--dl:${i*160}ms" d="M${st[0]},${st[1]} Q${((st[0]+p.xy[0])/2+.7*Math.hypot(p.xy[0]-st[0],p.xy[1]-st[1])).toFixed(1)},${((st[1]+p.xy[1])/2).toFixed(1)} ${p.xy[0]},${p.xy[1]}"/>`).join("")}
+      ${pl.map((p,i)=>`<g class="vnmap__place${p.start?" is-start":""}" style="--dl:${i*160}ms"><circle cx="${p.xy[0]}" cy="${p.xy[1]}" r="${p.start?7:5}"/><text x="${p.xy[0]+p.l[0]}" y="${p.xy[1]+p.l[1]}" text-anchor="${p.l[0]<0?"end":"start"}">${p.name}</text></g>`).join("")}
+    </svg>
+    <figcaption class="vnmap__key">${o.key.map(k=>`<p><span>${k.k}</span>${k.t}</p>`).join("")}</figcaption>
+  </figure>`; },
   /* where to keep following a project after this page */
   follow:o=>`<section class="blk follow"><img class="follow__logo" src="${o.logo}" alt="" width="300" height="300"><div><h4>${o.h}</h4><p class="follow__p">${o.p}</p><p class="follow__links">${o.links.filter(l=>l.href).map(l=>`<a class="btn btn--ink" href="${l.href}" target="_blank" rel="noopener">${l.label} ↗</a>`).join("")}</p></div></section>`,
   /* each part of the work on one row: what I did, then what it taught me */
@@ -797,7 +818,7 @@ const ROOMS={
 "/work/net-mo":{accent:"var(--coral)",where:"Work · Dream Strokes",blocks:[
   ["hero",{kicker:"Work · Apr 2025 to now · Founder and Project Director",title:"Dream Strokes",
     logo:"img/dream-strokes-logo.jpg",logoAlt:"The Dream Strokes logo: a hand-drawn child with star eyes and a paintbrush, under the project’s name in dripping paint.",
-    lede:"An arts-based emotional-learning programme I founded for children in shelters and older adults in care homes. It started at one workshop table and grew into an ecosystem: planned sessions, public events, things we make, partners and a team of 25.",
+    lede:"An arts-based emotional-learning programme I founded for children in shelters and older adults in care homes. It started at one workshop table and grew into an ecosystem: planned sessions, public events, things we make, partners and sponsors, and a team of 25 across Vietnam.",
     facts:[{b:"50",s:"workshops"},{b:"6",s:"shelters"},{b:"2",s:"care homes"}],
     k:"nm-lead",ghost:"a session in progress"}],
   ["kicker","The whole project · in eight parts"],
@@ -807,24 +828,24 @@ const ROOMS={
     {n:"02",id:"sessions",t:"Sessions built with care",s:"Sessions",p:"Our lesson plans, the Magic Mirror, and a curriculum for Hanoi."},
     {n:"03",id:"open",t:"Dream Strokes OPEN",s:"OPEN",p:"A concert, a football cup and an exhibition, open to anyone."},
     {n:"04",id:"art",t:"Art that keeps going",s:"Their art",p:"A website, a virtual exhibition, and money back into sessions."},
-    {n:"05",id:"partners",t:"Partners",s:"Partners",p:"The art therapists and educators who guide the work."},
-    {n:"06",id:"team",t:"The team",s:"Team",p:"25 people across Vietnam, and how we stay connected."},
+    {n:"05",id:"partners",t:"Partners and sponsors",s:"Partners",p:"The professionals who guide us, and the sponsors who back us."},
+    {n:"06",id:"team",t:"The team",s:"Team",p:"25 people in six cities and provinces, and how we stay connected."},
     {n:"07",id:"make",t:"What we make",s:"What we make",p:"Emotion cards, lesson plans, a calendar and a comic."},
-    {n:"08",id:"impact",t:"Money and impact",s:"Impact",p:"What it raised, and who it reached."}
+    {n:"08",id:"impact",t:"How it adds up",s:"Impact",p:"What goes in, what we do, who it reaches, and what changes."}
   ]}],
 
-  ["chapter",{n:"01",id:"why",t:"Why it exists"}],
+  ["chapter",{n:"01",id:"why",t:"Why it exists",skills:["Observation","Problem framing"]}],
   ["statements",[
     {k:"Our purpose",t:"To give children in shelters and older adults in care homes a way to say how they feel through art, when words are hard."},
     {k:"Our vision",t:"Creativity with no limit on who joins or where: a shelter, a care home, a classroom or a concert hall."}
   ]],
-  ["split",{a:[["fig",{k:"nm-1",slot:"Plate 01",ratio:"4/5",ghost:"child and facilitator",cap:"At the table with a child, mid-drawing."}]],
+  ["split",{mid:true,a:[["fig",{k:"nm-1",slot:"Plate 01",ratio:"4/5",ghost:"child and facilitator",cap:"At the table with a child, mid-drawing."}]],
     b:[["kicker","What I noticed first"],
       ["para","A boy spent the first session drawing in the bottom right corner of his page. Not shyly. Efficiently, as if the rest of the paper belonged to somebody else. In the third session we ran out of small sheets and put one large one across four tables. He drew across the middle without asking."],
       ["para","Since then, everything we build starts from the same question: what would make this person feel the page is theirs?"]]}],
 
-  ["chapter",{n:"02",id:"sessions",t:"Sessions built with care",p:"Every activity is planned on paper, tested, and changed until it works."}],
-  ["split",{a:[["kicker","What our lesson plans changed"],
+  ["chapter",{n:"02",id:"sessions",t:"Sessions built with care",p:"Every activity is planned on paper, tested, and changed until it works.",skills:["Curriculum design","Applied psychology","Measuring change"]}],
+  ["split",{mid:true,a:[["kicker","What our lesson plans changed"],
       ["steps",[
         {b:"Story worlds instead of free drawing",p:"Active participation rose from 60% to an average of 85%, and the quiet children changed most. A character gave them someone to speak through when speaking as themselves was too much."},
         {b:"One shared piece at the end",p:"Sessions now end on something the whole table made together. Facilitators know an unfinished page is a good outcome."}
@@ -839,7 +860,7 @@ const ROOMS={
       {k:"ds-mirror-1",ratio:"1088/1200",ghost:"a portrait in a pink mirror frame",cap:"In a crown."},
       {k:"ds-mirror-2",ratio:"1200/968",ghost:"a portrait in a blue mirror frame",cap:"On the court."}
     ]}],
-  ["split",{a:[["kicker",{t:"Colors of Joy · Hanoi · with Bao Sang Art Therapy Center · Aug to Oct 2025",id:"colors-of-joy"}],
+  ["split",{mid:true,a:[["kicker",{t:"Colors of Joy · Hanoi · with Bao Sang Art Therapy Center · Aug to Oct 2025",id:"colors-of-joy"}],
       ["para","In Hanoi I turned our activities into a curriculum, wrote the session plans and facilitator guides, and revised each session with licensed art therapists."],
       ["numbers",[{b:"4",s:"sessions"},{b:"24",s:"children, ages 6–12"},{b:"23",s:"could name their emotions by the end"}]]],
     b:[["figs",[
@@ -847,7 +868,7 @@ const ROOMS={
       {k:"nm-6",slot:"Plate 05",ratio:"1/1",ghost:"a facilitator with two children",cap:"A facilitator painting alongside two children."}
     ]]]}],
 
-  ["chapter",{n:"03",id:"open",t:"Dream Strokes OPEN",p:"For anyone, anywhere."}],
+  ["chapter",{n:"03",id:"open",t:"Dream Strokes OPEN",p:"For anyone, anywhere.",skills:["Event production","Community building"]}],
   ["para","At the shelters I watched children say things through a drawing that they could not say out loud. I didn’t want that to stop at the shelter door, so I started OPEN, our branch for everyone else. You don’t have to call yourself an artist: you can play, cheer, listen or paint. Choose one to see it."],
   ["switcher",{label:"Dream Strokes OPEN programmes",items:[
     {id:"sol-sound",k:"ss-band",ghost:"Sol Sound, the band",meta:"Music",name:"Sol Sound",fact:"400+ tickets",
@@ -861,7 +882,7 @@ const ROOMS={
   ["para","More than 1,700 people came to these three events, many of them meeting Dream Strokes for the first time. People come for the music or the match and find out what the workshops are for."],
   ["go",{href:"#/work/events",label:"See these events"}],
 
-  ["chapter",{n:"04",id:"art",t:"Art that keeps going",p:"What happens to a drawing after the session ends."}],
+  ["chapter",{n:"04",id:"art",t:"Art that keeps going",p:"What happens to a drawing after the session ends.",skills:["Systems thinking","Sustainable funding"]}],
   ["para","A drawing used to end its life in a folder. I wanted the work to be seen, and to help pay for the next session, so we gave it somewhere to go."],
   ["loop",{items:[
     {h:"They make it",p:"Children and older adults draw and paint in our sessions."},
@@ -871,17 +892,43 @@ const ROOMS={
   ],back:"and the next session begins"}],
   ["visit",{href:"https://netmoproject.page",label:"Visit our website"}],
 
-  ["chapter",{n:"05",id:"partners",t:"Partners",p:"Professionals who guide what we do."}],
-  ["split",{a:[["fig",{k:"ds-advisor",ratio:"3/2",ghost:"a call with our advisor",cap:"A call with Phuong Thao Nguyen, our advisor."}]],
+  ["chapter",{n:"05",id:"partners",t:"Partners and sponsors",p:"Professionals who guide the work, and sponsors who came with us.",skills:["Partnerships","Sponsorship"]}],
+  ["split",{mid:true,a:[["fig",{k:"ds-advisor",ratio:"3/2",ghost:"a call with our advisor",cap:"A call with Phuong Thao Nguyen, our advisor."}]],
     b:[["partners",[
       {k:"Professional guidance and legal sponsor",h:"Bao Sang Art Therapy Center",p:"Licensed art therapists who guide how we work with children and stand behind the project legally."},
-      {k:"Our advisor",h:"Phuong Thao Nguyen",p:"Founder of Bao Sang Art Therapy Center, M.A. in Psychology and licensed art therapist. I talk new sessions through with her before we run them."},
-      {k:"Education partner",h:"Fing3rprint Education"}
+      {k:"Our advisor",h:"Phuong Thao Nguyen",p:"Founder of Bao Sang Art Therapy Center, M.A. in Psychology and licensed art therapist. I talk new sessions through with her before we run them."}
     ]]]}],
+  ["kicker","Who backs us, and how"],
+  ["para","Beyond the team, every part of Dream Strokes has someone behind it. I looked for the help each part needed: a therapist’s eye for the sessions, materials for the tables, and a stage, a pitch and a gallery for OPEN."],
+  ["backers",{caption:"Partners and sponsors of Dream Strokes, and the kind of help each gives",first:"Partner or sponsor",cols:["Guidance","Legal","Cash","In kind","Space"],rows:[
+    {h:"Bao Sang Art Therapy Center",p:"Professional guidance, legal sponsor",on:["Guidance","Legal"]},
+    {h:"Fing3rprint Education",p:"In-kind sponsor and art advisor",on:["Guidance","In kind"]},
+    {h:"Meta Art Club",p:"Cash and in-kind sponsor",on:["Cash","In kind"]},
+    {h:"Hien Events",p:"The stage for our events",on:["In kind"]},
+    {h:"May Artspace",p:"The gallery for Once Upon the Inside",on:["Space"]},
+    {h:"Our football venue",p:"The pitch for Colors of the Pitch",on:["Space"]}
+  ]}],
 
-  ["chapter",{n:"06",id:"team",t:"The team",p:"I couldn’t grow this alone, and I didn’t want to."}],
+  ["chapter",{n:"06",id:"team",t:"The team",p:"I couldn’t grow this alone, and I didn’t want to.",skills:["Team building","Operations","Scaling"]}],
+  ["para","Dream Strokes started in Ho Chi Minh City. To reach more places than I could run myself, I built a team of 25 that now has members in six cities and provinces, from Dong Nai to Hanoi."],
+  ["vnmap",{title:"A map of Vietnam: Dream Strokes started in Ho Chi Minh City and has members in Dong Nai, Hanoi, Hai Phong, Nghe An and Quang Binh.",
+    places:[
+      {name:"Ho Chi Minh City",lon:106.66,lat:10.78,start:true,l:[14,24]},
+      {name:"Dong Nai",lon:106.82,lat:10.95,l:[14,-8]},
+      {name:"Quang Binh",lon:106.6,lat:17.47,l:[13,5]},
+      {name:"Nghe An",lon:105.68,lat:18.67,l:[-13,5]},
+      {name:"Hai Phong",lon:106.68,lat:20.86,l:[13,7]},
+      {name:"Hanoi",lon:105.85,lat:21.03,l:[-13,3]}
+    ],
+    isles:[{name:"Hoang Sa",lon:111.9,lat:16.5},{name:"Truong Sa",lon:113.4,lat:9.9}],
+    key:[
+      {k:"Where it started",t:"Ho Chi Minh City: our shelters, care homes and OPEN events."},
+      {k:"Members in",t:"Dong Nai, Hanoi, Hai Phong, Nghe An and Quang Binh."},
+      {k:"Workshops away from home",t:"Hanoi, with Colors of Joy."},
+      {k:"Next",t:"More places soon."}
+    ]}],
   ["split",{a:[
-      ["para","To reach more places than I could run myself, I built a team of 25 in four departments, and it has grown beyond Ho Chi Minh City to members across Vietnam. Building it became as much my work as designing the sessions."],
+      ["para","Building the team became as much my work as designing the sessions. Four departments let each member own a part, wherever they live."],
       ["pairs",[
         {h:"R&D",p:"Designs the sessions and writes the lesson plans."},
         {h:"Tech",p:"Builds the website and the tools we run on."},
@@ -895,7 +942,7 @@ const ROOMS={
       {k:"ds-team-2",ratio:"3/2",ghost:"the team in an alley",cap:"Out together, November 2025."}
     ]]]}],
 
-  ["chapter",{n:"07",id:"make",t:"What we make",p:"Things that carry the idea beyond our sessions."}],
+  ["chapter",{n:"07",id:"make",t:"What we make",p:"Things that carry the idea beyond our sessions.",skills:["Product design","Visual storytelling"]}],
   ["shelf",{main:{k:"op-cards",ratio:"1/1",ghost:"the Feel-it! box",meta:"Emotion cards · ages 5 to 10",name:"Feel-it!",
       p:"24 emotion characters and five games, so a child can name a feeling by pointing at it.",badge:"Second Prize · Ho Chi Minh City Youth Creativity Contest 2025"},
     rest:[
@@ -905,12 +952,14 @@ const ROOMS={
     ]}],
   ["lead",{k:"op-cardsheet",slot:"Plate 06",ratio:"3/2",ghost:"the Feel-it! card system",cap:"The Feel-it! card system: 24 emotions in families, five ways to play, and the box it comes in."}],
 
-  ["chapter",{n:"08",id:"impact",t:"Money and impact"}],
-  ["impact",{k:"Since April 2025",items:[
-      {b:"50",s:"workshops"},{b:"~200",s:"children in 6 shelters"},{b:"22",s:"older adults in 2 care homes"},
-      {b:"1,700+",s:"people at OPEN events"},{b:"~VND 75M",s:"net proceeds, reinvested"},{b:"25",s:"people on the team"}
-    ],p:"The money pays for materials, sessions and the next season.",
-    fig:{k:"nm-4",ratio:"4/5",ghost:"the end of a session",cap:"The end of a session: everyone holding up what they made."}}],
+  ["chapter",{n:"08",id:"impact",t:"How it adds up",p:"What goes in, what we do, who it reaches, and what changes.",skills:["Impact measurement","Fundraising"]}],
+  ["impact",{k:"Since April 2025",cols:[
+      {h:"What goes in",items:[{b:"25",s:"members in 6 cities and provinces"},{b:"6",s:"partners and sponsors"}]},
+      {h:"What we do",items:[{b:"50",s:"workshops"},{b:"3",s:"OPEN programmes"},{b:"4",s:"things we make"}]},
+      {h:"Who it reaches",items:[{b:"~200",s:"children in 6 shelters"},{b:"22",s:"older adults in 2 care homes"},{b:"1,700+",s:"people at OPEN events"}]},
+      {h:"What changes",items:[{b:"60→85%",s:"active participation"},{b:"23 of 24",s:"children in Hanoi naming their emotions"},{b:"~VND 75M",s:"net proceeds, reinvested"}]}
+    ],p:"The money pays for materials, sessions and the next season. The column I watch most is the last one: whether people take part, and whether they can say how they feel.",
+    fig:{k:"nm-4",ratio:"3/2",ghost:"the end of a session",cap:"The end of a session: everyone holding up what they made."}}],
   ["follow",{logo:"img/dream-strokes-logo.jpg",h:"Follow the journey",p:"Dream Strokes is still growing. New sessions, events and artwork go up on our website and our Facebook page.",
     links:[{href:"https://netmoproject.page",label:"netmoproject.page"},{href:NETMO_FACEBOOK,label:"Follow on Facebook"}]}],
 
@@ -1396,7 +1445,7 @@ function bindScreening(){
       room.style.setProperty("--room-top",$(".room__top").offsetHeight+"px");
       tieLastWords(inner);
       paintMedia(inner); wireEvents(inner);
-      $$("[data-uncover],[data-part],[data-mask]",inner).forEach(el=>io.observe(el));
+      $$("[data-uncover],[data-part],[data-mask],[data-draw]",inner).forEach(el=>io.observe(el));
       room.scrollTop=0; markChapter();
       const target=anchor&&document.getElementById("room-"+anchor);
       if(target) requestAnimationFrame(()=>{ room.scrollTop=target.offsetTop-chapGap(); });
