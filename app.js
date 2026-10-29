@@ -60,7 +60,15 @@ const MEDIA = {
   "ds-advisor":{src:"img/ds-advisor.jpg",alt:"A video call with Phuong Thao Nguyen, our advisor; I am in the small window in the corner.",pos:"60% 45%"},
   /* research rooms: never participants; the work, the team, the tools */
   "rs-1":{src:"img/rs-1.jpg",alt:"Inkling’s home page: AI draws the first line. You decide the rest. Beside it, a drawing where a dotted AI line turns into the user’s own strokes, a hill and a sun.",pos:"30% 40%"},
-  "rs-2":{src:"img/rs-2.jpg",alt:"Gia Han, holding a microphone, presents in front of a screen showing a warning sign.",pos:"55% 40%"}, "tc-1":"", "tc-2":"", 
+  "rs-2":{src:"img/rs-2.jpg",alt:"Gia Han, holding a microphone, presents in front of a screen showing a warning sign.",pos:"55% 40%"},
+  "tc-unwrap":{src:"img/tc-unwrap.jpg",alt:"Two hands unwrap a burger from brown paper on a wooden table.",pos:"55% 50%"},
+  "tc-cloud":{src:"img/tc-cloud.jpg",alt:"Floating Cloud: a soft blue cloud with one eye open, one winking, and orange swirls on its cheeks, in a sunny sky.",pos:"40% 50%"},
+  "tc-arch-1":{src:"img/tc-arch-1.jpg",alt:"A parcel tied with string on a table, with a brain, a heart and a cloud rising from it."},
+  "tc-arch-2":{src:"img/tc-arch-2.jpg",alt:"Hands open the parcel; a small child, two adult figures and a shield glow above it."},
+  "tc-arch-3":{src:"img/tc-arch-3.jpg",alt:"A hand picks from shelves of labelled jars of ingredients."},
+  "tc-arch-4":{src:"img/tc-arch-4.jpg",alt:"A chef stirs a glowing pot on the stove, adding spices."},
+  "tc-arch-5":{src:"img/tc-arch-5.jpg",alt:"A warm bowl of stew, steaming, on a plate."},
+
   "bl-1":{src:"img/bl-1.jpg",alt:"At a Brain-Life booth, two team members fit an EEG headband on a visitor beside a model mountain.",pos:"50% 35%"},
   "bl-2":{src:"img/bl-2.jpg",alt:"The Brain-Life team in the office, in front of the logo wall, giving thumbs up.",pos:"50% 50%"},
   "bl-3":{src:"img/bl-3.jpg",alt:"A Brain-Life booth table: a laptop with the logo, an EEG headband, the app on a phone, notebooks and a Just Breathe tote.",pos:"50% 50%"},
@@ -516,6 +524,16 @@ const SHELF_MARKS={
 /* Vietnam's outline (Natural Earth, 1:50m), projected for the team map: x = (lon − 102) × 40 × cos 16°, y = (23.6 − lat) × 40 */
 const VN_OUTLINE="M79.4,528.4L80.1,530.4L79.8,535.0L78.3,539.6L78.8,541.6L77.6,542.8L75.1,534.3L71.8,530.6L71.1,529.2L73.0,529.3L76.4,526.9L78.0,526.9L79.4,528.4ZM229.7,83.7L227.8,84.0L223.4,84.1L219.4,87.8L216.7,89.3L212.5,90.6L208.0,92.6L206.7,96.2L206.6,98.9L205.9,101.8L198.6,106.1L196.5,105.6L195.1,104.0L193.0,104.4L191.5,105.1L189.8,105.0L187.9,106.0L185.4,105.7L183.0,104.4L181.7,104.0L180.1,104.0L179.8,105.6L182.2,111.8L182.8,114.6L175.0,122.9L175.8,128.3L173.7,132.4L169.0,135.8L160.2,144.3L156.2,144.5L153.2,146.4L146.6,160.5L146.6,165.3L145.5,168.8L145.8,172.2L142.9,178.9L139.9,181.7L139.3,185.3L143.5,192.8L144.0,194.1L146.4,198.2L147.6,201.0L149.5,203.9L156.3,211.3L159.4,213.6L163.0,215.2L169.6,221.9L173.0,226.1L171.5,229.1L172.2,235.2L167.5,233.4L168.0,234.1L173.7,237.5L182.1,249.3L189.4,255.1L196.9,261.8L199.2,268.1L205.9,272.3L213.4,278.3L213.0,279.7L215.1,281.3L220.1,284.5L223.1,287.9L224.3,291.1L226.2,291.6L228.3,290.8L230.3,290.5L231.8,290.8L234.1,294.3L237.2,297.5L238.7,300.4L240.0,300.0L241.0,300.4L241.2,302.8L241.7,304.4L245.9,309.1L247.9,313.5L252.9,320.6L256.6,324.7L259.3,326.9L262.3,328.9L265.2,336.8L266.8,343.9L270.0,351.9L272.4,355.4L272.5,361.9L274.4,368.6L276.5,373.2L277.1,377.8L277.8,380.1L278.6,381.9L280.8,389.7L280.2,393.4L278.7,389.8L278.8,400.4L280.2,406.0L279.6,412.8L281.1,415.2L283.6,423.0L285.5,425.8L285.3,435.2L286.3,440.0L283.8,437.2L282.1,433.9L279.7,435.6L277.6,438.2L280.9,448.4L277.1,447.4L277.4,461.1L279.0,464.3L279.1,465.8L278.7,467.7L277.6,465.6L277.4,463.6L276.8,464.0L276.8,465.1L275.6,467.5L275.2,470.5L276.6,473.1L276.8,475.0L275.8,477.4L274.2,480.0L270.7,480.3L269.9,485.3L268.6,490.5L262.3,491.4L257.6,496.0L251.9,497.8L246.8,502.4L241.1,506.6L237.5,507.2L234.4,508.1L230.8,515.2L224.7,516.0L214.0,521.8L210.3,524.6L207.0,525.7L202.3,528.1L201.3,527.2L199.7,525.1L195.6,524.1L193.6,521.7L193.0,518.8L192.5,517.6L191.6,519.3L190.9,526.4L190.2,528.0L188.5,528.7L185.1,526.7L181.8,522.6L177.1,525.4L178.5,525.8L180.7,525.5L182.3,526.2L183.7,529.0L183.6,530.4L182.9,532.2L178.5,532.4L172.7,531.8L171.6,532.1L177.0,534.7L181.8,536.3L184.0,538.0L184.0,539.3L181.3,541.6L179.1,544.3L179.1,546.1L179.1,548.0L176.7,549.6L175.2,549.3L171.1,546.4L159.0,535.1L160.9,538.3L173.3,551.2L175.5,555.4L175.8,558.4L174.5,559.9L172.4,561.6L168.3,561.8L161.6,557.0L150.9,545.5L147.3,544.0L158.1,557.1L159.9,560.2L161.7,563.9L161.2,566.1L160.3,568.1L134.6,580.3L130.8,585.5L127.7,592.0L122.7,595.5L119.7,598.8L111.2,600.7L106.5,600.1L111.4,594.1L108.4,591.9L108.2,576.6L109.4,559.8L111.6,551.3L114.9,549.3L118.9,548.0L119.0,546.2L118.6,544.2L116.4,541.3L114.0,540.0L110.5,539.4L107.7,535.9L105.6,536.0L102.4,537.2L100.5,535.7L99.7,533.3L96.7,530.4L93.3,527.6L94.9,527.1L96.7,525.5L98.6,523.4L103.4,523.1L108.3,523.2L109.6,522.6L111.6,520.4L114.7,517.5L117.1,515.9L117.7,514.6L116.7,511.6L116.2,508.5L117.1,507.5L121.5,508.1L126.3,509.5L127.4,510.2L130.2,506.4L131.0,505.9L132.8,505.9L137.5,505.2L142.2,504.2L144.4,504.4L146.5,507.0L148.2,509.5L149.0,509.7L151.4,508.6L153.4,509.9L157.6,512.1L160.1,512.2L158.9,507.1L160.3,503.5L160.0,502.5L157.6,500.9L149.6,494.2L148.3,492.2L148.5,489.1L148.2,484.5L147.5,481.6L147.6,479.9L148.1,478.6L149.6,478.1L151.0,477.9L152.1,476.7L154.0,473.7L157.8,473.9L163.0,475.7L166.9,476.7L169.2,476.5L169.7,476.1L169.6,474.5L169.9,467.5L169.7,466.1L173.0,465.4L178.1,465.2L180.7,464.8L183.2,461.9L189.6,460.9L194.2,457.0L198.4,452.9L200.4,451.8L203.0,451.1L204.9,451.2L207.4,453.6L209.4,452.2L211.7,449.4L212.9,446.7L213.6,442.4L213.2,435.8L211.9,430.6L210.8,426.7L210.5,422.8L213.2,415.0L215.5,406.5L215.1,403.1L212.6,397.8L210.0,391.4L207.2,384.3L206.2,383.2L205.4,381.2L205.0,378.9L206.1,371.7L206.3,369.3L209.5,366.0L211.2,362.2L212.8,358.0L212.2,355.8L212.0,351.3L212.4,349.1L211.7,347.4L210.7,344.8L211.3,343.1L213.6,341.7L214.9,339.3L216.6,336.4L217.4,333.8L216.2,331.6L213.9,328.3L209.9,325.4L205.3,321.6L203.0,319.3L201.2,316.9L199.5,314.1L198.6,311.9L199.5,310.5L206.1,307.1L207.3,305.9L208.0,304.1L207.5,302.3L205.7,301.3L203.7,300.6L200.6,298.5L194.9,292.8L192.3,291.5L189.6,289.9L188.1,288.1L186.5,283.4L185.8,282.9L184.2,284.4L182.2,285.9L180.6,285.6L179.0,284.3L178.3,282.5L176.6,280.0L174.8,278.0L174.3,271.2L174.0,268.9L173.1,265.8L171.7,264.7L170.2,263.9L166.6,258.3L164.2,255.3L154.0,247.4L152.8,246.1L150.1,242.9L145.3,238.2L141.9,234.5L139.5,230.6L138.3,227.3L138.0,224.7L135.3,220.9L133.0,217.8L130.7,216.8L128.2,216.4L125.9,214.6L121.6,210.5L119.8,207.8L118.7,206.0L118.7,204.2L119.7,201.1L120.9,199.3L121.0,198.0L119.8,196.8L115.1,194.9L104.5,191.9L100.5,189.6L96.8,186.6L94.0,184.6L81.1,176.2L77.1,174.8L73.8,173.3L72.7,171.8L72.9,170.4L74.3,169.4L78.0,167.2L79.3,164.7L78.9,161.4L77.4,158.1L78.1,157.0L79.3,156.9L81.8,156.8L86.9,156.6L97.9,159.6L99.5,159.3L105.5,153.8L107.7,150.6L108.2,147.8L109.4,146.1L112.6,143.3L112.6,140.7L111.1,137.2L109.5,135.9L108.1,135.3L103.8,135.8L102.9,135.0L102.4,132.4L102.1,130.9L100.7,129.0L96.0,127.5L92.0,127.0L91.0,126.3L92.6,124.6L95.3,122.8L97.4,121.8L99.0,120.0L99.3,118.1L97.3,116.5L94.6,114.7L90.3,111.2L84.4,107.4L80.8,106.2L78.9,106.4L72.4,109.5L68.8,111.6L65.9,115.3L62.9,116.1L59.8,114.5L56.3,112.8L46.6,110.4L42.5,108.3L34.0,95.9L32.7,93.4L33.5,90.5L34.1,86.4L35.0,83.7L36.5,81.2L36.9,79.0L36.5,76.7L35.3,75.5L33.7,75.1L32.5,74.6L31.4,71.7L30.7,72.1L29.6,75.6L28.4,76.9L26.7,77.5L25.5,77.0L24.6,75.5L24.3,73.1L23.4,69.9L22.4,67.8L18.7,65.7L17.0,62.9L11.6,56.9L7.0,52.6L4.9,48.8L6.8,47.4L9.1,45.4L11.6,42.2L14.4,38.1L15.6,35.7L16.5,34.7L18.1,34.0L19.9,34.4L23.0,36.0L27.7,38.1L31.9,40.5L33.6,43.0L36.0,45.4L37.8,46.1L38.7,45.9L41.4,44.1L43.7,42.3L43.7,40.3L45.9,38.5L48.7,35.5L50.0,33.4L51.0,33.2L52.1,33.8L56.6,40.1L57.4,40.5L58.7,39.5L60.4,34.6L62.3,32.7L63.0,33.2L73.6,42.5L74.7,42.4L75.8,42.0L76.5,40.6L77.4,37.3L79.0,33.9L82.4,32.0L85.1,31.6L86.1,33.3L88.4,35.5L91.2,35.8L97.2,31.8L99.1,31.2L101.2,31.3L103.3,31.1L105.4,29.6L107.5,27.6L108.2,23.6L108.7,20.0L110.2,18.5L111.9,17.6L115.2,16.2L122.6,12.8L124.5,11.1L125.9,10.2L128.8,11.7L132.3,14.6L134.4,16.8L135.8,19.1L136.4,21.1L141.9,22.8L145.4,25.2L147.8,27.1L150.1,27.0L152.4,26.5L153.8,25.0L156.4,25.0L159.5,25.2L160.9,25.8L163.4,29.2L164.5,29.7L166.8,29.5L171.1,28.2L174.6,27.7L177.8,29.0L183.8,32.8L182.1,35.6L180.8,38.5L178.1,40.6L176.2,41.1L175.0,43.9L174.4,48.2L175.1,50.3L176.6,51.0L178.3,52.5L179.0,54.3L179.2,58.5L179.1,63.3L179.3,64.8L180.6,64.6L181.9,64.0L184.3,64.7L187.4,65.9L189.4,67.2L191.1,67.0L192.5,68.3L193.0,70.6L194.6,72.2L199.1,75.3L202.7,75.6L205.8,79.6L208.9,78.3L210.4,80.1L216.9,79.4L221.4,77.8L223.1,78.2L227.2,81.6L229.7,83.7ZM177.5,596.7L176.5,596.8L175.6,596.0L179.1,593.3L178.8,595.1L178.9,596.0L177.5,596.7ZM198.7,528.1L195.5,530.5L195.2,528.5L198.1,527.2L199.0,526.2L199.7,526.2L198.7,528.1ZM187.1,111.4L186.6,112.1L184.7,110.3L183.4,109.4L184.4,106.9L186.7,109.7L187.1,111.4ZM215.4,95.3L209.9,100.3L207.8,100.3L209.7,94.6L210.6,93.2L213.9,95.2L215.4,95.3ZM212.3,106.9L210.2,108.0L207.6,107.9L210.7,105.9L212.2,103.5L213.4,102.6L213.4,104.8L212.3,106.9ZM193.5,114.1L191.9,114.3L188.8,111.0L190.5,109.3L193.9,110.5L194.7,111.3L194.7,112.0L193.9,113.6L193.5,114.1Z";
 const vnXY=(lon,lat)=>[+((lon-102)*40*Math.cos(16*Math.PI/180)).toFixed(1),+((23.6-lat)*40).toFixed(1)];
+/* line drawings for the steps of a working week (48 × 48, stroke only) */
+const LINE_ICONS={
+  call:'<rect x="6" y="9" width="36" height="24" rx="2"/><path d="M2 39h44"/><circle cx="24" cy="18" r="4"/><path d="M16 29c1.5-4 4.5-6 8-6s6.5 2 8 6"/>',
+  filter:'<path d="M7 9h34L28 25v12l-8 4V25z"/><path d="M12 4h2M22 3h2M33 5h2"/>',
+  cluster:'<rect x="5" y="6" width="11" height="11" rx="1"/><rect x="18" y="9" width="11" height="11" rx="1"/><rect x="9" y="27" width="11" height="11" rx="1"/><rect x="31" y="26" width="11" height="11" rx="1"/><path d="M24 31h5" stroke-dasharray="2 3"/>',
+  flag:'<path d="M12 44V6"/><path d="M12 8h24l-5 7 5 7H12"/>',
+  screen:'<rect x="5" y="7" width="38" height="30" rx="2"/><path d="M5 14h38"/><rect x="10" y="19" width="12" height="13"/><path d="M27 20h11M27 25h11M27 30h7"/>'
+};
+/* a persona's face: a cat, drawn in a few lines */
+const PERSONA_FACE='<path d="M14 26 12 10l12 9h16l12-9-2 16"/><path d="M14 26c-2 14 6 26 18 26s20-12 18-26"/><circle cx="25" cy="34" r="2"/><circle cx="39" cy="34" r="2"/><path d="M30 41h4l-2 2z"/><path d="M8 38l10 1M8 44l10-2M56 38l-10 1M56 44l-10-2"/>';
 /* one gathering or way in: a photo, what kind of thing it is, its name, what it was, one number */
 const gcard=e=>`<article class="gevent">
   <div class="fig__plate" data-img="${e.k}" data-slot="" style="--ratio:4/3"><div class="fig__ghost">${e.ghost}</div></div>
@@ -642,7 +660,20 @@ const B={
     </div>`).join("")}
   </div>`,
   /* a cycle: each step hands on to the next, and a thin line carries the last back to the first */
-  loop:o=>`<div class="blk loop"><ol>${o.items.map((x,i)=>`<li><span class="loop__n">${String(i+1).padStart(2,"0")}</span><b>${x.h}</b><p>${x.p}</p></li>`).join("")}</ol><p class="loop__back"><span>↺ ${o.back}</span></p></div>`,
+  loop:o=>`<div class="blk loop"><ol data-n="${o.items.length}">${o.items.map((x,i)=>`<li>${x.icon?`<svg class="loop__icon" viewBox="0 0 48 48" aria-hidden="true">${LINE_ICONS[x.icon]}</svg>`:""}<span class="loop__n">${String(i+1).padStart(2,"0")}</span><b>${x.h}</b><p>${x.p}</p></li>`).join("")}</ol><p class="loop__back"><span>↺ ${o.back}</span></p></div>`,
+  /* a research persona as a profile card: who, their story, then goals and needs side by side */
+  persona:o=>`<article class="blk persona">
+    <header class="persona__id"><div class="persona__face" aria-hidden="true"><svg viewBox="0 0 64 64">${PERSONA_FACE}</svg></div><div><p class="persona__k">${o.k}</p><h4>${o.name}</h4><p class="persona__meta">${o.meta}</p></div></header>
+    <p class="persona__story">${o.story}</p>
+    <div class="persona__cols">${o.cols.map(c=>`<section><p class="persona__h">${c.h}</p><ul>${c.items.map(i=>`<li>${i}</li>`).join("")}</ul></section>`).join("")}</div>
+    <ul class="persona__likes" aria-label="What helps">${o.likes.map(l=>`<li>${l}</li>`).join("")}</ul>
+  </article>`,
+  /* how someone moves through a product: stops on a rail, a dot for each (dot = location) */
+  journey:a=>`<ol class="blk journey">${a.map(x=>`<li><p class="journey__k">${x.k}</p><b>${x.h}</b><p class="journey__p">${x.p}</p></li>`).join("")}</ol>`,
+  /* a method told as steps of a recipe: the picture, the kitchen word, what it stands for */
+  recipe:a=>`<ol class="blk recipe">${a.map((x,i)=>`<li>${fig({k:x.k,ratio:"358/452",ghost:x.ghost})}<div><p class="recipe__n">${String(i+1).padStart(2,"0")}</p><h4>${x.h}</h4><p class="recipe__eq">= ${x.eq}</p><p class="recipe__p">${x.p}</p></div></li>`).join("")}</ol>`,
+  /* an interface's colours and type, as swatches */
+  palette:o=>`<div class="blk palette"><p class="palette__k">${o.k}</p><ul>${o.colors.map(c=>`<li><i style="--dc:${c}"></i><span>${c}</span></li>`).join("")}</ul><p class="palette__type"><span>${o.typeK}</span>${o.font}</p></div>`,
   /* who we work with: what they are to us in mono, their name in serif */
   partners:a=>`<div class="blk partners">${a.map(x=>`<div><p class="partners__k">${x.k}</p><h4>${x.h}</h4>${x.p?`<p class="partners__p">${x.p}</p>`:""}</div>`).join("")}</div>`,
   /* one group in photographs: a large one, two beneath it */
@@ -1095,31 +1126,78 @@ const ROOMS={
 ]},
 
 "/work/research/teencare":{accent:"#C2610A",where:"Research · TeenCare",blocks:[
-  ["hero",{kicker:"Internship · Part-time Research Associate, R&D · May to Dec 2025, Jun 2026 to now",title:"TeenCare",
+  ["hero",{kicker:"Internship · Part-time Research Associate, R&D · remote · May to Dec 2025, Jun 2026 to now",title:"TeenCare",
     wordmark:"img/teencare-wordmark.png",
-    lede:"A youth mental-fitness startup building story-based tools that help teenagers notice and express what they feel.",
+    lede:"A youth mental-fitness startup building story-based tools that help teenagers notice and express what they feel. I work remotely in its R&D team.",
     facts:[{b:"100+",s:"semi-structured interviews"},{b:"5",s:"narrative survey formats"},{b:"1",s:"core product built on one of them"}],
     marks:["img/teencare-mark.png"]}],
   ["visit",{href:"https://teencare.co/vn",label:"Visit TeenCare"}],
   ["kicker","Why I joined"],
   ["para","In Vietnamese public schools, students get very little psychological support, and awareness of mental health is still low. I believe mental health matters as much as physical health. It is only easier to ignore because no one can see it. TeenCare was building tools to help teenagers notice and say what they feel, and I wanted to work on that problem, not only notice it."],
-  ["figs",[
-    {k:"tc-1",slot:"Plate 01",ratio:"4/3",ghost:"the team at work",cap:"Working with the R&D team."},
-    {k:"tc-2",slot:"Plate 02",ratio:"4/3",ghost:"a wireframe or the e-book",cap:"From interview insight to the product."}
+
+  ["kicker","How I worked · remote, every week"],
+  ["para","I work with the R&D team from home. Every week runs the same loop, and every loop has to end in something the designers can use."],
+  ["loop",{items:[
+    {icon:"call",h:"Interview",p:"Semi-structured video calls with teenagers, more than 100 so far."},
+    {icon:"filter",h:"Clean the data",p:"Filter the responses and transcripts so only usable answers go forward."},
+    {icon:"cluster",h:"Analyse",p:"Code the answers and group them on an affinity map until themes repeat."},
+    {icon:"flag",h:"Name the pain points",p:"Write up the week’s pain points for the team, in teenagers’ own words."},
+    {icon:"screen",h:"Design and test",p:"Turn them into flows, wireframes and screens, then test with users."}
+  ],back:"and a new round begins"}],
+
+  ["kicker","Who we were designing for"],
+  ["para","From the interviews we built personas. This is one of them: a composite of many teenagers, not one real person."],
+  ["persona",{k:"Persona",name:"Meo",meta:"16 · Hanoi · high school student",
+    story:"Meo feels different from friends but can’t say how. Meo wants to be understood, but every time Meo starts to open up, the fear of being called “weird” wins. With nowhere safe to say what Meo needs, Meo goes quiet and copies everyone else, and feels more lost for it.",
+    cols:[
+      {h:"Goals",items:["Understand my own feelings, needs and patterns","Be accepted as different, without pretending to be “normal”","Find a community where sharing feels safe","Say what I need to friends, teachers and family"]},
+      {h:"Needs",items:["A safe space to practise self-awareness","A simple, visual way to “unwrap” the mind","Clear words for feelings and boundaries","Step-by-step “recipes” that don’t overwhelm","Someone alongside who says it’s okay"]}
+    ],
+    likes:["Learns through pictures and metaphors","Likes short, applied psychology","Wants tools for every day"]}],
+
+  ["kicker","The pain points that kept coming back"],
+  ["pains",[
+    {h:"No words for it",p:"Teenagers couldn’t name what they felt, or why they reacted the way they did."},
+    {h:"Afraid of “weird”",p:"They held back questions and experiments for fear of being judged."},
+    {h:"Blending in",p:"They copied everyone else, and their real needs got pushed down."},
+    {h:"No safe place",p:"Without one, there was no healthy way to explore who they are."}
   ]],
-  ["kicker","What I did, and what each part taught me"],
-  ["tasks",[
-    {h:"Listening at scale",did:"I conducted and analysed more than 100 semi-structured interviews with teenagers, using thematic coding and affinity mapping to find the barriers that kept coming back.",
-      learned:"To find what a hundred people share while keeping each person’s own words."},
-    {h:"Finding where people go quiet",did:"In a pilot interview, the questions jumped from easy to personal, and that was exactly where people stopped talking. I co-designed 5 narrative survey formats that ease in gradually, with branching choices.",
-      learned:"When someone stops talking, I now look at the question before I look at the person."},
-    {h:"Turning insight into a product",did:"One of those formats, the chef narrative, became the basis of TeenCare’s core product. I helped carry the insights into an interactive e-book and a form-building web product: flows, wireframes, interface design and automated pattern summaries.",
-      learned:"Research only counted once it changed what we built."},
-    {h:"Testing with real users",did:"I took part in user testing and the V1 revisions that fixed its usability issues.",
-      learned:"Before a tool can help anyone feel better, it has to be easy to use."}
-  ]],
+
+  ["kicker","Where people went quiet"],
+  ["para","In a pilot interview, the questions jumped from easy to personal, and that was exactly where people stopped talking. So I co-designed 5 narrative survey formats that ease in gradually, with branching choices."],
   ["flow",{before:{label:"The pilot interview",steps:["A few easy questions","Then, suddenly, personal ones","Disclosure became difficult"]},
     after:{label:"What I co-designed",steps:["5 narrative survey formats","Gradual reflective prompts and branching choices","A story to speak through: the chef narrative"]}}],
+  ["pairs",[
+    {h:"Format · The time train",p:"You get a ticket for a train through time and explore your future workplace, one stop at a time."},
+    {h:"Format · The zombie kitchen",p:"You cross into a zombie world and become its best chef. You survive three days by cooking, and every choice branches."}
+  ]],
+  ["para","When someone stops talking, I now look at the question before I look at the person."],
+
+  ["kicker","From a story to a product · un-wrap, the soul restaurant"],
+  ["split",{mid:true,a:[["fig",{k:"tc-unwrap",ratio:"1/1",ghost:"unwrapping",cap:"The product’s key image: unwrapping."}]],
+    b:[["para","The chef narrative became the base of TeenCare’s core product, un-wrap, a “soul restaurant”. I helped carry the interview insights into it: the flows, wireframes, interface design and automated pattern summaries."],
+      ["journey",[
+        {k:"Way in",h:"The Spring Roll Survey Maker",p:"A web tool for building surveys as stories, like the time train."},
+        {k:"Where they gather",h:"Floating Cloud’s page",p:"A Facebook page narrated by a cloud: “full-time cloud, part-time shapeshifter”, looking for itself on a strange train."},
+        {k:"Where they work through it",h:"The Soul Recipe Book",p:"An interactive e-book that walks through a feeling like a recipe."}
+      ]]]}],
+  ["kicker","How a recipe works"],
+  ["para","Each step of cooking maps onto a step of schema therapy, so a teenager can follow a feeling the way they would follow a recipe."],
+  ["recipe",[
+    {k:"tc-arch-1",ghost:"a wrapped parcel",h:"The soul package",eq:"early schemas",p:"Core beliefs from needs that weren’t met, early experiences and self-protective parts: the raw ingredients."},
+    {k:"tc-arch-2",ghost:"unwrapping the parcel",h:"Unwrapping",eq:"awareness",p:"Name the schema, notice the triggers, and tell the hurt child from the harsh parent and the protector."},
+    {k:"tc-arch-3",ghost:"jars of ingredients",h:"Sorting the ingredients",eq:"schema modes",p:"“Bitter” is the punitive parent, “too salty” the critical voice, “missing” the unmet needs, “unripe” the vulnerable child."},
+    {k:"tc-arch-4",ghost:"a chef at the stove",h:"Cooking",eq:"reprocessing and healing",p:"The chef, the healthy adult, adjusts the seasoning, which means the beliefs, and cooks painful memories through safely."},
+    {k:"tc-arch-5",ghost:"the finished dish",h:"The dish",eq:"a balanced self",p:"Steadier feelings, clear boundaries, and needs met in the right way."}
+  ]],
+
+  ["kicker","Designing the interface"],
+  ["split",{mid:true,a:[["fig",{k:"tc-cloud",ratio:"2/1",ghost:"Floating Cloud",cap:"Floating Cloud, the narrator of our Facebook page."}]],
+    b:[["para","For the Spring Roll Survey Maker I worked on the interface: a soft palette chosen to feel safe, one friendly typeface, and a narrator who makes a survey feel like a conversation."],
+      ["palette",{k:"Its palette",colors:["#305165","#3EAE94","#66B1DB","#ABEDFF","#E8FCFF","#E1FFE3","#F6F9FF","#E5EDFF","#FFFCDF","#FFF2F8","#FFBDDC","#FF97B1"],typeK:"Typeface",font:"Cabin"}]]}],
+
+  ["kicker","Testing with real users"],
+  ["para","I took part in user testing and in the V1 revisions that fixed its usability issues. Before a tool can help anyone feel better, it has to be easy to use."],
   ["kicker","What I took away"],
   ["para","At TeenCare I saw what I see at a Dream Strokes table, at the size of a product: people open up when the first step is small enough."],
   ["links",[{href:"#/work/research",label:"All research"},{href:"#/work/research/brain-life",label:"Next · Brain-Life"}]]

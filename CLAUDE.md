@@ -23,7 +23,12 @@ sharing a room, then tests it through community work, research and building.
   own look: TeenCare a soft sunrise in its yellow and orange with slate
   ink, Brain-Life white with its electric blue (#0041E7) and a dot grid;
   each company's wordmark stands in for the room title and its icon sits
-  in the door. Dream Strokes is the flagship and tells the
+  in the door. TeenCare tells her remote R&D work as a story: why she
+  joined, the weekly loop (interview, clean, analyse, name pain points,
+  design and test, with line drawings), the persona Meo, the pain points,
+  where people went quiet and two of the five narrative formats, the
+  product un-wrap (user journey, the five-step recipe mapped to schema
+  therapy), the interface (Floating Cloud and the palette), testing. Dream Strokes is the flagship and tells the
   whole ecosystem in eight numbered chapters, each with its own layout so
   the page never reads as one long scroll: 01 Why (purpose, vision, the
   boy in the corner), 02 Sessions (lesson plans, the Magic Mirror, Colors
