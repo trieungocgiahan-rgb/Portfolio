@@ -10,7 +10,8 @@ sharing a room, then tests it through community work, research and building.
 - No framework, no build step, no dependencies. Plain HTML, CSS, JS.
 - Never reintroduce résumé structure (hero → about → skills → project grid).
 - Keep the door motif: the entrance (Knock, knock. and one "Come in"
-  button), Doors panel, deep spaces as rooms.
+  button, which also opens by itself after 1.6 s or on any key, wheel or
+  touch, so no reader has to work to get in), Doors panel, deep spaces as rooms.
 - Doors has four destinations: Work (Dream Strokes, Events, Research &
   Experience, Tech Projects), Exhibition, Awards, About. The CV is not in
   Doors; About tells the longer story and ends on a CTA to it. Routes are

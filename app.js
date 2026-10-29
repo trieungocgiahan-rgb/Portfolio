@@ -224,12 +224,15 @@ let CURRENT="hero";
     window.scrollTo(0,0); history.replaceState(null,"","#hero");
   }
   if(sessionStorage.getItem("entered") || location.hash.startsWith("#/")){ th.hidden=true; mast.hidden=false; document.body.classList.add("has-entered"); }
-  else{ document.body.classList.add("is-locked"); setTimeout(()=>btn.focus(),300); }
-  /* one knock is enough: the door lights up, then opens */
-  btn?.addEventListener("click",()=>{
-    btn.classList.add("is-knocking","k3"); btn.disabled=true;
-    setTimeout(enter,REDUCED?0:320);
-  });
+  else{
+    document.body.classList.add("is-locked"); setTimeout(()=>btn.focus(),300);
+    /* the door opens by itself after a moment, so no one has to work to get in;
+       a knock, a key or a scroll opens it sooner */
+    const auto=setTimeout(knock,REDUCED?0:1600);
+    ["keydown","wheel","touchstart"].forEach(ev=>addEventListener(ev,knock,{once:true,passive:true}));
+    function knock(){ clearTimeout(auto); if(btn.disabled) return; btn.classList.add("is-knocking","k3"); btn.disabled=true; setTimeout(enter,REDUCED?0:320); }
+    btn?.addEventListener("click",knock);
+  }
 })();
 
 /* ---------- reveals ---------- */
