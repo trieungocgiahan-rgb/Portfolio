@@ -837,7 +837,7 @@ function aboutHTML(){
    t year · h name · p the result · g group · m its mark · s the story behind it, in Gia Han's words */
 const AWARD_GROUPS=[
   {id:"ideas",label:"Ideas & research",dc:"var(--violet)",p:"Psychology, and an essay about how we think."},
-  {id:"making",label:"Science & making",dc:"var(--blue)",p:"A card deck, a biology contest and a water rocket."},
+  {id:"making",label:"Science & making",dc:"var(--blue)",p:"A maths olympiad, a card deck, a biology contest and a water rocket."},
   {id:"team",label:"Team & school",dc:"#D2601C",p:"A basketball court, and a year at my school."}
 ];
 const AWARDS=[
@@ -845,6 +845,8 @@ const AWARDS=[
     s:"Psychology interested me before I knew it could become a competition. Preparing for the Olympiad made me move beyond explanations that merely sounded reasonable. I had to compare possibilities, return to evidence and notice where my first interpretation was incomplete. The award mattered because it showed me how much more there was to learn about a subject I already wanted to pursue."},
   {t:"2026",g:"ideas",m:"pen",h:"RAIS Essay Competition",short:"RAIS Essay",p:"Top 2 of about 450",
     s:"I entered with an essay about AI and the future of human thinking in education. The difficult part was resisting an easy argument for or against technology. I kept revising whenever a paragraph made either humans or AI sound too simple. The final essay asked a question I am still carrying into my work. When does a tool extend our thinking, and when does it begin thinking in our place?"},
+  {t:"2026",g:"making",m:"math",h:"IMOCSEA",short:"IMOCSEA",p:"Gold Medal · Top 3 in Vietnam · represented Vietnam in the international round",
+    s:"I placed in the top 3 in Vietnam, which earned me a place on the team representing Vietnam in the international round, where I won a Gold Medal."},
   {t:"2025",g:"making",m:"cards",k:"op-cards",cap:"The Feel-it! emotion cards.",h:"Ho Chi Minh City Youth Creativity Contest",short:"Creativity Contest",p:"Second Prize · Emotion Card Deck",
     s:"I wanted to make something children could hold when talking about feelings became difficult. A lesson or long explanation would have asked them to find the right words first, which was often the hardest part. The card deck used colours, images and situations to give children somewhere simpler to begin. Turning that idea into a real product meant thinking about every choice from the child’s side, not only whether the psychology behind it was correct."},
   {t:"2025",g:"making",m:"cell",h:"Ho Chi Minh City Regional Academic Excellence Contest",short:"Biology",p:"Third Prize, Biology · one of 3 students selected from 45",
@@ -865,6 +867,7 @@ const AWARD_MARKS={
   cell:'<ellipse cx="12" cy="12" rx="9" ry="7.5"/><circle cx="13.5" cy="11" r="2.6"/><circle cx="7.5" cy="13.5" r=".9"/><circle cx="9" cy="8.5" r=".7"/><circle cx="16.5" cy="15.5" r=".8"/>',
   rocket:'<path d="M12 2.5c3.2 3 4.3 7.3 3.2 11.5H8.8C7.7 9.8 8.8 5.5 12 2.5z"/><path d="M8.8 12l-2.6 4.5h3.2M15.2 12l2.6 4.5h-3.2M12 17v4.5"/><circle cx="12" cy="8.5" r="1.4"/>',
   ball:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5.6 5.6c3.4 3.4 3.4 9.4 0 12.8M18.4 5.6c-3.4 3.4-3.4 9.4 0 12.8"/>',
+  math:'<path d="M17 4H7l6 8-6 8h10"/><path d="M19 15v5M16.5 17.5h5"/>',
   star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>'
 };
 
