@@ -23,7 +23,10 @@ sharing a room, then tests it through community work, research and building.
   own look: TeenCare a soft sunrise in its yellow and orange with slate
   ink, Brain-Life white with its electric blue (#0041E7) and a dot grid;
   each company's wordmark stands in for the room title and its icon sits
-  in the door. Events is one story about why she makes gatherings,
+  in the door. Dream Strokes shows how the workshops grew into an
+  ecosystem (the eco block: Workshops, OPEN, Things to keep, People), then
+  OPEN's six ways in, then the team and advisors who make it possible.
+  Events is one story about why she makes gatherings,
   told in four threads (Create together, Cheer for the same thing, Make room to belong,
   Start what isn't there): the threads first, then Beats of Hope as the
   flagship that holds all four, then the other gatherings from her CV, two
