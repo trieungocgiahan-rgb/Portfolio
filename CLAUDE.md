@@ -120,7 +120,7 @@ sharing a room, then tests it through community work, research and building.
   one "Inside ·" line saying what the detail page holds, one way in, then a
   bridge (a.bridge): one serif sentence that hands on to the next part, and
   never claims an order or a cause that is not true (she approved the current
-  copy in October 2026). Numbers live in the prose; do not add stat rows. Do
+  copy in October 2026). Each part stays short: one small story, then one line that hints at what the room holds, never a list of its contents. Story prose is set at --t-lead and the Inside line and fact line at --t-ui, so nothing on the homepage reads as fine print. Numbers live in the prose; do not add stat rows. Do
   not add sections; detail belongs in the rooms (ROOMS in app.js).
 - Small text (mono labels, captions) must reach 4.5:1 against what is painted
   behind it: labels in a room's colour use color-mix(accent 76%, ink), grey
