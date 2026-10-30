@@ -1331,13 +1331,14 @@ const ROOMS={
     {k:"cx-2",ratio:"1600/920",url:"contextuary.app/practice",ghost:"a quiz question",cap:"Practice: a fill-in-the-blank question built from the words you saved."}
   ]],
   ["beside",{flip:true,blocks:[
-    ["kicker","Listening, then cutting"],
+    ["kicker","Three features I removed"],
+    ["para","After launch, I watched how people used Contextuary and listened to what they said. Three things I had built were getting in their way, so I took them out."],
     ["pairs",[
-      {h:"Spaced repetition",p:"I built the logic, then removed it. It scheduled reviews of words users didn’t need that day, and opening the app started to feel like a chore."},
-      {h:"Topic filters",p:"Few users opened them, so I took them out."},
-      {h:"A separate Today page",p:"One more tap to reach the thing they came for. Daily Picks moved to the top of My Words instead."}
+      {h:"A review schedule",p:"It brought old words back on set days, even when a student didn’t need them that day. Opening the app started to feel like homework."},
+      {h:"Topic filters",p:"You could sort words by topic, but few users ever opened the filters."},
+      {h:"A separate Today page",p:"Daily Picks had its own page, one extra tap away. I moved them to the top of My Words instead."}
     ]]],
-    shot:{k:"cx-3",ratio:"1138/1200",url:"contextuary.app/practice",ghost:"Start practice",cap:"What stayed: quiz or flashcards, an AI Challenge, and six question types."}}],
+    shot:{k:"cx-3",ratio:"1138/1200",url:"contextuary.app/practice",ghost:"Start practice",cap:"The practice screen today: quiz or flashcards, an AI Challenge, and six question types."}}],
   ["kicker","Made for the SAT"],
   ["pairs",[
     {h:"Daily Picks",p:"Each day Contextuary suggests a few words worth learning, at the top of My Words, so a student never has to decide where to start."},
