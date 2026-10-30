@@ -1465,13 +1465,13 @@ const ARCHIVE=[
   {id:"red-season",t:"Red Season",p:"Acrylic on canvas, approx. 25 × 25 cm",d:"",ratio:"464/427",size:.8,
    n:"These lilies grew out of all that deep red, and no one sees what it took to get there. That's how strength feels to me, quiet and blooming from the inside.",
    alt:"Acrylic painting of two pink stargazer lilies with green leaves on a deep red ground."},
-  {id:"bloom-anyway",t:"Bloom Anyway",p:"Acrylic on canvas, approx. 30 × 40 cm",d:"",ratio:"478/584",size:.95,
+  {id:"bloom-anyway",hook:"Eyes on me from every side… I smile anyway.",t:"Bloom Anyway",p:"Acrylic on canvas, approx. 30 × 40 cm",d:"",ratio:"478/584",size:.95,
    n:"Eyes on me from every side, and just as much noise inside my head I smile anyway, while something quiet keeps growing, two buds still waiting to open.",
    alt:"Acrylic painting: a white lily on a blue stem rises through a dark red field of watching eyes, swirls and a small smiling face."},
   {id:"chemistry",t:"Chemistry",p:"Acrylic on canvas, 40 × 60 cm",d:"2026",ratio:"627/942",size:1.15,
    n:"When two people are drawn to each other, I picture it starting as a tiny signal between neurons. Then it turns into a dance. Here two souls move toward each other through the branches, like the chemistry in my head has found its rhythm.",
    alt:"Acrylic painting in pink, coral and turquoise: two pale figures reach toward each other among branching neurons, a faint heart behind them."},
-  {id:"restless-light",t:"Restless Light",p:"Digital painting, 2000×1460",d:"2026",ratio:"666/498",size:1,
+  {id:"restless-light",hook:"What begins as chemistry becomes choreography.",t:"Restless Light",p:"Digital painting, 2000×1460",d:"2026",ratio:"666/498",size:1,
    n:"What begins as chemistry becomes choreography, until closeness seems to move through the body before the mind has found a name for it.",
    alt:"Digital painting: three glowing pink and violet figures with spiral hearts dance on a black ground, their limbs branching like neurons."},
   {id:"kaleidoscope",t:"Kaleidoscope",p:"Digital painting, 2000×1460",d:"2026",ratio:"629/503",size:1,
@@ -1480,7 +1480,7 @@ const ARCHIVE=[
   {id:"never-enough",t:"Never Enough",p:"Mixed media in a sketchbook",d:"",ratio:"1050/1400",size:.9,support:"paper",
    n:"Never Enough by Daniel Caesar was on replay the whole time I painted this. So I borrowed the album’s blues and its style, and used them to colour my own view of Ba Son Bridge at night.",
    alt:"Ba Son Bridge at night in deep blues, light streaming from its tower, a lone figure at the rail and the words Never Enough across the sky."},
-  {id:"ba-son-view",t:"Ba Son's view",p:"Red ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"678/497",size:.78,support:"paper",
+  {id:"ba-son-view",hook:"Standing on the bridge and watching the city light up… I feel my sadness fade.",t:"Ba Son's view",p:"Red ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"678/497",size:.78,support:"paper",
    n:"Standing on the bridge and watching the city light up in its ceaseless rush, I feel my sadness fade as I watch the metropolis grow ever grander through the passing hours.",
    alt:"Red ink sketch of the Ho Chi Minh City skyline seen across the river, a tree-lined embankment in front."},
   {id:"tan-dinh",t:"Tan Dinh Church",p:"Ink and coloured pencil in a sketchbook",d:"",ratio:"1050/1400",size:.82,support:"paper",
@@ -1495,30 +1495,30 @@ const ARCHIVE=[
 ];
 /* the exhibition hangs in three rooms; each opens with a short wall text */
 const GALLERY_ROOMS=[
-  {n:"01",t:"What grows inside",p:"Let’s start inside. These are things I carry around and don’t say out loud, so I paint them instead. A star glowing behind my ribs, lilies growing out of deep red, and one that blooms anyway, with all those eyes on it.",ids:["stardust","red-season","bloom-anyway"]},
-  {n:"02",t:"Chemistry",p:"Then it spills over to other people. You know that moment you click with someone? I like to imagine it starts as a tiny spark between neurons, turns into a dance, and ends with the whole room lit up.",ids:["chemistry","restless-light","kaleidoscope"]},
-  {n:"03",t:"My city",p:"And then I step outside. I grew up in Ho Chi Minh City and for years I barely looked at it. So I started drawing it like a tourist would, slowly, and kept finding beautiful things I’d walked past so many times.",ids:["never-enough","ba-son-view","tan-dinh","city-hall","post-office"]}
+  {n:"01",t:"What grows inside",m:"Acrylic",p:"Let’s start inside. These are things I carry around and don’t say out loud, so I paint them instead. A star glowing behind my ribs, lilies growing out of deep red, and one that blooms anyway, with all those eyes on it.",ids:["stardust","red-season","bloom-anyway"]},
+  {n:"02",t:"Chemistry",m:"Acrylic and digital",p:"Then it spills over to other people. You know that moment you click with someone? I like to imagine it starts as a tiny spark between neurons, turns into a dance, and ends with the whole room lit up.",ids:["chemistry","restless-light","kaleidoscope"]},
+  {n:"03",t:"My city",m:"Ink and mixed media",p:"And then I step outside. I grew up in Ho Chi Minh City and for years I barely looked at it. So I started drawing it like a tourist would, slowly, and kept finding beautiful things I’d walked past so many times.",ids:["never-enough","ba-son-view","tan-dinh","city-hall","post-office"]}
 ];
 const roomOf=id=>GALLERY_ROOMS.find(r=>r.ids.includes(id));
 /* photographs she took and colour-graded, in two sets, each print seen whole */
 const PHOTO_SETS=[
   {n:"01",t:"The city",p:"Same city, now with a camera. The pink church against a blue sky, a lantern street so packed you can barely move, and mist outside a cafe lighting up in the late sun.",items:[
-    {k:"tandinh-wide",w:1500,h:1082,t:"Tan Dinh Church",alt:"Tan Dinh Church, pink against a blue sky with white clouds, framed by buildings and leaves; a bus passes in front."},
-    {k:"lanterns",w:1500,h:1111,t:"A lantern street at night",alt:"A crowded street at night under hanging lanterns and red flags, lit warm gold."},
-    {k:"north-gate",w:1500,h:985,t:"Ben Thanh Market, north gate, at dusk",alt:"Evening traffic in front of Ben Thanh Market's north gate, neon signs on both sides of the street."},
-    {k:"mist",w:640,h:960,t:"Mist outside a cafe",alt:"Late sun through mist sprayed outside a cafe; silk lanterns glow and a waiter walks through the haze."},
-    {k:"stalls",w:1500,h:942,t:"Food stalls at night",alt:"Food stalls lit by hanging bulbs in the dark, skewers of fruit and snacks on the counters."},
-    {k:"saigon-wall",w:1500,h:1000,t:"Saigon 2026",alt:"A wall decorated with the words Saigon 2026, the city skyline and a flag, with motorbikes blurring past."},
-    {k:"tandinh",w:1500,h:1104,t:"Tan Dinh Church, from the street",alt:"The front of Tan Dinh Church with its clock, taxis and motorbikes on the street below."},
-    {k:"pigeons",w:1500,h:1000,t:"Pigeons on a roof",alt:"Pigeons on a roof edge, one landing with its wings spread, green trees and a flag behind."}
+    {k:"tandinh-wide",s:"I framed it between two buildings so the tower fills the whole sky.",w:1500,h:1082,t:"Tan Dinh Church",alt:"Tan Dinh Church, pink against a blue sky with white clouds, framed by buildings and leaves; a bus passes in front."},
+    {k:"lanterns",s:"So packed you can barely move, and every stall glowing.",w:1500,h:1111,t:"A lantern street at night",alt:"A crowded street at night under hanging lanterns and red flags, lit warm gold."},
+    {k:"north-gate",s:"Dusk, the neon already on, and Ben Thanh’s north gate waiting at the end of the street.",w:1500,h:985,t:"Ben Thanh Market, north gate, at dusk",alt:"Evening traffic in front of Ben Thanh Market's north gate, neon signs on both sides of the street."},
+    {k:"mist",s:"The cafe sprays mist to cool the street, and the late sun turned all of it gold.",w:640,h:960,t:"Mist outside a cafe",alt:"Late sun through mist sprayed outside a cafe; silk lanterns glow and a waiter walks through the haze."},
+    {k:"stalls",s:"Snack stalls under a row of bare bulbs, and everything else falling into the dark.",w:1500,h:942,t:"Food stalls at night",alt:"Food stalls lit by hanging bulbs in the dark, skewers of fruit and snacks on the counters."},
+    {k:"saigon-wall",s:"I kept the wall sharp and let the motorbikes blur right past it.",w:1500,h:1000,t:"Saigon 2026",alt:"A wall decorated with the words Saigon 2026, the city skyline and a flag, with motorbikes blurring past."},
+    {k:"tandinh",s:"The same church from the street, with taxis and motorbikes going about their day.",w:1500,h:1104,t:"Tan Dinh Church, from the street",alt:"The front of Tan Dinh Church with its clock, taxis and motorbikes on the street below."},
+    {k:"pigeons",s:"One pigeon caught mid-landing, wings wide open.",w:1500,h:1000,t:"Pigeons on a roof",alt:"Pigeons on a roof edge, one landing with its wings spread, green trees and a flag behind."}
   ]},
   {n:"02",t:"The pitch",p:"And school football, from right in the middle of it. Everyone yelling in the huddle, one player off on his own before kick-off, a blur of shirts, and the whole bench laughing afterwards. I graded these warm and grainy, like a late afternoon out there.",items:[
-    {k:"huddle",w:1000,h:1500,t:"The huddle",alt:"Looking up into a team huddle: players in red shirts shout and lean in around a boy in yellow."},
-    {k:"match",w:1500,h:987,t:"Under the net",alt:"Three players run toward goal on a green pitch under a striped net, apartment blocks behind."},
-    {k:"player",w:789,h:1500,t:"Before kick-off",alt:"A player in a red shirt stands alone on the pitch, head down, trees lit by low sun behind."},
-    {k:"blur",w:1500,h:973,t:"Moving with the game",alt:"Two players tangle for the ball, blurred with motion, the net bright above them."},
-    {k:"laughing",w:1500,h:991,t:"Between matches",alt:"Students in white school shirts laugh and point at each other beside the pitch."},
-    {k:"by-the-goal",w:1500,h:980,t:"By the goal",alt:"Students in school uniforms sit on the grass against the goal net, some making peace signs."}
+    {k:"huddle",s:"Shot from down low, inside the huddle, while everyone was yelling.",w:1000,h:1500,t:"The huddle",alt:"Looking up into a team huddle: players in red shirts shout and lean in around a boy in yellow."},
+    {k:"match",s:"Three players chasing one ball under the big striped net.",w:1500,h:987,t:"Under the net",alt:"Three players run toward goal on a green pitch under a striped net, apartment blocks behind."},
+    {k:"player",s:"One player on his own before kick-off, the late sun caught in the trees.",w:789,h:1500,t:"Before kick-off",alt:"A player in a red shirt stands alone on the pitch, head down, trees lit by low sun behind."},
+    {k:"blur",s:"Two players fighting for the ball, all motion and colour.",w:1500,h:973,t:"Moving with the game",alt:"Two players tangle for the ball, blurred with motion, the net bright above them."},
+    {k:"laughing",s:"Between matches. Someone’s pointing, and everyone’s laughing.",w:1500,h:991,t:"Between matches",alt:"Students in white school shirts laugh and point at each other beside the pitch."},
+    {k:"by-the-goal",s:"The whole bench sitting against the goal net, peace signs up.",w:1500,h:980,t:"By the goal",alt:"Students in school uniforms sit on the grass against the goal net, some making peace signs."}
   ]}
 ];
 /* every work is shown whole: contain, never cropped */
@@ -1526,23 +1526,26 @@ ARCHIVE.forEach(a=>{ MEDIA["art-"+a.id]={src:`img/art-${a.id}.jpg`,alt:a.alt,fit
 /* the room's door shows the first work as a photograph through a doorway (cropped, not squashed) */
 MEDIA["exhibition-door"]={src:"img/art-chemistry.jpg",alt:"",pos:"50% 40%"};
 const label=a=>a.d?`${a.p}, ${a.d}`:a.p;
+/* the first line of her note, hung on the label so every work tells its story on the wall */
+const hookOf=a=>a.hook||(a.n.match(/^.+?[.!?](?=\s|$)/)||[a.n])[0];
 function exhibitionHTML(){
   return `${hero({kicker:"Exhibition",title:"Inside / Outside",
     sub:"The space between what I see and what I carry.",
     lede:"Some of these pieces started with something tangible. Others started with something invisible. As I paint, the outside world and my internal world bleed together onto the same canvas.",
-    meta:"Five rooms, from what I carry inside out to the city, a camera and a few films. Drag along the wall and tap anything to see it up close.",
+    meta:"Paint, ink, a camera and film. Five rooms, starting with what I carry inside and ending out in the city. Tap anything to hear its story.",
     k:"exhibition-door",ghost:"Chemistry"})}
   <nav class="gallery__plan" aria-label="Rooms of the exhibition">
     <p class="gallery__plan-k">The exhibition · five rooms, inside to outside</p>
     <ol>${GALLERY_ROOMS.map(r=>`<li><button type="button" data-gallery-room="${r.n}"><span>Room ${r.n}</span>${r.t}<i>${r.ids.length} works</i></button></li>`).join("")}
       <li><button type="button" data-gallery-goto="room-photos"><span>Room 04</span>Through my lens<i>${PHOTO_SETS.reduce((n,x)=>n+x.items.length,0)} photographs</i></button></li>
       <li><button type="button" data-gallery-goto="room-films"><span>Room 05</span>Screening room<i>${FILMS.length} films</i></button></li></ol>
+    <p class="gallery__media"><span>Made with</span>${["Acrylic","Ink","Coloured pencil","Digital painting","Mixed media","Photography","Colour grading","Film"].map(m=>`<i>${m}</i>`).join("")}</p>
   </nav>
   <div class="gallery" id="gallery">
     <span class="gallery__spot" id="gallerySpot" aria-hidden="true"></span>
     <div class="gallery__wall">${GALLERY_ROOMS.map(r=>`
       <section class="walltext" id="gallery-room-${r.n}" aria-label="Room ${r.n}, ${r.t}">
-        <p class="walltext__n">Room ${r.n}</p>
+        <p class="walltext__n">Room ${r.n} · ${r.m}</p>
         <h3 class="walltext__t">${r.t}</h3>
         <p class="walltext__p">${r.p}</p>
       </section>${r.ids.map(id=>{ const i=ARCHIVE.findIndex(x=>x.id===id), a=ARCHIVE[i]; return `
@@ -1555,7 +1558,8 @@ function exhibitionHTML(){
         <span class="work__label">
           <b>${a.t}</b>
           <span>${label(a).replace(/ × /g,"\u00a0×\u00a0")}</span>
-          <span class="work__peek">Inspect</span>
+          <span class="work__story">“${hookOf(a)}”</span>
+          <span class="work__peek">Read the story</span>
         </span>
       </button>`; }).join("")}`).join("")}</div>
     <span class="gallery__floor" aria-hidden="true"></span>
@@ -1583,13 +1587,14 @@ function photosHTML(){
     <div class="photos__set">
       <div class="photos__label"><p class="walltext__n">Set ${set.n}</p><h3 class="walltext__t">${set.t}</h3><p class="walltext__p">${set.p}</p></div>
       <div class="photos__prints">${set.items.map(ph=>`
-        <button class="print" type="button" data-photo="img/ph-${ph.k}.jpg" data-cap="${ph.t}" aria-label="${ph.t}. Open larger.">
+        <button class="print" type="button" data-photo="img/ph-${ph.k}.jpg" data-cap="${ph.t}" data-story="${ph.s}" aria-label="${ph.t}. Open larger.">
           <img src="img/ph-${ph.k}.jpg" alt="${ph.alt}" width="${ph.w}" height="${ph.h}" loading="lazy" decoding="async">
           <span class="print__cap">${ph.t}</span>
+          <span class="print__story">${ph.s}</span>
         </button>`).join("")}</div>
     </div>`).join("")}
     <dialog class="lightbox" id="lightbox" aria-label="Photograph">
-      <figure><img alt=""><figcaption></figcaption></figure>
+      <figure><img alt=""><figcaption><b></b><span></span></figcaption></figure>
       <button class="lightbox__close" type="button" aria-label="Close">×</button>
     </dialog>
   </section>`;
@@ -1598,7 +1603,7 @@ function bindPhotos(){
   const box=$("#lightbox"); if(!box) return;
   const img=$("img",box), cap=$("figcaption",box);
   $$(".print").forEach(b=>b.addEventListener("click",()=>{
-    const src=$("img",b); img.src=b.dataset.photo; img.alt=src.alt; cap.textContent=b.dataset.cap; box.showModal();
+    const src=$("img",b); img.src=b.dataset.photo; img.alt=src.alt; $("b",cap).textContent=b.dataset.cap; $("span",cap).textContent=b.dataset.story; box.showModal();
   }));
   $(".lightbox__close",box).addEventListener("click",()=>box.close());
   box.addEventListener("click",e=>{ if(e.target===box) box.close(); });

@@ -56,7 +56,10 @@ sharing a room, then tests it through community work, research and building.
   in her voice, picture lights, museum labels, an oak floor; her statement
   and painting notes stay word for word. Room 04 hangs her photographs
   (The city, The pitch), shot and colour-graded by her, as white-bordered
-  prints seen whole that open in a lightbox.
+  prints seen whole that open in a lightbox. The page shows how many ways
+  she makes things: a "Made with" row of tags under the floor plan, each
+  wall room names its medium, every museum label carries the first line of
+  her note (or a trimmed hook in her words) and every print a one-line story.
   Awards is told as a story: the years on one line with a small medal
   per honour, then one chapter per group (AWARD_GROUPS), each honour a
   drawn medal (ribbon in the group colour, its mark engraved) beside the
