@@ -10,7 +10,7 @@ addEventListener("error",e=>{ console.warn("[site] caught:",e.message||e); });
    ============================================================ */
 const MEDIA = {
   "hero-door":{src:"img/hero-door.jpg",alt:"A workshop on a shelter floor: a girl leans in towards a boy holding up a crayon drawing while two younger children lie on the floor beside them.",pos:"50% 42%"},
-  "rooms-hall":{src:"img/rooms-hall.jpg",alt:"Two people hug and smile in a shelter hall. Behind them, children work at small plastic tables beside a standing fan."},
+  "rooms-hall":{src:"img/rooms-hall.jpg",alt:"Gia Han and a girl from the shelter hug and smile at the camera. Behind them, children work at small plastic tables.",pos:"95% 50%"},
   "rooms-hands":"", "sheet-2":"",
   "gather-2":{src:"img/gather-2.jpg",alt:"Beats of Hope, seen from the stage: a singer in a white T-shirt faces a packed crowd under pink and green lights, hands raised, people singing along.",pos:"45% 50%"},
   /* the exhibition's own works register themselves from ARCHIVE below */
