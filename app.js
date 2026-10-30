@@ -896,7 +896,7 @@ const ROOMS={
   ["para","Dream Strokes grew in several directions at once, so here they are on one ring. Each part opens its chapter below."],
   ["chapters",{route:"/work/net-mo",ring:{logo:"img/dream-strokes-logo.jpg",name:"Dream Strokes"},items:[
     {n:"01",id:"why",t:"Why Dream Strokes exists",s:"Why",p:"One right answer at school, and why I started it."},
-    {n:"02",id:"sessions",t:"Sessions built with care",s:"Sessions",p:"Our lesson plans, the Magic Mirror, and a curriculum for Hanoi."},
+    {n:"02",id:"sessions",t:"Sessions built with care",s:"Sessions",p:"Our curriculum Cloud’s Story, the Magic Mirror session, and Colors of Joy in Hanoi."},
     {n:"03",id:"open",t:"Dream Strokes OPEN",s:"OPEN",p:"A concert, a football cup and an exhibition, open to anyone."},
     {n:"04",id:"art",t:"Art that keeps going",s:"Their art",p:"A website, a virtual exhibition, and money back into sessions."},
     {n:"05",id:"partners",t:"Partners and sponsors",s:"Partners",p:"The professionals who guide us, and the sponsors who back us."},
@@ -929,7 +929,7 @@ const ROOMS={
       {k:"nm-3",slot:"Plate 02",ratio:"3/4",ghost:"drawings held up",cap:"Characters to speak through, held up for everyone to see."},
       {k:"nm-2",slot:"Plate 03",ratio:"3/4",ghost:"older participant",cap:"A care home session with older adults."}
     ]]]}],
-  ["feature",{id:"magic-mirror",k:"One lesson, up close",h:"The Magic Mirror",
+  ["feature",{id:"magic-mirror",k:"One session, up close",h:"The Magic Mirror",
     p:["Each child gets a mirror frame on paper and draws the person they see in it.","One girl drew herself in a crown. One boy drew himself spinning a basketball on a court. It is a simple way to ask a child how they see themselves, without asking them to explain."],
     figs:[
       {k:"ds-mirror-1",ratio:"1088/1200",ghost:"a portrait in a pink mirror frame",cap:"In a crown."},
@@ -1021,9 +1021,9 @@ const ROOMS={
   ["shelf",{main:{k:"op-cards",ratio:"1/1",ghost:"the Feel-it! box",meta:"Emotion cards · ages 5 to 10",name:"Feel-it!",
       p:"24 emotion characters and five games, so a child can name a feeling by pointing at it.",badge:"Second Prize · Ho Chi Minh City Youth Creativity Contest 2025"},
     rest:[
-      {mark:"plans",meta:"Lesson plans",name:"Our curriculum",p:"Session plans and facilitator guides for every activity, from the Magic Mirror to the Hanoi programme."},
+      {mark:"plans",meta:"Our curriculum",name:"Cloud’s Story",p:"Drawing Worries, Colouring Hope: our session plans and facilitator guides, which turn feelings into something to make art from."},
       {k:"op-calendar",ghost:"the 2026 calendar",meta:"Calendar",name:"The 2026 calendar",p:"Drawn by our team and sold to pay for the next season of workshops."},
-      {k:"op-comic",ghost:"a page of the comic",meta:"Comic series",name:"Cloud’s Story",p:"Drawing Worries, Colouring Hope: the workshop idea told as a story anyone can read."}
+      {k:"op-comic",ghost:"a page of the comic",meta:"Comic series",name:"Cloud’s Story, the comic",p:"The same curriculum told as a story anyone can read."}
     ]}],
   ["lead",{k:"op-cardsheet",slot:"Plate 06",ratio:"3/2",ghost:"the Feel-it! card system",cap:"The Feel-it! card system: 24 emotions in families, five ways to play, and the box it comes in."}],
 

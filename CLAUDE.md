@@ -104,10 +104,13 @@ sharing a room, then tests it through community work, research and building.
   About, then on to Dream Strokes), 01 Notice, 02 Study, 03 Make, 04 Gather, 05 Draw,
   06 The question, More work, footer. The hero and the ID card ask the one
   question: what makes it easier for people to take part? Parts 01–05 each
-  carry a way-in line (.wayin). 01 Dream Strokes is told as three steps on
-  one line (.arc): Creative (art anyone can join), Expressive (the Magic
-  Mirror, story worlds), Connection (the shared tray, OPEN); the tray is one
-  moment in it, not the whole project. Then
+  carry a way-in line (.wayin). 01 Dream Strokes carries three tags
+  (Creative, Expressive, Connection) and two paragraphs: one story of why
+  making and expressing matter and how it brings people together (one right
+  answer at school, the shared tray), then what Dream Strokes is as a whole
+  (the curriculum Cloud’s Story: Drawing Worries, Colouring Hope; sessions;
+  the team; OPEN; Feel-it!; art that pays for the next session). The Magic
+  Mirror is one session, never the curriculum. Then
   02 Expressive (a format that fits the person), 03 Connection (seeing what
   everyone else did), 04 Gathering (one person moving closer to the stage),
   05 Creative (a blank page, just for me); 06 gathers them and keeps the
