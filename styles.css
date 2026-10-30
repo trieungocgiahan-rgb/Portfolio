@@ -781,6 +781,7 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 @property --om-a{syntax:"<color>";inherits:true;initial-value:#F8D5E3}
 @property --om-b{syntax:"<color>";inherits:true;initial-value:#D5E6F8}
 @property --om-c{syntax:"<color>";inherits:true;initial-value:#FBEBC3}
+@property --om-base{syntax:"<color>";inherits:true;initial-value:#FAF5F6}
 .room:is([data-room="net-mo"],[data-room="events"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="exhibition"],[data-room="awards"]){
   --glass:rgba(255,255,255,.58);--glass-strong:rgba(255,255,255,.86);--glass-line:rgba(255,255,255,.92);
   --glass-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 30px 60px -42px rgba(58,40,96,.42);--glass-blur:blur(16px) saturate(140%);
@@ -790,7 +791,7 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
     radial-gradient(80% 85% at 100% 40%,var(--om-b),transparent 75%),
     radial-gradient(100% 70% at 30% 100%,var(--om-c),transparent 75%),
     var(--om-base);
-  transition:opacity .45s var(--ease-soft),visibility .45s,clip-path .7s var(--ease),--om-a 1.4s var(--ease-soft),--om-b 1.4s var(--ease-soft),--om-c 1.4s var(--ease-soft)}
+  transition:opacity .45s var(--ease-soft),visibility .45s,clip-path .7s var(--ease),--om-a 1.4s var(--ease-soft),--om-b 1.4s var(--ease-soft),--om-c 1.4s var(--ease-soft),--om-base 1.4s var(--ease-soft)}
 @media(prefers-reduced-motion:reduce){.room:is([data-room="net-mo"],[data-room="events"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="exhibition"],[data-room="awards"]){transition:opacity .45s,visibility .45s}}
 .room:is([data-room="net-mo"],[data-room="events"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="exhibition"],[data-room="awards"]) .room__top{background:rgba(255,255,255,.5);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);border-bottom-color:rgba(255,255,255,.8)}
 .room:is([data-room="net-mo"],[data-room="events"],[data-room="tech"],[data-room="research"],[data-room="ai-art"],[data-room="exhibition"],[data-room="awards"]) .btn--ink{background:var(--btn);box-shadow:0 14px 26px -18px var(--btn-glow)}
@@ -816,8 +817,13 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 /* Tech · one blue, from screen-light to cobalt */
 .room[data-room="tech"]{--om-a:#D6E2FD;--om-b:#E6EDFE;--om-c:#C9D8FB;--om-base:#F7F9FF;
   --btn:linear-gradient(120deg,#2B4DE0,#1E37B0);--btn-glow:rgba(43,77,224,.8)}
-.room[data-room="tech"][data-chap="room-contextuary"]{--om-a:#D2DFFD;--om-b:#E4EBFE;--om-c:#C6D5FB}
-.room[data-room="tech"][data-chap="room-together"]{--om-a:#DDE6FE;--om-b:#EBF0FF;--om-c:#CFDCFC}
+/* each product's chapter takes on its own app: Contextuary's violet, Together!'s cream and coral */
+.room[data-room="tech"][data-chap="room-contextuary"]{--om-a:#DDD3FB;--om-b:#EEE9FE;--om-c:#CBBDF6;--om-base:#F8F6FF;
+  --btn:linear-gradient(120deg,#5A2BE0,#3F17B0);--btn-glow:rgba(80,32,208,.8)}
+.room[data-room="tech"][data-chap="room-contextuary"] #roomInner{--accent:#5020D0}
+.room[data-room="tech"][data-chap="room-together"]{--om-a:#FBD9CC;--om-b:#FBF1E2;--om-c:#EFDDF0;--om-base:#FDF8F0;
+  --btn:linear-gradient(120deg,#E8704F,#C9482E);--btn-glow:rgba(224,104,74,.8)}
+.room[data-room="tech"][data-chap="room-together"] #roomInner{--accent:#D2502F}
 /* Research · one violet */
 .room:is([data-room="research"],[data-room="ai-art"]){--om-a:#E3DBFA;--om-b:#EFEAFC;--om-c:#D9CEF8;--om-base:#FAF8FE;
   --btn:linear-gradient(120deg,#6A4BD6,#4E33B5);--btn-glow:rgba(106,75,214,.8)}

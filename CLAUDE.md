@@ -74,7 +74,9 @@ sharing a room, then tests it through community work, research and building.
   Events, Tech, Research, Exhibition, Awards) carry their colour through the whole
   page as an ombre that shifts per chapter, with frosted-glass cards. Only
   Dream Strokes mixes several pastels; every other room's ombre stays in
-  shades of its own one colour (Events amber, Tech blue, Research violet,
+  shades of its own one colour (Events amber, Tech blue until a product
+  chapter, which takes on its own app: Contextuary violet #5020D0, Together!
+  cream and coral #D2502F; Research violet,
   Exhibition warm gallery white, Awards gold), so the rooms never look alike; the lead
   photograph is always seen through an arched door and then tells one short story: what
   was noticed, what changed, what it led to. About is the one exception,
