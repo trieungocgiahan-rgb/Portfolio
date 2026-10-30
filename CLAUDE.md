@@ -106,8 +106,8 @@ sharing a room, then tests it through community work, research and building.
   question: what makes it easier for people to take part? Parts 01–05 each
   carry a way-in line (.wayin). 01 Dream Strokes carries three tags
   (Creative, Expressive, Connection) and two paragraphs: one story of why
-  making and expressing matter and how it brings people together (one right
-  answer at school, the shared tray), then what Dream Strokes is as a whole
+  making and expressing matter and how it brings people together (different
+  drawings from one prompt, the shared tray; told warmly, no school contrast), then what Dream Strokes is as a whole
   (the curriculum Cloud’s Story: Drawing Worries, Colouring Hope; sessions;
   the team; OPEN; Feel-it!; art that pays for the next session). The Magic
   Mirror is one session, never the curriculum. Then
