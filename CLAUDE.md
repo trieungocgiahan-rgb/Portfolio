@@ -104,7 +104,10 @@ sharing a room, then tests it through community work, research and building.
   About, then on to Dream Strokes), 01 Notice, 02 Study, 03 Make, 04 Gather, 05 Draw,
   06 The question, More work, footer. The hero and the ID card ask the one
   question: what makes it easier for people to take part? Parts 01–05 each
-  carry a way-in line (.wayin): 01 Interaction (one tray in the middle),
+  carry a way-in line (.wayin). 01 Dream Strokes is told as three steps on
+  one line (.arc): Creative (art anyone can join), Expressive (the Magic
+  Mirror, story worlds), Connection (the shared tray, OPEN); the tray is one
+  moment in it, not the whole project. Then
   02 Expressive (a format that fits the person), 03 Connection (seeing what
   everyone else did), 04 Gathering (one person moving closer to the stage),
   05 Creative (a blank page, just for me); 06 gathers them and keeps the
