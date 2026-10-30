@@ -95,9 +95,11 @@ const NETMO_FACEBOOK = "https://www.facebook.com/netmowprj";
    when a viewer presses play. Entries without a link show as "coming".
    ============================================================ */
 const FILMS = [
-  {t:"Film 01", d:"", n:"", url:""},
-  {t:"Film 02", d:"", n:"", url:""},
-  {t:"Film 03", d:"", n:"", url:""}
+  {t:"Saigon, a recap", d:"City film with my club", n:"Ideas and colour grading", url:"https://youtu.be/a0orKszPtps"},
+  {t:"Saigon, a second recap", d:"City film with my club", n:"Script and colour grading", url:"https://youtu.be/ukdp-GsolAA"},
+  {t:"A comedy", d:"Short film", n:"Script, editing and directing", url:""},
+  {t:"A love story", d:"Short film", n:"Script, editing and directing", url:"https://youtu.be/V75jwCiIzQw"},
+  {t:"Growing up", d:"Short film with my school", n:"Script, editing and directing", url:"https://youtu.be/I0C3uHDbzFk"}
 ];
 const REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const COARSE = window.matchMedia("(hover:none)").matches;
