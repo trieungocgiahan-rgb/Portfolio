@@ -1497,12 +1497,12 @@ const ARCHIVE=[
 const GALLERY_ROOMS=[
   {n:"01",t:"Chemistry",p:"Three works about what happens between people: a small signal, then a dance, then a whole room lit up.",ids:["chemistry","restless-light","kaleidoscope"]},
   {n:"02",t:"What grows inside",p:"What I carry where no one sees it: light from a star, strength out of deep red, something quiet still growing.",ids:["stardust","red-season","bloom-anyway"]},
-  {n:"03",t:"My city",p:"Ho Chi Minh City, drawn in places I usually rush past. With the famous ones, I learned to look like a tourist, slowly enough to see how finely they are made.",ids:["never-enough","ba-son-view","tan-dinh","city-hall","post-office"]}
+  {n:"03",t:"My city",p:"Ho Chi Minh City, drawn slowly in the places I usually rush past: a bridge at night, a church, a post office.",ids:["never-enough","ba-son-view","tan-dinh","city-hall","post-office"]}
 ];
 const roomOf=id=>GALLERY_ROOMS.find(r=>r.ids.includes(id));
 /* photographs she took and colour-graded, in two sets, each print seen whole */
 const PHOTO_SETS=[
-  {n:"01",t:"The city",p:"Streets I walk through, shot as I found them, then graded.",items:[
+  {n:"01",t:"The city",p:"I grew up in this city, so I had stopped seeing it. With a camera I started walking it like a tourist: looking up at a pink church, stopping for a lantern street, waiting for the mist outside a cafe to catch the sun. Then I graded each photo until it felt the way the street did.",items:[
     {k:"tandinh-wide",w:1500,h:1082,t:"Tan Dinh Church",alt:"Tan Dinh Church, pink against a blue sky with white clouds, framed by buildings and leaves; a bus passes in front."},
     {k:"lanterns",w:1500,h:1111,t:"A lantern street at night",alt:"A crowded street at night under hanging lanterns and red flags, lit warm gold."},
     {k:"north-gate",w:1500,h:985,t:"Ben Thanh Market, north gate, at dusk",alt:"Evening traffic in front of Ben Thanh Market's north gate, neon signs on both sides of the street."},
@@ -1512,7 +1512,7 @@ const PHOTO_SETS=[
     {k:"tandinh",w:1500,h:1104,t:"Tan Dinh Church, from the street",alt:"The front of Tan Dinh Church with its clock, taxis and motorbikes on the street below."},
     {k:"pigeons",w:1500,h:1000,t:"Pigeons on a roof",alt:"Pigeons on a roof edge, one landing with its wings spread, green trees and a flag behind."}
   ]},
-  {n:"02",t:"The pitch",p:"School football, from the huddle to the bench.",items:[
+  {n:"02",t:"The pitch",p:"School football, shot from inside the game. The huddle shouting before kick-off, one player alone with the ball still to come, shirts blurring at full speed, and the bench laughing after the whistle. I graded them warm and grainy, like a late afternoon on the pitch.",items:[
     {k:"huddle",w:1000,h:1500,t:"The huddle",alt:"Looking up into a team huddle: players in red shirts shout and lean in around a boy in yellow."},
     {k:"match",w:1500,h:987,t:"Under the net",alt:"Three players run toward goal on a green pitch under a striped net, apartment blocks behind."},
     {k:"player",w:789,h:1500,t:"Before kick-off",alt:"A player in a red shirt stands alone on the pitch, head down, trees lit by low sun behind."},
