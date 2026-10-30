@@ -50,7 +50,10 @@ sharing a room, then tests it through community work, research and building.
   Exhibition is a real gallery: a floor plan of three rooms (GALLERY_ROOMS:
   Chemistry, What grows inside, My city), each opening with a wall text
   in her voice, picture lights, museum labels, an oak floor; her statement
-  and painting notes stay word for word.
+  and painting notes stay word for word. Under the wall hang her
+  photographs (PHOTO_SETS: The city, The pitch), shot and colour-graded by
+  her, as white-bordered prints seen whole that open in a lightbox; then
+  the screening room.
   Awards is told as a story: the years on one line with a small medal
   per honour, then one chapter per group (AWARD_GROUPS), each honour a
   drawn medal (ribbon in the group colour, its mark engraved) beside the
@@ -92,7 +95,7 @@ sharing a room, then tests it through community work, research and building.
   the CV holds the dated record, AWARDS holds the honours once.
 - Keep every interaction: the entrance, drifting motes canvas, the story
   thread and the closing dots, crayon tray toggle, crossover chart,
-  draggable exhibition wall, archive object viewer, the
+  draggable exhibition wall, archive object viewer, the photograph lightbox, the
   screening room under the wall (FILMS in app.js, click-to-play embeds),
   chapter-coloured navigation.
 - Two navigations, two jobs, never mixed. The top bar is "The story":

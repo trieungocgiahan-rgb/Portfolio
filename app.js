@@ -1477,6 +1477,27 @@ const GALLERY_ROOMS=[
   {n:"03",t:"My city",p:"Ink sketches of Ho Chi Minh City, drawn standing still in places I usually rush past.",ids:["ba-son-view","post-office"]}
 ];
 const roomOf=id=>GALLERY_ROOMS.find(r=>r.ids.includes(id));
+/* photographs she took and colour-graded, in two sets, each print seen whole */
+const PHOTO_SETS=[
+  {n:"01",t:"The city",p:"Streets I walk through, shot as I found them, then graded.",items:[
+    {k:"tandinh-wide",w:1500,h:1082,t:"Tan Dinh Church",alt:"Tan Dinh Church, pink against a blue sky with white clouds, framed by buildings and leaves; a bus passes in front."},
+    {k:"lanterns",w:1500,h:1111,t:"A lantern street at night",alt:"A crowded street at night under hanging lanterns and red flags, lit warm gold."},
+    {k:"north-gate",w:1500,h:985,t:"Ben Thanh Market, north gate, at dusk",alt:"Evening traffic in front of Ben Thanh Market's north gate, neon signs on both sides of the street."},
+    {k:"mist",w:640,h:960,t:"Mist outside a cafe",alt:"Late sun through mist sprayed outside a cafe; silk lanterns glow and a waiter walks through the haze."},
+    {k:"stalls",w:1500,h:942,t:"Food stalls at night",alt:"Food stalls lit by hanging bulbs in the dark, skewers of fruit and snacks on the counters."},
+    {k:"saigon-wall",w:1500,h:1000,t:"Saigon 2026",alt:"A wall decorated with the words Saigon 2026, the city skyline and a flag, with motorbikes blurring past."},
+    {k:"tandinh",w:1500,h:1104,t:"Tan Dinh Church, from the street",alt:"The front of Tan Dinh Church with its clock, taxis and motorbikes on the street below."},
+    {k:"pigeons",w:1500,h:1000,t:"Pigeons on a roof",alt:"Pigeons on a roof edge, one landing with its wings spread, green trees and a flag behind."}
+  ]},
+  {n:"02",t:"The pitch",p:"School football, from the huddle to the bench.",items:[
+    {k:"huddle",w:1000,h:1500,t:"The huddle",alt:"Looking up into a team huddle: players in red shirts shout and lean in around a boy in yellow."},
+    {k:"match",w:1500,h:987,t:"Under the net",alt:"Three players run toward goal on a green pitch under a striped net, apartment blocks behind."},
+    {k:"player",w:789,h:1500,t:"Before kick-off",alt:"A player in a red shirt stands alone on the pitch, head down, trees lit by low sun behind."},
+    {k:"blur",w:1500,h:973,t:"Moving with the game",alt:"Two players tangle for the ball, blurred with motion, the net bright above them."},
+    {k:"laughing",w:1500,h:991,t:"Between matches",alt:"Students in white school shirts laugh and point at each other beside the pitch."},
+    {k:"by-the-goal",w:1500,h:980,t:"By the goal",alt:"Students in school uniforms sit on the grass against the goal net, some making peace signs."}
+  ]}
+];
 /* every work is shown whole: contain, never cropped */
 ARCHIVE.forEach(a=>{ MEDIA["art-"+a.id]={src:`img/art-${a.id}.jpg`,alt:a.alt,fit:"contain"}; });
 /* the room's door shows the first work as a photograph through a doorway (cropped, not squashed) */
@@ -1521,8 +1542,40 @@ function exhibitionHTML(){
       <a class="btn btn--ink" href="https://canva.link/uouxvz39irst7qt" target="_blank" rel="noopener">See the full portfolio ↗</a>
     </div>
   </div>
+  ${photosHTML()}
   ${screeningHTML()}
   ${B.links([{href:"#/about",label:"About the practice"},{href:"#/work/net-mo",label:"Dream Strokes"},{href:"#/awards",label:"Awards"}])}`;
+}
+
+/* ---------- photographs · prints on the wall between the paintings and the films ---------- */
+function photosHTML(){
+  return `<section class="photos" id="room-photos" aria-label="Photographs">
+    <div class="photos__head">
+      <p class="room__kicker">Exhibition · photographs</p>
+      <h2 class="room__sub">Photographs I took and colour-graded</h2>
+    </div>${PHOTO_SETS.map(set=>`
+    <div class="photos__set">
+      <div class="photos__label"><p class="walltext__n">Set ${set.n}</p><h3 class="walltext__t">${set.t}</h3><p class="walltext__p">${set.p}</p></div>
+      <div class="photos__prints">${set.items.map(ph=>`
+        <button class="print" type="button" data-photo="img/ph-${ph.k}.jpg" data-cap="${ph.t}" aria-label="${ph.t}. Open larger.">
+          <img src="img/ph-${ph.k}.jpg" alt="${ph.alt}" width="${ph.w}" height="${ph.h}" loading="lazy" decoding="async">
+          <span class="print__cap">${ph.t}</span>
+        </button>`).join("")}</div>
+    </div>`).join("")}
+    <dialog class="lightbox" id="lightbox" aria-label="Photograph">
+      <figure><img alt=""><figcaption></figcaption></figure>
+      <button class="lightbox__close" type="button" aria-label="Close">×</button>
+    </dialog>
+  </section>`;
+}
+function bindPhotos(){
+  const box=$("#lightbox"); if(!box) return;
+  const img=$("img",box), cap=$("figcaption",box);
+  $$(".print").forEach(b=>b.addEventListener("click",()=>{
+    const src=$("img",b); img.src=b.dataset.photo; img.alt=src.alt; cap.textContent=b.dataset.cap; box.showModal();
+  }));
+  $(".lightbox__close",box).addEventListener("click",()=>box.close());
+  box.addEventListener("click",e=>{ if(e.target===box) box.close(); });
 }
 
 /* ---------- screening room · films, below the paintings ---------- */
@@ -1619,7 +1672,7 @@ function bindScreening(){
       room.dataset.room="exhibition";
       room.style.setProperty("--accent","var(--pink)");
       where.textContent="Exhibition";
-      bindArchive(); bindScreening();
+      bindArchive(); bindPhotos(); bindScreening();
       if(route==="/exhibition/films") requestAnimationFrame(()=>{ room.scrollTop=$("#room-films").offsetTop-$(".room__top").offsetHeight-16; });
     }
     else{
