@@ -826,6 +826,20 @@ function aboutHTML(){
     ${spark("spark--d")}
   </section>
 
+  <section class="about-strangers" aria-labelledby="about-strangers-h">
+    <div class="about-strangers__text">
+      <p class="about__kicker">Away from my projects</p>
+      <h3 class="about__lead" id="about-strangers-h">Talking to strangers</h3>
+      <p>I still end up talking to people I have only just met: at concerts, on tours around the city, or in random conversations with locals and with tourists. Often a drawing or a photo is how it starts.</p>
+    </div>
+    <ul class="about-strangers__photos">${[
+      ["cafe","1200/855","At a cafe","A group of young people smiling together on a bench in a wood-panelled cafe."],
+      ["gig","1200/900","At a gig","A blurry selfie of Gia Han with five people at a small gig under blue light."],
+      ["boat","1200/900","On a river boat","A selfie of Gia Han in a cheerful crowd on a river boat at night, flags in the air."],
+      ["deck","900/1200","On the deck, with people I had just met","Gia Han on a boat deck at night with a girl and four women, the lit city skyline behind."]
+    ].map(([k,r,c,a])=>`<li><figure><img src="img/ab-strangers-${k}.jpg" alt="${a}" width="${r.split("/")[0]}" height="${r.split("/")[1]}" loading="lazy" decoding="async"><figcaption>${c}</figcaption></figure></li>`).join("")}</ul>
+  </section>
+
   <section class="about-close">
     ${spark("spark--e")}
     <p class="about-close__lead">At the end of the day,</p>
@@ -1468,13 +1482,22 @@ const ARCHIVE=[
    alt:"Red ink sketch of the Ho Chi Minh City skyline seen across the river, a tree-lined embankment in front."},
   {id:"post-office",t:"My city Post Office",p:"Black ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"691/525",size:.78,support:"paper",
    n:"Redrawing the building I passed unnoticed every single day opened my eyes to its timeless beauty.",
-   alt:"Black ink sketch of the Saigon Central Post Office facade with its clock and arched windows, lettered with its Vietnamese name."}
+   alt:"Black ink sketch of the Saigon Central Post Office facade with its clock and arched windows, lettered with its Vietnamese name."},
+  {id:"never-enough",t:"Never Enough",p:"Mixed media in a sketchbook",d:"",ratio:"1050/1400",size:.9,support:"paper",
+   n:"Ba Son Bridge at night, painted while Daniel Caesar’s Never Enough was on replay. I borrowed the album’s blues and its style, and coloured my own view of the bridge with them.",
+   alt:"Ba Son Bridge at night in deep blues, light streaming from its tower, a lone figure at the rail and the words Never Enough across the sky."},
+  {id:"tan-dinh",t:"Tan Dinh Church",p:"Ink and coloured pencil in a sketchbook",d:"",ratio:"1050/1400",size:.82,support:"paper",
+   n:"One of the city’s best-known places. Drawing it slowly, the way a visitor would look at it, showed me how much detail the tower holds, from the clock to each small spire.",
+   alt:"Ink and coloured pencil sketch of Tan Dinh Church, its pink tower, clock and spires, lettered with its Vietnamese name."},
+  {id:"city-hall",t:"City Hall",p:"Ink and coloured pencil on paper",d:"2025",ratio:"1400/933",size:.82,support:"paper",
+   n:"The People’s Committee Building, drawn on 29 June 2025. I wanted the red roofs, the clock tower and the figures above the windows, all the detail I never stopped for when I walked past.",
+   alt:"Ink sketch of the Ho Chi Minh City People's Committee Building in yellow with red roofs and a flag on its clock tower, dated 29.6.25."}
 ];
 /* the exhibition hangs in three rooms; each opens with a short wall text */
 const GALLERY_ROOMS=[
   {n:"01",t:"Chemistry",p:"Three works about what happens between people: a small signal, then a dance, then a whole room lit up.",ids:["chemistry","restless-light","kaleidoscope"]},
   {n:"02",t:"What grows inside",p:"What I carry where no one sees it: light from a star, strength out of deep red, something quiet still growing.",ids:["stardust","red-season","bloom-anyway"]},
-  {n:"03",t:"My city",p:"Ink sketches of Ho Chi Minh City, drawn standing still in places I usually rush past.",ids:["ba-son-view","post-office"]}
+  {n:"03",t:"My city",p:"Ho Chi Minh City, drawn in places I usually rush past. With the famous ones, I learned to look like a tourist, slowly enough to see how finely they are made.",ids:["never-enough","ba-son-view","tan-dinh","city-hall","post-office"]}
 ];
 const roomOf=id=>GALLERY_ROOMS.find(r=>r.ids.includes(id));
 /* photographs she took and colour-graded, in two sets, each print seen whole */
@@ -1538,7 +1561,7 @@ function exhibitionHTML(){
   <div class="gallery__after">
     <p class="mono gallery__hint">Drag along the wall →</p>
     <div class="gallery__cta">
-      <p class="mono mono--sentence">Eight of them. The rest of the collection hangs in the full portfolio.</p>
+      <p class="mono mono--sentence">${ARCHIVE.length} works hang here. The rest of the collection is in the full portfolio.</p>
       <a class="btn btn--ink" href="https://canva.link/uouxvz39irst7qt" target="_blank" rel="noopener">See the full portfolio ↗</a>
     </div>
   </div>

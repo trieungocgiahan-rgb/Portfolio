@@ -48,7 +48,8 @@ sharing a room, then tests it through community work, research and building.
   Events (three chapters: Why, Beats of Hope, Eight more) and Tech (two
   chapters: Contextuary, Together!) use the same chapter map and bar.
   Exhibition is a real gallery: a floor plan of three rooms (GALLERY_ROOMS:
-  Chemistry, What grows inside, My city), each opening with a wall text
+  Chemistry, What grows inside, My city: five city works, from the
+  Never Enough bridge to City Hall), each opening with a wall text
   in her voice, picture lights, museum labels, an oak floor; her statement
   and painting notes stay word for word. Under the wall hang her
   photographs (PHOTO_SETS: The city, The pitch), shot and colour-graded by
@@ -85,7 +86,8 @@ sharing a room, then tests it through community work, research and building.
   was noticed, what changed, what it led to. About is the one exception,
   built from her mockup (aboutHTML in app.js): a sketch hero with line-only
   art (sparkles, one pink swirl), the story beside her portrait box (ab-2),
-  a pink band for its key line, then "See my drawings", "Open my CV" and a
+  a pink band for its key line, Talking to strangers (four snapshots with
+  people she met at concerts, on tours and in passing), then "See my drawings", "Open my CV" and a
   Dream Strokes card: where she puts this into practice.
   Tech is the other: its door holds the two app icons (marks), never a
   cropped screenshot; each product opens on a product block (logo, name,
