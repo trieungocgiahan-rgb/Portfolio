@@ -88,6 +88,8 @@ const EVENT_LINKS = {
 };
 /* Dream Strokes on Facebook (the page is called Net Mo Project). Empty hides the button. */
 const NETMO_FACEBOOK = "https://www.facebook.com/netmowprj";
+/* her CV, one PDF on Google Drive; every CV link opens it in a new tab */
+const CV_URL = "https://drive.google.com/file/d/1cvthqU3LzeiFmJvqFIp3UcGy-D-XMIaC/view?usp=drivesdk";
 /* ============================================================
    FILMS · the screening room under the Exhibition wall.
    Paste each film's YouTube link (any form: youtu.be/…, watch?v=…,
@@ -97,7 +99,7 @@ const NETMO_FACEBOOK = "https://www.facebook.com/netmowprj";
 const FILMS = [
   {t:"Saigon, a recap", d:"City film with my club", n:"Ideas and colour grading", url:"https://youtu.be/a0orKszPtps"},
   {t:"Saigon, a second recap", d:"City film with my club", n:"Script and colour grading", url:"https://youtu.be/ukdp-GsolAA"},
-  {t:"A comedy", d:"Short film", n:"Script, editing and directing", url:""},
+  {t:"A comedy", d:"Short film", n:"Script, editing and directing", url:"https://youtu.be/st8085B0-Gw"},
   {t:"A love story", d:"Short film", n:"Script, editing and directing", url:"https://youtu.be/V75jwCiIzQw"},
   {t:"Growing up", d:"Short film with my school", n:"Script, editing and directing", url:"https://youtu.be/I0C3uHDbzFk"}
 ];
@@ -568,7 +570,6 @@ const B={
   steps:a=>`<ol class="blk blk--steps">${a.map(s=>`<li><div><b>${s.b}</b><p>${s.p}</p>${s.event?`<p class="aside-link" data-event-row hidden><a data-event="${s.event}" href="#">Event page ↗</a></p>`:""}</div></li>`).join("")}</ol>`,
   numbers:a=>`<div class="blk numbers">${a.map(n=>`<div><b>${n.b}</b><span>${n.s}</span></div>`).join("")}</div>`,
   pairs:a=>`<div class="blk blk--pairs" data-n="${a.length}">${a.map(p=>`<div><h4>${p.h}</h4><p>${p.p}</p></div>`).join("")}</div>`,
-  rows:a=>`<div class="blk">${a.map(r=>`<div class="cv-row"><p class="mono">${r.t}</p><div><h4>${r.h}</h4><p>${r.p}</p></div></div>`).join("")}</div>`,
   contact:a=>`<div class="blk">${a.map(c=>`<a class="contact-line" href="${c.href}"${c.replace?` data-replace="${c.replace}"`:""}><span>${c.label}</span><span>${c.value}</span></a>`).join("")}</div>`,
   /* the honours as a story: the years on one line, then one chapter per group, and in each
      a drawn medal beside what it was, her story about it one tap away */
@@ -753,7 +754,7 @@ const B={
   visit:o=>`<p class="blk room__visit"><a class="btn btn--ink" href="${o.href}" target="_blank" rel="noopener">${o.label} ↗</a></p>`,
   /* words beside one screen */
   beside:o=>`<div class="blk beside${o.flip?" beside--flip":""}"><div class="beside__text">${o.blocks.map(([t,a])=>B[t](a)).join("")}</div>${screenFrame(o.shot)}</div>`,
-  links:a=>`<div class="room__more">${a.map(l=>`<a href="${l.href}">${l.label} →</a>`).join("")}</div>`
+  links:a=>`<div class="room__more">${a.map(l=>/^https?:/.test(l.href)?`<a href="${l.href}" target="_blank" rel="noopener">${l.label} ↗</a>`:`<a href="${l.href}">${l.label} →</a>`).join("")}</div>`
 };
 
 /* ---------- About · her own words, drawn around with a little art ----------
@@ -846,7 +847,7 @@ function aboutHTML(){
     <p class="about-close__line">the things I love most are the ones that come alive the moment <span class="about-close__mark">another person joins in.</span></p>
     <div class="about-close__cta">
       <a class="btn btn--ink" href="#/exhibition">See my drawings →</a>
-      <a class="about-close__cv" href="#/cv">Open my CV →</a>
+      <a class="about-close__cv" href="${CV_URL}" target="_blank" rel="noopener">Open my CV ↗</a>
     </div>
     <a class="about-practice" href="#/work/net-mo">
       <img class="about-practice__logo" src="img/dream-strokes-logo.jpg" alt="" width="480" height="480" loading="lazy">
@@ -859,7 +860,7 @@ function aboutHTML(){
   </section>`;
 }
 
-/* the verified honours, stated once, shown in Awards and in the CV.
+/* the verified honours, stated once, shown in Awards.
    t year · h name · p the result · g group · m its mark · s the story behind it, in Gia Han's words */
 const AWARD_GROUPS=[
   {id:"ideas",label:"Ideas & research",dc:"var(--violet)",p:"Psychology, and an essay about how we think."},
@@ -1404,32 +1405,6 @@ const ROOMS={
 
 "/about":{accent:"var(--pink)",where:"About",blocks:[["about"]]},
 
-"/cv":{accent:"var(--blue)",where:"CV",blocks:[
-  ["hero",{kicker:"Curriculum vitae · updated 2026",title:"The facts, dated"}],
-  ["kicker","Founded and led"],
-  ["rows",[
-    {t:"Apr 2025 – now",h:"Dream Strokes · Founder and Project Director",p:"Arts-based emotional-learning programme for children in shelters and older adults in care homes. 25-member team across R&D, Tech, Events and PR. 50 workshops, ~200 children, 6 shelters, 2 care homes, ~75M VND in net proceeds. Professionally guided and legally sponsored by Bao Sang Art Therapy Center."},
-    {t:"2026",h:"Once Upon the Inside · Co-producer",p:"Youth painting exhibition with The APRIL Collective at May Artspace. 300+ visitors."},
-    {t:"2025",h:"Beats of Hope · Producer, Little Smiles Project",p:"Benefit concert, 10+ student bands, 310+ tickets, ~25M VND raised for hospital play and storytelling sessions, donated to two hospitals in France."},
-    {t:"Aug 2024 – Feb 2025",h:"Trung Vuong Football League · Operations Lead",p:"2 seasons, 15 teams from 8 schools, 200+ student-athletes, 600+ cumulative spectators. Scheduling, budget, referees, safety protocol."}
-  ]],
-  ["kicker","Research"],
-  ["rows",[
-    {t:"Oct 2025 – now",h:"AI &amp; Art · First author",p:"Within-subjects study, N = 68, 136 sessions, expressive art-making versus AI-guided reflective dialogue. Crossover interaction by art familiarity. Python. Under review at NHSJS. Advised by Phuong Thao Nguyen."},
-    {t:"Aug 2026 – now",h:"Brain-Life · Research & Development Intern",p:"EEG recordings processed in Python, student survey analysis."},
-    {t:"2025",h:"Coursera",p:"Foundations of Neuroscience; Introduction to Psychology."}
-  ]],
-  ["kicker","Built"],
-  ["rows",[
-    {t:"Jan 2025 – now",h:"Contextuary · Founder and Product Designer",p:"SAT vocabulary in context. Designed in Figma, front end in React. ~2,200 visitors, 500+ registered users, ~70% weekly return."},
-    {t:"Dec 2025 – now",h:"Together! · Co-Founder and UI/UX Designer",p:"Shared project timeline, built with members of the Dream Strokes team. Used by Dream Strokes and 20+ other projects. 1,550+ visitors, 450+ returning."},
-    {t:"2025",h:"Dream Strokes activity journal",p:"Three-role permission system, media upload, calendar, deadline board."}
-  ]],
-  ["kicker","Selected honours"],
-  ["rows",[...AWARDS].sort((a,b)=>b.t-a.t)],
-  ["links",[{href:"#/about",label:"About"},{href:"#/awards",label:"Awards"},{href:"#/work/research",label:"Research & Experience"}]]
-]},
-
 "/awards":{accent:"#A9760B",where:"Awards",blocks:[
   ["hero",{kicker:"Awards · 2023 to 2026",title:"Awards",
     lede:"I like that these awards do not fit neatly into one category. They came from psychology, writing, maths, design, science, engineering and sport.",
@@ -1437,7 +1412,7 @@ const ROOMS={
     /* a medal drawn in the door, where other rooms show a photograph */
     art:'<path d="M42 4l14 58M78 4L64 62" stroke-width="9" opacity=".55"/><path d="M42 4l14 58M78 4L64 62"/><circle cx="60" cy="98" r="34"/><circle cx="60" cy="98" r="25" opacity=".6"/><path d="M60 82l4.7 9.6 10.6 1.5-7.7 7.5 1.8 10.5-9.4-5-9.4 5 1.8-10.5-7.7-7.5 10.6-1.5z"/>'}],
   ["awards"],
-  ["links",[{href:"#/about",label:"About"},{href:"#/cv",label:"CV"}]]
+  ["links",[{href:"#/about",label:"About"},{href:CV_URL,label:"CV"}]]
 ]}
 };
 
@@ -1465,13 +1440,13 @@ const ARCHIVE=[
   {id:"red-season",t:"Red Season",p:"Acrylic on canvas, approx. 25 × 25 cm",d:"",ratio:"464/427",size:.8,
    n:"These lilies grew out of all that deep red, and no one sees what it took to get there. That's how strength feels to me, quiet and blooming from the inside.",
    alt:"Acrylic painting of two pink stargazer lilies with green leaves on a deep red ground."},
-  {id:"bloom-anyway",hook:"Eyes on me from every side… I smile anyway.",t:"Bloom Anyway",p:"Acrylic on canvas, approx. 30 × 40 cm",d:"",ratio:"478/584",size:.95,
+  {id:"bloom-anyway",t:"Bloom Anyway",p:"Acrylic on canvas, approx. 30 × 40 cm",d:"",ratio:"478/584",size:.95,
    n:"Eyes on me from every side, and just as much noise inside my head I smile anyway, while something quiet keeps growing, two buds still waiting to open.",
    alt:"Acrylic painting: a white lily on a blue stem rises through a dark red field of watching eyes, swirls and a small smiling face."},
   {id:"chemistry",t:"Chemistry",p:"Acrylic on canvas, 40 × 60 cm",d:"2026",ratio:"627/942",size:1.15,
    n:"When two people are drawn to each other, I picture it starting as a tiny signal between neurons. Then it turns into a dance. Here two souls move toward each other through the branches, like the chemistry in my head has found its rhythm.",
    alt:"Acrylic painting in pink, coral and turquoise: two pale figures reach toward each other among branching neurons, a faint heart behind them."},
-  {id:"restless-light",hook:"What begins as chemistry becomes choreography.",t:"Restless Light",p:"Digital painting, 2000×1460",d:"2026",ratio:"666/498",size:1,
+  {id:"restless-light",t:"Restless Light",p:"Digital painting, 2000×1460",d:"2026",ratio:"666/498",size:1,
    n:"What begins as chemistry becomes choreography, until closeness seems to move through the body before the mind has found a name for it.",
    alt:"Digital painting: three glowing pink and violet figures with spiral hearts dance on a black ground, their limbs branching like neurons."},
   {id:"kaleidoscope",t:"Kaleidoscope",p:"Digital painting, 2000×1460",d:"2026",ratio:"629/503",size:1,
@@ -1480,7 +1455,7 @@ const ARCHIVE=[
   {id:"never-enough",t:"Never Enough",p:"Mixed media in a sketchbook",d:"",ratio:"1050/1400",size:.9,support:"paper",
    n:"Never Enough by Daniel Caesar was on replay the whole time I painted this. So I borrowed the album’s blues and its style, and used them to colour my own view of Ba Son Bridge at night.",
    alt:"Ba Son Bridge at night in deep blues, light streaming from its tower, a lone figure at the rail and the words Never Enough across the sky."},
-  {id:"ba-son-view",hook:"Standing on the bridge and watching the city light up… I feel my sadness fade.",t:"Ba Son's view",p:"Red ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"678/497",size:.78,support:"paper",
+  {id:"ba-son-view",t:"Ba Son's view",p:"Red ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"678/497",size:.78,support:"paper",
    n:"Standing on the bridge and watching the city light up in its ceaseless rush, I feel my sadness fade as I watch the metropolis grow ever grander through the passing hours.",
    alt:"Red ink sketch of the Ho Chi Minh City skyline seen across the river, a tree-lined embankment in front."},
   {id:"tan-dinh",t:"Tan Dinh Church",p:"Ink and coloured pencil in a sketchbook",d:"",ratio:"1050/1400",size:.82,support:"paper",
@@ -1503,22 +1478,22 @@ const roomOf=id=>GALLERY_ROOMS.find(r=>r.ids.includes(id));
 /* photographs she took and colour-graded, in two sets, each print seen whole */
 const PHOTO_SETS=[
   {n:"01",t:"The city",p:"Same city, now with a camera. The pink church against a blue sky, a lantern street so packed you can barely move, and mist outside a cafe lighting up in the late sun.",items:[
-    {k:"tandinh-wide",s:"I framed it between two buildings so the tower fills the whole sky.",w:1500,h:1082,t:"Tan Dinh Church",alt:"Tan Dinh Church, pink against a blue sky with white clouds, framed by buildings and leaves; a bus passes in front."},
-    {k:"lanterns",s:"So packed you can barely move, and every stall glowing.",w:1500,h:1111,t:"A lantern street at night",alt:"A crowded street at night under hanging lanterns and red flags, lit warm gold."},
-    {k:"north-gate",s:"Dusk, the neon already on, and Ben Thanh’s north gate waiting at the end of the street.",w:1500,h:985,t:"Ben Thanh Market, north gate, at dusk",alt:"Evening traffic in front of Ben Thanh Market's north gate, neon signs on both sides of the street."},
-    {k:"mist",s:"The cafe sprays mist to cool the street, and the late sun turned all of it gold.",w:640,h:960,t:"Mist outside a cafe",alt:"Late sun through mist sprayed outside a cafe; silk lanterns glow and a waiter walks through the haze."},
-    {k:"stalls",s:"Snack stalls under a row of bare bulbs, and everything else falling into the dark.",w:1500,h:942,t:"Food stalls at night",alt:"Food stalls lit by hanging bulbs in the dark, skewers of fruit and snacks on the counters."},
-    {k:"saigon-wall",s:"I kept the wall sharp and let the motorbikes blur right past it.",w:1500,h:1000,t:"Saigon 2026",alt:"A wall decorated with the words Saigon 2026, the city skyline and a flag, with motorbikes blurring past."},
-    {k:"tandinh",s:"The same church from the street, with taxis and motorbikes going about their day.",w:1500,h:1104,t:"Tan Dinh Church, from the street",alt:"The front of Tan Dinh Church with its clock, taxis and motorbikes on the street below."},
-    {k:"pigeons",s:"One pigeon caught mid-landing, wings wide open.",w:1500,h:1000,t:"Pigeons on a roof",alt:"Pigeons on a roof edge, one landing with its wings spread, green trees and a flag behind."}
+    {k:"tandinh-wide",w:1500,h:1082,t:"Tan Dinh Church",alt:"Tan Dinh Church, pink against a blue sky with white clouds, framed by buildings and leaves; a bus passes in front."},
+    {k:"lanterns",w:1500,h:1111,t:"A lantern street at night",alt:"A crowded street at night under hanging lanterns and red flags, lit warm gold."},
+    {k:"north-gate",w:1500,h:985,t:"Ben Thanh Market, north gate, at dusk",alt:"Evening traffic in front of Ben Thanh Market's north gate, neon signs on both sides of the street."},
+    {k:"mist",w:640,h:960,t:"Mist outside a cafe",alt:"Late sun through mist sprayed outside a cafe; silk lanterns glow and a waiter walks through the haze."},
+    {k:"stalls",w:1500,h:942,t:"Food stalls at night",alt:"Food stalls lit by hanging bulbs in the dark, skewers of fruit and snacks on the counters."},
+    {k:"saigon-wall",w:1500,h:1000,t:"Saigon 2026",alt:"A wall decorated with the words Saigon 2026, the city skyline and a flag, with motorbikes blurring past."},
+    {k:"tandinh",w:1500,h:1104,t:"Tan Dinh Church, from the street",alt:"The front of Tan Dinh Church with its clock, taxis and motorbikes on the street below."},
+    {k:"pigeons",w:1500,h:1000,t:"Pigeons on a roof",alt:"Pigeons on a roof edge, one landing with its wings spread, green trees and a flag behind."}
   ]},
   {n:"02",t:"The pitch",p:"And school football, from right in the middle of it. Everyone yelling in the huddle, one player off on his own before kick-off, a blur of shirts, and the whole bench laughing afterwards. I graded these warm and grainy, like a late afternoon out there.",items:[
-    {k:"huddle",s:"Shot from down low, inside the huddle, while everyone was yelling.",w:1000,h:1500,t:"The huddle",alt:"Looking up into a team huddle: players in red shirts shout and lean in around a boy in yellow."},
-    {k:"match",s:"Three players chasing one ball under the big striped net.",w:1500,h:987,t:"Under the net",alt:"Three players run toward goal on a green pitch under a striped net, apartment blocks behind."},
-    {k:"player",s:"One player on his own before kick-off, the late sun caught in the trees.",w:789,h:1500,t:"Before kick-off",alt:"A player in a red shirt stands alone on the pitch, head down, trees lit by low sun behind."},
-    {k:"blur",s:"Two players fighting for the ball, all motion and colour.",w:1500,h:973,t:"Moving with the game",alt:"Two players tangle for the ball, blurred with motion, the net bright above them."},
-    {k:"laughing",s:"Between matches. Someone’s pointing, and everyone’s laughing.",w:1500,h:991,t:"Between matches",alt:"Students in white school shirts laugh and point at each other beside the pitch."},
-    {k:"by-the-goal",s:"The whole bench sitting against the goal net, peace signs up.",w:1500,h:980,t:"By the goal",alt:"Students in school uniforms sit on the grass against the goal net, some making peace signs."}
+    {k:"huddle",w:1000,h:1500,t:"The huddle",alt:"Looking up into a team huddle: players in red shirts shout and lean in around a boy in yellow."},
+    {k:"match",w:1500,h:987,t:"Under the net",alt:"Three players run toward goal on a green pitch under a striped net, apartment blocks behind."},
+    {k:"player",w:789,h:1500,t:"Before kick-off",alt:"A player in a red shirt stands alone on the pitch, head down, trees lit by low sun behind."},
+    {k:"blur",w:1500,h:973,t:"Moving with the game",alt:"Two players tangle for the ball, blurred with motion, the net bright above them."},
+    {k:"laughing",w:1500,h:991,t:"Between matches",alt:"Students in white school shirts laugh and point at each other beside the pitch."},
+    {k:"by-the-goal",w:1500,h:980,t:"By the goal",alt:"Students in school uniforms sit on the grass against the goal net, some making peace signs."}
   ]}
 ];
 /* every work is shown whole: contain, never cropped */
@@ -1526,8 +1501,6 @@ ARCHIVE.forEach(a=>{ MEDIA["art-"+a.id]={src:`img/art-${a.id}.jpg`,alt:a.alt,fit
 /* the room's door shows the first work as a photograph through a doorway (cropped, not squashed) */
 MEDIA["exhibition-door"]={src:"img/art-chemistry.jpg",alt:"",pos:"50% 40%"};
 const label=a=>a.d?`${a.p}, ${a.d}`:a.p;
-/* the first line of her note, hung on the label so every work tells its story on the wall */
-const hookOf=a=>a.hook||(a.n.match(/^.+?[.!?](?=\s|$)/)||[a.n])[0];
 function exhibitionHTML(){
   return `${hero({kicker:"Exhibition",title:"Inside / Outside",
     sub:"The space between what I see and what I carry.",
@@ -1558,7 +1531,6 @@ function exhibitionHTML(){
         <span class="work__label">
           <b>${a.t}</b>
           <span>${label(a).replace(/ × /g,"\u00a0×\u00a0")}</span>
-          <span class="work__story">“${hookOf(a)}”</span>
           <span class="work__peek">Read the story</span>
         </span>
       </button>`; }).join("")}`).join("")}</div>
@@ -1587,23 +1559,21 @@ function photosHTML(){
     <div class="photos__set">
       <div class="photos__label"><p class="walltext__n">Set ${set.n}</p><h3 class="walltext__t">${set.t}</h3><p class="walltext__p">${set.p}</p></div>
       <div class="photos__prints">${set.items.map(ph=>`
-        <button class="print" type="button" data-photo="img/ph-${ph.k}.jpg" data-cap="${ph.t}" data-story="${ph.s}" aria-label="${ph.t}. Open larger.">
+        <button class="print" type="button" data-photo="img/ph-${ph.k}.jpg" aria-label="${ph.t}. Open larger.">
           <img src="img/ph-${ph.k}.jpg" alt="${ph.alt}" width="${ph.w}" height="${ph.h}" loading="lazy" decoding="async">
-          <span class="print__cap">${ph.t}</span>
-          <span class="print__story">${ph.s}</span>
         </button>`).join("")}</div>
     </div>`).join("")}
     <dialog class="lightbox" id="lightbox" aria-label="Photograph">
-      <figure><img alt=""><figcaption><b></b><span></span></figcaption></figure>
+      <img alt="">
       <button class="lightbox__close" type="button" aria-label="Close">×</button>
     </dialog>
   </section>`;
 }
 function bindPhotos(){
   const box=$("#lightbox"); if(!box) return;
-  const img=$("img",box), cap=$("figcaption",box);
+  const img=$("img",box);
   $$(".print").forEach(b=>b.addEventListener("click",()=>{
-    const src=$("img",b); img.src=b.dataset.photo; img.alt=src.alt; $("b",cap).textContent=b.dataset.cap; $("span",cap).textContent=b.dataset.story; box.showModal();
+    img.src=b.dataset.photo; img.alt=$("img",b).alt; box.showModal();
   }));
   $(".lightbox__close",box).addEventListener("click",()=>box.close());
   box.addEventListener("click",e=>{ if(e.target===box) box.close(); });
@@ -1698,6 +1668,8 @@ function bindScreening(){
     pickTab(n); n.focus();
   });
   function render(route){
+    /* the CV lives on Drive now; an old #/cv link opens it */
+    if(route==="/cv"){ location.replace(CV_URL); return; }
     if(route==="/exhibition"||route==="/archive"||route==="/exhibition/films"){
       inner.innerHTML=exhibitionHTML();
       tieLastWords(inner);

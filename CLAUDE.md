@@ -13,10 +13,12 @@ sharing a room, then tests it through community work, research and building.
   button, which also opens by itself after 1.6 s or on any key, wheel or
   touch, so no reader has to work to get in), Doors panel, deep spaces as rooms.
 - Doors has four destinations: Work (Dream Strokes, Events, Research &
-  Experience, Tech Projects), Exhibition, Awards, About. The CV is not in
-  Doors; About tells the longer story and ends on a CTA to it. Routes are
+  Experience, Tech Projects), Exhibition, Awards, About. The CV is one PDF
+  on Google Drive (CV_URL in app.js); every CV link opens it in a new tab
+  with ↗, and an old #/cv link goes straight to it. There is no CV page.
+  About tells the longer story and ends on a CTA to the CV. Routes are
   /work/net-mo, /work/events, /work/research, /work/tech, /exhibition,
-  /awards, /about, /cv. Research is a hub with three sub-rooms, one per
+  /awards, /about. Research is a hub with three sub-rooms, one per
   piece of work, so none is skimmed past: /work/research/ai-art,
   /work/research/teencare, /work/research/brain-life. Research rooms never
   show participants; their doors hold line drawings and their evidence is
@@ -56,10 +58,11 @@ sharing a room, then tests it through community work, research and building.
   in her voice, picture lights, museum labels, an oak floor; her statement
   and painting notes stay word for word. Room 04 hangs her photographs
   (The city, The pitch), shot and colour-graded by her, as white-bordered
-  prints seen whole that open in a lightbox. The page shows how many ways
-  she makes things: a "Made with" row of tags under the floor plan, each
-  wall room names its medium, every museum label carries the first line of
-  her note (or a trimmed hook in her words) and every print a one-line story.
+  prints seen whole that open in a lightbox, with no captions: photos stay
+  photos. The page shows how many ways she makes things through a "Made
+  with" row of tags under the floor plan and the medium named on each wall
+  room. Text describes a room or a set as a whole; a painting's own story
+  lives in the viewer, one tap away, never on the wall label.
   Awards is told as a story: the years on one line with a small medal
   per honour, then one chapter per group (AWARD_GROUPS), each honour a
   drawn medal (ribbon in the group colour, its mark engraved) beside the
@@ -79,7 +82,7 @@ sharing a room, then tests it through community work, research and building.
   data-room on #room: one dark hero (Events night stage) and light ones
   (Dream Strokes a pink-sky-butter ombre, Awards champagne gold, Tech shades of blue
   with a dot grid, Research shades of violet on graph paper, Exhibition
-  paint washes, About blush, CV ruled paper). Light rooms (Dream Strokes,
+  paint washes, About blush). Light rooms (Dream Strokes,
   Events, Tech, Research, Exhibition, Awards) carry their colour through the whole
   page as an ombre that shifts per chapter, with frosted-glass cards. Only
   Dream Strokes mixes several pastels; every other room's ombre stays in
