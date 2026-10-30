@@ -596,6 +596,7 @@ const B={
       <a class="btn btn--ink product__visit" href="${o.href}" target="_blank" rel="noopener">${o.label} ↗</a>
     </header>
     <p class="product__lede">${o.lede}</p>
+    ${o.who?`<p class="product__who"><span>Who uses it</span>${o.who}</p>`:""}
     ${o.facts?`<div class="product__facts">${o.facts.map(f=>`<p><b>${f.b}</b><span>${f.s}</span></p>`).join("")}</div>`:""}
     ${o.shot?screenFrame(o.shot):""}
   </section>`,
@@ -1310,11 +1311,13 @@ const ROOMS={
     {n:"02",id:"together",t:"Together!",s:"Together!",p:"A shared journal now used by Dream Strokes and 20+ other projects."}
   ]}],
 
-  ["chapter",{n:"01",id:"contextuary",t:"Contextuary",p:"Vocabulary in context, for students preparing for the SAT",skills:["Product design","User research","React"]}],
+  ["chapter",{n:"01",id:"contextuary",t:"Contextuary",p:"SAT vocabulary in context, without the extra load",skills:["Product design","User research","React"]}],
   ["product",{logo:"img/contextuary-logo.png",logoAlt:"The Contextuary logo",
     kicker:"Founder and Product Designer · Jan 2025 to now · team of 4",name:"Contextuary",
     href:"https://contextuary.app",label:"Visit Contextuary",
     lede:"While I was studying vocabulary, I noticed how much work it took just to keep one new word, and how little of that work helped anyone remember it. It was easy to give up at that point.",
+    who:"Students in Vietnam preparing for the SAT",
+    facts:[{b:"500+",s:"registered users"},{b:"~2,200",s:"visitors"}]
 }],
   ["kicker","The pain point"],
   ["para","Saving one word meant a chain of small jobs. Each one added cognitive load, and none of them taught anything about the word itself."],
@@ -1335,6 +1338,11 @@ const ROOMS={
       {h:"A separate Today page",p:"One more tap to reach the thing they came for. Daily Picks moved to the top of My Words instead."}
     ]]],
     shot:{k:"cx-3",ratio:"1138/1200",url:"contextuary.app/practice",ghost:"Start practice",cap:"What stayed: quiz or flashcards, an AI Challenge, and six question types."}}],
+  ["kicker","Made for the SAT"],
+  ["pairs",[
+    {h:"Daily Picks",p:"Each day Contextuary suggests a few words worth learning, at the top of My Words, so a student never has to decide where to start."},
+    {h:"Tests I designed",p:"I designed the practice tests myself: six question types that turn the words a student has saved into SAT-style practice."}
+  ]],
   ["voices",{kicker:"What users wrote",note:"Messages from users, translated from Vietnamese.",items:[
     {q:"Since Contextuary came along, learning vocabulary has become so much easier.",who:"A Contextuary user"},
     {q:"The founder keeps listening and improving it. I love it.",who:"A Contextuary user"}
@@ -1345,6 +1353,8 @@ const ROOMS={
     kicker:"Co-Founder and UI/UX Designer · Dec 2025 to now",name:"Together!",
     href:"https://toghether.contextuary.app",label:"Visit Together!",
     lede:"Dream Strokes runs on many people, in many places, each doing a different job. I watched how easily that kind of team drifts apart.",
+    who:"Project teams whose members work apart, starting with Dream Strokes",
+    facts:[{b:"20+",s:"projects besides Dream Strokes"},{b:"1,550+",s:"visitors"}]
 }],
   ["kicker","The pain points"],
   ["pains",[
@@ -1355,12 +1365,19 @@ const ROOMS={
   ["shot",{kicker:"The product",k:"cj-lead",ratio:"1600/916",url:"together · home",ghost:"the home page"}],
   ["beside",{blocks:[
     ["kicker","What we built"],
-    ["para","One shared journal for the whole team. Every workshop, meeting and match goes on a common calendar, with its photos and voice notes, and everyone can react and comment, whichever branch or role they are in. We built it for Dream Strokes first; other teams now create their own projects on it."],
+    ["para","One shared journal for the whole team. Every workshop, meeting and match goes on a common calendar, and everyone can add to it in the way that suits them, whichever branch or role they are in, so the team can look back on it later. We built it for Dream Strokes first; other teams now create their own projects on it."],
     ["pairs",[
       {h:"Decision",p:"Entries are grouped by moment, not by file type, and every item keeps its contributor. Ownership stays visible while the collection becomes shared."},
-      {h:"My part",p:"I conceived the product idea and built its information architecture and user flows, then designed the interface in Figma and coded the front end in React. Members of the Dream Strokes team built it with me."}
+      {h:"My part",p:"I designed the whole web system: the product idea, its information architecture, user flows and every feature. I designed the interface in Figma and coded the front end in React. Members of the Dream Strokes team built it with me."}
     ]]],
     shot:{k:"cj-1",ratio:"1600/997",url:"together · sample project",ghost:"a sample project",cap:"A sample project: every activity has a type, a colour and a day, and opens into its photos, voice notes and reactions."}}],
+  ["kicker","The features I designed"],
+  ["pairs",[
+    {h:"Many ways to add",p:"Photos, videos, voice notes, writing and comments. A member who would rather talk than write still has a way in."},
+    {h:"Made for each project",p:"Every project personalises its own space, so it fits the way that team already works."},
+    {h:"Who did what",p:"Each entry keeps who made it and which activity it belongs to, so a project can see what its members did, and when."},
+    {h:"Reports in one export",p:"A project can export its activities to put together reports and summaries, instead of digging through group chats."}
+  ]],
   ["voices",{kicker:"What the team wrote",note:"Messages from Dream Strokes members, translated from Vietnamese.",items:[
     {q:"I had no idea the design team worked this hard.",who:"A Dream Strokes member"},
     {q:"The class was so sweet. Reading everyone’s journal feels like being there.",who:"A Dream Strokes member"}

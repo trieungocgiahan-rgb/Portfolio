@@ -1601,9 +1601,11 @@ body.has-entered .hero__scroll{animation:bloomIn 1.2s var(--ease) 1.1s both}
 .product__id .room__kicker{margin:0}
 .product__name{margin:.2rem 0 0;font-size:var(--t-title);line-height:1.05;letter-spacing:-.02em}
 .product__lede{margin-top:var(--sp-3);max-width:min(100%,46ch);font-family:var(--display);font-size:var(--t-idea);line-height:1.35;letter-spacing:-.01em}
+.product__who{display:flex;flex-wrap:wrap;align-items:baseline;gap:.2rem .7rem;margin-top:var(--sp-3);max-width:min(100%,60ch);font-size:var(--t-lead);color:var(--ink)}
+.product__who span{font-family:var(--mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:color-mix(in srgb,var(--accent) 76%,var(--ink))}
 .product__facts{display:flex;flex-wrap:wrap;gap:var(--sp-2) var(--sp-5);margin-top:var(--sp-3)}
 .product__facts b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(1.8rem,3.2vw,2.4rem);line-height:1;letter-spacing:-.02em;color:color-mix(in srgb,var(--accent) 76%,var(--ink))}
-.product__facts span{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:.08em;color:var(--ink-45)}
+.product__facts span{font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;color:var(--ink-70)}
 .product > .browser{margin-top:var(--sp-4)}
 @media(max-width:699px){
   .product__head{grid-template-columns:auto minmax(0,1fr)}
