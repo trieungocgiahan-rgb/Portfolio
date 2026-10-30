@@ -47,14 +47,16 @@ sharing a room, then tests it through community work, research and building.
   chapter opens with skill tags (pills) for the skills it shows.
   Events (three chapters: Why, Beats of Hope, Eight more) and Tech (two
   chapters: Contextuary, Together!) use the same chapter map and bar.
-  Exhibition is a real gallery: a floor plan of three rooms (GALLERY_ROOMS:
-  Chemistry, What grows inside, My city: five city works, from the
-  Never Enough bridge to City Hall), each opening with a wall text
+  Exhibition is a real gallery and one walk, Inside / Outside: she finds
+  beauty in what she carries and in the world around her. The floor plan
+  lists five rooms in that order: 01 What grows inside, 02 Chemistry,
+  03 My city (GALLERY_ROOMS, on the wall; ARCHIVE in the same order),
+  04 Through my lens (PHOTO_SETS), 05 Screening room (FILMS). Each wall room
+  opens with a wall text
   in her voice, picture lights, museum labels, an oak floor; her statement
-  and painting notes stay word for word. Under the wall hang her
-  photographs (PHOTO_SETS: The city, The pitch), shot and colour-graded by
-  her, as white-bordered prints seen whole that open in a lightbox; then
-  the screening room.
+  and painting notes stay word for word. Room 04 hangs her photographs
+  (The city, The pitch), shot and colour-graded by her, as white-bordered
+  prints seen whole that open in a lightbox.
   Awards is told as a story: the years on one line with a small medal
   per honour, then one chapter per group (AWARD_GROUPS), each honour a
   drawn medal (ribbon in the group colour, its mark engraved) beside the
@@ -186,6 +188,9 @@ the accent appears only in numbers, rules, dots, nav state and small labels.
   image is never stretched (--fit cover or contain, --pos focal point).
 - Copy is specific and plain. No personal-brand language.
 - One voice everywhere: first person, plain, short, like telling a friend.
+  Lively and spoken, so a reader can feel it: contractions are welcome, a
+  question now and then, concrete things you could see. In prose, no
+  colon lists and no em-dashes; say it in two sentences instead.
   No aphorisms or "not X, but Y" slogans, no repeated lines across rooms
   (each idea is said once, where it belongs), no captions that claim more
   than the photograph shows. Her own texts (About, award stories, the

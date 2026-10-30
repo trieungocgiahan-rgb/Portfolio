@@ -830,13 +830,13 @@ function aboutHTML(){
     <div class="about-strangers__text">
       <p class="about__kicker">Away from my projects</p>
       <h3 class="about__lead" id="about-strangers-h">Talking to strangers</h3>
-      <p>I still end up talking to people I have only just met: at concerts, on tours around the city, or in random conversations with locals and with tourists. Often a drawing or a photo is how it starts.</p>
+      <p>I love talking to people I’ve only just met. It happens at concerts, on city tours, and in random chats with locals and tourists. A lot of the time it starts over a drawing or a photo.</p>
     </div>
     <ul class="about-strangers__photos">${[
       ["cafe","1200/855","At a cafe","A group of young people smiling together on a bench in a wood-panelled cafe."],
       ["gig","1200/900","At a gig","A blurry selfie of Gia Han with five people at a small gig under blue light."],
       ["boat","1200/900","On a river boat","A selfie of Gia Han in a cheerful crowd on a river boat at night, flags in the air."],
-      ["deck","900/1200","On the deck, with people I had just met","Gia Han on a boat deck at night with a girl and four women, the lit city skyline behind."]
+      ["deck","900/1200","Met them on the deck","Gia Han on a boat deck at night with a girl and four women, the lit city skyline behind."]
     ].map(([k,r,c,a])=>`<li><figure><img src="img/ab-strangers-${k}.jpg" alt="${a}" width="${r.split("/")[0]}" height="${r.split("/")[1]}" loading="lazy" decoding="async"><figcaption>${c}</figcaption></figure></li>`).join("")}</ul>
   </section>
 
@@ -1459,50 +1459,50 @@ const ROOM_ALIASES={
    size = its height on the wall relative to the others, and support:"paper"
    for works on paper, which hang in a mat and a thin frame */
 const ARCHIVE=[
-  {id:"chemistry",t:"Chemistry",p:"Acrylic on canvas, 40 × 60 cm",d:"2026",ratio:"627/942",size:1.15,
-   n:"When two people are drawn to each other, I picture it starting as a tiny signal between neurons. Then it turns into a dance. Here two souls move toward each other through the branches, like the chemistry in my head has found its rhythm.",
-   alt:"Acrylic painting in pink, coral and turquoise: two pale figures reach toward each other among branching neurons, a faint heart behind them."},
-  {id:"restless-light",t:"Restless Light",p:"Digital painting, 2000×1460",d:"2026",ratio:"666/498",size:1,
-   n:"What begins as chemistry becomes choreography, until closeness seems to move through the body before the mind has found a name for it.",
-   alt:"Digital painting: three glowing pink and violet figures with spiral hearts dance on a black ground, their limbs branching like neurons."},
   {id:"stardust",t:"Stardust",p:"Acrylic on watercolor paper, 21 × 29.7 cm",d:"2026",ratio:"581/736",size:.9,support:"paper",
    n:"Long before I existed, the calcium in my bones was burning in the heart of a star. I like to believe that light never faded, so I painted it glowing behind my ribs—right where my deepest feelings live.",
    alt:"Acrylic painting in blues, oranges and yellows: a ribcage outlined in turquoise with a bright star bursting behind it."},
-  {id:"kaleidoscope",t:"Kaleidoscope",p:"Digital painting, 2000×1460",d:"2026",ratio:"629/503",size:1,
-   n:"With every motion, color escapes its skin and fills the space around it. As layers fold and boundaries blur, the whole room comes alive—a kaleidoscope of shared light.",
-   alt:"Digital painting: a crowd of blurred dancing figures, arms raised, dissolving into streaks of pink, violet, green and gold light."},
   {id:"red-season",t:"Red Season",p:"Acrylic on canvas, approx. 25 × 25 cm",d:"",ratio:"464/427",size:.8,
    n:"These lilies grew out of all that deep red, and no one sees what it took to get there. That's how strength feels to me, quiet and blooming from the inside.",
    alt:"Acrylic painting of two pink stargazer lilies with green leaves on a deep red ground."},
   {id:"bloom-anyway",t:"Bloom Anyway",p:"Acrylic on canvas, approx. 30 × 40 cm",d:"",ratio:"478/584",size:.95,
    n:"Eyes on me from every side, and just as much noise inside my head I smile anyway, while something quiet keeps growing, two buds still waiting to open.",
    alt:"Acrylic painting: a white lily on a blue stem rises through a dark red field of watching eyes, swirls and a small smiling face."},
+  {id:"chemistry",t:"Chemistry",p:"Acrylic on canvas, 40 × 60 cm",d:"2026",ratio:"627/942",size:1.15,
+   n:"When two people are drawn to each other, I picture it starting as a tiny signal between neurons. Then it turns into a dance. Here two souls move toward each other through the branches, like the chemistry in my head has found its rhythm.",
+   alt:"Acrylic painting in pink, coral and turquoise: two pale figures reach toward each other among branching neurons, a faint heart behind them."},
+  {id:"restless-light",t:"Restless Light",p:"Digital painting, 2000×1460",d:"2026",ratio:"666/498",size:1,
+   n:"What begins as chemistry becomes choreography, until closeness seems to move through the body before the mind has found a name for it.",
+   alt:"Digital painting: three glowing pink and violet figures with spiral hearts dance on a black ground, their limbs branching like neurons."},
+  {id:"kaleidoscope",t:"Kaleidoscope",p:"Digital painting, 2000×1460",d:"2026",ratio:"629/503",size:1,
+   n:"With every motion, color escapes its skin and fills the space around it. As layers fold and boundaries blur, the whole room comes alive—a kaleidoscope of shared light.",
+   alt:"Digital painting: a crowd of blurred dancing figures, arms raised, dissolving into streaks of pink, violet, green and gold light."},
+  {id:"never-enough",t:"Never Enough",p:"Mixed media in a sketchbook",d:"",ratio:"1050/1400",size:.9,support:"paper",
+   n:"Never Enough by Daniel Caesar was on replay the whole time I painted this. So I borrowed the album’s blues and its style, and used them to colour my own view of Ba Son Bridge at night.",
+   alt:"Ba Son Bridge at night in deep blues, light streaming from its tower, a lone figure at the rail and the words Never Enough across the sky."},
   {id:"ba-son-view",t:"Ba Son's view",p:"Red ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"678/497",size:.78,support:"paper",
    n:"Standing on the bridge and watching the city light up in its ceaseless rush, I feel my sadness fade as I watch the metropolis grow ever grander through the passing hours.",
    alt:"Red ink sketch of the Ho Chi Minh City skyline seen across the river, a tree-lined embankment in front."},
-  {id:"post-office",t:"My city Post Office",p:"Black ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"691/525",size:.78,support:"paper",
-   n:"Redrawing the building I passed unnoticed every single day opened my eyes to its timeless beauty.",
-   alt:"Black ink sketch of the Saigon Central Post Office facade with its clock and arched windows, lettered with its Vietnamese name."},
-  {id:"never-enough",t:"Never Enough",p:"Mixed media in a sketchbook",d:"",ratio:"1050/1400",size:.9,support:"paper",
-   n:"Ba Son Bridge at night, painted while Daniel Caesar’s Never Enough was on replay. I borrowed the album’s blues and its style, and coloured my own view of the bridge with them.",
-   alt:"Ba Son Bridge at night in deep blues, light streaming from its tower, a lone figure at the rail and the words Never Enough across the sky."},
   {id:"tan-dinh",t:"Tan Dinh Church",p:"Ink and coloured pencil in a sketchbook",d:"",ratio:"1050/1400",size:.82,support:"paper",
-   n:"One of the city’s best-known places. Drawing it slowly, the way a visitor would look at it, showed me how much detail the tower holds, from the clock to each small spire.",
+   n:"Everyone here knows the pink church. I tried looking at it like a tourist would, really slowly, and that’s when I saw how much is going on up that tower. The clock, the tiny arches, all those little spires.",
    alt:"Ink and coloured pencil sketch of Tan Dinh Church, its pink tower, clock and spires, lettered with its Vietnamese name."},
   {id:"city-hall",t:"City Hall",p:"Ink and coloured pencil on paper",d:"2025",ratio:"1400/933",size:.82,support:"paper",
-   n:"The People’s Committee Building, drawn on 29 June 2025. I wanted the red roofs, the clock tower and the figures above the windows, all the detail I never stopped for when I walked past.",
-   alt:"Ink sketch of the Ho Chi Minh City People's Committee Building in yellow with red roofs and a flag on its clock tower, dated 29.6.25."}
+   n:"Drawn on 29 June 2025. I’ve walked past City Hall so many times and never really stopped to look. Drawing it, I finally noticed the red roofs, the clock tower and the little figures above the windows.",
+   alt:"Ink sketch of the Ho Chi Minh City People's Committee Building in yellow with red roofs and a flag on its clock tower, dated 29.6.25."},
+  {id:"post-office",t:"My city Post Office",p:"Black ink on paper, 10.5 × 14.8 cm",d:"2025",ratio:"691/525",size:.78,support:"paper",
+   n:"Redrawing the building I passed unnoticed every single day opened my eyes to its timeless beauty.",
+   alt:"Black ink sketch of the Saigon Central Post Office facade with its clock and arched windows, lettered with its Vietnamese name."}
 ];
 /* the exhibition hangs in three rooms; each opens with a short wall text */
 const GALLERY_ROOMS=[
-  {n:"01",t:"Chemistry",p:"Three works about what happens between people: a small signal, then a dance, then a whole room lit up.",ids:["chemistry","restless-light","kaleidoscope"]},
-  {n:"02",t:"What grows inside",p:"What I carry where no one sees it: light from a star, strength out of deep red, something quiet still growing.",ids:["stardust","red-season","bloom-anyway"]},
-  {n:"03",t:"My city",p:"Ho Chi Minh City, drawn slowly in the places I usually rush past: a bridge at night, a church, a post office.",ids:["never-enough","ba-son-view","tan-dinh","city-hall","post-office"]}
+  {n:"01",t:"What grows inside",p:"Let’s start inside. These are things I carry around and don’t say out loud, so I paint them instead. A star glowing behind my ribs, lilies growing out of deep red, and one that blooms anyway, with all those eyes on it.",ids:["stardust","red-season","bloom-anyway"]},
+  {n:"02",t:"Chemistry",p:"Then it spills over to other people. You know that moment you click with someone? I like to imagine it starts as a tiny spark between neurons, turns into a dance, and ends with the whole room lit up.",ids:["chemistry","restless-light","kaleidoscope"]},
+  {n:"03",t:"My city",p:"And then I step outside. I grew up in Ho Chi Minh City and for years I barely looked at it. So I started drawing it like a tourist would, slowly, and kept finding beautiful things I’d walked past so many times.",ids:["never-enough","ba-son-view","tan-dinh","city-hall","post-office"]}
 ];
 const roomOf=id=>GALLERY_ROOMS.find(r=>r.ids.includes(id));
 /* photographs she took and colour-graded, in two sets, each print seen whole */
 const PHOTO_SETS=[
-  {n:"01",t:"The city",p:"I grew up in this city, so I had stopped seeing it. With a camera I started walking it like a tourist: looking up at a pink church, stopping for a lantern street, waiting for the mist outside a cafe to catch the sun. Then I graded each photo until it felt the way the street did.",items:[
+  {n:"01",t:"The city",p:"Same city, now with a camera. The pink church against a blue sky, a lantern street so packed you can barely move, and mist outside a cafe lighting up in the late sun.",items:[
     {k:"tandinh-wide",w:1500,h:1082,t:"Tan Dinh Church",alt:"Tan Dinh Church, pink against a blue sky with white clouds, framed by buildings and leaves; a bus passes in front."},
     {k:"lanterns",w:1500,h:1111,t:"A lantern street at night",alt:"A crowded street at night under hanging lanterns and red flags, lit warm gold."},
     {k:"north-gate",w:1500,h:985,t:"Ben Thanh Market, north gate, at dusk",alt:"Evening traffic in front of Ben Thanh Market's north gate, neon signs on both sides of the street."},
@@ -1512,7 +1512,7 @@ const PHOTO_SETS=[
     {k:"tandinh",w:1500,h:1104,t:"Tan Dinh Church, from the street",alt:"The front of Tan Dinh Church with its clock, taxis and motorbikes on the street below."},
     {k:"pigeons",w:1500,h:1000,t:"Pigeons on a roof",alt:"Pigeons on a roof edge, one landing with its wings spread, green trees and a flag behind."}
   ]},
-  {n:"02",t:"The pitch",p:"School football, shot from inside the game. The huddle shouting before kick-off, one player alone with the ball still to come, shirts blurring at full speed, and the bench laughing after the whistle. I graded them warm and grainy, like a late afternoon on the pitch.",items:[
+  {n:"02",t:"The pitch",p:"And school football, from right in the middle of it. Everyone yelling in the huddle, one player off on his own before kick-off, a blur of shirts, and the whole bench laughing afterwards. I graded these warm and grainy, like a late afternoon out there.",items:[
     {k:"huddle",w:1000,h:1500,t:"The huddle",alt:"Looking up into a team huddle: players in red shirts shout and lean in around a boy in yellow."},
     {k:"match",w:1500,h:987,t:"Under the net",alt:"Three players run toward goal on a green pitch under a striped net, apartment blocks behind."},
     {k:"player",w:789,h:1500,t:"Before kick-off",alt:"A player in a red shirt stands alone on the pitch, head down, trees lit by low sun behind."},
@@ -1524,17 +1524,19 @@ const PHOTO_SETS=[
 /* every work is shown whole: contain, never cropped */
 ARCHIVE.forEach(a=>{ MEDIA["art-"+a.id]={src:`img/art-${a.id}.jpg`,alt:a.alt,fit:"contain"}; });
 /* the room's door shows the first work as a photograph through a doorway (cropped, not squashed) */
-MEDIA["exhibition-door"]={src:`img/art-${ARCHIVE[0].id}.jpg`,alt:"",pos:"50% 40%"};
+MEDIA["exhibition-door"]={src:"img/art-chemistry.jpg",alt:"",pos:"50% 40%"};
 const label=a=>a.d?`${a.p}, ${a.d}`:a.p;
 function exhibitionHTML(){
   return `${hero({kicker:"Exhibition",title:"Inside / Outside",
     sub:"The space between what I see and what I carry.",
     lede:"Some of these pieces started with something tangible. Others started with something invisible. As I paint, the outside world and my internal world bleed together onto the same canvas.",
-    meta:"Swipe along the wall to explore, or tap any painting to take a closer look.",
+    meta:"Five rooms, from what I carry inside out to the city, a camera and a few films. Drag along the wall and tap anything to see it up close.",
     k:"exhibition-door",ghost:"Chemistry"})}
   <nav class="gallery__plan" aria-label="Rooms of the exhibition">
-    <p class="gallery__plan-k">The exhibition · ${ARCHIVE.length} works in ${GALLERY_ROOMS.length} rooms</p>
-    <ol>${GALLERY_ROOMS.map(r=>`<li><button type="button" data-gallery-room="${r.n}"><span>Room ${r.n}</span>${r.t}<i>${r.ids.length} works</i></button></li>`).join("")}</ol>
+    <p class="gallery__plan-k">The exhibition · five rooms, inside to outside</p>
+    <ol>${GALLERY_ROOMS.map(r=>`<li><button type="button" data-gallery-room="${r.n}"><span>Room ${r.n}</span>${r.t}<i>${r.ids.length} works</i></button></li>`).join("")}
+      <li><button type="button" data-gallery-goto="room-photos"><span>Room 04</span>Through my lens<i>${PHOTO_SETS.reduce((n,x)=>n+x.items.length,0)} photographs</i></button></li>
+      <li><button type="button" data-gallery-goto="room-films"><span>Room 05</span>Screening room<i>${FILMS.length} films</i></button></li></ol>
   </nav>
   <div class="gallery" id="gallery">
     <span class="gallery__spot" id="gallerySpot" aria-hidden="true"></span>
@@ -1561,7 +1563,7 @@ function exhibitionHTML(){
   <div class="gallery__after">
     <p class="mono gallery__hint">Drag along the wall →</p>
     <div class="gallery__cta">
-      <p class="mono mono--sentence">${ARCHIVE.length} works hang here. The rest of the collection is in the full portfolio.</p>
+      <p class="mono mono--sentence">That’s ${ARCHIVE.length} of my paintings and drawings. Want more? The rest are in my full portfolio.</p>
       <a class="btn btn--ink" href="https://canva.link/uouxvz39irst7qt" target="_blank" rel="noopener">See the full portfolio ↗</a>
     </div>
   </div>
@@ -1574,8 +1576,9 @@ function exhibitionHTML(){
 function photosHTML(){
   return `<section class="photos" id="room-photos" aria-label="Photographs">
     <div class="photos__head">
-      <p class="room__kicker">Exhibition · photographs</p>
-      <h2 class="room__sub">Photographs I took and colour-graded</h2>
+      <p class="room__kicker">Room 04 · photographs</p>
+      <h2 class="room__sub">Through my lens</h2>
+      <p class="photos__intro">When there’s no time to sit and draw, I take photos instead. I shoot things the way I find them, then spend way too long colour-grading until each one feels like the moment did.</p>
     </div>${PHOTO_SETS.map(set=>`
     <div class="photos__set">
       <div class="photos__label"><p class="walltext__n">Set ${set.n}</p><h3 class="walltext__t">${set.t}</h3><p class="walltext__p">${set.p}</p></div>
@@ -1606,8 +1609,9 @@ const youtubeId=url=>{ const m=String(url||"").match(/(?:youtu\.be\/|[?&]v=|\/sh
 function screeningHTML(){
   return `<section class="screening" id="room-films" aria-label="Screening room">
     <div class="screening__head">
-      <p class="room__kicker">Exhibition · screening room</p>
+      <p class="room__kicker">Room 05 · screening room</p>
       <h2 class="room__sub">Films I made</h2>
+      <p class="screening__intro">Last stop, and the only room I didn’t make on my own. City clips with my club, and short films I wrote, directed and edited.</p>
     </div>
     <div class="screen" id="screen"></div>
     <ol class="program" id="program">${FILMS.map((f,i)=>`
@@ -1798,6 +1802,10 @@ function bindArchive(){
   plan.forEach(btn=>btn.addEventListener("click",()=>{
     const t=document.getElementById("gallery-room-"+btn.dataset.galleryRoom); if(!t||!wall) return;
     wall.scrollTo({left:t.offsetLeft-parseFloat(getComputedStyle(wall).paddingLeft),behavior:REDUCED?"auto":"smooth"});
+  }));
+  $$("[data-gallery-goto]").forEach(btn=>btn.addEventListener("click",()=>{
+    const t=document.getElementById(btn.dataset.galleryGoto), sc=$("#room"); if(!t||!sc) return;
+    sc.scrollTo({top:sc.scrollTop+t.getBoundingClientRect().top-$(".room__top").offsetHeight-16,behavior:REDUCED?"auto":"smooth"});
   }));
   function markRoom(){
     if(!wall) return;
