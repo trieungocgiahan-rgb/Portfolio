@@ -102,7 +102,13 @@ sharing a room, then tests it through community work, research and building.
 - The homepage is one continuous story in the owner's own words (see
   BRIEF.md): hero, 00 Who I am (who she is, "Read more about me" into
   About, then on to Dream Strokes), 01 Notice, 02 Study, 03 Make, 04 Gather, 05 Draw,
-  06 The question, More work, footer. Each part: title, story, one visual,
+  06 The question, More work, footer. The hero and the ID card ask the one
+  question: what makes it easier for people to take part? Parts 01–05 each
+  carry a way-in line (.wayin): 01 Interaction (one tray in the middle),
+  02 Expressive (a format that fits the person), 03 Connection (seeing what
+  everyone else did), 04 Gathering (one person moving closer to the stage),
+  05 Creative (a blank page, just for me); 06 gathers them and keeps the
+  open questions. Each part: title, story, one visual,
   one "Inside ·" line saying what the detail page holds, one way in, then a
   bridge (a.bridge): one serif sentence that hands on to the next part, and
   never claims an order or a cause that is not true (she approved the current
