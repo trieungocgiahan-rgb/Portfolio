@@ -818,6 +818,23 @@ function aboutHTML(){
       <p>As I grew older, I started to see how many people have something wonderful to share but just do not know how to start. Sometimes, all it takes to help them is a very small change. It could be asking a different question, giving them something real to hold, or just inviting them in without expecting the perfect words right away.</p>
       <p>I care so deeply about those small starts. I truly believe our world gets so much better when people feel like what they notice, imagine, and make actually matters.</p>
     </div>
+    <!-- an open door with the light coming out, and a mat that says come in -->
+    <svg class="about-door" viewBox="0 0 180 220" aria-hidden="true">
+      <path d="M52 176h76l40 38H12z" fill="#FDE3EC"/>
+      <rect x="52" y="40" width="76" height="136" rx="6" fill="#F9D5E2" transform="translate(6 6)"/>
+      <rect x="52" y="40" width="76" height="136" rx="6" fill="#FFF4E6" stroke="#141C33" stroke-width="1.8"/>
+      <g fill="none" stroke="#EE4187" stroke-width="1.8" stroke-linecap="round">
+        <path class="about-door__glow" d="M92 76v14M85 83h14"/>
+        <path class="about-door__glow" d="M110 104v9M105.5 108.5h9"/>
+        <path class="about-door__glow" d="M80 128c-4-4-10-1-8 4 2 4 8 7 8 7s6-3 8-7c2-5-4-8-8-4z"/>
+      </g>
+      <path d="M52 40v136l-26 14V30z" fill="#fff" stroke="#141C33" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M33 52v38l12-4V48zM33 112v42l12-5v-41z" fill="none" stroke="#141C33" stroke-width="1.1" stroke-linejoin="round" opacity=".55"/>
+      <circle cx="30.5" cy="110" r="2.6" fill="#EE4187"/>
+      <path d="M6 176h168" stroke="#141C33" stroke-width="1.4" stroke-linecap="round"/>
+      <rect x="62" y="183" width="56" height="15" rx="3" fill="#fff" stroke="#141C33" stroke-width="1.4"/>
+      <text x="90" y="194" text-anchor="middle" font-size="9" fill="#141C33" style="font-family:var(--display);letter-spacing:.02em">come in</text>
+    </svg>
     ${spark("spark--d")}
   </section>
 

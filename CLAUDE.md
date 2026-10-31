@@ -94,7 +94,9 @@ sharing a room, then tests it through community work, research and building.
   was noticed, what changed, what it led to. About is the one exception,
   built from her mockup (aboutHTML in app.js): a sketch hero with line-only
   art (sparkles, one pink swirl), the story beside her portrait box (ab-2),
-  a pink band for its key line, Talking to strangers (four snapshots with
+  a pink band for its key line, the rest of the story beside a line
+  drawing of an open door with light spilling out and a "come in" mat
+  (.about-door), Talking to strangers (four snapshots with
   people she met at concerts, on tours and in passing), then "See my drawings", "Open my CV" and a
   Dream Strokes card: where she puts this into practice.
   Tech is the other: its door holds the two app icons (marks), never a
