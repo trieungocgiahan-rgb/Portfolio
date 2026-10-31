@@ -818,12 +818,6 @@ function aboutHTML(){
       <p>As I grew older, I started to see how many people have something wonderful to share but just do not know how to start. Sometimes, all it takes to help them is a very small change. It could be asking a different question, giving them something real to hold, or just inviting them in without expecting the perfect words right away.</p>
       <p>I care so deeply about those small starts. I truly believe our world gets so much better when people feel like what they notice, imagine, and make actually matters.</p>
     </div>
-    <svg class="about-note" viewBox="0 0 170 190" aria-hidden="true">
-      <path d="M34 34l92-14 16 88-84 14z" fill="#FDE3EC" transform="translate(6 6)"/>
-      <path d="M34 34l92-14 16 88-84 14z" fill="#fff" stroke="#141C33" stroke-width="1.6" stroke-linejoin="round"/>
-      <path d="M142 108l-24-8 8 22" fill="#fff" stroke="#141C33" stroke-width="1.6" stroke-linejoin="round"/>
-      <path class="about-note__string" pathLength="1" d="M58 122c-8 22-36 22-34 4 2-16 26-10 22 10-4 18-20 30-12 50" fill="none" stroke="#EE4187" stroke-width="1.8" stroke-linecap="round"/>
-    </svg>
     ${spark("spark--d")}
   </section>
 
